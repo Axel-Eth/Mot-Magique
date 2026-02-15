@@ -8,7 +8,7 @@ export class AudioManager {
     this.publicAudioEl = publicAudioEl;
     this.publicVideoEl = publicVideoEl;
 
-    this._ducking = { isDucking: false, base: 1.0, duck: 0.25, attackMs: 30, releaseMs: 400 };
+    this._ducking = { isDucking: false, base: 1.0, duck: 0.02, attackMs: 30, releaseMs: 400 };
   }
 
   async init() {

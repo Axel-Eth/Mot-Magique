@@ -1051,6 +1051,12 @@ body.plateau .flag-overlay.active{
   opacity:1;
 }
 
+body.plateau .flag-overlay.flag-mode,
+body.plateau .flag-overlay.people-mode{
+  backdrop-filter: blur(10px);
+  background: rgba(6, 18, 34, 0.6); /* ~60% */
+}
+
 body.plateau .flag-image{
   max-width: 70vw;
   max-height: 70vh;

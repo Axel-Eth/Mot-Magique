@@ -170,11 +170,11 @@ export function registerMessageHandlers() {
         break;
 
       case "SHOW_FLAG":
-        if (msg.src) showFlag(msg.src, msg.alt || "Drapeau", FLAG_ANTHEM_SRC);
+        if (msg.src) showFlag(msg.src, msg.alt || "Drapeau", FLAG_ANTHEM_SRC, "flag");
         break;
 
       case "SHOW_PEOPLE":
-        if (msg.src) showFlag(msg.src, msg.alt || "Personnalite", PEOPLE_THEME_SRC);
+        if (msg.src) showFlag(msg.src, msg.alt || "Personnalite", PEOPLE_THEME_SRC, "people");
         break;
 
       case "PLAY_MUSIC":

@@ -41,8 +41,9 @@ let mediaToken = 0;
 let mediaVisualizerEnabled = false;
 let plateauMusicWanted = null;
 let plateauMusicRestartRequested = false;
+let duckLevelOverride = null;
 
-const DUCK_LEVEL = 0.05;
+const DUCK_LEVEL = 0.02;
 const BASE_LEVEL = 1;
 const DUCK_ATTACK_MS = 30;
 const DUCK_RELEASE_MS = 350;
@@ -91,7 +92,7 @@ function smoothPlateauGain(target, ms) {
 function duckOn() {
   duckCount += 1;
   if (duckCount === 1) {
-    smoothPlateauGain(DUCK_LEVEL, DUCK_ATTACK_MS);
+    smoothPlateauGain(duckLevelOverride ?? DUCK_LEVEL, DUCK_ATTACK_MS);
   }
 }
 
@@ -344,6 +345,13 @@ function endExternalDucking() {
   duckOff();
 }
 
+function setDuckLevelOverride(level = null) {
+  duckLevelOverride = typeof level === "number" ? Math.max(0, Math.min(1, level)) : null;
+  if (duckCount > 0) {
+    smoothPlateauGain(duckLevelOverride ?? DUCK_LEVEL, DUCK_ATTACK_MS);
+  }
+}
+
 export {
   sounds,
   playMusic,
@@ -360,5 +368,6 @@ export {
   stopAllFx,
   stopRevealSound,
   beginExternalDucking,
-  endExternalDucking
+  endExternalDucking,
+  setDuckLevelOverride
 };

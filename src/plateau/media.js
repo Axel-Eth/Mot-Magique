@@ -1,11 +1,12 @@
 import { gridEl, defBar } from "./dom.js";
 import { state } from "./state.js";
-import { beginExternalDucking, endExternalDucking, playMusic, stopAllFx, stopMusic } from "./audio.js";
+import { beginExternalDucking, endExternalDucking, playMusic, setDuckLevelOverride, stopAllFx, stopMusic } from "./audio.js";
 
 const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
 const FILMS_EXTRACTS_VIDEO_SRC = "sounds/extraits_films.mp4";
 const FILMS_EXTRACTS_VIDEO_VOLUME = 0.08;
+const FILMS_DUCK_LEVEL = 0.02;
 const FILMS_FADE_MS = 280;
 
 let multiplierBadge = null;
@@ -122,6 +123,11 @@ function playVideo(src, options = {}) {
   if (!vid) return;
 
   stopAllFx();
+  if (mode === "films_overlay") {
+    setDuckLevelOverride(FILMS_DUCK_LEVEL);
+  } else {
+    setDuckLevelOverride(null);
+  }
   setVideoDucking(true);
   currentVideoMode = mode;
   vid.loop = !!loop;
@@ -178,6 +184,7 @@ export function stopFilmsOverlayVideo() {
   fadeOutVideo(vid, () => {
     currentVideoMode = null;
     setVideoDucking(false);
+    setDuckLevelOverride(null);
     gridEl.style.visibility = "visible";
     defBar?.classList.remove("hidden");
     vid.style.opacity = "1";
@@ -239,13 +246,15 @@ function ensureFlagOverlay() {
   return overlay;
 }
 
-export function showFlag(src, altText = "Drapeau", mediaSrc = null) {
+export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag") {
   const overlay = ensureFlagOverlay();
   const img = overlay.querySelector(".flag-image");
   if (img) {
     img.src = src;
     img.alt = altText;
   }
+  overlay.classList.toggle("flag-mode", mode === "flag");
+  overlay.classList.toggle("people-mode", mode === "people");
   overlay.classList.add("active");
   gridEl.style.display = "none";
   defBar?.classList.add("hidden");
@@ -257,7 +266,11 @@ export function showFlag(src, altText = "Drapeau", mediaSrc = null) {
 export { FLAG_ANTHEM_SRC, PEOPLE_THEME_SRC };
 
 export function hideAllMedia() {
-  if (flagOverlay) flagOverlay.classList.remove("active");
+  if (flagOverlay) {
+    flagOverlay.classList.remove("active");
+    flagOverlay.classList.remove("flag-mode");
+    flagOverlay.classList.remove("people-mode");
+  }
   if (scoresOverlay) scoresOverlay.classList.remove("active");
   stopMusic();
   const vid = genericVideo;
@@ -272,6 +285,7 @@ export function hideAllMedia() {
     defBar?.classList.remove("hidden");
   }
   setVideoDucking(false);
+  setDuckLevelOverride(null);
   gridEl.style.display = "";
   if (state.wantsFullscreen && !document.fullscreenElement) {
     document.documentElement.requestFullscreen().catch(() => {});
