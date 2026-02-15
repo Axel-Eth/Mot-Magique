@@ -198,6 +198,7 @@ mediaPlayer.onended = () => {
   duckOff();
   mediaVisualizerEnabled = false;
   stopVisualizer();
+  window.dispatchEvent(new CustomEvent("plateau:long-media-ended"));
 };
 
 mediaPlayer.onpause = () => {
@@ -288,6 +289,7 @@ function stopMusic() {
   mediaVisualizerEnabled = false;
   stopVisualizer();
   duckOff();
+  window.dispatchEvent(new CustomEvent("plateau:long-media-stopped"));
 }
 
 async function playMusic(src, options = {}) {

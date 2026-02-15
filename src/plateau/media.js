@@ -6,6 +6,7 @@ const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
 const FILMS_EXTRACTS_VIDEO_SRC = "sounds/extraits_films.mp4";
 const FILMS_EXTRACTS_VIDEO_VOLUME = 0.08;
+const FILMS_FADE_MS = 280;
 
 let multiplierBadge = null;
 let scoresOverlay = null;
@@ -13,6 +14,33 @@ let flagOverlay = null;
 let genericVideo = null;
 let videoDuckingActive = false;
 let currentVideoMode = null;
+let mediaLifecycleBound = false;
+
+function bindMediaLifecycleEvents() {
+  if (mediaLifecycleBound) return;
+  mediaLifecycleBound = true;
+  window.addEventListener("plateau:long-media-ended", () => {
+    stopFilmsOverlayVideo();
+  });
+}
+
+function fadeInVideo(vid) {
+  vid.style.opacity = "0";
+  vid.style.display = "block";
+  window.requestAnimationFrame(() => {
+    vid.style.opacity = "1";
+  });
+}
+
+function fadeOutVideo(vid, done) {
+  vid.style.opacity = "0";
+  window.setTimeout(() => {
+    if (vid.style.opacity === "0") {
+      vid.style.display = "none";
+      done?.();
+    }
+  }, FILMS_FADE_MS);
+}
 
 function setVideoDucking(active) {
   if (active && !videoDuckingActive) {
@@ -50,6 +78,7 @@ export function updateMultiplierBadge(value) {
 
 function ensureGenericVideo() {
   if (genericVideo) return genericVideo;
+  bindMediaLifecycleEvents();
 
   const vid = document.createElement("video");
   vid.src = "sounds/generique_avm.mp4";
@@ -61,6 +90,8 @@ function ensureGenericVideo() {
   vid.style.backgroundColor = "#000";
   vid.style.zIndex = "2000";
   vid.style.display = "none";
+  vid.style.opacity = "1";
+  vid.style.transition = `opacity ${FILMS_FADE_MS}ms ease`;
   vid.autoplay = false;
   vid.controls = false;
   vid.playsInline = true;
@@ -68,6 +99,7 @@ function ensureGenericVideo() {
   vid.addEventListener("ended", () => {
     setVideoDucking(false);
     vid.style.display = "none";
+    vid.style.opacity = "1";
     vid.loop = false;
     vid.volume = 1;
     currentVideoMode = null;
@@ -98,7 +130,12 @@ function playVideo(src, options = {}) {
   vid.currentTime = 0;
   gridEl.style.visibility = "hidden";
   defBar?.classList.add("hidden");
-  vid.style.display = "block";
+  if (mode === "films_overlay") {
+    fadeInVideo(vid);
+  } else {
+    vid.style.display = "block";
+    vid.style.opacity = "1";
+  }
   vid.play().catch(() => {
     setVideoDucking(false);
   });
@@ -135,14 +172,16 @@ export function stopFilmsOverlayVideo() {
   try {
     vid.pause();
     vid.currentTime = 0;
-    vid.style.display = "none";
     vid.loop = false;
     vid.volume = 1;
   } catch {}
-  currentVideoMode = null;
-  setVideoDucking(false);
-  gridEl.style.visibility = "visible";
-  defBar?.classList.remove("hidden");
+  fadeOutVideo(vid, () => {
+    currentVideoMode = null;
+    setVideoDucking(false);
+    gridEl.style.visibility = "visible";
+    defBar?.classList.remove("hidden");
+    vid.style.opacity = "1";
+  });
 }
 
 function ensureScoresOverlay() {
