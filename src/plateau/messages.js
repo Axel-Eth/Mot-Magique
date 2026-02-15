@@ -123,6 +123,8 @@ export function registerMessageHandlers() {
         break;
 
       case "REVEAL_LETTER":
+        // Priorité à la révélation: on coupe le média en cours avant le son de lettre.
+        hideAllMedia();
         stopAllFx("reveal");
         for (const [pos, letter] of state.grid.letters) {
           if (letter === msg.letter && !state.grid.revealed.get(pos) && (!isMagicWordCell(pos) || state.grid.magicSolved)) {

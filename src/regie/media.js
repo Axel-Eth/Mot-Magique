@@ -3,6 +3,20 @@ import { state } from "./state.js";
 import { syncScoresToPlateau } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
 
+const CAPITALES_BASE_CANDIDATES = ["questions/capitales/", "questions/pays/"];
+let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];
+
+async function fetchNotesJson(base, fileName) {
+  try {
+    const res = await fetch(`${base}${fileName}`, { cache: "no-store" });
+    if (!res.ok) return null;
+    const notes = await res.json();
+    return notes && typeof notes === "object" ? notes : null;
+  } catch {
+    return null;
+  }
+}
+
 function getCapitaleNote(baseName) {
   if (!baseName) return "Note introuvable.";
   const notes = state.capitalesNotesMode === "piquant"
@@ -36,7 +50,7 @@ export function hideCapitaleModal() {
 
 export function showCapitaleByFile(fileName) {
   if (!fileName) return;
-  postToPlateau({ type: "SHOW_FLAG", src: `questions/capitales/${fileName}` });
+  postToPlateau({ type: "SHOW_FLAG", src: `${capitalesBasePath}${fileName}` });
   showCapitaleModal(fileName);
 }
 
@@ -89,41 +103,72 @@ export function setCapitalesTone(mode) {
 }
 
 export async function loadCapitalesNotes() {
-  try {
-    const res = await fetch("questions/capitales/infos_pays.json", { cache: "no-store" });
-    if (!res.ok) return;
-    const notes = await res.json();
-    if (notes && typeof notes === "object") {
+  for (const base of CAPITALES_BASE_CANDIDATES) {
+    const notes = await fetchNotesJson(base, "infos_pays.json");
+    if (notes) {
       state.capitalesNotesDefault = notes;
+      capitalesBasePath = base;
+      break;
     }
-  } catch {}
-  try {
-    const res = await fetch("questions/capitales/infos_pays_sarcasme.json", { cache: "no-store" });
-    if (!res.ok) return;
-    const notes = await res.json();
-    if (notes && typeof notes === "object") {
+  }
+
+  for (const base of CAPITALES_BASE_CANDIDATES) {
+    const notes = await fetchNotesJson(base, "infos_pays_sarcasme.json");
+    if (notes) {
       state.capitalesNotesSarcasme = notes;
+      break;
     }
-  } catch {}
+  }
+}
+
+async function fetchCapitaleFilesByListing(base) {
+  try {
+    const res = await fetch(base, { cache: "no-store" });
+    if (!res.ok) return [];
+    const html = await res.text();
+    return [...html.matchAll(/href="([^"]+\.png)"/gi)]
+      .map((m) => decodeURIComponent(m[1].split("/").pop() || m[1]));
+  } catch {
+    return [];
+  }
 }
 
 export async function loadCapitalesList() {
   const select = $("capitalesSelect");
   if (!select) return;
   select.innerHTML = "";
-  const base = "questions/capitales/";
-  let files = [];
-  try {
-    const res = await fetch(base, { cache: "no-store" });
-    if (res.ok) {
-      const html = await res.text();
-      files = [...html.matchAll(/href="([^"]+\.png)"/gi)]
-        .map((m) => decodeURIComponent(m[1].split("/").pop() || m[1]));
-    }
-  } catch {}
 
-  if (!files.length && state.capitalesNotes && Object.keys(state.capitalesNotes).length) {
-    files = Object.keys(state.capitalesNotes).map((name) => `${name}.png`);
+  let files = [];
+
+  for (const base of [capitalesBasePath, ...CAPITALES_BASE_CANDIDATES]) {
+    files = await fetchCapitaleFilesByListing(base);
+    if (files.length) {
+      capitalesBasePath = base;
+      break;
+    }
+  }
+
+  if (!files.length) {
+    // Fallback dur: on recharge directement les JSON ici, même si loadCapitalesNotes
+    // n'a pas réussi auparavant.
+    for (const base of CAPITALES_BASE_CANDIDATES) {
+      const defaultNotes = await fetchNotesJson(base, "infos_pays.json");
+      if (defaultNotes) {
+        state.capitalesNotesDefault = defaultNotes;
+        capitalesBasePath = base;
+        const sarcasticNotes = await fetchNotesJson(base, "infos_pays_sarcasme.json");
+        if (sarcasticNotes) state.capitalesNotesSarcasme = sarcasticNotes;
+        break;
+      }
+    }
+
+    const notes = {
+      ...(state.capitalesNotesDefault || {}),
+      ...(state.capitalesNotesSarcasme || {})
+    };
+    if (Object.keys(notes).length) {
+      files = Object.keys(notes).map((name) => `${name}.png`);
+    }
   }
 
   files = [...new Set(files)].sort((a, b) =>
@@ -137,6 +182,16 @@ export async function loadCapitalesList() {
   placeholder.disabled = true;
   placeholder.selected = true;
   select.appendChild(placeholder);
+
+  if (!files.length) {
+    const none = document.createElement("option");
+    none.value = "";
+    none.textContent = "Aucun pays detecte";
+    none.disabled = true;
+    select.appendChild(none);
+    state.capitalesFiles = [];
+    return;
+  }
 
   files.forEach((file) => {
     const opt = document.createElement("option");

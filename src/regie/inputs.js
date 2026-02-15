@@ -3,6 +3,13 @@ import { showNumbersForLetter, renderRegieGrid } from "./grid-view.js";
 import { isMagicWordCell } from "./magic.js";
 import { postToPlateau } from "./bridge.js";
 
+function revealLetterOnPlateau(letter) {
+  // Même comportement que le bouton X media avant une révélation.
+  postToPlateau({ type: "HIDE_MEDIA" });
+  postToPlateau({ type: "STOP_MUSIC" });
+  postToPlateau({ type: "REVEAL_LETTER", letter });
+}
+
 function showRevealWheel(letter) {
   const existing = document.getElementById("revealWheel");
   if (existing) existing.remove();
@@ -63,7 +70,7 @@ function overrideLetterInput() {
       renderRegieGrid();
     }
 
-    postToPlateau({ type: "REVEAL_LETTER", letter });
+    revealLetterOnPlateau(letter);
   });
 }
 
@@ -91,7 +98,7 @@ export function initLetterInput() {
       renderRegieGrid();
     }
 
-    postToPlateau({ type: "REVEAL_LETTER", letter: raw });
+    revealLetterOnPlateau(raw);
   });
 
   overrideLetterInput();
