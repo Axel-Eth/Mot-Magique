@@ -1,3 +1,6 @@
+// Dictionnaire des sources audio utilisées par la régie.
+// Chaque clé correspond à un "rôle" logique (ex: fail, reveal, timer),
+// ce qui permet de changer facilement un fichier sans modifier le reste du moteur.
 const FX_SOURCES = {
   ambient: "sounds/musique_plateau/musique_plateau.mp3",
   correct: "sounds/correct_answer.mp3",
@@ -10,37 +13,66 @@ const FX_SOURCES = {
   magicSelect: "sounds/Magic_Word_Countdown.mp3"
 };
 
+// Liste des effets considérés comme "FX" (bruitages ponctuels).
+// Le moteur n'en joue qu'un à la fois pour éviter les superpositions parasites.
 const FX_KEYS = ["selectWord", "magicSelect", "reveal", "correct", "wrong", "fail", "timer", "gridComplete"];
+
+// Objet exposé au reste de l'application.
+// On garde la forme `sounds.xxx` attendue par les autres modules,
+// mais en interne on pilote tout via un seul lecteur FX centralisé.
 const sounds = Object.fromEntries(Object.keys(FX_SOURCES).map((key) => [key, { key }]));
 
+// Lecteur de la musique de fond du plateau.
+// Cette piste est persistante (loop) et subit le ducking lorsqu'un FX ou média joue.
 const plateauMusicPlayer = new Audio();
 plateauMusicPlayer.loop = true;
 plateauMusicPlayer.preload = "auto";
 plateauMusicPlayer.crossOrigin = "anonymous";
 
+// Lecteur des médias "longs" déclenchés par la régie
+// (ex: musique question, bande-son de séquence, etc.).
 const mediaPlayer = new Audio();
 mediaPlayer.loop = false;
 mediaPlayer.preload = "auto";
 mediaPlayer.crossOrigin = "anonymous";
 
+// Lecteur unique des bruitages courts (FX).
+// Son unicité est volontaire: pas de chevauchement audio entre FX.
 const fxPlayer = new Audio();
 fxPlayer.loop = false;
 fxPlayer.preload = "auto";
 fxPlayer.crossOrigin = "anonymous";
 
+// Contexte WebAudio utilisé pour contrôler le volume de la musique plateau avec finesse.
 let audioCtx = null;
+// Gain (volume) appliqué uniquement à la musique plateau.
 let plateauGain = null;
+// Compteur de ducking: >0 signifie "la musique plateau doit rester abaissée".
+// On utilise un compteur pour gérer proprement les chevauchements d'événements.
 let duckCount = 0;
+// Clé du FX en cours de lecture.
 let currentFxKey = null;
+// Jeton de synchronisation: invalide proprement les callbacks d'une ancienne lecture.
 let currentFxToken = 0;
+// Timer optionnel pour forcer l'arrêt d'un FX après un délai max.
 let fxStopTimer = null;
+// Jeton de synchronisation pour les médias longs.
 let mediaToken = 0;
+// Source actuellement choisie pour la musique plateau.
 let plateauMusicWanted = null;
+// Drapeau de redémarrage demandé (ex: après une action qui doit relancer la boucle).
 let plateauMusicRestartRequested = false;
 
-const DUCK_LEVEL = 0.25;
+// Niveau de volume appliqué pendant le ducking.
+// 0.25 = la musique plateau passe à 25% de son volume de référence.
+const DUCK_LEVEL = 0.15;
+// Volume nominal de la musique plateau hors ducking.
 const BASE_LEVEL = 1;
+// Durée de descente du volume (attaque), en millisecondes.
+// Plus petit = baisse plus rapide.
 const DUCK_ATTACK_MS = 30;
+// Durée de remontée du volume (release), en millisecondes.
+// Plus grand = remontée plus douce et moins "brutale".
 const DUCK_RELEASE_MS = 350;
 
 function ensureAudioGraph() {
