@@ -3,119 +3,412 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>A vos mots ! - README Editeur</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>A vos mots ! — Aide Éditeur</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a2e;
+      --card2:#0f1930;
+      --text:#e7eefc;
+      --muted:#a9b7d6;
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --bad:#fb7185;
+      --line:rgba(231,238,252,.10);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(167,139,250,.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(125,211,252,.16), transparent 60%),
+        radial-gradient(900px 700px at 30% 100%, rgba(52,211,153,.10), transparent 65%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    header{
+      position:sticky; top:0;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.72);
+      border-bottom: 1px solid var(--line);
+      z-index:10;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:18px 18px 36px}
+    .top{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:14px 18px;
+      max-width:980px;margin:0 auto;
+    }
+    .brand{
+      display:flex;flex-direction:column;gap:2px;
+    }
+    .brand b{font-size:14px;letter-spacing:.4px}
+    .brand span{color:var(--muted);font-size:12px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border:1px solid var(--line);
+      background: rgba(16,26,46,.55);
+      border-radius:999px;color:var(--muted);font-size:12px;
+    }
+    .pill i{
+      width:10px;height:10px;border-radius:99px;display:inline-block;
+      background: linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    h1{
+      margin:20px 0 8px;
+      font-size:28px;
+      letter-spacing:.2px;
+    }
+    .subtitle{color:var(--muted);max-width:75ch}
+    .grid{
+      display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px;
+    }
+    @media(min-width:860px){
+      .grid{grid-template-columns:1.35fr .9fr}
+    }
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(16,26,46,.75), rgba(15,25,48,.65));
+      border-radius:16px;
+      padding:16px 16px 14px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    }
+    .card h2{margin:0 0 10px;font-size:16px}
+    .card h3{margin:14px 0 8px;font-size:13px;color:var(--muted);font-weight:650;text-transform:uppercase;letter-spacing:.6px}
+    .card p{margin:8px 0;color:var(--text)}
+    .muted{color:var(--muted)}
+    .kbd{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:2px 7px;
+      border:1px solid var(--line);
+      border-bottom-color: rgba(231,238,252,.18);
+      background: rgba(255,255,255,.03);
+      border-radius:8px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .list{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+    .li{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px 10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      border-radius:12px;
+    }
+    .dot{
+      width:10px;height:10px;margin-top:5px;border-radius:99px;flex:0 0 auto;
+      background: rgba(125,211,252,.9);
+      box-shadow: 0 0 0 4px rgba(125,211,252,.12);
+    }
+    .dot.ok{background: rgba(52,211,153,.95); box-shadow:0 0 0 4px rgba(52,211,153,.12)}
+    .dot.warn{background: rgba(251,191,36,.95); box-shadow:0 0 0 4px rgba(251,191,36,.12)}
+    .dot.bad{background: rgba(251,113,133,.95); box-shadow:0 0 0 4px rgba(251,113,133,.12)}
+    .li b{display:block;font-size:13px;margin-bottom:2px}
+    .li span{display:block;color:var(--muted);font-size:12px}
+    .code{
+      font-family:var(--mono);
+      font-size:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.28);
+      border-radius:14px;
+      padding:12px 12px;
+      overflow:auto;
+      margin:10px 0 0;
+      color: #d9e6ff;
+    }
+    .callout{
+      border:1px dashed rgba(251,191,36,.45);
+      background: rgba(251,191,36,.06);
+      border-radius:14px;
+      padding:12px 12px;
+      margin-top:10px;
+    }
+    .callout b{color:var(--warn)}
+    .small{font-size:12px;color:var(--muted)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    footer{padding-top:18px;color:var(--muted);font-size:12px}
+  </style>
 </head>
-<body class="editor">
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">A vos mots !</div>
-      <div class="subtitle">README - Editeur de grille</div>
-    </div>
-    <div class="right">
-      <a class="btn ghost" href="editor.html">Retour editeur</a>
-      <a class="btn ghost" href="index.html">Retour regie</a>
+
+<body>
+  <header>
+    <div class="top">
+      <div class="brand">
+        <b>A vos mots !</b>
+        <span>Aide — Éditeur de grille</span>
+      </div>
+      <div class="pill" title="Version de ce guide">
+        <i></i>
+        <span>Guide pratique (éditeur local JSON)</span>
+      </div>
     </div>
   </header>
 
-  <main class="editor-layout">
-    <section class="panel editor-panel">
-      <h2>Objectif</h2>
-      <p class="note">
-        Cette page explique en detail comment utiliser l'editeur de grilles.
-        L'editeur sert a construire, modifier, importer et exporter des grilles pour le plateau.
-      </p>
+  <div class="wrap">
+    <h1>Comment fonctionne l’éditeur</h1>
+    <p class="subtitle">
+      Cette page décrit le comportement réel de l’éditeur tel qu’il est codé dans <span class="kbd">editor.js</span>.
+      L’objectif : te rappeler les gestes “qui marchent”, et surtout le piège classique des <b>numéros</b>.
+    </p>
 
-      <h2>Vue Generale</h2>
-      <div class="kv">
-        <div class="k">Nom / Taille</div>
-        <div class="v">Definit l'identite de la grille et ses dimensions.</div>
-        <div class="k">Grilles locales</div>
-        <div class="v">Liste des grilles stockees dans le navigateur (localStorage).</div>
-        <div class="k">Grilles (dossier)</div>
-        <div class="v">Charge des grilles depuis le dossier `grids/` (JSON ou XLSX).</div>
-        <div class="k">Definition</div>
-        <div class="v">Associe une definition a un mot horizontal/vertical selectionne.</div>
-        <div class="k">Mot magique</div>
-        <div class="v">Permet de marquer un mot complet comme mot magique.</div>
-        <div class="k">Import / Export</div>
-        <div class="v">Importe ou exporte des grilles au format JSON.</div>
-      </div>
+    <div class="grid">
+      <section class="card">
+        <h2>1) Saisie dans la grille</h2>
 
-      <h2>Workflow Recommande</h2>
-      <p class="note">
-        1) Cree ou charge une grille. 2) Remplis les lettres et numeros.
-        3) Definis les mots et leurs definitions. 4) Definis (si besoin) un mot magique.
-        5) Exporte en JSON.
-      </p>
+        <ul class="list">
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>Lettres</b>
+              <span>Clique une case, tape une lettre : elle remplace tout ce qui était dans la case (et avance d’une case selon l’orientation).</span>
+            </div>
+          </li>
 
-      <h2>Interaction Souris</h2>
-      <div class="kv">
-        <div class="k">Clic simple</div>
-        <div class="v">Selectionne une case (lettre ou numero).</div>
-        <div class="k">Shift + clic</div>
-        <div class="v">Depuis la case active, selectionne un mot (meme ligne/colonne) ou un bloc rectangulaire.</div>
-        <div class="k">Double-clic</div>
-        <div class="v">Sur une case lettre: ajoute/retire le marquage magique de la case.</div>
-      </div>
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>Numéros (1 à 99)</b>
+              <span>Sur une case vide, tape des chiffres : l’éditeur construit un nombre sur 2 digits max, et enregistre ce nombre dans la case (puis avance).</span>
+            </div>
+          </li>
 
-      <h2>Saisie Clavier</h2>
-      <div class="kv">
-        <div class="k">Lettres A-Z</div>
-        <div class="v">Ecrit une lettre dans la case active puis avance selon l'orientation.</div>
-        <div class="k">Chiffres 0-9</div>
-        <div class="v">Renseigne un numero de case (1 a 99).</div>
-        <div class="k">Fleches</div>
-        <div class="v">Deplace la case active dans la grille.</div>
-        <div class="k">Backspace / Delete</div>
-        <div class="v">Efface la case active, ou toute la selection (mot/bloc).</div>
-      </div>
+          <li class="li">
+            <span class="dot warn"></span>
+            <div>
+              <b>Important : une case = soit lettre, soit numéro</b>
+              <span>Quand tu tapes un numéro, l’éditeur supprime la lettre (et inversement). Tu ne peux pas “coller un numéro dans le mot”.</span>
+            </div>
+          </li>
 
-      <h2>Raccourcis</h2>
-      <div class="kv">
-        <div class="k">Ctrl/Cmd + C</div>
-        <div class="v">Copier la selection (bloc, mot ou case).</div>
-        <div class="k">Ctrl/Cmd + X</div>
-        <div class="v">Couper la selection.</div>
-        <div class="k">Ctrl/Cmd + V</div>
-        <div class="v">Coller a partir de la case active.</div>
-        <div class="k">Ctrl/Cmd + A</div>
-        <div class="v">Selectionner toute la grille.</div>
-        <div class="k">Ctrl/Cmd + Z</div>
-        <div class="v">Annuler (historique local de la session).</div>
-        <div class="k">Ctrl/Cmd + Espace</div>
-        <div class="v">Basculer l'orientation de saisie (Horizontal/Vertical).</div>
-      </div>
+          <li class="li">
+            <span class="dot"></span>
+            <div>
+              <b>Effacer</b>
+              <span><span class="kbd">Backspace</span> / <span class="kbd">Delete</span> efface la case (lettre/numéro/magique). Sur une sélection multiple : tout le bloc est effacé d’un coup.</span>
+            </div>
+          </li>
+        </ul>
 
-      <h2>Definitions</h2>
-      <p class="note">
-        Pour enregistrer une definition, selectionne d'abord un mot complet (Shift + clic sur la meme ligne ou colonne),
-        puis utilise le champ <code>Definition</code> et le bouton <code>Sauver definition</code>.
-      </p>
+        <h3>Orientation</h3>
+        <p>
+          L’orientation détermine la direction d’auto‑avance quand tu saisis. Bouton <span class="kbd">Orientation</span>,
+          ou raccourci <span class="kbd">Ctrl</span>+<span class="kbd">Espace</span> (ou <span class="kbd">⌘</span>+<span class="kbd">Espace</span>).
+        </p>
 
-      <h2>Mot Magique</h2>
-      <p class="note">
-        Le mot magique se definit sur un mot deja selectionne.
-        Utilise <code>Definir mot magique</code> pour l'activer, puis <code>Retirer</code> pour l'enlever.
-      </p>
+        <div class="code" aria-label="Rappel comportement chiffres">
+Quand tu tapes des chiffres :
+- 1er chiffre -> “3” par exemple
+- 2e chiffre -> “34” (si <= 99)
+- 3e chiffre -> ça repart, mais l’éditeur limite à 2 digits (pratique pour 1..99)
+        </div>
+      </section>
 
-      <h2>Import / Export</h2>
-      <div class="kv">
-        <div class="k">Exporter JSON</div>
-        <div class="v">Telecharge la grille courante en fichier JSON.</div>
-        <div class="k">Importer JSON</div>
-        <div class="v">Importe un ou plusieurs JSON dans les grilles locales.</div>
-        <div class="k">Glisser-deposer</div>
-        <div class="v">Tu peux glisser des fichiers JSON directement dans la page.</div>
-      </div>
+      <section class="card">
+        <h2>2) Sélection : case, mot, bloc</h2>
 
-      <h2>Notes Importantes</h2>
-      <p class="note">
-        Le statut en bas du panneau (<code>Pret.</code>, erreurs, confirmations) donne le retour d'action principal.
-        Si un collage depasse la grille, l'operation est refusee.
-        Quand tu reduis la taille, les cases hors limites sont supprimees.
-      </p>
-    </section>
-  </main>
+        <ul class="list">
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>Sélection simple</b>
+              <span>Clic = sélection d’une case. La zone “Sélection” affiche la coordonnée.</span>
+            </div>
+          </li>
+
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>Sélection d’un mot</b>
+              <span><span class="kbd">Shift</span>+clic sur une autre case de la <b>même ligne</b> ou <b>même colonne</b>. L’éditeur sélectionne toutes les lettres entre les deux points.</span>
+            </div>
+          </li>
+
+          <li class="li">
+            <span class="dot warn"></span>
+            <div>
+              <b>Condition pour sélectionner un mot</b>
+              <span>Le mot doit être <b>entièrement rempli en lettres</b> (aucune case vide). Sinon : “Remplis les lettres du mot avant de définir.”</span>
+            </div>
+          </li>
+
+          <li class="li">
+            <span class="dot"></span>
+            <div>
+              <b>Sélection d’un bloc rectangulaire</b>
+              <span><span class="kbd">Shift</span>+clic sur une case qui n’est ni sur la même ligne ni sur la même colonne : ça sélectionne un rectangle (utile pour copier/coller).</span>
+            </div>
+          </li>
+        </ul>
+
+        <h3>Copier / Couper / Coller</h3>
+        <p class="muted">Ça copie lettres + numéros + statut “magique”.</p>
+        <div class="code">
+Ctrl+C = copier
+Ctrl+X = couper (copie puis efface)
+Ctrl+V = coller (à partir de la case sélectionnée)
+Ctrl+A = sélectionner toute la grille
+Ctrl+Z = annuler (undo)
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>3) Définitions</h2>
+        <p>
+          Une définition est associée à un <b>mot</b>, pas à une case. Pour éditer une définition :
+        </p>
+        <ul class="list">
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>Étape 1</b>
+              <span>Sélectionne le mot (Shift+clic sur la même ligne/colonne) — il faut que toutes les lettres soient déjà posées.</span>
+            </div>
+          </li>
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>Étape 2</b>
+              <span>Écris la définition dans la zone “Définition”, puis clique <span class="kbd">Sauver définition</span>.</span>
+            </div>
+          </li>
+          <li class="li">
+            <span class="dot"></span>
+            <div>
+              <b>Effacer</b>
+              <span>Le bouton <span class="kbd">Effacer</span> retire la définition du mot sélectionné.</span>
+            </div>
+          </li>
+        </ul>
+
+        <h3>Mot magique</h3>
+        <p>
+          Le bouton <span class="kbd">Définir mot magique</span> est actif uniquement quand un mot est sélectionné.
+          Double‑clic sur une lettre = bascule “case magique” (surbrillance).
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>4) Le point qui t’embrouille : les numéros</h2>
+
+        <p>
+          Dans cet éditeur, un numéro n’est <b>pas</b> “dans” le mot. Il est dans une <b>case à côté</b>.
+          Ensuite, les mots “récupèrent” ce numéro par convention.
+        </p>
+
+        <div class="callout">
+          <b>Convention utilisée</b><br/>
+          Mot horizontal : le numéro est dans la case <b>juste à gauche</b> de la première lettre.<br/>
+          Mot vertical : le numéro est dans la case <b>juste au-dessus</b> de la première lettre.
+          <div class="small" style="margin-top:8px">Donc oui : tu ne peux pas sélectionner “le mot + le numéro” comme un seul objet, parce que le numéro est une case séparée.</div>
+        </div>
+
+        <h3>Procédure qui marche</h3>
+        <ul class="list">
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>1) Place tes lettres</b>
+              <span>Écris le mot normalement sur ses cases.</span>
+            </div>
+          </li>
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>2) Clique la case du numéro</b>
+              <span>Horizontal : clique la case vide à gauche de la première lettre. Vertical : clique la case vide au-dessus.</span>
+            </div>
+          </li>
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>3) Tape le numéro</b>
+              <span>Tape <span class="kbd">1</span> à <span class="kbd">99</span>. La case devient un numéro (et l’éditeur avance automatiquement).</span>
+            </div>
+          </li>
+          <li class="li">
+            <span class="dot warn"></span>
+            <div>
+              <b>Si tu veux “embarquer” le numéro en copie/collage</b>
+              <span>Fais une sélection en <b>bloc</b> (Shift+clic en rectangle) qui inclut aussi la case du numéro.</span>
+            </div>
+          </li>
+        </ul>
+
+        <h3>Pourquoi tu as l’impression que “ça ne se sauvegarde pas”</h3>
+        <p class="muted">
+          L’export JSON inclut bien <span class="kbd">numbers</span>. Par contre, si tu recharges la page sans exporter/importer,
+          tes modifications ne sont pas forcément conservées : le flux “sauvegarde locale” n’est pas exposé par un bouton dédié dans l’UI actuelle.
+        </p>
+
+        <div class="code">
+Si tu veux être sûr de garder ton travail :
+1) Exporter JSON (ça contient letters + numbers + defs + magic)
+2) Plus tard : Importer JSON pour revenir exactement au même état
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>5) Import depuis /grids (XLSX / JSON)</h2>
+        <p>
+          Le menu “Grilles (dossier)” permet de charger une grille depuis <span class="kbd">/grids/</span> (si le serveur liste les fichiers),
+          sinon depuis un <span class="kbd">grids.json</span> de fallback.
+        </p>
+
+        <h3>Spécificités XLSX</h3>
+        <ul class="list">
+          <li class="li">
+            <span class="dot"></span>
+            <div>
+              <b>Lettres</b>
+              <span>Si une cellule commence par une lettre, l’éditeur prend le <b>premier caractère</b> et l’upper‑case.</span>
+            </div>
+          </li>
+          <li class="li">
+            <span class="dot"></span>
+            <div>
+              <b>Numéros</b>
+              <span>Toute cellule numérique devient un numéro de grille.</span>
+            </div>
+          </li>
+          <li class="li">
+            <span class="dot ok"></span>
+            <div>
+              <b>Définitions via commentaires</b>
+              <span>Si un mot a un numéro (case à gauche/au-dessus), la définition est lue dans le commentaire de cette case. Sinon, commentaire de la première lettre.</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>6) Raccourcis : mémo rapide</h2>
+        <div class="code">
+Clic : sélectionner une case
+Shift + clic (même ligne/colonne) : sélectionner un mot (lettres obligatoires partout)
+Shift + clic (diagonal) : sélectionner un bloc rectangulaire
+
+Ctrl + Espace : basculer orientation
+Ctrl + C / X / V : copier / couper / coller
+Ctrl + Z : annuler
+Ctrl + A : tout sélectionner
+
+Double-clic sur une lettre : marquer/démarquer la case comme “magique”
+        </div>
+
+        <footer>
+          Si tu veux, je peux aussi te générer une version “affichée dans l’appli” (bouton aide) avec une section “FAQ numéros” en haut.
+        </footer>
+      </section>
+    </div>
+  </div>
 </body>
 </html>
