@@ -1,11 +1,12 @@
 ✅  Fichier bat qui lance le plateau foire. Il faut qu'il lance la régie et basta.
 ✅ Supprimer le Bouton F11 Plateau → Savoir utiliser mon clavier à la place
 ✅ Supprimer les boutons bruitages fail et correcte au dessus de film. Ne garder que les deux premiers boutons.
-Agrandir un maximum la police des notes pour les pays.
+✅ Agrandir un maximum la police des notes pour les pays et rendu carré et affiché en gros le titre du fichier.
 Supprimer le bouton 1 - 254 Afficher pour les pays, ne laisser que le menu déroulant
 ✅ Faire en sorte que la sélection d'une équipe ou l'ajout d'une équipe ne coupe pas le média (ne change rien aux audios)
 ✅ Le ducking ne fonctionne pas sur les génériques, faire en sorte que oui4
-Le ducking ne fonctionne pas sur les bruitages associés aux boutons nop et correcte
+✅ La fenêtre bloquante ne dois pas couper la musique !
+✅ Le ducking ne fonctionne pas sur les bruitages associés aux boutons nop et correcte
 
 retirer le logo sora des génériques (génériques propres) →
 

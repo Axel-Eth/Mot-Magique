@@ -335,6 +335,36 @@ h2{
   font-size: 18px;
 }
 
+#capitalesNote{
+  display:block;
+  margin: 10px auto 0;
+  width: min(68vw, 520px);
+  height: min(68vw, 520px);
+  padding: 16px;
+  overflow: auto;
+  border-radius: 16px;
+  border: 2px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.18);
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 900;
+  color:#ffe873;
+  text-align: left;
+}
+
+#capitalesModal .modal-card{
+  width: min(92vw, 720px);
+}
+
+#capitalesFileName{
+  display:block;
+  margin-top:6px;
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 900;
+  color:#ffffff;
+}
+
 .btn:disabled{
   opacity:.45;
   cursor:not-allowed;

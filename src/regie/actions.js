@@ -261,7 +261,12 @@ export function registerWindowEvents() {
           target.closest(".modal-card")
         );
 
-      if (!isTeamInteraction) {
+      const opensTeamRequiredModal =
+        !!(target && target.closest) &&
+        !!target.closest("#regieGrid") &&
+        !state.currentTeamId;
+
+      if (!isTeamInteraction && !opensTeamRequiredModal) {
         postToPlateau({ type: "STOP_REVEAL_SOUND" });
       }
 

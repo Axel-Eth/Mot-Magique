@@ -13,6 +13,8 @@ import {
   startTimer
 } from "./grid.js";
 import {
+  beginExternalDucking,
+  endExternalDucking,
   playFx,
   playMusic,
   playPlateauMusic,
@@ -60,6 +62,13 @@ function broadcastReady() {
   try {
     controlChannel.postMessage({ type: "PLATEAU_READY" });
   } catch {}
+}
+
+function forceActionDucking(durationMs = 900) {
+  beginExternalDucking();
+  window.setTimeout(() => {
+    endExternalDucking();
+  }, durationMs);
 }
 
 export function registerMessageHandlers() {
@@ -209,6 +218,7 @@ export function registerMessageHandlers() {
         if (!word) return;
 
         stopAllFx("correct");
+        forceActionDucking();
         requestRestartPlateauMusic();
         safePlay(sounds.correct);
         schedulePlateauMusicRestart(200);
@@ -233,6 +243,7 @@ export function registerMessageHandlers() {
         if (!word) return;
 
         stopAllFx("correct");
+        forceActionDucking();
         requestRestartPlateauMusic();
         safePlay(sounds.correct);
         schedulePlateauMusicRestart(200);
@@ -253,6 +264,7 @@ export function registerMessageHandlers() {
         const word = state.grid.words[msg.wordId];
         if (!word) return;
         stopAllFx("fail");
+        forceActionDucking();
         requestRestartPlateauMusic();
         playFx(sounds.fail);
         schedulePlateauMusicRestart(200);
@@ -277,6 +289,8 @@ export function registerMessageHandlers() {
         } else {
           const word = state.grid.words[msg.wordId];
           if (word) {
+            // Une sélection de mot reprend la main: on coupe le média en cours.
+            hideAllMedia();
             applySelection(word);
             startTimer(30);
           }
