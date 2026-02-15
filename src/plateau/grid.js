@@ -78,10 +78,46 @@ function showDefinition(text) {
   if (!text) {
     defBar.classList.add("hidden");
     defText.textContent = "";
+    fitGridToViewport();
     return;
   }
   defBar.classList.remove("hidden");
   defText.textContent = text;
+  fitGridToViewport();
+}
+
+function fitGridToViewport() {
+  if (!state.grid || !gridEl) return;
+
+  const { minRow, maxRow, minCol, maxCol } = state.grid.bounds;
+  const rows = maxRow - minRow + 1;
+  const cols = maxCol - minCol + 1;
+
+  const rootStyles = getComputedStyle(document.documentElement);
+  const cellSize = parseFloat(rootStyles.getPropertyValue("--cell")) || 72;
+  const gap = parseFloat(rootStyles.getPropertyValue("--gap")) || 4;
+  const gridStyles = getComputedStyle(gridEl);
+  const padX = (parseFloat(gridStyles.paddingLeft) || 0) + (parseFloat(gridStyles.paddingRight) || 0);
+  const padY = (parseFloat(gridStyles.paddingTop) || 0) + (parseFloat(gridStyles.paddingBottom) || 0);
+  const borderX = (parseFloat(gridStyles.borderLeftWidth) || 0) + (parseFloat(gridStyles.borderRightWidth) || 0);
+  const borderY = (parseFloat(gridStyles.borderTopWidth) || 0) + (parseFloat(gridStyles.borderBottomWidth) || 0);
+
+  const gridWidth = cols * cellSize + Math.max(0, cols - 1) * gap + padX + borderX;
+  const gridHeight = rows * cellSize + Math.max(0, rows - 1) * gap + padY + borderY;
+
+  const availableW = window.innerWidth - 32;
+  let availableH = window.innerHeight - 32;
+  if (defBar && !defBar.classList.contains("hidden")) {
+    availableH -= defBar.offsetHeight + 12;
+  }
+
+  const scale = Math.min(
+    1,
+    availableW / Math.max(1, gridWidth),
+    availableH / Math.max(1, gridHeight)
+  );
+  gridEl.style.transformOrigin = "center center";
+  gridEl.style.transform = `scale(${Math.max(0.1, scale)})`;
 }
 
 export function buildGridDOM() {
@@ -128,6 +164,8 @@ export function buildGridDOM() {
       gridEl.appendChild(cell);
     }
   }
+
+  fitGridToViewport();
 }
 
 export function renderCell(r, c) {
@@ -337,3 +375,7 @@ export function refreshNumberCells() {
     renderNumberCell(r, c);
   }
 }
+
+window.addEventListener("resize", () => {
+  fitGridToViewport();
+});

@@ -936,12 +936,18 @@ body.plateau .grid-wrap{
   justify-content:center;
   align-items:center;
   width:100%;
+  flex:1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 body.plateau .plateau-root{
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
+  min-height: 100vh;
+  width: 100%;
   position:relative;
   z-index:2;
 }
