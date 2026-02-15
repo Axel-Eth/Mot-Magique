@@ -18,6 +18,21 @@ import {
   updateSelectedInfo
 } from "./ui.js";
 
+const controlChannel = (() => {
+  try {
+    return new BroadcastChannel("avm_control");
+  } catch {
+    return null;
+  }
+})();
+
+function broadcastToPlateau(msg) {
+  if (!controlChannel || !msg) return;
+  try {
+    controlChannel.postMessage(msg);
+  } catch {}
+}
+
 export function registerActionEvents() {
   $("openPlateau")?.addEventListener("click", () => {
     openPlateauWindow();
@@ -45,6 +60,7 @@ export function registerActionEvents() {
 
   $("btnFullscreen")?.addEventListener("click", () => {
     postToPlateau({ type: "TOGGLE_FULLSCREEN" });
+    broadcastToPlateau({ type: "TOGGLE_FULLSCREEN" });
   });
 
   $("btnGeneric")?.addEventListener("click", () => {
@@ -175,6 +191,24 @@ export function registerActionEvents() {
 }
 
 export function registerWindowEvents() {
+  if (controlChannel) {
+    controlChannel.onmessage = (ev) => {
+      const msg = ev.data;
+      if (!msg || !msg.type) return;
+
+      if (msg.type === "PLATEAU_READY") {
+        setFullscreenEnabled(true);
+        return;
+      }
+
+      if (msg.type === "PLATEAU_CLOSED") {
+        setFullscreenEnabled(false);
+      }
+    };
+
+    broadcastToPlateau({ type: "PING_PLATEAU" });
+  }
+
   window.addEventListener("message", (ev) => {
     const msg = ev.data;
     if (!msg || !msg.type) return;

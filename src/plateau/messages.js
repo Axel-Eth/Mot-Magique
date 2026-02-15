@@ -37,7 +37,50 @@ import {
 } from "./media.js";
 import { scatterFloatingLetters } from "./letters.js";
 
+const controlChannel = (() => {
+  try {
+    return new BroadcastChannel("avm_control");
+  } catch {
+    return null;
+  }
+})();
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    state.wantsFullscreen = true;
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    state.wantsFullscreen = false;
+    document.exitFullscreen().catch(() => {});
+  }
+}
+
+function broadcastReady() {
+  if (!controlChannel) return;
+  try {
+    controlChannel.postMessage({ type: "PLATEAU_READY" });
+  } catch {}
+}
+
 export function registerMessageHandlers() {
+  if (controlChannel) {
+    controlChannel.onmessage = (ev) => {
+      const msg = ev.data;
+      if (!msg || !msg.type) return;
+
+      if (msg.type === "PING_PLATEAU") {
+        broadcastReady();
+        return;
+      }
+
+      if (msg.type === "TOGGLE_FULLSCREEN") {
+        toggleFullscreen();
+      }
+    };
+  }
+
+  broadcastReady();
+
   window.addEventListener("message", (event) => {
     const msg = event.data;
     if (!msg || !msg.type) return;
@@ -240,13 +283,7 @@ export function registerMessageHandlers() {
       }
 
       case "TOGGLE_FULLSCREEN":
-        if (!document.fullscreenElement) {
-          state.wantsFullscreen = true;
-          document.documentElement.requestFullscreen().catch(() => {});
-        } else {
-          state.wantsFullscreen = false;
-          document.exitFullscreen().catch(() => {});
-        }
+        toggleFullscreen();
         break;
     }
   });
@@ -269,5 +306,10 @@ export function registerMessageHandlers() {
     try {
       if (host) host.postMessage({ type: "PLATEAU_CLOSED" }, "*");
     } catch {}
+    if (controlChannel) {
+      try {
+        controlChannel.postMessage({ type: "PLATEAU_CLOSED" });
+      } catch {}
+    }
   });
 }

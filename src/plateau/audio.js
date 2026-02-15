@@ -65,7 +65,7 @@ let plateauMusicRestartRequested = false;
 
 // Niveau de volume appliqué pendant le ducking.
 // 0.25 = la musique plateau passe à 25% de son volume de référence.
-const DUCK_LEVEL = 0.15;
+const DUCK_LEVEL = 0.05;
 // Volume nominal de la musique plateau hors ducking.
 const BASE_LEVEL = 1;
 // Durée de descente du volume (attaque), en millisecondes.
