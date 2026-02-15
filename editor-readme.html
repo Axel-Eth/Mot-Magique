@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A vos mots ! - README Editeur</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="editor">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">A vos mots !</div>
+      <div class="subtitle">README - Editeur de grille</div>
+    </div>
+    <div class="right">
+      <a class="btn ghost" href="editor.html">Retour editeur</a>
+      <a class="btn ghost" href="index.html">Retour regie</a>
+    </div>
+  </header>
+
+  <main class="editor-layout">
+    <section class="panel editor-panel">
+      <h2>Objectif</h2>
+      <p class="note">
+        Cette page explique en detail comment utiliser l'editeur de grilles.
+        L'editeur sert a construire, modifier, importer et exporter des grilles pour le plateau.
+      </p>
+
+      <h2>Vue Generale</h2>
+      <div class="kv">
+        <div class="k">Nom / Taille</div>
+        <div class="v">Definit l'identite de la grille et ses dimensions.</div>
+        <div class="k">Grilles locales</div>
+        <div class="v">Liste des grilles stockees dans le navigateur (localStorage).</div>
+        <div class="k">Grilles (dossier)</div>
+        <div class="v">Charge des grilles depuis le dossier `grids/` (JSON ou XLSX).</div>
+        <div class="k">Definition</div>
+        <div class="v">Associe une definition a un mot horizontal/vertical selectionne.</div>
+        <div class="k">Mot magique</div>
+        <div class="v">Permet de marquer un mot complet comme mot magique.</div>
+        <div class="k">Import / Export</div>
+        <div class="v">Importe ou exporte des grilles au format JSON.</div>
+      </div>
+
+      <h2>Workflow Recommande</h2>
+      <p class="note">
+        1) Cree ou charge une grille. 2) Remplis les lettres et numeros.
+        3) Definis les mots et leurs definitions. 4) Definis (si besoin) un mot magique.
+        5) Exporte en JSON.
+      </p>
+
+      <h2>Interaction Souris</h2>
+      <div class="kv">
+        <div class="k">Clic simple</div>
+        <div class="v">Selectionne une case (lettre ou numero).</div>
+        <div class="k">Shift + clic</div>
+        <div class="v">Depuis la case active, selectionne un mot (meme ligne/colonne) ou un bloc rectangulaire.</div>
+        <div class="k">Double-clic</div>
+        <div class="v">Sur une case lettre: ajoute/retire le marquage magique de la case.</div>
+      </div>
+
+      <h2>Saisie Clavier</h2>
+      <div class="kv">
+        <div class="k">Lettres A-Z</div>
+        <div class="v">Ecrit une lettre dans la case active puis avance selon l'orientation.</div>
+        <div class="k">Chiffres 0-9</div>
+        <div class="v">Renseigne un numero de case (1 a 99).</div>
+        <div class="k">Fleches</div>
+        <div class="v">Deplace la case active dans la grille.</div>
+        <div class="k">Backspace / Delete</div>
+        <div class="v">Efface la case active, ou toute la selection (mot/bloc).</div>
+      </div>
+
+      <h2>Raccourcis</h2>
+      <div class="kv">
+        <div class="k">Ctrl/Cmd + C</div>
+        <div class="v">Copier la selection (bloc, mot ou case).</div>
+        <div class="k">Ctrl/Cmd + X</div>
+        <div class="v">Couper la selection.</div>
+        <div class="k">Ctrl/Cmd + V</div>
+        <div class="v">Coller a partir de la case active.</div>
+        <div class="k">Ctrl/Cmd + A</div>
+        <div class="v">Selectionner toute la grille.</div>
+        <div class="k">Ctrl/Cmd + Z</div>
+        <div class="v">Annuler (historique local de la session).</div>
+        <div class="k">Ctrl/Cmd + Espace</div>
+        <div class="v">Basculer l'orientation de saisie (Horizontal/Vertical).</div>
+      </div>
+
+      <h2>Definitions</h2>
+      <p class="note">
+        Pour enregistrer une definition, selectionne d'abord un mot complet (Shift + clic sur la meme ligne ou colonne),
+        puis utilise le champ <code>Definition</code> et le bouton <code>Sauver definition</code>.
+      </p>
+
+      <h2>Mot Magique</h2>
+      <p class="note">
+        Le mot magique se definit sur un mot deja selectionne.
+        Utilise <code>Definir mot magique</code> pour l'activer, puis <code>Retirer</code> pour l'enlever.
+      </p>
+
+      <h2>Import / Export</h2>
+      <div class="kv">
+        <div class="k">Exporter JSON</div>
+        <div class="v">Telecharge la grille courante en fichier JSON.</div>
+        <div class="k">Importer JSON</div>
+        <div class="v">Importe un ou plusieurs JSON dans les grilles locales.</div>
+        <div class="k">Glisser-deposer</div>
+        <div class="v">Tu peux glisser des fichiers JSON directement dans la page.</div>
+      </div>
+
+      <h2>Notes Importantes</h2>
+      <p class="note">
+        Le statut en bas du panneau (<code>Pret.</code>, erreurs, confirmations) donne le retour d'action principal.
+        Si un collage depasse la grille, l'operation est refusee.
+        Quand tu reduis la taille, les cases hors limites sont supprimees.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
