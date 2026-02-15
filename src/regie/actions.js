@@ -134,8 +134,16 @@ export function registerActionEvents() {
   $("btnNop")?.addEventListener("click", () => {
     const wordId = state.selectedWordId;
     if (wordId == null) return;
+    const isMagicFail = wordId === state.magicWordId;
 
     stopSelectSound();
+
+    if (isMagicFail && state.currentTeamId) {
+      const team = state.teams.find((t) => t.id === state.currentTeamId);
+      if (team) {
+        team.points = (team.points ?? 0) - 5;
+      }
+    }
 
     postToPlateau({ type: "NOP_WORD", wordId });
 

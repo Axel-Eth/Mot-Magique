@@ -4,7 +4,7 @@ import { isMagicWordCell } from "./magic.js";
 import { postToPlateau } from "./bridge.js";
 
 function revealLetterOnPlateau(letter) {
-  // Même comportement que le bouton X media avant une révélation.
+  // Meme comportement que le bouton X media avant une revelation.
   postToPlateau({ type: "HIDE_MEDIA" });
   postToPlateau({ type: "STOP_MUSIC" });
   postToPlateau({ type: "REVEAL_LETTER", letter });

@@ -427,7 +427,7 @@ export function registerMediaEvents() {
   $("musicSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
-      postToPlateau({ type: "PLAY_MUSIC", src: value });
+      postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: true });
     }
   });
 
@@ -441,7 +441,7 @@ export function registerMediaEvents() {
   $("filmsSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
-      postToPlateau({ type: "PLAY_MUSIC", src: value });
+      postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: false });
     }
   });
 

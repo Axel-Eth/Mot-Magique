@@ -25,7 +25,7 @@ export class AudioManager {
 
     const source = this.ctx.createMediaElementSource(el);
     const gain = this.ctx.createGain();
-    gain.gain.value = 1.0;
+    gain.gain.value = 1.7;
 
     source.connect(gain).connect(this.ctx.destination);
     this.music = { el, source, gain, target: 1.0 };

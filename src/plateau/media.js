@@ -1,6 +1,9 @@
 import { gridEl, defBar } from "./dom.js";
 import { state } from "./state.js";
-import { beginExternalDucking, endExternalDucking, stopAllFx, stopMusic } from "./audio.js";
+import { beginExternalDucking, endExternalDucking, playMusic, stopAllFx, stopMusic } from "./audio.js";
+
+const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
+const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
 
 let multiplierBadge = null;
 let scoresOverlay = null;
@@ -162,7 +165,7 @@ function ensureFlagOverlay() {
   return overlay;
 }
 
-export function showFlag(src, altText = "Drapeau") {
+export function showFlag(src, altText = "Drapeau", mediaSrc = null) {
   const overlay = ensureFlagOverlay();
   const img = overlay.querySelector(".flag-image");
   if (img) {
@@ -172,7 +175,12 @@ export function showFlag(src, altText = "Drapeau") {
   overlay.classList.add("active");
   gridEl.style.display = "none";
   defBar?.classList.add("hidden");
+  if (mediaSrc) {
+    playMusic(mediaSrc);
+  }
 }
+
+export { FLAG_ANTHEM_SRC, PEOPLE_THEME_SRC };
 
 export function hideAllMedia() {
   if (flagOverlay) flagOverlay.classList.remove("active");

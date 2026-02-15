@@ -28,6 +28,8 @@ import {
   stopRevealSound
 } from "./audio.js";
 import {
+  FLAG_ANTHEM_SRC,
+  PEOPLE_THEME_SRC,
   hideAllMedia,
   playBadVideo,
   playDoubleVideo,
@@ -166,15 +168,15 @@ export function registerMessageHandlers() {
         break;
 
       case "SHOW_FLAG":
-        if (msg.src) showFlag(msg.src, msg.alt || "Drapeau");
+        if (msg.src) showFlag(msg.src, msg.alt || "Drapeau", FLAG_ANTHEM_SRC);
         break;
 
       case "SHOW_PEOPLE":
-        if (msg.src) showFlag(msg.src, msg.alt || "Personnalite");
+        if (msg.src) showFlag(msg.src, msg.alt || "Personnalite", PEOPLE_THEME_SRC);
         break;
 
       case "PLAY_MUSIC":
-        playMusic(msg.src);
+        playMusic(msg.src, { visualizer: !!msg.visualizer });
         break;
 
       case "PLAY_PLATEAU_MUSIC":
