@@ -5,7 +5,7 @@ REM === CONFIG ===
 set PORT=8000
 set BASEURL=http://localhost:%PORT%
 set REGIE=%BASEURL%/regie.html
-set PLATEAU=%BASEURL%/plateau.html
+set REGIE_ONLY=%BASEURL%/regie.html
 
 REM Se placer dans le dossier du .bat (racine projet)
 cd /d "%~dp0"
@@ -59,10 +59,8 @@ exit /b 1
 REM Petite pause pour laisser le serveur démarrer
 timeout /t 1 /nobreak >nul
 
-echo Ouverture du Plateau et de la Regie...
-start "" "%PLATEAU%"
-timeout /t 1 /nobreak >nul
-start "" "%REGIE%"
+echo Ouverture de la Regie...
+start "" "%REGIE_ONLY%"
 
 echo.
 echo C'est lance. (Ferme la fenetre "AVM Server" pour couper le serveur.)

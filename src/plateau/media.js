@@ -1,11 +1,24 @@
 import { gridEl, defBar } from "./dom.js";
 import { state } from "./state.js";
-import { stopAllFx, stopMusic } from "./audio.js";
+import { beginExternalDucking, endExternalDucking, stopAllFx, stopMusic } from "./audio.js";
 
 let multiplierBadge = null;
 let scoresOverlay = null;
 let flagOverlay = null;
 let genericVideo = null;
+let videoDuckingActive = false;
+
+function setVideoDucking(active) {
+  if (active && !videoDuckingActive) {
+    beginExternalDucking();
+    videoDuckingActive = true;
+    return;
+  }
+  if (!active && videoDuckingActive) {
+    endExternalDucking();
+    videoDuckingActive = false;
+  }
+}
 
 function getMultiplierBadge() {
   if (multiplierBadge) return multiplierBadge;
@@ -47,10 +60,14 @@ function ensureGenericVideo() {
   vid.playsInline = true;
 
   vid.addEventListener("ended", () => {
+    setVideoDucking(false);
     vid.style.display = "none";
     vid.src = "sounds/generique_avm.mp4";
     gridEl.style.visibility = "visible";
     defBar?.classList.remove("hidden");
+  });
+  vid.addEventListener("error", () => {
+    setVideoDucking(false);
   });
 
   document.body.appendChild(vid);
@@ -63,12 +80,15 @@ function playVideo(src) {
   if (!vid) return;
 
   stopAllFx();
+  setVideoDucking(true);
   vid.src = src;
   vid.currentTime = 0;
   gridEl.style.visibility = "hidden";
   defBar?.classList.add("hidden");
   vid.style.display = "block";
-  vid.play().catch(() => {});
+  vid.play().catch(() => {
+    setVideoDucking(false);
+  });
 }
 
 export function playGenericVideo() {
@@ -166,6 +186,7 @@ export function hideAllMedia() {
     gridEl.style.visibility = "visible";
     defBar?.classList.remove("hidden");
   }
+  setVideoDucking(false);
   gridEl.style.display = "";
   if (state.wantsFullscreen && !document.fullscreenElement) {
     document.documentElement.requestFullscreen().catch(() => {});

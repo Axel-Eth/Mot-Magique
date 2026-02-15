@@ -333,6 +333,14 @@ function playPlateauMusic(src) {
   void tryPlayPlateauMusic();
 }
 
+function beginExternalDucking() {
+  duckOn();
+}
+
+function endExternalDucking() {
+  duckOff();
+}
+
 export {
   sounds,
   playMusic,
@@ -347,5 +355,7 @@ export {
   safeStop,
   playFx,
   stopAllFx,
-  stopRevealSound
+  stopRevealSound,
+  beginExternalDucking,
+  endExternalDucking
 };
