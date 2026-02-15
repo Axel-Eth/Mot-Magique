@@ -424,14 +424,6 @@ export function registerMediaEvents() {
     postToPlateau({ type: "STOP_MUSIC" });
   });
 
-  $("btnSfxCorrect")?.addEventListener("click", () => {
-    postToPlateau({ type: "PLAY_SFX", key: "correct" });
-  });
-
-  $("btnSfxFail")?.addEventListener("click", () => {
-    postToPlateau({ type: "PLAY_SFX", key: "fail" });
-  });
-
   $("musicSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
