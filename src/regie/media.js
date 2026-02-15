@@ -50,6 +50,7 @@ export function hideCapitaleModal() {
 
 export function showCapitaleByFile(fileName) {
   if (!fileName) return;
+  postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "SHOW_FLAG", src: `${capitalesBasePath}${fileName}` });
   showCapitaleModal(fileName);
 }
@@ -420,6 +421,7 @@ export function registerMediaEvents() {
   $("btnXMedia")?.addEventListener("click", () => {
     state.showScores = false;
     syncScoresToPlateau();
+    postToPlateau({ type: "STOP_FILMS_VIDEO" });
     postToPlateau({ type: "HIDE_MEDIA" });
     postToPlateau({ type: "STOP_MUSIC" });
   });
@@ -427,6 +429,7 @@ export function registerMediaEvents() {
   $("musicSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
+      postToPlateau({ type: "STOP_FILMS_VIDEO" });
       postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: true });
     }
   });
@@ -441,6 +444,7 @@ export function registerMediaEvents() {
   $("filmsSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
+      postToPlateau({ type: "PLAY_FILMS_VIDEO" });
       postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: false });
     }
   });
@@ -449,6 +453,7 @@ export function registerMediaEvents() {
     const value = e.target.value;
     if (value) {
       const label = e.target.selectedOptions?.[0]?.textContent || "Personnalite";
+      postToPlateau({ type: "STOP_FILMS_VIDEO" });
       postToPlateau({ type: "SHOW_PEOPLE", src: value, alt: label });
       e.target.selectedIndex = 0;
     }

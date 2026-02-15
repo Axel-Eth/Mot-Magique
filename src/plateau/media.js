@@ -4,12 +4,15 @@ import { beginExternalDucking, endExternalDucking, playMusic, stopAllFx, stopMus
 
 const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
+const FILMS_EXTRACTS_VIDEO_SRC = "sounds/extraits_films.mp4";
+const FILMS_EXTRACTS_VIDEO_VOLUME = 0.08;
 
 let multiplierBadge = null;
 let scoresOverlay = null;
 let flagOverlay = null;
 let genericVideo = null;
 let videoDuckingActive = false;
+let currentVideoMode = null;
 
 function setVideoDucking(active) {
   if (active && !videoDuckingActive) {
@@ -65,6 +68,9 @@ function ensureGenericVideo() {
   vid.addEventListener("ended", () => {
     setVideoDucking(false);
     vid.style.display = "none";
+    vid.loop = false;
+    vid.volume = 1;
+    currentVideoMode = null;
     vid.src = "sounds/generique_avm.mp4";
     gridEl.style.visibility = "visible";
     defBar?.classList.remove("hidden");
@@ -78,12 +84,16 @@ function ensureGenericVideo() {
   return vid;
 }
 
-function playVideo(src) {
+function playVideo(src, options = {}) {
+  const { volume = 1, loop = false, mode = "default" } = options;
   const vid = ensureGenericVideo();
   if (!vid) return;
 
   stopAllFx();
   setVideoDucking(true);
+  currentVideoMode = mode;
+  vid.loop = !!loop;
+  vid.volume = Math.max(0, Math.min(1, volume));
   vid.src = src;
   vid.currentTime = 0;
   gridEl.style.visibility = "hidden";
@@ -95,19 +105,44 @@ function playVideo(src) {
 }
 
 export function playGenericVideo() {
-  playVideo("sounds/generique_avm.mp4");
+  playVideo("sounds/generique_avm.mp4", { mode: "generic" });
 }
 
 export function playTripleVideo() {
-  playVideo("sounds/mot_triple.mp4");
+  playVideo("sounds/mot_triple.mp4", { mode: "triple" });
 }
 
 export function playDoubleVideo() {
-  playVideo("sounds/mot_double.mp4");
+  playVideo("sounds/mot_double.mp4", { mode: "double" });
 }
 
 export function playBadVideo() {
-  playVideo("sounds/bad_word.mp4");
+  playVideo("sounds/bad_word.mp4", { mode: "bad" });
+}
+
+export function playFilmsOverlayVideo() {
+  playVideo(FILMS_EXTRACTS_VIDEO_SRC, {
+    volume: FILMS_EXTRACTS_VIDEO_VOLUME,
+    loop: true,
+    mode: "films_overlay"
+  });
+}
+
+export function stopFilmsOverlayVideo() {
+  if (currentVideoMode !== "films_overlay") return;
+  const vid = genericVideo;
+  if (!vid) return;
+  try {
+    vid.pause();
+    vid.currentTime = 0;
+    vid.style.display = "none";
+    vid.loop = false;
+    vid.volume = 1;
+  } catch {}
+  currentVideoMode = null;
+  setVideoDucking(false);
+  gridEl.style.visibility = "visible";
+  defBar?.classList.remove("hidden");
 }
 
 function ensureScoresOverlay() {
@@ -191,6 +226,9 @@ export function hideAllMedia() {
     vid.pause();
     vid.currentTime = 0;
     vid.style.display = "none";
+    vid.loop = false;
+    vid.volume = 1;
+    currentVideoMode = null;
     gridEl.style.visibility = "visible";
     defBar?.classList.remove("hidden");
   }

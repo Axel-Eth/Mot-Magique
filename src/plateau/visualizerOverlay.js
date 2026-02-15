@@ -59,10 +59,12 @@ function draw() {
 
   const bars = Math.min(BAR_COUNT, data.length);
   const halfBars = Math.max(1, Math.floor(bars / 2));
-  const clusterW = Math.min(w * 0.62, 1200);
-  const totalGapPerSide = (halfBars - 1) * BAR_GAP;
-  const barW = Math.max(3, (clusterW * 0.5 - totalGapPerSide) / halfBars);
+  const drawBars = halfBars * 2;
+  const usableW = w * 0.9;
   const centerX = w * 0.5;
+  // gap derive de la largeur disponible (leger et responsive)
+  const gap = Math.max(1.5, Math.min(8, usableW / (drawBars * 6)));
+  const barW = Math.max(2, (usableW - (drawBars - 1) * gap) / drawBars);
   const centerY = h * 0.5;
   const maxH = h * 0.72;
   const step = data.length / halfBars;
@@ -78,9 +80,10 @@ function draw() {
     const v = data[idx] / 255;
     const e = Math.pow(v, 1.2);
     const bh = Math.max(6, e * maxH);
-    const offset = i * (barW + BAR_GAP);
-    const xRight = centerX + offset;
-    const xLeft = centerX - offset - barW;
+    // Origine au centre: i=0 dessine la paire centrale, puis expansion vers l'exterieur.
+    const offset = i * (barW + gap);
+    const xRight = centerX + gap * 0.5 + offset;
+    const xLeft = centerX - gap * 0.5 - barW - offset;
     ctx.fillRect(xRight, centerY - bh * 0.5, barW, bh);
     ctx.fillRect(xLeft, centerY - bh * 0.5, barW, bh);
   }

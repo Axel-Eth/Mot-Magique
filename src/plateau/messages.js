@@ -33,7 +33,9 @@ import {
   hideAllMedia,
   playBadVideo,
   playDoubleVideo,
+  playFilmsOverlayVideo,
   playGenericVideo,
+  stopFilmsOverlayVideo,
   playTripleVideo,
   showFlag,
   toggleScores,
@@ -177,6 +179,14 @@ export function registerMessageHandlers() {
 
       case "PLAY_MUSIC":
         playMusic(msg.src, { visualizer: !!msg.visualizer });
+        break;
+
+      case "PLAY_FILMS_VIDEO":
+        playFilmsOverlayVideo();
+        break;
+
+      case "STOP_FILMS_VIDEO":
+        stopFilmsOverlayVideo();
         break;
 
       case "PLAY_PLATEAU_MUSIC":
