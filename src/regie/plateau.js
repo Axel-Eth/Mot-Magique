@@ -1,6 +1,6 @@
 import { state } from "./state.js";
 import { postToPlateau } from "./bridge.js";
-import { setActionButtonsEnabled, setFullscreenEnabled, setPlateauLabel } from "./ui.js";
+import { setActionButtonsEnabled, setPlateauLabel } from "./ui.js";
 
 export function syncScoresToPlateau() {
   postToPlateau({
@@ -22,6 +22,5 @@ export function openPlateauWindow() {
   const win = window.open("plateau.html", "avm_plateau_tab");
   state.plateauWin = win || null;
   setPlateauLabel();
-  setFullscreenEnabled(!!win);
   setActionButtonsEnabled(false);
 }

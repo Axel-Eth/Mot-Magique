@@ -12,7 +12,6 @@ import {
   countRemainingLetters,
   setActionButtonsEnabled,
   setBadPointsActive,
-  setFullscreenEnabled,
   setMultiplier,
   setPlateauLabel,
   updateSelectedInfo
@@ -56,11 +55,6 @@ export function registerActionEvents() {
   $("btnReset")?.addEventListener("click", () => {
     if (!state.grid) return;
     if (confirm("Reset les revelations ?")) resetReveal();
-  });
-
-  $("btnFullscreen")?.addEventListener("click", () => {
-    postToPlateau({ type: "TOGGLE_FULLSCREEN" });
-    broadcastToPlateau({ type: "TOGGLE_FULLSCREEN" });
   });
 
   $("btnGeneric")?.addEventListener("click", () => {
@@ -197,12 +191,11 @@ export function registerWindowEvents() {
       if (!msg || !msg.type) return;
 
       if (msg.type === "PLATEAU_READY") {
-        setFullscreenEnabled(true);
         return;
       }
 
       if (msg.type === "PLATEAU_CLOSED") {
-        setFullscreenEnabled(false);
+        return;
       }
     };
 
@@ -218,7 +211,6 @@ export function registerWindowEvents() {
         state.plateauWin = ev.source;
       }
       setPlateauLabel();
-      setFullscreenEnabled(true);
       setActionButtonsEnabled(false);
 
       if (state.grid) {
@@ -230,7 +222,6 @@ export function registerWindowEvents() {
 
     if (msg.type === "PLATEAU_CLOSED") {
       setPlateauLabel();
-      setFullscreenEnabled(false);
       setActionButtonsEnabled(false);
       return;
     }

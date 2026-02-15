@@ -1,4 +1,4 @@
-import { setFullscreenEnabled, setPlateauLabel } from "./ui.js";
+import { setPlateauLabel } from "./ui.js";
 import { loadGridList } from "./grid-select.js";
 import { loadSelectedGrid } from "./grid-actions.js";
 import { renderTeams } from "./teams.js";
@@ -31,7 +31,6 @@ initLetterInput();
     await loadSelectedGrid();
     renderTeams();
     setPlateauLabel();
-    setFullscreenEnabled(false);
     document.getElementById("letterInput")?.focus();
   } catch (err) {
     console.error(err);
