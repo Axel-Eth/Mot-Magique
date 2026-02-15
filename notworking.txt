@@ -18,3 +18,8 @@ Monter mon score avec papi
 
 
 ✅
+
+
+cosnt mateMondCode = "T'as vu comme je sais coder ?"
+
+while(true) console.log(mateMondCode)
