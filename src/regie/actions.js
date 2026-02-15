@@ -255,7 +255,10 @@ export function registerWindowEvents() {
           target.closest(".team-square") ||
           target.closest(".team-name-input") ||
           target.closest("#addTeam") ||
-          target.closest("#teamsContainer")
+          target.closest("#teamsContainer") ||
+          target.closest("#teamModal") ||
+          target.closest("#teamModalOk") ||
+          target.closest(".modal-card")
         );
 
       if (!isTeamInteraction) {
