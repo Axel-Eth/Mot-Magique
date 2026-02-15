@@ -248,7 +248,20 @@ export function registerWindowEvents() {
   window.addEventListener(
     "click",
     (e) => {
-      postToPlateau({ type: "STOP_REVEAL_SOUND" });
+      const target = e.target;
+      const isTeamInteraction =
+        !!(target && target.closest) &&
+        (
+          target.closest(".team-square") ||
+          target.closest(".team-name-input") ||
+          target.closest("#addTeam") ||
+          target.closest("#teamsContainer")
+        );
+
+      if (!isTeamInteraction) {
+        postToPlateau({ type: "STOP_REVEAL_SOUND" });
+      }
+
       if (state.pendingPenaltyPoints > 0) {
         const onTeam = e.target.closest && e.target.closest(".team-square");
         if (!onTeam) {
