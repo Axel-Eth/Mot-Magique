@@ -58,13 +58,14 @@ function draw() {
   analyser.getByteFrequencyData(data);
 
   const bars = Math.min(BAR_COUNT, data.length);
-  const usableW = w * 0.9;
-  const startX = (w - usableW) * 0.5;
-  const totalGap = (bars - 1) * BAR_GAP;
-  const barW = Math.max(2, (usableW - totalGap) / bars);
+  const halfBars = Math.max(1, Math.floor(bars / 2));
+  const clusterW = Math.min(w * 0.62, 1200);
+  const totalGapPerSide = (halfBars - 1) * BAR_GAP;
+  const barW = Math.max(3, (clusterW * 0.5 - totalGapPerSide) / halfBars);
+  const centerX = w * 0.5;
   const centerY = h * 0.5;
   const maxH = h * 0.72;
-  const step = data.length / bars;
+  const step = data.length / halfBars;
 
   const grad = ctx.createLinearGradient(0, centerY - maxH * 0.5, 0, centerY + maxH * 0.5);
   grad.addColorStop(0, "rgba(255,255,255,0.78)");
@@ -72,13 +73,16 @@ function draw() {
   grad.addColorStop(1, "rgba(60,160,255,0.65)");
   ctx.fillStyle = grad;
 
-  for (let i = 0; i < bars; i += 1) {
+  for (let i = 0; i < halfBars; i += 1) {
     const idx = Math.min(data.length - 1, Math.floor(i * step));
     const v = data[idx] / 255;
     const e = Math.pow(v, 1.2);
     const bh = Math.max(6, e * maxH);
-    const x = startX + i * (barW + BAR_GAP);
-    ctx.fillRect(x, centerY - bh * 0.5, barW, bh);
+    const offset = i * (barW + BAR_GAP);
+    const xRight = centerX + offset;
+    const xLeft = centerX - offset - barW;
+    ctx.fillRect(xRight, centerY - bh * 0.5, barW, bh);
+    ctx.fillRect(xLeft, centerY - bh * 0.5, barW, bh);
   }
 
   raf = window.requestAnimationFrame(draw);
