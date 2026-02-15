@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=5" />
+  <title>À vos mots ! — Plateau</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="plateau">
+  <div id="bg" aria-hidden="true">
+  <div class="bg-bubbles"></div>
+</div>
+
+  <div id="lettersLayer" aria-hidden="true"></div>
+  <div id="ui">
+  <div class="plateau-root">
+    <div class="title-banner">
+      <img class="title-logo" src="illustrations/titre_emission.png" alt="À vos mots !" />
+    </div>
+    <div id="plateauTimer" class="plateau-timer hidden" aria-live="polite">00:20</div>
+    <!-- Zone centrale : grille -->
+    <div class="grid-wrap">
+      <div id="grid" class="grid" aria-label="Grille de jeu"></div>
+    </div>
+
+    <!-- Bandeau définition -->
+    <div id="definitionBar" class="definition hidden" aria-live="polite">
+      <div class="definition-inner" id="definitionText"></div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Logique plateau -->
+  <script type="module" src="src/plateau/index.js"></script>
+</body>
+</html>
+

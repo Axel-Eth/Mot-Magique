@@ -1,0 +1,63 @@
+
+
+Aujourd'hui le 07.01.2026, un LLM ne peut pas générer de quizz de culture générale à thématique ou non d'ailleurs. Les questions sont foireuses, les réponses aussi, c'est un carnage. Mais il existe de nombreuses bases de données à quizz thématiques déjà rédigées, parfois open source et donc facilement extradable. Parmi lesquels : https://www.culturequizz.com qui contient des centaines de quizz rangés par catégories, et dont n'importe quel LLM peut accéder et extraire facilement les question et leurs réponses et y mettre la mise en forme voulu pour avoir un support de présentation télé adapté. Voici donc un prompte pour que GPT puisse extraire lui même les questions :
+
+---
+
+Tu vas recevoir un quiz issu du site CultureQuizz (ou équivalent open source).
+Pour chaque quiz, tu dois produire un rendu final strictement conforme aux règles suivantes.
+OBJECTIF
+
+Transformer le quiz en un document clair, exploitable pour un jeu télé ou un support de présentation, contenant pour chaque question :
+
+– la question
+– la réponse correcte
+– une note explicative permettant de broder à l’oral
+FORMAT OBLIGATOIRE
+
+– Pas de gras
+– Pas d’italique
+– Pas de listes à puces
+– Pas de séparateurs
+– Uniquement les numéros en début de question
+– Le format doit être exactement :
+Pour une meilleure lisibilité, garde un espace entre la question et la réponse et entre la réponse et la note. Met le mot réponse à chaque fois en vert. 
+
+Question complète ?
+
+Réponse : …
+
+Note : …
+Question complète ?
+
+Réponse : …
+
+Note : …
+etc.
+CONTENU
+– Les questions doivent être fidèlement reprises depuis le quiz source
+– Les réponses doivent être exactes
+– Les propositions de réponses ne doivent jamais apparaître
+– La note doit être :
+• factuelle
+• cohérente
+• compréhensible par un enfant ou un grand public
+• formulée en phrases complètes
+• utilisable à l’oral pour meubler ou expliquer la réponse
+FACT CHECK
+– Chaque note doit être vérifiée par une recherche internet
+– Si une information est incertaine ou sujette à débat, la note doit rester prudente et factuelle
+– Ne jamais inventer de faits ou de chiffres
+– Privilégier des connaissances générales stables (histoire, géographie, sciences, langue, culture générale)
+TON
+– Neutre
+– Pédagogique
+– Clair
+– Sans humour
+– Sans jugement
+SORTIE
+– Le rendu final doit être directement copiable-collable dans un document unique
+– Aucune explication hors du contenu final
+– Ne pas commenter le travail, ne pas ajouter de remarques annexes
+
+---

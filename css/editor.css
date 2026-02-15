@@ -1,0 +1,81 @@
+/* /css/editor.css */
+
+body{
+  padding: 18px;
+}
+
+body > h1{
+  margin-bottom: 12px;
+}
+
+section{
+  margin-bottom: 12px;
+}
+
+#editorGrid{
+  display:inline-block;
+  padding: 14px;
+  border-radius: 18px;
+  border: 2px solid rgba(0,194,255,.40);
+  background: rgba(0,0,0,.18);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+
+/* grille rendue en spans inline avec style inline: on les “rattrape” */
+#editorGrid span[data-r][data-c]{
+  width: 26px !important;
+  height: 26px;
+  padding: 0 !important;
+  margin: 2px;
+  border-radius: 10px;
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: rgba(255,255,255,.92);
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+/* le curseur actuel a un border inline 2px noir: on le remplace visuellement */
+#editorGrid span[style*="2px solid black"]{
+  border-color: rgba(0,194,255,.85) !important;
+  box-shadow: 0 0 0 3px rgba(0,194,255,.18);
+}
+
+/* “magic letter” (double clic) : on ne l’a pas en classe pour l’instant,
+   mais on stylisera quand tu rendras un data-magic="1". Prévu ici. */
+#editorGrid span[data-magic="1"]{
+  border-color: rgba(179,0,255,.85) !important;
+  box-shadow: 0 0 0 3px rgba(179,0,255,.18);
+}
+
+/* outils */
+#rows, #cols{ width: 90px; }
+#definition{
+  width: min(900px, 100%);
+  min-height: 120px;
+  resize: vertical;
+}
+
+#editorInfo{
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (min-width: 1100px){
+  body{
+    display:grid;
+    grid-template-columns: 420px 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+    align-items:start;
+  }
+  body > h1{ grid-column: 1 / -1; }
+  body > section:nth-of-type(1){ grid-column: 1 / 2; }
+  body > section:nth-of-type(2){ grid-column: 2 / 3; }
+  body > section:nth-of-type(3){ grid-column: 1 / -1; }
+}

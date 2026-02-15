@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>À vos mots ! — Régie</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="regie">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">À vos mots !</div>
+      <div class="subtitle">Régie</div>
+    </div>
+
+    <div class="right">
+      <label class="label" for="gridSelect">Grille</label>
+      <select id="gridSelect" class="select" aria-label="Sélection de grille"></select>
+
+      <button id="openPlateau" class="btn" type="button">Ouvrir le plateau</button>
+      <a class="btn ghost" href="editor.html" target="_blank">Ouvrir editeur</a>
+    </div>
+  </header>
+  <!-- Elements d'etat masques pour la logique JS -->
+  <div style='display:none'>
+    <span id='plateauState'></span>
+    <span id='selectedInfo'></span>
+  </div>
+  <main class="layout">
+    <div id="capitalesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="capitalesModalTitle">
+      <div class="modal-card">
+        <h3 id="capitalesModalTitle">Drapeau selectionne</h3>
+        <p><strong>Fichier :</strong> <span id="capitalesFileName">-</span></p>
+        <p><strong>Note :</strong> <span id="capitalesNote">-</span></p>
+        <div class="row">
+          <button id="capitalesModalTone" class="btn ghost capitales-tone-modal" type="button" aria-pressed="false">Doux</button>
+          <button id="capitalesModalOk" class="btn success" type="button">OK</button>
+        </div>
+      </div>
+    </div>
+    <div id="teamModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle">
+      <div class="modal-card">
+        <h3 id="teamModalTitle">Equipe requise</h3>
+        <p>Choisis d'abord une equipe.</p>
+        <div class="row">
+          <button id="teamModalOk" class="btn success" type="button">OK</button>
+        </div>
+      </div>
+    </div>
+    <section class="panel">
+      <h2>Lettre</h2>
+      <p class="hint">Tape une lettre (A-Z) puis Entrée</p>
+
+      <input
+        id="letterInput"
+        class="input big"
+        type="text"
+        maxlength="1"
+        autocomplete="off"
+        autocapitalize="characters"
+        spellcheck="false"
+        inputmode="text"
+      />
+
+      <div class="row">
+        <button id="btnCorrect" class="btn success" type="button" disabled>Correcte</button>
+        <button id="btnNop" class="btn danger" type="button" disabled>Nop</button>
+      </div>
+
+      <div class="capitales-block">
+        <label class="label" for="capitalesInput">Capitales</label>
+        <div class="row">
+          <input
+            id="capitalesInput"
+            class="input"
+            type="text"
+            inputmode="numeric"
+            placeholder="Numero 1-254"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="btnCapitalesSend" class="btn ghost" type="button">Afficher</button>
+        </div>
+        <div class="row">
+          <select id="capitalesSelect" class="select" aria-label="Drapeaux"></select>
+          <button id="capitalesTone" class="btn ghost capitales-tone" type="button" aria-pressed="false">Doux</button>
+        </div>
+      </div>
+
+      <div class="music-block">
+        <label class="label" for="musicSelect">Musique</label>
+        <select id="musicSelect" class="select" aria-label="Musique"></select>
+      </div>
+
+      <div class="music-block">
+        <label class="label" for="plateauMusicSelect">Musique plateau</label>
+        <select id="plateauMusicSelect" class="select" aria-label="Musique plateau"></select>
+      </div>
+
+      <div class="sfx-block">
+        <div class="label">Bruitages</div>
+        <div class="row">
+          <button id="btnSfxCorrect" class="btn success" type="button">Correcte</button>
+          <button id="btnSfxFail" class="btn danger" type="button">Fail</button>
+        </div>
+      </div>
+
+      <div class="music-block">
+        <label class="label" for="filmsSelect">Films</label>
+        <select id="filmsSelect" class="select" aria-label="Films"></select>
+      </div>
+
+      <div class="music-block">
+        <label class="label" for="peoplesSelect">Personnalites</label>
+        <select id="peoplesSelect" class="select" aria-label="Personnalites"></select>
+      </div>
+
+      <div class="row small">
+        <button id="btnFullscreen" class="btn ghost" type="button" disabled>F11 plateau</button>
+        <button id="btnReset" class="btn ghost" type="button">Reset etat</button>
+        <button id="btnGeneric" class="btn success" type="button">Generique</button>
+        <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
+        <button id="btnDouble" class="btn ghost" type="button">Mot x2</button>
+        <button id="btnTriple" class="btn ghost" type="button">Mot x3</button>
+        <button id="btnBad" class="btn ghost" type="button">Bad Points</button>
+        <button id="btnScores" class="btn ghost" type="button">Scores</button>
+        <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
+        <span id="lastLetter" class="last-letter">Lettre : -</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Plateau intégré</h2>
+      <p class="note">Clique sur la grille pour sélectionner un mot sans ouvrir le plateau public.</p>
+      <div id="regieGrid" class="grid regie-grid" aria-label="Grille intégrée"></div>
+    </section>
+    <section class="panel">
+      <div class="row space-between">
+        <h2>Équipes</h2>
+        <button id="addTeam" class="btn small" type="button">+ 1 Équipe</button>
+      </div>
+      <p class="note">Ajoute des équipes. Le nom n'apparaît qu'au survol de la pastille.</p>
+      <div id="teamsContainer" class="teams-container"></div>
+    </section>
+
+  </main>
+
+  <!-- SheetJS (XLSX parser) -->
+  <script src="libs/xlsx.full.min.js"></script>
+
+  <!-- Logique régie -->
+  <script type="module" src="src/regie/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

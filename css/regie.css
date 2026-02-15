@@ -1,0 +1,141 @@
+/* /css/regie.css */
+
+body{
+  padding: 18px;
+}
+
+body > h1{
+  margin-bottom: 12px;
+}
+
+#status{
+  margin-bottom: 12px;
+}
+
+#status:empty{ display:none; }
+
+#status{
+  background: rgba(255,255,255,.06);
+  border:1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: var(--muted);
+}
+
+section{
+  margin-bottom: 12px;
+}
+
+section h2{
+  margin-bottom: 12px;
+}
+
+section h3{
+  margin: 14px 0 10px 0;
+}
+
+#letterInput{
+  width: 60px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+#revealInfo{
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#teams > div{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.10);
+  margin: 8px 0;
+}
+
+#teams input{
+  width: 220px;
+}
+
+#teams button{
+  min-width: 90px;
+}
+
+#gridMini{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 6px;
+}
+
+#gridMini button{
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+#wordPanel{
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.18);
+}
+
+#selectedWordLabel{
+  margin: 0 0 10px 0;
+  color: var(--muted);
+}
+
+#btnCorrect{
+  border-color: rgba(53,255,138,.35);
+}
+#btnCorrect:hover{
+  border-color: rgba(53,255,138,.6);
+}
+
+#btnIncorrect{
+  border-color: rgba(255,77,109,.35);
+}
+#btnIncorrect:hover{
+  border-color: rgba(255,77,109,.6);
+}
+
+#errors{
+  margin-top: 10px;
+  color: rgba(255,77,109,.92);
+  font-weight: 650;
+}
+
+@media (min-width: 1000px){
+  /* mise en page “régie” plus dense */
+  body{
+    display:grid;
+    grid-template-columns: 1.05fr .95fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    align-items:start;
+  }
+
+  body > h1{
+    grid-column: 1 / -1;
+  }
+
+  body > section:nth-of-type(1){
+    grid-column: 1 / -1;
+  }
+
+  body > section:nth-of-type(2){
+    grid-column: 1 / 2;
+  }
+
+  body > section:nth-of-type(3){
+    grid-column: 2 / 3;
+  }
+}

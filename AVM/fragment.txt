@@ -1,0 +1,76 @@
+<section class="panel">
+      <h2>Lettre</h2>
+      <p class="hint">Tape une lettre (A-Z) puis Entrée</p>
+
+      <input
+        id="letterInput"
+        class="input big"
+        type="text"
+        maxlength="1"
+        autocomplete="off"
+        autocapitalize="characters"
+        spellcheck="false"
+        inputmode="text"
+      />
+
+      <div class="row">
+        <button id="btnCorrect" class="btn success" type="button" disabled>Correcte</button>
+        <button id="btnNop" class="btn danger" type="button" disabled>Nop</button>
+      </div>
+
+      <div class="row small">
+        <button id="btnFullscreen" class="btn ghost" type="button" disabled>F11 plateau</button>
+        <button id="btnReset" class="btn ghost" type="button">Reset �tat</button>
+        <button id="btnGeneric" class="btn success" type="button">G�n�rique</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>État</h2>
+
+      <div class="kv">
+        <div class="k">Plateau</div>
+        <div class="v" id="plateauState">fermé</div>
+
+        <div class="k">Mot sélectionné</div>
+        <div class="v" id="selectedInfo">—</div>
+      </div>
+
+      <p class="note">
+        Sur le plateau, clique une case pour sélectionner un mot (ou un numéro si présent).
+        Ensuite, depuis la régie, tu peux entrer une lettre (Entrée) ou valider avec
+        <b>Correcte</b> / <b>Nop</b>.
+      </p>
+
+      <p class="note">
+        Les grilles sont détectées automatiquement parmi les fichiers <code>.xlsx</code> du dossier <code>grids/</code>
+        doivent être dans le dossier <code>grids/</code>.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Plateau intégré</h2>
+      <p class="note">Clique sur la grille pour sélectionner un mot sans ouvrir le plateau public.</p>
+      <div id="regieGrid" class="grid regie-grid" aria-label="Grille intégrée"></div>
+    </section>
+    <section class="panel">
+      <div class="row space-between">
+        <h2>�quipes</h2>
+        <button id="addTeam" class="btn small" type="button">+ 1 �quipe</button>
+      </div>
+      <p class="note">Ajoute des �quipes. Le nom n'appara�t qu'au survol de la pastille.</p>
+      <div id="teamsContainer" class="teams-container"></div>
+    </section>
+
+  </main>
+
+  <!-- SheetJS (XLSX parser) -->
+  <script src="libs/xlsx.full.min.js"></script>
+
+  <!-- Logique régie -->
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
