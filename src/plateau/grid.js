@@ -278,13 +278,25 @@ function onNumberCellClick(r, c) {
 export function showNumbersForLetter(letter) {
   if (!state.grid) return;
   state.tempNumbers.clear();
+
+  const isWordFullyRevealed = (word) => {
+    if (!word?.cells?.length) return false;
+    return word.cells.every((p) => {
+      const pos = key(p.r, p.c);
+      const canReveal = !isMagicWordCell(pos) || state.grid.magicSolved;
+      return canReveal && !!state.grid.revealed.get(pos);
+    });
+  };
+
   for (const [pos, ltr] of state.grid.letters) {
     if (ltr === letter) {
       const ids = state.grid.cellToWords.get(pos);
       if (ids) {
         ids.forEach((wid) => {
           const w = state.grid.words[wid];
-          if (w?.numberPos) state.tempNumbers.add(key(w.numberPos.r, w.numberPos.c));
+          if (w?.numberPos && !isWordFullyRevealed(w)) {
+            state.tempNumbers.add(key(w.numberPos.r, w.numberPos.c));
+          }
         });
       }
     }

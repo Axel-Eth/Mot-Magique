@@ -25,13 +25,25 @@ export function showNumbersForWords(wordIds = []) {
 export function showNumbersForLetter(letter) {
   if (!state.grid) return;
   const s = new Set();
+
+  const isWordFullyRevealed = (word) => {
+    if (!word?.cells?.length) return false;
+    return word.cells.every((p) => {
+      const pos = `${p.r},${p.c}`;
+      const canReveal = !isMagicWordCell(pos) || state.magicSolved;
+      return canReveal && !!state.grid.revealed.get(pos);
+    });
+  };
+
   for (const [pos, ltr] of state.grid.letters) {
     if (ltr === letter) {
       const ids = state.grid.cellToWords.get(pos);
       if (ids) {
         ids.forEach((wid) => {
           const w = state.grid.words?.[wid];
-          if (w?.numberPos) s.add(keyPos(w.numberPos));
+          if (w?.numberPos && !isWordFullyRevealed(w)) {
+            s.add(keyPos(w.numberPos));
+          }
         });
       }
     }
