@@ -481,15 +481,39 @@ function selectWord(a, b, orientation) {
 }
 
 function normalizeName(name) {
-  const trimmed = name.trim();
+  const trimmed = String(name || "").trim();
   return trimmed || "Grille sans nom";
+}
+
+function getGridNameInput() {
+  return $("gridName");
+}
+
+function getGridName() {
+  const input = getGridNameInput();
+  if (input) return normalizeName(input.value);
+  return normalizeName(state.name);
+}
+
+function setGridName(name) {
+  const raw = String(name || "").trim();
+  state.name = raw;
+  const input = getGridNameInput();
+  if (input) input.value = raw;
+}
+
+function sanitizeFileStem(name) {
+  const normalized = normalizeName(name);
+  return normalized
+    .replace(/[\\/:*?"<>|]/g, "_")
+    .replace(/\s+/g, "_");
 }
 
 function saveCurrentGrid() {
   const list = loadAllGrids();
   const entry = {
     id: state.id || `grid_${Date.now()}`,
-    name: normalizeName($("gridName").value),
+    name: getGridName(),
     rows: state.rows,
     cols: state.cols,
     letters: state.letters,
@@ -530,7 +554,7 @@ function loadGridById(id) {
   state.selectedCell = null;
   state.wordSelection = null;
 
-  $("gridName").value = state.name;
+  setGridName(state.name);
   $("gridRows").value = state.rows;
   $("gridCols").value = state.cols;
   $("selectionInfo").textContent = "-";
@@ -575,7 +599,7 @@ function resetGrid() {
   state.magicWordKey = null;
   state.definitions = {};
   clearSelection();
-  $("gridName").value = "";
+  setGridName("");
   $("gridRows").value = state.rows;
   $("gridCols").value = state.cols;
   buildGridDOM();
@@ -629,10 +653,10 @@ function applySize() {
   setStatus("Taille appliquee.");
 }
 
-function exportCurrentGrid() {
-  const entry = {
+async function exportCurrentGrid() {
+  const baseEntry = {
     id: state.id || `grid_${Date.now()}`,
-    name: normalizeName($("gridName").value),
+    name: getGridName(),
     rows: state.rows,
     cols: state.cols,
     letters: state.letters,
@@ -642,11 +666,41 @@ function exportCurrentGrid() {
     definitions: state.definitions
   };
 
-  const blob = new Blob([JSON.stringify(entry, null, 2)], { type: "application/json" });
+  const suggestedName = `${sanitizeFileStem(baseEntry.name)}.json`;
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName,
+        types: [
+          {
+            description: "Fichier JSON",
+            accept: { "application/json": [".json"] }
+          }
+        ]
+      });
+      const exportedFileName = String(handle.name || suggestedName);
+      const exportedGridName = normalizeName(exportedFileName.replace(/\.json$/i, ""));
+      const entry = { ...baseEntry, name: exportedGridName };
+      const writable = await handle.createWritable();
+      await writable.write(JSON.stringify(entry, null, 2));
+      await writable.close();
+      setGridName(exportedGridName);
+      setStatus("Export JSON termine.");
+      return;
+    } catch (err) {
+      if (err && err.name === "AbortError") {
+        setStatus("Export annule.");
+        return;
+      }
+      console.warn("showSaveFilePicker indisponible, fallback telechargement:", err);
+    }
+  }
+
+  const blob = new Blob([JSON.stringify(baseEntry, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `${entry.name.replace(/\s+/g, "_")}.json`;
+  a.download = suggestedName;
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -665,7 +719,7 @@ function importGridFile(file) {
         }
       const entry = {
         id: data.id || `grid_${Date.now()}`,
-        name: data.name || "Grille importee",
+        name: normalizeName(file.name.replace(/\.json$/i, "")),
         rows: data.rows,
         cols: data.cols,
         letters: data.letters || {},
@@ -893,7 +947,7 @@ function loadGridFromEntry(entry, statusLabel = "Grille chargee.") {
   state.wordSelection = null;
   state.selectionCells = [];
 
-  $("gridName").value = state.name;
+  setGridName(state.name);
   $("gridRows").value = state.rows;
   $("gridCols").value = state.cols;
   $("selectionInfo").textContent = "-";
