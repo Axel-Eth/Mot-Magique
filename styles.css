@@ -611,11 +611,13 @@ code{
 
 /* Case numéro (à gauche / au-dessus des mots) */
 .cell.number{
+  /* Base commune des cases numero (hors overrides par vue) */
   background: transparent;
   border: 2px solid rgba(255,255,255,.22);
   color: white;
-  font-size: 18px;
-  font-weight: 900;
+  /* Taille/poids par defaut des numeros */
+  font-size: 22px;
+  font-weight: 950;
   box-shadow:none;
 }
 
@@ -722,6 +724,13 @@ body.plateau #definitionBar{
   color: #0b2340;
 }
 
+.editor .cell.number{
+  /* EDITEUR: police des numeros dans les cases */
+  font-size: 30px;
+  font-weight: 1000;
+  letter-spacing: .01em;
+}
+
 .editor .cell.magic{
   background: linear-gradient(180deg, #e2c6ff, #b894ff);
   box-shadow: inset 0 0 0 2px rgba(128,64,255,.7);
@@ -794,6 +803,13 @@ body.plateau #definitionBar{
   width:48px;
   height:48px;
   font-size:20px;
+}
+
+.regie-grid .cell.number{
+  /* REGIE: police des numeros dans la grille integree */
+  font-size: 24px;
+  font-weight: 1000;
+  letter-spacing: .01em;
 }
 
 .regie-grid .cell.selected-word{
@@ -1117,6 +1133,11 @@ body.plateau .cell.number{
   background: linear-gradient(145deg, #8be6ff, #2cc6ef);
   color: #07385c;
   border-color: #35b8e4;
+  /* PLATEAU: police des numeros visibles en jeu */
+  font-size: 45px;
+  font-weight: 1000;
+  letter-spacing: .01em;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
 }
 
 body.plateau .cell.dim{
