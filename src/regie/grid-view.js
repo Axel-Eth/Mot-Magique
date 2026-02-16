@@ -123,7 +123,7 @@ export function renderRegieGrid() {
         });
       } else if (hasNumber) {
         const visible = visibleNums.has(pos);
-        cell.className = visible ? "cell number" : "cell number hidden-number";
+        cell.className = visible ? "cell number" : "cell hidden-number";
         cell.textContent = visible ? state.grid.numbers.get(pos) : "";
         if (visible) {
           cell.addEventListener("click", () => {
