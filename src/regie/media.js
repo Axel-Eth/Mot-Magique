@@ -463,6 +463,39 @@ function runXMediaFlow() {
   postToPlateau({ type: "STOP_MUSIC" });
 }
 
+function playMusicSource(src) {
+  if (!src) return;
+  state.lastMusicSrc = src;
+  postToPlateau({ type: "STOP_FILMS_VIDEO" });
+  postToPlateau({ type: "PLAY_MUSIC", src, visualizer: true });
+}
+
+function playFilmsSource(src) {
+  if (!src) return;
+  state.lastFilmsSrc = src;
+  postToPlateau({ type: "PLAY_FILMS_VIDEO" });
+  postToPlateau({ type: "PLAY_MUSIC", src, visualizer: false });
+}
+
+function showPeopleSource(src, label) {
+  if (!src) return;
+  state.lastPeopleSrc = src;
+  state.lastPeopleLabel = label || "Personnalite";
+  postToPlateau({ type: "STOP_FILMS_VIDEO" });
+  postToPlateau({ type: "SHOW_PEOPLE", src, alt: state.lastPeopleLabel });
+}
+
+function updateReplayButtonsState() {
+  const musicBtn = $("btnReplayMusic");
+  if (musicBtn) musicBtn.disabled = !state.lastMusicSrc;
+
+  const filmsBtn = $("btnReplayFilms");
+  if (filmsBtn) filmsBtn.disabled = !state.lastFilmsSrc;
+
+  const peoplesBtn = $("btnReplayPeoples");
+  if (peoplesBtn) peoplesBtn.disabled = !state.lastPeopleSrc;
+}
+
 export function registerMediaEvents() {
   $("btnCapitalesSend")?.addEventListener("click", sendCapitale);
   $("capitalesInput")?.addEventListener("keydown", (e) => {
@@ -504,8 +537,8 @@ export function registerMediaEvents() {
     if (value) {
       markPlayed("music", value);
       refreshSelectPlayedStyles(e.target, "music");
-      postToPlateau({ type: "STOP_FILMS_VIDEO" });
-      postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: true });
+      playMusicSource(value);
+      updateReplayButtonsState();
     }
   });
 
@@ -521,8 +554,8 @@ export function registerMediaEvents() {
     if (value) {
       markPlayed("films", value);
       refreshSelectPlayedStyles(e.target, "films");
-      postToPlateau({ type: "PLAY_FILMS_VIDEO" });
-      postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: false });
+      playFilmsSource(value);
+      updateReplayButtonsState();
     }
   });
 
@@ -532,9 +565,43 @@ export function registerMediaEvents() {
       markPlayed("peoples", value);
       refreshSelectPlayedStyles(e.target, "peoples");
       const label = e.target.selectedOptions?.[0]?.textContent || "Personnalite";
-      postToPlateau({ type: "STOP_FILMS_VIDEO" });
-      postToPlateau({ type: "SHOW_PEOPLE", src: value, alt: label });
+      showPeopleSource(value, label);
+      updateReplayButtonsState();
       e.target.selectedIndex = 0;
     }
   });
+
+  $("btnReplayMusic")?.addEventListener("click", () => {
+    const current = $("musicSelect")?.value || "";
+    const src = current || state.lastMusicSrc;
+    if (!src) return;
+    markPlayed("music", src);
+    refreshSelectPlayedStyles($("musicSelect"), "music");
+    playMusicSource(src);
+    updateReplayButtonsState();
+  });
+
+  $("btnReplayFilms")?.addEventListener("click", () => {
+    const current = $("filmsSelect")?.value || "";
+    const src = current || state.lastFilmsSrc;
+    if (!src) return;
+    markPlayed("films", src);
+    refreshSelectPlayedStyles($("filmsSelect"), "films");
+    playFilmsSource(src);
+    updateReplayButtonsState();
+  });
+
+  $("btnReplayPeoples")?.addEventListener("click", () => {
+    const select = $("peoplesSelect");
+    const current = select?.value || "";
+    const src = current || state.lastPeopleSrc;
+    if (!src) return;
+    markPlayed("peoples", src);
+    refreshSelectPlayedStyles(select, "peoples");
+    const label = (select?.selectedOptions?.[0]?.textContent || "").trim() || state.lastPeopleLabel || "Personnalite";
+    showPeopleSource(src, label);
+    updateReplayButtonsState();
+  });
+
+  updateReplayButtonsState();
 }

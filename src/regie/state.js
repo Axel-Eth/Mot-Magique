@@ -24,5 +24,9 @@ export const state = {
   capitalesNotesSarcasme: {},
   capitalesNotesMode: "doux",
   capitalesFiles: [],
-  capitalesLastFile: ""
+  capitalesLastFile: "",
+  lastMusicSrc: "",
+  lastFilmsSrc: "",
+  lastPeopleSrc: "",
+  lastPeopleLabel: ""
 };
