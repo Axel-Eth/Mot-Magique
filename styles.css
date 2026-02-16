@@ -306,6 +306,49 @@ h2{
   width: 220px;
 }
 
+.word-action-box{
+  margin-top:12px;
+  width: min(100%, 560px);
+  aspect-ratio: 1 / 1;
+  min-height: 280px;
+  max-height: 560px;
+  padding: 14px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius: 14px;
+  background: rgba(0,0,0,.18);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.word-action-header{
+  font-size: 26px;
+  font-weight: 900;
+  color:#ffffff;
+  line-height: 1.1;
+}
+
+.word-action-definition{
+  flex:1;
+  overflow:auto;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  color:#ffe873;
+  padding: 8px;
+  border-radius: 10px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.05);
+}
+
+.word-action-buttons{
+  margin-top:0;
+}
+
+.word-action-buttons .btn{
+  flex:1;
+}
+
 .sfx-block{
   margin-top:10px;
 }
@@ -338,6 +381,52 @@ h2{
 .modal-card h3{
   margin: 0 0 6px;
   font-size: 18px;
+}
+
+#wordSelectModal{
+  z-index: 19;
+  background: transparent;
+  backdrop-filter: none;
+  pointer-events: none;
+}
+
+#wordSelectModal .word-select-card{
+  width: min(72vw, 760px);
+  max-height: 58vh;
+  min-height: 280px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  pointer-events: auto;
+}
+
+.word-select-title{
+  margin:0;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.1;
+  color:#ffffff;
+}
+
+.word-select-definition{
+  flex:1;
+  overflow:auto;
+  padding: 12px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.18);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  color:#ffe873;
+}
+
+.word-select-actions{
+  margin-top:0;
+}
+
+.word-select-actions .btn{
+  flex:1;
 }
 
 #capitalesNote{
@@ -549,6 +638,10 @@ code{
 
 .definition.hidden{
   display:none;
+}
+
+body.plateau #definitionBar{
+  display:none !important;
 }
 
 .definition-inner{

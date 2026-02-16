@@ -42,13 +42,20 @@ export function setBadPointsActive(active) {
 }
 
 export function updateSelectedInfo() {
+  const wordModal = $("wordSelectModal");
   if (!state.grid || state.selectedWordId == null) {
     setText("selectedInfo", "-");
+    setText("regieWordHeader", "Aucun mot selectionne");
+    setText("regieDefinitionText", "Selectionne un mot dans la grille pour afficher sa definition ici.");
+    wordModal?.classList.add("hidden");
     return;
   }
   const w = state.grid.words[state.selectedWordId];
   const n = w.number != null ? `#${w.number}` : "-";
   setText("selectedInfo", `${n} ${w.orientation} (${w.cells.length})`);
+  setText("regieWordHeader", `${n} ${w.orientation} (${w.cells.length} lettres)`);
+  setText("regieDefinitionText", w.definition || "Aucune definition renseignee.");
+  wordModal?.classList.remove("hidden");
 }
 
 export function countRemainingLetters() {

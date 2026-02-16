@@ -49,6 +49,18 @@
         </div>
       </div>
     </div>
+    <div id="wordSelectModal" class="modal hidden" role="dialog" aria-modal="false" aria-labelledby="regieWordHeader">
+      <div class="modal-card word-select-card">
+        <h3 id="regieWordHeader" class="word-select-title">Aucun mot selectionne</h3>
+        <div id="regieDefinitionText" class="word-select-definition">
+          Selectionne un mot dans la grille pour afficher sa definition ici.
+        </div>
+        <div class="row word-select-actions">
+          <button id="btnCorrect" class="btn success" type="button" disabled>Correcte</button>
+          <button id="btnNop" class="btn danger" type="button" disabled>Nop</button>
+        </div>
+      </div>
+    </div>
     <section class="panel">
       <h2>Lettre</h2>
       <p class="hint">Tape une lettre (A-Z) puis Entrée</p>
@@ -63,12 +75,6 @@
         spellcheck="false"
         inputmode="text"
       />
-
-      <div class="row">
-        <button id="btnCorrect" class="btn success" type="button" disabled>Correcte</button>
-        <button id="btnNop" class="btn danger" type="button" disabled>Nop</button>
-      </div>
-
       <div class="capitales-block">
         <label class="label" for="capitalesInput">Capitales</label>
         <div class="row">
