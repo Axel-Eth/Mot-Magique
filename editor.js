@@ -401,7 +401,12 @@ function onCellClick(e, r, c) {
     const start = state.selectedCell;
     // mot (ligne ou colonne)
     if (start.r === r || start.c === c) {
-      selectWord(start, { r, c }, start.r === r ? "H" : "V");
+      const ok = selectWord(start, { r, c }, start.r === r ? "H" : "V", { silentInvalid: true });
+      if (!ok) {
+        // Si ce n'est pas un mot continu (cases vides), on garde une selection bloc
+        selectBlock(start, { r, c });
+        return;
+      }
       state.selectionCells = [...(state.wordSelection ? state.wordSelection.cells : [])];
       return;
     }
@@ -450,7 +455,7 @@ function selectBlock(a, b) {
   buildGridDOM();
 }
 
-function selectWord(a, b, orientation) {
+function selectWord(a, b, orientation, opts = {}) {
   const cells = [];
   const rMin = Math.min(a.r, b.r);
   const rMax = Math.max(a.r, b.r);
@@ -465,8 +470,8 @@ function selectWord(a, b, orientation) {
 
   const hasEmpty = cells.some((p) => !state.letters[key(p.r, p.c)]);
   if (hasEmpty) {
-    setStatus("Remplis les lettres du mot avant de definir.");
-    return;
+    if (!opts.silentInvalid) setStatus("Remplis les lettres du mot avant de definir.");
+    return false;
   }
 
   const start = orientation === "H" ? { r: a.r, c: cMin } : { r: rMin, c: a.c };
@@ -478,6 +483,7 @@ function selectWord(a, b, orientation) {
   $("selectionInfo").textContent = `${orientation} ${cells.length} lettres (${start.r},${start.c})`;
   $("definitionInput").value = def;
   buildGridDOM();
+  return true;
 }
 
 function normalizeName(name) {
@@ -507,6 +513,14 @@ function sanitizeFileStem(name) {
   return normalized
     .replace(/[\\/:*?"<>|]/g, "_")
     .replace(/\s+/g, "_");
+}
+
+function removeLegacyGridNameField() {
+  const input = getGridNameInput();
+  if (!input) return;
+  const label = document.querySelector('label[for="gridName"]');
+  label?.remove();
+  input.remove();
 }
 
 function saveCurrentGrid() {
@@ -585,6 +599,24 @@ function deleteGridById(id) {
   }
   refreshGridList();
   setStatus("Grille supprimee.");
+}
+
+function clearAllLocalGrids() {
+  const list = loadAllGrids();
+  if (!list.length) {
+    setStatus("Aucune grille locale a vider.");
+    return;
+  }
+  const ok = window.confirm(`Vider ${list.length} grille${list.length > 1 ? "s" : ""} locale${list.length > 1 ? "s" : ""} ?`);
+  if (!ok) return;
+
+  localStorage.removeItem(STORAGE_KEY);
+  undoStack.length = 0;
+  resetGrid();
+  refreshGridList();
+  const localSel = $("gridList");
+  if (localSel) localSel.value = "";
+  setStatus("Toutes les grilles locales ont ete supprimees.");
 }
 
 function resetGrid() {
@@ -1080,6 +1112,99 @@ function clearCells(cells) {
   }
 }
 
+function getFullHeightSelectedColumnRange(cells) {
+  if (!Array.isArray(cells) || !cells.length) return null;
+  const rMin = Math.min(...cells.map((p) => p.r));
+  const rMax = Math.max(...cells.map((p) => p.r));
+  const cMin = Math.min(...cells.map((p) => p.c));
+  const cMax = Math.max(...cells.map((p) => p.c));
+  if (rMin !== 1 || rMax !== state.rows) return null;
+  const expected = (cMax - cMin + 1) * state.rows;
+  const unique = new Set(cells.map((p) => key(p.r, p.c)));
+  if (unique.size !== expected) return null;
+  return { cMin, cMax, count: cMax - cMin + 1 };
+}
+
+function isColumnRangeEmpty(cMin, cMax) {
+  for (let r = 1; r <= state.rows; r++) {
+    for (let c = cMin; c <= cMax; c++) {
+      const pos = key(r, c);
+      if (state.letters[pos] || state.numbers[pos] != null || state.magic[pos]) return false;
+    }
+  }
+  return true;
+}
+
+function shiftWordKeyColumns(wordKey, cMin, cMax, delta) {
+  if (!wordKey) return null;
+  const [orientation, start] = String(wordKey).split(":");
+  if (!orientation || !start) return null;
+  const [r, c] = start.split(",").map(Number);
+  if (!r || !c) return null;
+  if (c >= cMin && c <= cMax) return null;
+  if (c > cMax) return `${orientation}:${r},${c + delta}`;
+  return `${orientation}:${r},${c}`;
+}
+
+function removeEmptyColumnRange(cMin, cMax) {
+  const removeCount = cMax - cMin + 1;
+  const nextCols = state.cols - removeCount;
+  if (nextCols < 3) {
+    setStatus("Impossible: la grille doit garder au moins 3 colonnes.");
+    return false;
+  }
+  if (!isColumnRangeEmpty(cMin, cMax)) return false;
+
+  const shift = -removeCount;
+
+  const nextLetters = {};
+  for (const [pos, val] of Object.entries(state.letters)) {
+    const [r, c] = pos.split(",").map(Number);
+    if (c >= cMin && c <= cMax) continue;
+    const nc = c > cMax ? c + shift : c;
+    nextLetters[key(r, nc)] = val;
+  }
+  state.letters = nextLetters;
+
+  const nextNumbers = {};
+  for (const [pos, val] of Object.entries(state.numbers)) {
+    const [r, c] = pos.split(",").map(Number);
+    if (c >= cMin && c <= cMax) continue;
+    const nc = c > cMax ? c + shift : c;
+    nextNumbers[key(r, nc)] = val;
+  }
+  state.numbers = nextNumbers;
+
+  const nextMagic = {};
+  for (const [pos, val] of Object.entries(state.magic)) {
+    const [r, c] = pos.split(",").map(Number);
+    if (!val || (c >= cMin && c <= cMax)) continue;
+    const nc = c > cMax ? c + shift : c;
+    nextMagic[key(r, nc)] = true;
+  }
+  state.magic = nextMagic;
+
+  const nextDefs = {};
+  for (const [kDef, val] of Object.entries(state.definitions)) {
+    const [orientation, rc] = String(kDef).split(":");
+    if (!orientation || !rc) continue;
+    const [r, c] = rc.split(",").map(Number);
+    if (!r || !c) continue;
+    if (c >= cMin && c <= cMax) continue;
+    const nc = c > cMax ? c + shift : c;
+    nextDefs[`${orientation}:${r},${nc}`] = val;
+  }
+  state.definitions = nextDefs;
+  state.magicWordKey = shiftWordKeyColumns(state.magicWordKey, cMin, cMax, shift);
+
+  state.cols = nextCols;
+  $("gridCols").value = state.cols;
+  clearSelection();
+  buildGridDOM();
+  setStatus(`Colonne${removeCount > 1 ? "s" : ""} vide${removeCount > 1 ? "s" : ""} retiree${removeCount > 1 ? "s" : ""}.`);
+  return true;
+}
+
 function cutSelection() {
   const cells =
     state.selectionCells.length
@@ -1225,6 +1350,15 @@ function onKeydown(e) {
         : [state.selectedCell];
 
     if (selectedCells.length > 1) {
+      const colRange = getFullHeightSelectedColumnRange(selectedCells);
+      if (colRange) {
+        pushUndo();
+        if (removeEmptyColumnRange(colRange.cMin, colRange.cMax)) {
+          e.preventDefault();
+          return;
+        }
+        undoStack.pop();
+      }
       pushUndo();
       clearCells(selectedCells);
       state.selectionCells = [];
@@ -1273,6 +1407,7 @@ function onKeydown(e) {
 }
 
 function init() {
+  removeLegacyGridNameField();
   $("gridRows").value = state.rows;
   $("gridCols").value = state.cols;
   refreshGridList();
@@ -1318,6 +1453,7 @@ function init() {
     }
     deleteGridById(id);
   });
+  $("clearLocalGrids")?.addEventListener("click", clearAllLocalGrids);
 
   $("saveDefinition").addEventListener("click", saveDefinition);
   $("clearDefinition").addEventListener("click", clearDefinition);
