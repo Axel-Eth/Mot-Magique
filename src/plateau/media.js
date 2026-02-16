@@ -12,6 +12,7 @@ const FILMS_FADE_MS = 280;
 let multiplierBadge = null;
 let scoresOverlay = null;
 let flagOverlay = null;
+let flagLoadToken = 0;
 let genericVideo = null;
 let videoDuckingActive = false;
 let currentVideoMode = null;
@@ -249,9 +250,32 @@ function ensureFlagOverlay() {
 export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag") {
   const overlay = ensureFlagOverlay();
   const img = overlay.querySelector(".flag-image");
+  const token = ++flagLoadToken;
   if (img) {
-    img.src = src;
+    // Hard reset: retire immediatement l'ancien media de l'ecran.
+    img.style.transition = "none";
+    img.style.opacity = "0";
+    img.removeAttribute("src");
+    // Force le navigateur a appliquer le reset avant le nouveau src.
+    void img.offsetWidth;
+    img.style.transition = "";
     img.alt = altText;
+    const preload = new Image();
+    preload.decoding = "async";
+    preload.onload = () => {
+      if (token !== flagLoadToken) return;
+      img.src = src;
+      img.alt = altText;
+      window.requestAnimationFrame(() => {
+        if (token === flagLoadToken) img.style.opacity = "1";
+      });
+    };
+    preload.onerror = () => {
+      if (token !== flagLoadToken) return;
+      img.src = src;
+      img.style.opacity = "1";
+    };
+    preload.src = src;
   }
   overlay.classList.toggle("flag-mode", mode === "flag");
   overlay.classList.toggle("people-mode", mode === "people");
@@ -270,6 +294,8 @@ export function hideAllMedia() {
     flagOverlay.classList.remove("active");
     flagOverlay.classList.remove("flag-mode");
     flagOverlay.classList.remove("people-mode");
+    const img = flagOverlay.querySelector(".flag-image");
+    if (img) img.style.opacity = "1";
   }
   if (scoresOverlay) scoresOverlay.classList.remove("active");
   stopMusic();

@@ -1062,6 +1062,8 @@ body.plateau .flag-image{
   max-height: 70vh;
   border-radius: 16px;
   box-shadow: 0 14px 32px rgba(0,0,0,.35);
+  opacity: 1;
+  transition: opacity .16s ease;
 }
 
 body.plateau .scores-title{
