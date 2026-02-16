@@ -12,10 +12,10 @@ export const SFX = {
 export const PLATEAU_MUSIC = "/sounds/musique-plateau/musique_plateau.mp3";
 
 export const MEDIA_PRESETS = {
-  generique: { type: "video", src: "/sounds/generique_avm.mp4" },
-  mot_double: { type: "video", src: "/sounds/mot_double.mp4" },
-  mot_triple: { type: "video", src: "/sounds/mot_triple.mp4" },
-  bad_word: { type: "video", src: "/sounds/bad_word.mp4" },
+  generique: { type: "video", src: "/sounds/generique_avm_new.mp4" },
+  mot_double: { type: "video", src: "/sounds/mot_double_new.mp4" },
+  mot_triple: { type: "video", src: "/sounds/mot_triple_new.mp4" },
+  bad_word: { type: "video", src: "/sounds/bad_word_new.mp4" },
 };
 
 export const COMMANDS = {

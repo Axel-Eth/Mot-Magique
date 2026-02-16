@@ -83,7 +83,7 @@ function ensureGenericVideo() {
   bindMediaLifecycleEvents();
 
   const vid = document.createElement("video");
-  vid.src = "sounds/generique_avm.mp4";
+  vid.src = "sounds/generique_avm_new.mp4";
   vid.style.position = "fixed";
   vid.style.inset = "0";
   vid.style.width = "100vw";
@@ -105,7 +105,7 @@ function ensureGenericVideo() {
     vid.loop = false;
     vid.volume = 1;
     currentVideoMode = null;
-    vid.src = "sounds/generique_avm.mp4";
+    vid.src = "sounds/generique_avm_new.mp4";
     gridEl.style.visibility = "visible";
     defBar?.classList.remove("hidden");
   });
@@ -149,19 +149,19 @@ function playVideo(src, options = {}) {
 }
 
 export function playGenericVideo() {
-  playVideo("sounds/generique_avm.mp4", { mode: "generic" });
+  playVideo("sounds/generique_avm_new.mp4", { mode: "generic" });
 }
 
 export function playTripleVideo() {
-  playVideo("sounds/mot_triple.mp4", { mode: "triple" });
+  playVideo("sounds/mot_triple_new.mp4", { mode: "triple" });
 }
 
 export function playDoubleVideo() {
-  playVideo("sounds/mot_double.mp4", { mode: "double" });
+  playVideo("sounds/mot_double_new.mp4", { mode: "double" });
 }
 
 export function playBadVideo() {
-  playVideo("sounds/bad_word.mp4", { mode: "bad" });
+  playVideo("sounds/bad_word_new.mp4", { mode: "bad" });
 }
 
 export function playFilmsOverlayVideo() {

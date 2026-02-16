@@ -389,6 +389,14 @@ export async function loadPeoplesList() {
   });
 }
 
+function runXMediaFlow() {
+  state.showScores = false;
+  syncScoresToPlateau();
+  postToPlateau({ type: "STOP_FILMS_VIDEO" });
+  postToPlateau({ type: "HIDE_MEDIA" });
+  postToPlateau({ type: "STOP_MUSIC" });
+}
+
 export function registerMediaEvents() {
   $("btnCapitalesSend")?.addEventListener("click", sendCapitale);
   $("capitalesInput")?.addEventListener("keydown", (e) => {
@@ -413,17 +421,16 @@ export function registerMediaEvents() {
     setCapitalesTone(next);
   });
 
-  $("capitalesModalOk")?.addEventListener("click", hideCapitaleModal);
+  $("capitalesModalOk")?.addEventListener("click", () => {
+    runXMediaFlow();
+    hideCapitaleModal();
+  });
   $("capitalesModal")?.addEventListener("click", (e) => {
     if (e.target.id === "capitalesModal") hideCapitaleModal();
   });
 
   $("btnXMedia")?.addEventListener("click", () => {
-    state.showScores = false;
-    syncScoresToPlateau();
-    postToPlateau({ type: "STOP_FILMS_VIDEO" });
-    postToPlateau({ type: "HIDE_MEDIA" });
-    postToPlateau({ type: "STOP_MUSIC" });
+    runXMediaFlow();
   });
 
   $("musicSelect")?.addEventListener("change", (e) => {
