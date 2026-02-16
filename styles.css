@@ -137,6 +137,11 @@ h2{
   color: var(--text);
 }
 
+.select option[data-played="1"]{
+  color:#ff5f6d !important;
+  font-weight:700;
+}
+
 .teams-container{
   display:flex;
   flex-wrap:wrap;

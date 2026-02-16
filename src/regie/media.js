@@ -5,6 +5,65 @@ import { postToPlateau } from "./bridge.js";
 
 const CAPITALES_BASE_CANDIDATES = ["questions/capitales/", "questions/pays/"];
 let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];
+const PLAYED_MEDIA_STORAGE_KEY = "avm_played_media_v1";
+
+const playedMedia = loadPlayedMedia();
+
+function loadPlayedMedia() {
+  try {
+    const raw = localStorage.getItem(PLAYED_MEDIA_STORAGE_KEY);
+    if (!raw) return { capitales: {}, music: {}, films: {}, peoples: {} };
+    const parsed = JSON.parse(raw);
+    return {
+      capitales: parsed?.capitales && typeof parsed.capitales === "object" ? parsed.capitales : {},
+      music: parsed?.music && typeof parsed.music === "object" ? parsed.music : {},
+      films: parsed?.films && typeof parsed.films === "object" ? parsed.films : {},
+      peoples: parsed?.peoples && typeof parsed.peoples === "object" ? parsed.peoples : {}
+    };
+  } catch {
+    return { capitales: {}, music: {}, films: {}, peoples: {} };
+  }
+}
+
+function savePlayedMedia() {
+  try {
+    localStorage.setItem(PLAYED_MEDIA_STORAGE_KEY, JSON.stringify(playedMedia));
+  } catch {}
+}
+
+function isPlayed(category, value) {
+  if (!category || !value) return false;
+  return !!playedMedia?.[category]?.[value];
+}
+
+function setOptionPlayedVisual(optionEl, played) {
+  if (!optionEl) return;
+  if (played) {
+    optionEl.dataset.played = "1";
+    optionEl.style.color = "#ff5f6d";
+    optionEl.style.fontWeight = "700";
+    return;
+  }
+  delete optionEl.dataset.played;
+  optionEl.style.color = "";
+  optionEl.style.fontWeight = "";
+}
+
+function markPlayed(category, value) {
+  if (!category || !value) return;
+  if (!playedMedia[category]) playedMedia[category] = {};
+  playedMedia[category][value] = 1;
+  savePlayedMedia();
+}
+
+function refreshSelectPlayedStyles(selectEl, category) {
+  if (!selectEl || !category) return;
+  const options = selectEl.querySelectorAll("option[value]");
+  options.forEach((opt) => {
+    if (!opt.value) return;
+    setOptionPlayedVisual(opt, isPlayed(category, opt.value));
+  });
+}
 
 async function fetchNotesJson(base, fileName) {
   try {
@@ -50,6 +109,8 @@ export function hideCapitaleModal() {
 
 export function showCapitaleByFile(fileName) {
   if (!fileName) return;
+  markPlayed("capitales", fileName);
+  refreshSelectPlayedStyles($("capitalesSelect"), "capitales");
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "SHOW_FLAG", src: `${capitalesBasePath}${fileName}` });
   showCapitaleModal(fileName);
@@ -198,6 +259,7 @@ export async function loadCapitalesList() {
     const opt = document.createElement("option");
     opt.value = file;
     opt.textContent = file.replace(/\.png$/i, "");
+    setOptionPlayedVisual(opt, isPlayed("capitales", file));
     select.appendChild(opt);
   });
 }
@@ -228,6 +290,7 @@ export async function loadMusicList() {
         const opt = document.createElement("option");
         opt.value = `${base}${dir}${file}`;
         opt.textContent = file.replace(/\.(mp3|wav|ogg)$/i, "");
+        setOptionPlayedVisual(opt, isPlayed("music", opt.value));
         group.appendChild(opt);
       });
       select.appendChild(group);
@@ -278,6 +341,7 @@ export async function loadFilmsList() {
       const opt = document.createElement("option");
       opt.value = `${base}${file}`;
       opt.textContent = file.replace(/\.(mp3|wav|ogg)$/i, "");
+      setOptionPlayedVisual(opt, isPlayed("films", opt.value));
       select.appendChild(opt);
     });
     const dirs = links
@@ -296,6 +360,7 @@ export async function loadFilmsList() {
         const opt = document.createElement("option");
         opt.value = `${base}${dir}${file}`;
         opt.textContent = file.replace(/\.(mp3|wav|ogg)$/i, "");
+        setOptionPlayedVisual(opt, isPlayed("films", opt.value));
         group.appendChild(opt);
       });
       select.appendChild(group);
@@ -385,6 +450,7 @@ export async function loadPeoplesList() {
     const opt = document.createElement("option");
     opt.value = entry.value;
     opt.textContent = entry.label;
+    setOptionPlayedVisual(opt, isPlayed("peoples", opt.value));
     currentOptgroup.appendChild(opt);
   });
 }
@@ -436,6 +502,8 @@ export function registerMediaEvents() {
   $("musicSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
+      markPlayed("music", value);
+      refreshSelectPlayedStyles(e.target, "music");
       postToPlateau({ type: "STOP_FILMS_VIDEO" });
       postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: true });
     }
@@ -451,6 +519,8 @@ export function registerMediaEvents() {
   $("filmsSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
+      markPlayed("films", value);
+      refreshSelectPlayedStyles(e.target, "films");
       postToPlateau({ type: "PLAY_FILMS_VIDEO" });
       postToPlateau({ type: "PLAY_MUSIC", src: value, visualizer: false });
     }
@@ -459,6 +529,8 @@ export function registerMediaEvents() {
   $("peoplesSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
+      markPlayed("peoples", value);
+      refreshSelectPlayedStyles(e.target, "peoples");
       const label = e.target.selectedOptions?.[0]?.textContent || "Personnalite";
       postToPlateau({ type: "STOP_FILMS_VIDEO" });
       postToPlateau({ type: "SHOW_PEOPLE", src: value, alt: label });
