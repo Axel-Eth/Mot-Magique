@@ -177,7 +177,7 @@ export function renderCell(r, c) {
     const revealed = state.grid.revealed.get(pos);
     const magicWordCell = isMagicWordCell(pos);
     const canReveal = !magicWordCell || state.grid.magicSolved;
-    el.classList.remove("revealed", "dim", "nop", "orange", "magic");
+    el.classList.remove("revealed", "dim", "nop", "orange", "magic", "selected-word");
     if (isMagicHighlightCell(pos)) el.classList.add("magic");
 
     if (revealed && canReveal) {
@@ -196,7 +196,7 @@ function clearHighlight() {
 
     const magicWordCell = isMagicWordCell(pos);
     const canReveal = !magicWordCell || state.grid.magicSolved;
-    el.classList.remove("dim", "nop", "orange", "magic");
+    el.classList.remove("dim", "nop", "orange", "magic", "selected-word");
     if (isMagicHighlightCell(pos)) el.classList.add("magic");
 
     if (state.grid.revealed.get(pos) && canReveal) {
@@ -224,17 +224,20 @@ export function applySelection(word) {
 
   state.selectedWordId = word.id;
   const wordCells = new Set(word.cells.map((p) => key(p.r, p.c)));
+  const isMagic = isMagicWordSelection(word);
 
   for (const [pos] of state.grid.letters) {
     const el = document.querySelector(`[data-pos="${pos}"]`);
     if (!el) continue;
 
-    if (!wordCells.has(pos)) {
+    const keepVisible = isMagic ? isMagicHighlightCell(pos) : wordCells.has(pos);
+    if (!keepVisible) {
       el.classList.add("dim");
+    } else {
+      el.classList.add("selected-word");
     }
   }
 
-  const isMagic = isMagicWordSelection(word);
   showDefinition(isMagic ? "Mot Magique" : word.definition);
   stopAllFx("timer");
   safePlay(sounds.timer);

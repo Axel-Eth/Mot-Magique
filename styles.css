@@ -1161,7 +1161,22 @@ body.plateau .cell.magic{
 }
 
 body.plateau .cell.dim{
-  opacity: .55;
+  opacity: .28;
+  filter: brightness(.45) saturate(.45) blur(1.1px);
+  transform: scale(.97);
+  transition: filter .15s ease, opacity .15s ease, transform .15s ease;
+}
+
+body.plateau .cell.selected-word{
+  filter: brightness(1.28) saturate(1.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    0 0 0 2px rgba(255,255,255,.85),
+    0 0 22px rgba(255,255,255,.55),
+    0 8px 20px rgba(0,20,40,.3);
+  transform: translateY(-1px) scale(1.05);
+  z-index: 1;
+  transition: filter .15s ease, box-shadow .15s ease, transform .15s ease;
 }
 
 body.plateau .cell.nop{
