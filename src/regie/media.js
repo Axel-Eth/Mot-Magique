@@ -605,3 +605,36 @@ export function registerMediaEvents() {
 
   updateReplayButtonsState();
 }
+
+export function resetMediaForNewShow() {
+  playedMedia.capitales = {};
+  playedMedia.music = {};
+  playedMedia.films = {};
+  playedMedia.peoples = {};
+  savePlayedMedia();
+
+  refreshSelectPlayedStyles($("capitalesSelect"), "capitales");
+  refreshSelectPlayedStyles($("musicSelect"), "music");
+  refreshSelectPlayedStyles($("filmsSelect"), "films");
+  refreshSelectPlayedStyles($("peoplesSelect"), "peoples");
+
+  const capitalesInput = $("capitalesInput");
+  if (capitalesInput) capitalesInput.value = "";
+
+  const selectIds = ["capitalesSelect", "musicSelect", "plateauMusicSelect", "filmsSelect", "peoplesSelect"];
+  selectIds.forEach((id) => {
+    const sel = $(id);
+    if (sel) sel.selectedIndex = 0;
+  });
+
+  state.lastMusicSrc = "";
+  state.lastFilmsSrc = "";
+  state.lastPeopleSrc = "";
+  state.lastPeopleLabel = "";
+  state.capitalesLastFile = "";
+  updateReplayButtonsState();
+
+  setCapitalesTone("doux");
+  hideCapitaleModal();
+  runXMediaFlow();
+}

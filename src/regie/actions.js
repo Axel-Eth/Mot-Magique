@@ -16,6 +16,7 @@ import {
   setPlateauLabel,
   updateSelectedInfo
 } from "./ui.js";
+import { resetMediaForNewShow } from "./media.js";
 
 const controlChannel = (() => {
   try {
@@ -55,6 +56,36 @@ export function registerActionEvents() {
   $("btnReset")?.addEventListener("click", () => {
     if (!state.grid) return;
     if (confirm("Reset les revelations ?")) resetReveal();
+  });
+
+  $("btnNewShow")?.addEventListener("click", () => {
+    const ok = confirm("Reinitialiser la regie pour une nouvelle emission ? (equipes, scores, options rouges, selections, medias)");
+    if (!ok) return;
+
+    if (state.grid) resetReveal();
+
+    state.selectedWordId = null;
+    state.currentTeamId = null;
+    state.pendingPenaltyPoints = 0;
+    state.showScores = false;
+    state.teams = [];
+    clearVisibleNumbers();
+
+    setMultiplier(1);
+    setBadPointsActive(false);
+    updateSelectedInfo();
+    updateMagicButtonState();
+    setActionButtonsEnabled(false);
+    renderRegieGrid();
+    renderTeams();
+    syncScoresToPlateau();
+
+    resetMediaForNewShow();
+
+    const letterInput = $("letterInput");
+    if (letterInput) letterInput.value = "";
+    const lastLetter = $("lastLetter");
+    if (lastLetter) lastLetter.textContent = "Lettre : -";
   });
 
   $("btnGeneric")?.addEventListener("click", () => {

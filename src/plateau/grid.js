@@ -3,8 +3,28 @@ import { state } from "./state.js";
 import { notifySelection } from "./bridge.js";
 import { safePlay, safeStop, sounds, stopAllFx, stopRevealSound } from "./audio.js";
 
+let orangeStepTimer = null;
+let orangeClearTimer = null;
+
 function key(r, c) {
   return `${r},${c}`;
+}
+
+function clearOrangeAnimationTimers() {
+  if (orangeStepTimer) {
+    clearTimeout(orangeStepTimer);
+    orangeStepTimer = null;
+  }
+  if (orangeClearTimer) {
+    clearTimeout(orangeClearTimer);
+    orangeClearTimer = null;
+  }
+}
+
+function clearOrangeHighlights() {
+  document.querySelectorAll(".cell.orange").forEach((el) => {
+    el.classList.remove("orange");
+  });
 }
 
 export function buildMagicWordCells(wordId) {
@@ -121,6 +141,8 @@ function fitGridToViewport() {
 }
 
 export function buildGridDOM() {
+  clearOrangeAnimationTimers();
+  clearOrangeHighlights();
   gridEl.innerHTML = "";
   state.selectedWordId = null;
   state.tempNumbers.clear();
@@ -336,8 +358,14 @@ export function resetTimer() {
 }
 
 export function animateWordReveal(word) {
+  clearOrangeAnimationTimers();
+  clearOrangeHighlights();
+
   const cells = word.cells.map((p) => key(p.r, p.c));
   let i = 0;
+  const startDelay = 500;
+  const stepDelay = 80;
+  const holdOrangeMs = 650;
 
   function step() {
     if (i >= cells.length) return;
@@ -348,10 +376,20 @@ export function animateWordReveal(word) {
       el.textContent = state.grid.letters.get(pos);
     }
     i++;
-    setTimeout(step, 80);
+    orangeStepTimer = setTimeout(step, stepDelay);
   }
 
-  setTimeout(step, 500);
+  orangeStepTimer = setTimeout(step, startDelay);
+
+  const cleanupDelay = startDelay + cells.length * stepDelay + holdOrangeMs;
+  orangeClearTimer = setTimeout(() => {
+    for (const pos of cells) {
+      const el = document.querySelector(`[data-pos="${pos}"]`);
+      if (!el) continue;
+      el.classList.remove("orange");
+    }
+    clearOrangeAnimationTimers();
+  }, cleanupDelay);
 }
 
 export function checkGridCompletion() {
