@@ -588,6 +588,7 @@ function parseGeneralQuestionsFromDataset(fileName, data) {
         ? optionsNode.map((x) => String(x || "").trim()).filter(Boolean)
         : [];
       const answer = String(getAnyKey(entry, ["réponse", "reponse", "answer"]) || "").trim();
+      const anecdote = String(getAnyKey(entry, ["anecdote"]) || "").trim();
       const rawId = getAnyKey(entry, ["id"]);
       const idPart = rawId != null && String(rawId).trim() ? String(rawId).trim() : String(index + 1);
       questions.push({
@@ -597,7 +598,8 @@ function parseGeneralQuestionsFromDataset(fileName, data) {
         level,
         question: questionText,
         options,
-        answer
+        answer,
+        anecdote
       });
     });
   });
@@ -692,7 +694,8 @@ function renderGeneralQuestionCard() {
   const textEl = $("generalQuestionText");
   const listEl = $("generalChoicesList");
   const answerEl = $("generalAnswerText");
-  if (!card || !metaEl || !textEl || !listEl || !answerEl) return;
+  const anecdoteEl = $("generalAnecdoteText");
+  if (!card || !metaEl || !textEl || !listEl || !answerEl || !anecdoteEl) return;
 
   const q = state.generalQuestionCurrent;
   if (!q) {
@@ -701,6 +704,7 @@ function renderGeneralQuestionCard() {
     textEl.textContent = "Choisis une question.";
     listEl.innerHTML = "";
     answerEl.textContent = "";
+    anecdoteEl.textContent = "";
     updateGeneralQuestionButtons();
     return;
   }
@@ -737,6 +741,7 @@ function renderGeneralQuestionCard() {
   } else {
     answerEl.textContent = q.answer ? `Reponse: ${q.answer}` : "";
   }
+  anecdoteEl.textContent = q.anecdote ? `Anecdote: ${q.anecdote}` : "";
   updateGeneralQuestionButtons();
 }
 

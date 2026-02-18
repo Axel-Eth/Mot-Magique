@@ -472,6 +472,21 @@ h2{
   display:none;
 }
 
+.general-question-anecdote-regie{
+  margin-top:8px;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.04);
+  color:#d7e8ff;
+  font-size:14px;
+  line-height:1.35;
+}
+
+.general-question-anecdote-regie:empty{
+  display:none;
+}
+
 .general-question-actions{
   margin-top:10px;
 }
