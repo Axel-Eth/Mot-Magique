@@ -254,9 +254,16 @@ function ensureGeneralQuestionOverlay() {
   overlay.id = "generalQuestionOverlay";
   overlay.className = "general-question-overlay";
   overlay.innerHTML = `
-    <div class="general-question-card">
-      <div class="general-question-text" id="generalQuestionText"></div>
-      <div class="general-question-choices hidden" id="generalQuestionChoices"></div>
+    <div class="general-question-stage">
+      <div class="general-question-window">
+        <div class="general-question-text" id="generalQuestionText"></div>
+      </div>
+      <div class="general-choices-stage hidden" id="generalQuestionChoices">
+        <div class="general-question-choice-window"><div class="general-question-choice" id="generalQuestionChoice0"></div></div>
+        <div class="general-question-choice-window"><div class="general-question-choice" id="generalQuestionChoice1"></div></div>
+        <div class="general-question-choice-window"><div class="general-question-choice" id="generalQuestionChoice2"></div></div>
+        <div class="general-question-choice-window"><div class="general-question-choice" id="generalQuestionChoice3"></div></div>
+      </div>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -307,31 +314,54 @@ export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag
 export function showGeneralQuestion(payload = {}) {
   const overlay = ensureGeneralQuestionOverlay();
   const text = overlay.querySelector("#generalQuestionText");
-  const list = overlay.querySelector("#generalQuestionChoices");
+  const choicesStage = overlay.querySelector("#generalQuestionChoices");
   if (text) text.textContent = String(payload.question || "").trim() || "Question indisponible";
 
   const options = Array.isArray(payload.options)
     ? payload.options.filter((x) => String(x || "").trim())
     : [];
 
-  if (list) {
-    list.innerHTML = "";
+  if (choicesStage) {
     if (payload.showChoices && options.length) {
-      options.forEach((opt) => {
-        const box = document.createElement("div");
-        box.className = "general-question-choice";
-        box.textContent = opt;
-        list.appendChild(box);
-      });
-      list.classList.remove("hidden");
+      for (let i = 0; i < 4; i++) {
+        const win = overlay.querySelector(`#generalQuestionChoice${i}`)?.closest(".general-question-choice-window");
+        const box = overlay.querySelector(`#generalQuestionChoice${i}`);
+        if (!win || !box) continue;
+        const value = options[i] || "";
+        box.textContent = value;
+        box.classList.remove("answer-correct", "answer-wrong");
+        win.classList.remove("answer-correct", "answer-wrong");
+        win.classList.toggle("hidden", !value);
+      }
+      choicesStage.classList.remove("hidden");
     } else {
-      list.classList.add("hidden");
+      choicesStage.classList.add("hidden");
     }
   }
 
   overlay.classList.add("active");
   gridEl.style.display = "none";
   defBar?.classList.add("hidden");
+}
+
+export function markGeneralAnswer(index, isCorrect) {
+  const overlay = ensureGeneralQuestionOverlay();
+  const idx = Number(index);
+  if (!Number.isInteger(idx) || idx < 0 || idx > 3) return;
+
+  const box = overlay.querySelector(`#generalQuestionChoice${idx}`);
+  const win = box?.closest(".general-question-choice-window");
+  if (!box || !win || win.classList.contains("hidden")) return;
+
+  box.classList.remove("answer-correct", "answer-wrong");
+  win.classList.remove("answer-correct", "answer-wrong");
+  if (isCorrect) {
+    box.classList.add("answer-correct");
+    win.classList.add("answer-correct");
+  } else {
+    box.classList.add("answer-wrong");
+    win.classList.add("answer-wrong");
+  }
 }
 
 export { FLAG_ANTHEM_SRC, PEOPLE_THEME_SRC };

@@ -35,6 +35,7 @@ import {
   playDoubleVideo,
   playFilmsOverlayVideo,
   playGenericVideo,
+  markGeneralAnswer,
   showGeneralQuestion,
   stopFilmsOverlayVideo,
   playTripleVideo,
@@ -196,6 +197,10 @@ export function registerMessageHandlers() {
 
       case "SHOW_GENERAL_QUESTION":
         showGeneralQuestion(msg);
+        break;
+
+      case "GENERAL_ANSWER_MARK":
+        markGeneralAnswer(msg.index, !!msg.isCorrect);
         break;
 
       case "PLAY_MUSIC":

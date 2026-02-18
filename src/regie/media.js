@@ -578,6 +578,21 @@ function updateGeneralQuestionButtons() {
   }
 }
 
+function isCorrectGeneralOption(question, option) {
+  const expected = String(question?.answer || "").trim();
+  const actual = String(option || "").trim();
+  if (!expected || !actual) return false;
+  return expected.localeCompare(actual, "fr", { sensitivity: "base" }) === 0;
+}
+
+function markGeneralAnswerOnPlateau(index, isCorrect) {
+  postToPlateau({
+    type: "GENERAL_ANSWER_MARK",
+    index,
+    isCorrect: !!isCorrect
+  });
+}
+
 function renderGeneralQuestionCard() {
   const card = $("generalQuestionCard");
   const metaEl = $("generalQuestionMeta");
@@ -603,12 +618,21 @@ function renderGeneralQuestionCard() {
   listEl.innerHTML = "";
   if (Array.isArray(q.options) && q.options.length) {
     q.options.forEach((opt, idx) => {
-      const li = document.createElement("li");
-      li.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
-      if (q.answer && String(opt).trim() === String(q.answer).trim()) {
-        li.classList.add("correct-answer");
+      const choice = document.createElement("button");
+      choice.type = "button";
+      choice.className = "general-question-choice-regie";
+      choice.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
+      choice.addEventListener("click", () => {
+        if (!state.generalQuestionChoicesVisible) {
+          sendGeneralQuestionToPlateau(true);
+        }
+        const isCorrect = isCorrectGeneralOption(q, opt);
+        markGeneralAnswerOnPlateau(idx, isCorrect);
+      });
+      if (isCorrectGeneralOption(q, opt)) {
+        choice.classList.add("correct-answer");
       }
-      listEl.appendChild(li);
+      listEl.appendChild(choice);
     });
     answerEl.textContent = "";
   } else {
