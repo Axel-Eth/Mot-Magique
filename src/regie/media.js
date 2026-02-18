@@ -625,6 +625,51 @@ function hideGeneralQuestionsModal() {
   $("generalQuestionsModal")?.classList.add("hidden");
 }
 
+function initGeneralQuestionsModalDrag() {
+  const modal = $("generalQuestionsModal");
+  const card = modal?.querySelector(".generalq-modal-card");
+  const handle = $("generalQuestionsDragHandle");
+  if (!modal || !card || !handle) return;
+
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  const onMouseMove = (e) => {
+    if (!dragging) return;
+    const nextLeft = e.clientX - offsetX;
+    const nextTop = e.clientY - offsetY;
+    card.style.left = `${Math.max(8, nextLeft)}px`;
+    card.style.top = `${Math.max(8, nextTop)}px`;
+  };
+
+  const stopDrag = () => {
+    dragging = false;
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", stopDrag);
+  };
+
+  handle.addEventListener("mousedown", (e) => {
+    if (e.button !== 0) return;
+    if (e.target?.closest?.("button")) return;
+
+    const rect = card.getBoundingClientRect();
+    card.style.position = "fixed";
+    card.style.margin = "0";
+    card.style.left = `${rect.left}px`;
+    card.style.top = `${rect.top}px`;
+    card.style.transform = "none";
+
+    dragging = true;
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    e.preventDefault();
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", stopDrag);
+  });
+}
+
 function getGeneralQuestionCandidates() {
   const selectedCategory = $("generalCategorySelect")?.value || "";
   const filtered = selectedCategory
@@ -761,6 +806,8 @@ function updateReplayButtonsState() {
 }
 
 export function registerMediaEvents() {
+  initGeneralQuestionsModalDrag();
+
   $("btnCapitalesSend")?.addEventListener("click", sendCapitale);
   $("capitalesInput")?.addEventListener("keydown", (e) => {
     if (e.key === "Enter") sendCapitale();
