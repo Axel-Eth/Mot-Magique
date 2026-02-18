@@ -339,6 +339,12 @@ h2{
   flex: 1 1 320px;
 }
 
+.generalq-modal-card{
+  width: min(92vw, 1000px);
+  max-height: 86vh;
+  overflow: auto;
+}
+
 .general-question-card-regie{
   margin-top:10px;
   border:1px solid rgba(255,255,255,.16);
@@ -374,6 +380,11 @@ h2{
 .general-question-choices-regie li{
   font-size:17px;
   color:#ffffff;
+}
+
+.general-question-choices-regie li.correct-answer{
+  color:#7dff98;
+  font-weight:900;
 }
 
 .general-question-answer-regie{

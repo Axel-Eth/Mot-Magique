@@ -51,8 +51,7 @@
     "6,10": "O",
     "7,10": "N",
     "8,10": "I",
-    "9,10": "E",
-    "6,7": "F"
+    "9,10": "E"
   },
   "numbers": {
     "2,1": 1,
@@ -82,6 +81,6 @@
     "V:2,2": "Poète à moustache - George Brassens.",
     "V:2,8": "Nous ne mangions qu'un jour sur deux.",
     "H:9,2": "William au piano.",
-    "V:4,6": "Une guitare pour chante autour du feu - Feu de camp / Scoot."
+    "V:4,6": "Une guitare pour chanter autour du feu - Feu de camp / Scoot."
   }
 }

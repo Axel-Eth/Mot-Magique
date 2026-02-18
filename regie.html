@@ -61,6 +61,31 @@
         </div>
       </div>
     </div>
+    <div id="generalQuestionsModal" class="modal hidden" role="dialog" aria-modal="false" aria-labelledby="generalQuestionsTitle">
+      <div class="modal-card generalq-modal-card">
+        <div class="row space-between">
+          <h3 id="generalQuestionsTitle">Questions culture generale</h3>
+          <button id="btnCloseQuestions" class="btn ghost" type="button">Fermer</button>
+        </div>
+        <div class="music-block generalq-block">
+          <div class="media-row">
+            <select id="generalCategorySelect" class="select" aria-label="Categories culture generale"></select>
+            <button id="btnGeneralNext" class="btn ghost" type="button">Suivante</button>
+            <button id="btnGeneralRandom" class="btn" type="button">Aleatoire</button>
+          </div>
+          <div id="generalQuestionCard" class="general-question-card-regie hidden" aria-live="polite">
+            <div id="generalQuestionMeta" class="general-question-meta-regie">-</div>
+            <div id="generalQuestionText" class="general-question-text-regie">Choisis une question.</div>
+            <ol id="generalChoicesList" class="general-question-choices-regie"></ol>
+            <div id="generalAnswerText" class="general-question-answer-regie"></div>
+            <div class="row general-question-actions">
+              <button id="btnGeneralShowQuestion" class="btn success" type="button" disabled>Afficher question</button>
+              <button id="btnGeneralShowChoices" class="btn ghost" type="button" disabled>Afficher propositions</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <section class="panel">
       <h2>Lettre</h2>
       <p class="hint">Tape une lettre (A-Z) puis Entrée</p>
@@ -124,25 +149,6 @@
         </div>
       </div>
 
-      <div class="music-block generalq-block">
-        <label class="label" for="generalCategorySelect">Questions culture generale</label>
-        <div class="media-row">
-          <select id="generalCategorySelect" class="select" aria-label="Categories culture generale"></select>
-          <button id="btnGeneralNext" class="btn ghost" type="button">Suivante</button>
-          <button id="btnGeneralRandom" class="btn" type="button">Aleatoire</button>
-        </div>
-        <div id="generalQuestionCard" class="general-question-card-regie hidden" aria-live="polite">
-          <div id="generalQuestionMeta" class="general-question-meta-regie">-</div>
-          <div id="generalQuestionText" class="general-question-text-regie">Choisis une question.</div>
-          <ol id="generalChoicesList" class="general-question-choices-regie"></ol>
-          <div id="generalAnswerText" class="general-question-answer-regie"></div>
-          <div class="row general-question-actions">
-            <button id="btnGeneralShowQuestion" class="btn success" type="button" disabled>Afficher question</button>
-            <button id="btnGeneralShowChoices" class="btn ghost" type="button" disabled>Afficher propositions</button>
-          </div>
-        </div>
-      </div>
-
       <div class="row small">
         <button id="btnReset" class="btn ghost" type="button">Reset etat</button>
         <button id="btnNewShow" class="btn danger" type="button">Nouvelle emission</button>
@@ -152,6 +158,7 @@
         <button id="btnTriple" class="btn ghost" type="button">Mot x3</button>
         <button id="btnBad" class="btn ghost" type="button">Bad Points</button>
         <button id="btnScores" class="btn ghost" type="button">Scores</button>
+        <button id="btnQuestions" class="btn ghost" type="button">Questions</button>
         <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
         <span id="lastLetter" class="last-letter">Lettre : -</span>
       </div>

@@ -605,11 +605,24 @@ function renderGeneralQuestionCard() {
     q.options.forEach((opt, idx) => {
       const li = document.createElement("li");
       li.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
+      if (q.answer && String(opt).trim() === String(q.answer).trim()) {
+        li.classList.add("correct-answer");
+      }
       listEl.appendChild(li);
     });
+    answerEl.textContent = "";
+  } else {
+    answerEl.textContent = q.answer ? `Reponse: ${q.answer}` : "";
   }
-  answerEl.textContent = q.answer ? `Reponse: ${q.answer}` : "";
   updateGeneralQuestionButtons();
+}
+
+function openGeneralQuestionsModal() {
+  $("generalQuestionsModal")?.classList.remove("hidden");
+}
+
+function hideGeneralQuestionsModal() {
+  $("generalQuestionsModal")?.classList.add("hidden");
 }
 
 function getGeneralQuestionCandidates() {
@@ -783,6 +796,30 @@ export function registerMediaEvents() {
     runXMediaFlow();
   });
 
+  $("btnQuestions")?.addEventListener("click", () => {
+    const modal = $("generalQuestionsModal");
+    if (!modal) return;
+    if (modal.classList.contains("hidden")) {
+      openGeneralQuestionsModal();
+    } else {
+      hideGeneralQuestionsModal();
+    }
+  });
+
+  $("btnCloseQuestions")?.addEventListener("click", () => {
+    hideGeneralQuestionsModal();
+  });
+
+  $("generalQuestionsModal")?.addEventListener("click", (e) => {
+    if (e.target?.id === "generalQuestionsModal") {
+      hideGeneralQuestionsModal();
+    }
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") hideGeneralQuestionsModal();
+  });
+
   $("musicSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
@@ -919,5 +956,6 @@ export function resetMediaForNewShow() {
 
   setCapitalesTone("doux");
   hideCapitaleModal();
+  hideGeneralQuestionsModal();
   runXMediaFlow();
 }

@@ -83,12 +83,14 @@
   },
   "magicWordKey": "V:2,11",
   "definitions": {
-    "V:2,9": "De l’autre côté des Pyrénées",
+    "V:2,9": "Née de l’autre côté des Pyrénées",
     "V:2,2": "Le vin y est une religion.",
     "H:10,2": "Rendez-vous amoureux entre l'eau douce et l'eau salé - L'estuaire est le lieu ou un fleuve (eau douce) se jette dans la mer (eau salé).",
     "H:6,4": "Ancêtre des normands.",
     "H:8,4": "Bureau des retraités.",
     "V:2,6": "Pour voyager à travers le monde.",
-    "V:8,6": "Hôtels malheureux aux quatre coins de la France."
+    "V:8,6": "Hôtels malheureux aux quatre coins de la France.",
+    "H:2,2": "Histoire d'amour entre la pluie et le caramel.",
+    "H:4,2": "Amoureux de la ville."
   }
 }
