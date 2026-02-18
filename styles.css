@@ -397,6 +397,10 @@ h2{
   font-weight:800;
 }
 
+.general-question-answer-regie:empty{
+  display:none;
+}
+
 .general-question-actions{
   margin-top:10px;
 }
