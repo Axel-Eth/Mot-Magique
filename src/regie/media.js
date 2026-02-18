@@ -748,6 +748,17 @@ function hideGeneralQuestionsModal() {
   $("generalQuestionsModal")?.classList.add("hidden");
 }
 
+function showGeneralQuestionsInfo(message) {
+  const modal = $("generalQuestionsInfoModal");
+  const text = $("generalQuestionsInfoText");
+  if (text) text.textContent = message || "";
+  modal?.classList.remove("hidden");
+}
+
+function hideGeneralQuestionsInfo() {
+  $("generalQuestionsInfoModal")?.classList.add("hidden");
+}
+
 function initGeneralQuestionsModalDrag() {
   const modal = $("generalQuestionsModal");
   const card = modal?.querySelector(".generalq-modal-card");
@@ -805,7 +816,7 @@ function getGeneralQuestionCandidates() {
 function selectGeneralQuestion({ random = false } = {}) {
   const candidates = getGeneralQuestionCandidates();
   if (!candidates.length) {
-    alert("Plus de question disponible dans cette categorie. Utilise Nouvelle emission pour reinitialiser.");
+    showGeneralQuestionsInfo("Plus de question disponible dans cette categorie. Utilise Nouvelle emission pour reinitialiser.");
     return;
   }
 
@@ -987,7 +998,14 @@ export function registerMediaEvents() {
   });
 
   window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") hideGeneralQuestionsModal();
+    if (e.key === "Escape") {
+      hideGeneralQuestionsModal();
+      hideGeneralQuestionsInfo();
+    }
+  });
+
+  $("generalQuestionsInfoOk")?.addEventListener("click", () => {
+    hideGeneralQuestionsInfo();
   });
 
   $("musicSelect")?.addEventListener("change", (e) => {
@@ -1133,5 +1151,6 @@ export function resetMediaForNewShow() {
   setCapitalesTone("doux");
   hideCapitaleModal();
   hideGeneralQuestionsModal();
+  hideGeneralQuestionsInfo();
   runXMediaFlow();
 }

@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "4 / 5",
+  "version": 6,
+  "mise-à-jour": "2025-12-14",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Célébrités",
+      "nom": "Club des 27",
+      "slogan": "Jeunes superstars disparues"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quelle chanteuse a inspiré plusieurs stylistes avec ses tatouages et son eye-liner ?",
+          "propositions": [
+            "Norah Jones",
+            "Joan Osborne",
+            "Linda Ronstadt",
+            "Amy Winehouse"
+          ],
+          "réponse": "Amy Winehouse",
+          "anecdote": "Amy Winehouse a connu dès 2007 des problèmes de dépression, de toxicomanie, d'alcoolisme, et de boulimie."
+        },
+        {
+          "id": 2,
+          "question": "Quel guitariste légendaire a commencé à enregistrer deux ans avant sa mort ?",
+          "propositions": [
+            "Junior Watson",
+            "Matt Murphy",
+            "Robert Johnson",
+            "Robert Cray"
+          ],
+          "réponse": "Robert Johnson",
+          "anecdote": "Grande source d'inspiration pour de nombreux artistes, Robert Johnson a été classé cinquième meilleur guitariste de tous les temps."
+        },
+        {
+          "id": 3,
+          "question": "Quel fondateur des Rolling Stones a joué pour le groupe de 1962 à 1969 ?",
+          "propositions": [
+            "Brian Jones",
+            "Steve Winwood",
+            "Neil Hannon",
+            "Chris Corner"
+          ],
+          "réponse": "Brian Jones",
+          "anecdote": "Guitariste et harmoniciste, Brian Jones maîtrisait de nombreux instruments notamment à partir de l'album de 1966 « Aftermath »."
+        },
+        {
+          "id": 4,
+          "question": "Quel artiste noir a proposé une approche révolutionnaire de la guitare électrique ?",
+          "propositions": [
+            "Luke Jordan",
+            "Popa Chubby",
+            "B. B. King",
+            "Jimi Hendrix"
+          ],
+          "réponse": "Jimi Hendrix",
+          "anecdote": "Hendrix avait la particularité d'être un guitariste gaucher et de souvent jouer sur une guitare de droitier, jouant donc à l'envers."
+        },
+        {
+          "id": 5,
+          "question": "Quelle chanteuse était surnommée la « Mama Cosmique » ou encore « Pearl » ?",
+          "propositions": [
+            "Janis Joplin",
+            "Demi Evans",
+            "Rory Block",
+            "Barbara Lynn"
+          ],
+          "réponse": "Janis Joplin",
+          "anecdote": "Janis Joplin a marqué les esprits par ses performances vocales et sa présence scénique électrique pour ses nombreux fans."
+        },
+        {
+          "id": 6,
+          "question": "Quel sex-symbol provocant et excessif est devenu une véritable idole du rock ?",
+          "propositions": [
+            "Jackson Browne",
+            "Ry Cooder",
+            "Jim Morrison",
+            "Ben Harper"
+          ],
+          "réponse": "Jim Morrison",
+          "anecdote": "Attiré par le chamanisme, on lui attribue une réputation de poète maudit que sa mort prématurée a transformé en légende."
+        },
+        {
+          "id": 7,
+          "question": "Quel artiste a formé le groupe Nirvana en 1987 avec Krist Novoselic ?",
+          "propositions": [
+            "Dave Grohl",
+            "Dan Peters",
+            "Kurt Cobain",
+            "Buzz Osborne"
+          ],
+          "réponse": "Kurt Cobain",
+          "anecdote": "Le 8 avril 1994, il sera retrouvé mort dans sa maison à Seattle, s'étant suicidé d'une balle dans la tête trois jours plus tôt."
+        },
+        {
+          "id": 8,
+          "question": "Quel rappeur mort à 27 ans était un ami et proche collaborateur de Tupac Shakur ?",
+          "propositions": [
+            "Bink",
+            "Stretch",
+            "Nottz",
+            "Rakim"
+          ],
+          "réponse": "Stretch",
+          "anecdote": "Leur amitié va toutefois rapidement se dégrader lorsqu'il apprend que Stretch collabore encore avec The Notorious BIG."
+        },
+        {
+          "id": 9,
+          "question": "Quel bassiste du groupe The Stooges est mort d'un oedème aigu du poumon ?",
+          "propositions": [
+            "Tony Sales",
+            "Chris Chaney",
+            "Dave Alexander",
+            "Jim Messina"
+          ],
+          "réponse": "Dave Alexander",
+          "anecdote": "Dave Alexander sera bassiste du groupe sur leurs deux premiers albums, avant de s'en faire exclure en 1970 pour alcoolisme."
+        },
+        {
+          "id": 10,
+          "question": "Quel DJ français était l'un des membres fondateurs du fanzine eDEN ?",
+          "propositions": [
+            "Frank Savannah",
+            "Greg Parys",
+            "Tom Bouthier",
+            "Claude Challe"
+          ],
+          "réponse": "Tom Bouthier",
+          "anecdote": "Pilier de la nuit parisienne, il multipliera les résidences dans les clubs de la capitale (La Luna, Le Queen, Le Boccacio)."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel chanteur de reggae jamaïcain est mort à 27 ans dans un accident de voiture ?",
+          "propositions": [
+            "Jacob Miller",
+            "Tony Rebel",
+            "Peter Broggs",
+            "Stranger Cole"
+          ],
+          "réponse": "Jacob Miller",
+          "anecdote": "Jacob Miller a connu le succès en 1974 grâce à « Keep on Knocking », une nouvelle version de « Love is the Message »."
+        },
+        {
+          "id": 12,
+          "question": "Quel guitariste de talent fut l'un des membres du groupe Minutemen ?",
+          "propositions": [
+            "Al Jardine",
+            "Marc Ford",
+            "D. Boon",
+            "Dave Sabo"
+          ],
+          "réponse": "D. Boon",
+          "anecdote": "Le magazine Rolling Stone a classé le compositeur américain Dennes Dale Boon 89e meilleur guitariste de tous les temps."
+        },
+        {
+          "id": 13,
+          "question": "Quelle chanteuse américaine a été étranglée en sortant de chez une amie ?",
+          "propositions": [
+            "Mia Zapata",
+            "Joy Villa",
+            "Brix Smith",
+            "Candice Night"
+          ],
+          "réponse": "Mia Zapata",
+          "anecdote": "Dix ans après sa mort, les progrès de la science ont permis de trouver le coupable : Jesus Mezquia, un Floridien de 48 ans."
+        },
+        {
+          "id": 14,
+          "question": "Quelle bassiste de rock fut découverte morte deux mois après Kurt Cobain ?",
+          "propositions": [
+            "Kristen Pfaff",
+            "Nicole Fiorentino",
+            "Michelle Mae",
+            "Lori Black"
+          ],
+          "réponse": "Kristen Pfaff",
+          "anecdote": "Autodidacte, ayant étudié le piano et le violoncelle durant sa jeunesse, Kristen Pfaff a appris d'elle-même à jouer de la basse."
+        },
+        {
+          "id": 15,
+          "question": "Quel cousin du rappeur Chief Keef a rejoint le club des 27 le 19 janvier 2018 ?",
+          "propositions": [
+            "Jarren Benton",
+            "Nick Cannon",
+            "Dudley Perkins",
+            "Fredo Santana"
+          ],
+          "réponse": "Fredo Santana",
+          "anecdote": "Fredo Santana était issu du label Glory Boyz Entertainment, un label regroupant déjà des noms connus du hip-hop américain."
+        },
+        {
+          "id": 16,
+          "question": "Qui est entré directement au Top 40 avec son single « Guess Who » ?",
+          "propositions": [
+            "Lee Moses",
+            "Jesse Belvin",
+            "Jerry Butler",
+            "Piano Red"
+          ],
+          "réponse": "Jesse Belvin",
+          "anecdote": "Le style de Jesse Belvin, influencé par Nat King Cole et Billy Eckstine, devint un modèle pour Sam Cooke et d'autres."
+        },
+        {
+          "id": 17,
+          "question": "Quel musicien est intimement lié au début du théâtre franco-ontarien ?",
+          "propositions": [
+            "François Paré",
+            "André Paiement",
+            "Maurice Henrie",
+            "Georges Bugnet"
+          ],
+          "réponse": "André Paiement",
+          "anecdote": "Membre du groupe musical CANO, il a écrit plusieurs pièces de théâtre, dont « La vie et les temps de Médéric Boileau »."
+        },
+        {
+          "id": 18,
+          "question": "Quelle chanteuse yéyé a connu le succès avec « Et quelque chose me dit » ?",
+          "propositions": [
+            "Billie Holiday",
+            "Nikka Costa",
+            "Marcia Ball",
+            "Ria Bartok"
+          ],
+          "réponse": "Ria Bartok",
+          "anecdote": "Ria Bartok, qui a donné son dernier concert en France le 13 mai 1967, décèdera subitement en 1970 dans un incendie."
+        },
+        {
+          "id": 19,
+          "question": "Quel musicien était surnommé le hibou aveugle en raison de sa très mauvaise vue ?",
+          "propositions": [
+            "Alan Wilson",
+            "Sonny Terry",
+            "Jerry McCain",
+            "James Cotton"
+          ],
+          "réponse": "Alan Wilson",
+          "anecdote": "En novembre 1965, il a fondé avec son ami le chanteur Bob Hite le groupe de blues-rock Canned Heat en hommage à Tommy Johnson."
+        },
+        {
+          "id": 20,
+          "question": "Quel artiste a été trouvé mort par hémorragie digestive dans sa maison de Californie ?",
+          "propositions": [
+            "Nicky Hopkins",
+            "Ron McKernan",
+            "David Bryan",
+            "Korey Cooper"
+          ],
+          "réponse": "Ron McKernan",
+          "anecdote": "Il a assuré dans Grateful Dead les rôles de chanteur, d'harmonica, d'organiste, de percussionniste et parfois de guitariste."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel membre du groupe Badfinger a mis fin à ses jours le 24 avril 1975 ?",
+          "propositions": [
+            "Eddy Grant",
+            "Roy Lynes",
+            "Chris Rainbow",
+            "Pete Ham"
+          ],
+          "réponse": "Pete Ham",
+          "anecdote": "Le succès du groupe The Iveys, rebaptisé Badfinger, viendra avec une composition de Paul McCartney, « Come and Get It »."
+        },
+        {
+          "id": 22,
+          "question": "À qui Ken Hensley a-t-il demandé de rejoindre le groupe Uriah Heep ?",
+          "propositions": [
+            "Roland Wolf",
+            "John Carney",
+            "Gary Thain",
+            "Kim Gordon"
+          ],
+          "réponse": "Gary Thain",
+          "anecdote": "En 1974, Gary Thain souffrira d'une sévère électrocution et de brûlures, le groupe devant annuler le reste de sa tournée."
+        },
+        {
+          "id": 23,
+          "question": "Quel batteur du groupe Echo and the Bunnymen s'est tué en moto en 1989 ?",
+          "propositions": [
+            "Keef Hartley",
+            "Pete de Freitas",
+            "Terry Cox",
+            "Phillip Tomanov"
+          ],
+          "réponse": "Pete de Freitas",
+          "anecdote": "En 1979, il devient le batteur du groupe mais le quitte en 1985 pour tenter de fonder un nouveau groupe à La Nouvelle-Orléans."
+        },
+        {
+          "id": 24,
+          "question": "Quelle compositrice allemande a chanté en français, anglais, russe et hébreu ?",
+          "propositions": [
+            "Francesca",
+            "Cassandra",
+            "Loretta",
+            "Alexandra"
+          ],
+          "réponse": "Alexandra",
+          "anecdote": "Le 31 juillet 1969, elle est tuée sur le coup dans un accident automobile alors qu'elle conduisait avec sa mère et son fils."
+        },
+        {
+          "id": 25,
+          "question": "Quel saxophoniste fut un représentant du jazz West Coast dans les années 1950 ?",
+          "propositions": [
+            "Ronnie Cuber",
+            "Nick Brignola",
+            "Alvin Tyler",
+            "Bob Gordon"
+          ],
+          "réponse": "Bob Gordon",
+          "anecdote": "Il a participé à de nombreux enregistrements avec Bob Enevoldsen, Herbie Harper, Bud Shank, Marty Paich et Harry Babasin."
+        },
+        {
+          "id": 26,
+          "question": "Quel guitariste écossais fut tué sur scène par électrocution en 1972 ?",
+          "propositions": [
+            "Leslie Harvey",
+            "Robin Simon",
+            "Tony Bowers",
+            "Dick Gaughan"
+          ],
+          "réponse": "Leslie Harvey",
+          "anecdote": "Dans les années 1960, Alan Price lui a demandé de rejoindre The Animals, mais Harvey choisit de rester avec son frère Alex."
+        },
+        {
+          "id": 27,
+          "question": "Qui fut un pionnier de l'intégration de la musique populaire brésilienne ?",
+          "propositions": [
+            "Sergio Mendes",
+            "Arnaldo Jabor",
+            "Alexandre Levy",
+            "Marcos Valle"
+          ],
+          "réponse": "Alexandre Levy",
+          "anecdote": "Alexandre Levy est un compositeur brésilien, pianiste et chef d'orchestre qui possède aujourd'hui un prestigieux prix à son nom."
+        },
+        {
+          "id": 28,
+          "question": "Quel compositeur tchèque est mort des suites d'une fièvre typhoïde ?",
+          "propositions": [
+            "Hans Sitt",
+            "Josef Slavik",
+            "Franz Benda",
+            "Leopold Jansa"
+          ],
+          "réponse": "Josef Slavik",
+          "anecdote": "Chopin dira de lui dans une lettre à ses parents : « Il prive le public de la parole et met les larmes aux yeux »."
+        },
+        {
+          "id": 29,
+          "question": "Quel compositeur brésilien était pourtant paralysé de naissance ?",
+          "propositions": [
+            "Gilberto Mendes",
+            "Almeida Prado",
+            "Marco Aurelio Yano",
+            "Jorge Antunes"
+          ],
+          "réponse": "Marco Aurelio Yano",
+          "anecdote": "Son oeuvre la plus connue est son concerto pour hautbois composé en 1991 mais inachevée suite à une tumeur au cerveau."
+        },
+        {
+          "id": 30,
+          "question": "Qui est considéré comme le plus important des musiciens de Guinée-Bissau ?",
+          "propositions": [
+            "Vasco Cabral",
+            "Amilcar Cabral",
+            "Odete Semedo",
+            "José Carlos Schwarz"
+          ],
+          "réponse": "José Carlos Schwarz",
+          "anecdote": "Après l'indépendance, José Carlos Schwarz est devenu directeur de département des arts et de la culture de Guinée-Bissau."
+        }
+      ]
+    }
+  }
+}

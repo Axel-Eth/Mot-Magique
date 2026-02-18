@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 7,
+  "mise-à-jour": "2026-01-26",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Musique",
+      "nom": "Francis Cabrel",
+      "slogan": "Franc-parler et douceur des mots"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quel artiste a eu une influence majeure dans la carrière de Francis Cabrel ?",
+          "propositions": [
+            "Elvis Presley",
+            "Frank Sinatra",
+            "Jimmy Page",
+            "Bob Dylan"
+          ],
+          "réponse": "Bob Dylan",
+          "anecdote": "À treize ans, Francis Cabrel trouve sa voix en entendant pour la première fois « Like a Rolling Stone » de Bob Dylan à la radio."
+        },
+        {
+          "id": 2,
+          "question": "À qui est dédiée la chanson « Petite Marie » de Francis Cabrel ?",
+          "propositions": [
+            "Marie Curie",
+            "Mariette Darjo",
+            "Margot Robbie",
+            "Marie-Ange Nardi"
+          ],
+          "réponse": "Mariette Darjo",
+          "anecdote": "En juin 1974, il remporte face à 400 candidats un concours de chanson de Sud Radio avec « Petite Marie » et remporte  2 000 francs."
+        },
+        {
+          "id": 3,
+          "question": "De quel album sorti en 1989 est extrait le single « C'est écrit » ?",
+          "propositions": [
+            "Sarbacane",
+            "Photos de voyages",
+            "Fragile",
+            "Carte postale"
+          ],
+          "réponse": "Sarbacane",
+          "anecdote": "Francis Cabrel a obtenu le succès avec son deuxième album, « Les chemins de traverse » et son titre phare « Je l'aime à mourir »."
+        },
+        {
+          "id": 4,
+          "question": "Quelle oeuvre de Louis Chedid et Pierre-Dominique Burgaud a-t-il produit ?",
+          "propositions": [
+            "Le Soldat rose",
+            "Émilie Jolie",
+            "Peau d'âne",
+            "Sol En Cirque"
+          ],
+          "réponse": "Le Soldat rose",
+          "anecdote": "En plus de sa collaboration à l'illustration musicale du conte « Le Soldat rose » en 2006, Francis Cabrel y chantera « Gardien de nuit »."
+        },
+        {
+          "id": 5,
+          "question": "Dans quelle langue enregistre-t-il des adaptations de ses titres ?",
+          "propositions": [
+            "Néerlandais",
+            "Espagnol",
+            "Russe",
+            "Allemand"
+          ],
+          "réponse": "Espagnol",
+          "anecdote": "Il n'a cependant jamais enregistré de chansons en anglais, préférant proposer des adaptations françaises de ses titres préférés."
+        },
+        {
+          "id": 6,
+          "question": "Fin 2018, combien de disques a-t-il déjà vendu depuis ses débuts ?",
+          "propositions": [
+            "25 millions",
+            "15 millions",
+            "10 millions",
+            "20 millions"
+          ],
+          "réponse": "25 millions",
+          "anecdote": "Après sept ans d'absence, il sort en 2015 son 13e album, « In Extremis », suivi d'une tournée en France, en Suisse et en Belgique."
+        },
+        {
+          "id": 7,
+          "question": "Contre quelle pratique manifeste-t-il son engagement dans « La Corrida » ?",
+          "propositions": [
+            "Fauconnerie",
+            "Course d'escargot",
+            "Tauromachie",
+            "Lancer de renard"
+          ],
+          "réponse": "Tauromachie",
+          "anecdote": "Dans cette chanson, Francis Cabrel donne la parole au taureau et dénonce l'absurdité autant que la cruauté de ce spectacle."
+        },
+        {
+          "id": 8,
+          "question": "De quoi sont faits les murs du premier album de Francis Cabrel ?",
+          "propositions": [
+            "De briques",
+            "De paille",
+            "De terre",
+            "De poussière"
+          ],
+          "réponse": "De poussière",
+          "anecdote": "La maison de disques CBS avait recruté Francis Cabrel après l'avoir entendu chanter « Petite Marie » lors d'un concours à Toulouse."
+        },
+        {
+          "id": 9,
+          "question": "Qui a parodié Francis Cabrel avec « Ma Cabane au fond du jardin » ?",
+          "propositions": [
+            "Laurent Gerra",
+            "Nicolas Canteloup",
+            "Jean Roucas",
+            "Didier Gustin"
+          ],
+          "réponse": "Laurent Gerra",
+          "anecdote": "Francis Cabrel n'apprécie pas cette parodie et l'exprimera en 2009 dans une interview de Nicolas Poincaré sur RTL."
+        },
+        {
+          "id": 10,
+          "question": "En quelle année le chanteur Francis Cabrel a-t-il vu le jour ?",
+          "propositions": [
+            "1953",
+            "1963",
+            "1943",
+            "1973"
+          ],
+          "réponse": "1953",
+          "anecdote": "Francis Cabrel est un auteur-compositeur-interprète français né le 23 novembre 1953 à Agen, dans le Lot-et-Garonne."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "De quel village Francis Cabrel est-il devenu conseiller municipal ?",
+          "propositions": [
+            "Astaffort",
+            "Brax",
+            "Roquefort",
+            "Laplume"
+          ],
+          "réponse": "Astaffort",
+          "anecdote": "Francis Cabrel est proche de la vie politique de la commune d'Astaffort dont il a été conseiller municipal de mars 1989 à 2004."
+        },
+        {
+          "id": 12,
+          "question": "Quel triple album live de Francis Cabrel est sorti fin 2000 ?",
+          "propositions": [
+            "Cabrel public",
+            "Vise le ciel",
+            "Double tour",
+            "Aniversario"
+          ],
+          "réponse": "Double tour",
+          "anecdote": "« Double Tour » est un album live de Francis Cabrel regroupant deux tournées: « Hors-saison » (1999) et « Samedi soir sur la Terre » (1996)."
+        },
+        {
+          "id": 13,
+          "question": "Quel album de Cabrel est composé de reprises de chansons de Bob Dylan ?",
+          "propositions": [
+            "Vise le ciel",
+            "Hors-saison",
+            "Double tour",
+            "In extremis"
+          ],
+          "réponse": "Vise le ciel",
+          "anecdote": "Bob Dylan est le nom de scène principal de Robert Allen Zimmerman, auteur-compositeur-interprète né à Duluth."
+        },
+        {
+          "id": 14,
+          "question": "Avec qui Francis Cabrel a-t-il chanté « Tandem » en duo en 1997 ?",
+          "propositions": [
+            "Liane Foly",
+            "Vanessa Paradis",
+            "Isabelle Boulay",
+            "Julie Pietri"
+          ],
+          "réponse": "Vanessa Paradis",
+          "anecdote": "« Variations sur le même t'aime » est porté par trois singles : « Tandem », « Dis-lui toi que je t'aime » et « L'Amour en soi »."
+        },
+        {
+          "id": 15,
+          "question": "Pour quel film Francis Cabrel a-t-il chanté « Les filles à quoi ça sert » ?",
+          "propositions": [
+            "Zarafa",
+            "Croc-Blanc",
+            "Titeuf le film",
+            "Igor"
+          ],
+          "réponse": "Titeuf le film",
+          "anecdote": "Johnny Hallyday, James Blunt, Jean-Jacques Goldman, Patrick Bruel et Bénabar seront aussi présents dans cette BO."
+        },
+        {
+          "id": 16,
+          "question": "Pour quelle chanteuse a-t-il écrit les paroles de « Quand tu pars » en 1986 ?",
+          "propositions": [
+            "Catherine Lara",
+            "Amanda Lear",
+            "Caroline Loeb",
+            "Rose Laurens"
+          ],
+          "réponse": "Rose Laurens",
+          "anecdote": "Née Rose Podwojny, d'ascendance polonaise, hanteuse d'« Africa » décédera à 65 ans des suites d'une longue maladie."
+        },
+        {
+          "id": 17,
+          "question": "Quel album comprend « L'Encre de tes yeux » et « La Dame de Haute-Savoie » ?",
+          "propositions": [
+            "Fragile",
+            "Photos de voyages",
+            "Carte postale",
+            "Sarbacane"
+          ],
+          "réponse": "Fragile",
+          "anecdote": "L'album, qui s'est vendu à plus d'un million d'exemplaires (Disque de diamant), contient des chansons incontournables du chanteur."
+        },
+        {
+          "id": 18,
+          "question": "Qui ont surnommé Francis Cabrel la grand-mère à moustache ?",
+          "propositions": [
+            "Les Snuls",
+            "Les Guignols",
+            "Les Quat'z'amis",
+            "Les Minikeums"
+          ],
+          "réponse": "Les Guignols",
+          "anecdote": "Le chanteur n'avait pas apprécié cette caricature dont la marionnette avait pour phrase fétiche « C'était mieux avant »."
+        },
+        {
+          "id": 19,
+          "question": "De quel label les frères Seff ont-il ouvert les portes à Francis Cabrel ?",
+          "propositions": [
+            "Sony",
+            "Universal",
+            "Electra",
+            "CBS"
+          ],
+          "réponse": "CBS",
+          "anecdote": "Il y accédera suite à un concours remporté à Toulouse, dont le jury était notamment composé de Daniel et Richard Seff."
+        },
+        {
+          "id": 20,
+          "question": "De quel pays Francis Cabrel a-t-il adopté la petite Thiu en 2004 ?",
+          "propositions": [
+            "Inde",
+            "Vietnam",
+            "Thaïlande",
+            "Cambodge"
+          ],
+          "réponse": "Vietnam",
+          "anecdote": "Francis Cabrel a trois filles : Aurélie, née en 1986, Manon née en 1990 et Thiu, née au Vietnam et adoptée en 2004 à trois mois."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Dans la famille Cabrel, comment se prénomme le frère de Francis ?",
+          "propositions": [
+            "Patrick",
+            "Philippe",
+            "Pascal",
+            "Pierre"
+          ],
+          "réponse": "Philippe",
+          "anecdote": "Vivant à Astaffort, Francis Cabrel est né d'un père ouvrier dans une biscuiterie et d'une mère caissière dans une cafétéria."
+        },
+        {
+          "id": 22,
+          "question": "Quel producteur a géré le début de carrière de Francis Cabrel ?",
+          "propositions": [
+            "Jacques Canetti",
+            "Jacques Morali",
+            "Jacques Lanzmann",
+            "Jacques Marouani"
+          ],
+          "réponse": "Jacques Marouani",
+          "anecdote": "C'est ensuite à Maurice Tejedor, producteur de spectacles, que Francis Cabrel confiera l'organisation de ses spectacles et tournées."
+        },
+        {
+          "id": 23,
+          "question": "En première partie de qui s'est-il produit à l'Olympia en 1977 ?",
+          "propositions": [
+            "Dick Rivers",
+            "Jacques Dutronc",
+            "Gilbert Bécaud",
+            "Dave"
+          ],
+          "réponse": "Dave",
+          "anecdote": "Francis Cabrel chantera à l'Olympia durant un mois et gagnera le Prix du public au Festival de Spa en Belgique en 1978."
+        },
+        {
+          "id": 24,
+          "question": "Sur quel label Francis Cabrel a-t-il déjà produits de jeunes talents ?",
+          "propositions": [
+            "Parade",
+            "Cargo",
+            "Versailles",
+            "Musica"
+          ],
+          "réponse": "Cargo",
+          "anecdote": "Il crée en 1988 les « Rencontres d'Astaffort », festival musical et culturel qui réunit chaque année des milliers de passionnés de guitare."
+        },
+        {
+          "id": 25,
+          "question": "Qui a sorti un ouvrage consacré à Francis Cabrel intitulé « Hors saison » ?",
+          "propositions": [
+            "Guy Bourdin",
+            "Claude Gassian",
+            "Pierre Berdoy",
+            "Sylvain Cazenave"
+          ],
+          "réponse": "Claude Gassian",
+          "anecdote": "Claude Gassian est un photographe français spécialisé dans les portraits de personnes célèbres du monde de la musique."
+        },
+        {
+          "id": 26,
+          "question": "Quelle association loi de 1901 Francis Cabrel a-t-il fondé en 1993 ?",
+          "propositions": [
+            "Voix du Sud",
+            "Venu de l'Ouest",
+            "Vent d'Est",
+            "Croix du Nord"
+          ],
+          "réponse": "Voix du Sud",
+          "anecdote": "Cet organisme réalise des stages de formation professionnelle pour jeunes auteurs, compositeurs et interprètes de chansons."
+        },
+        {
+          "id": 27,
+          "question": "Contre quelle maladie la chanson « Il faudra leur dire » a-t-elle servi de support ?",
+          "propositions": [
+            "Hépatite",
+            "Leucémie",
+            "Anorexie",
+            "Ostéoporose"
+          ],
+          "réponse": "Leucémie",
+          "anecdote": "Certains hématologues avancent l'idée que les progrès en matière de leucémie se font plus rapidement que pour les autres cancers."
+        },
+        {
+          "id": 28,
+          "question": "Pour qui a-t-il écrit les paroles et la musique de « Qui à part nous » ?",
+          "propositions": [
+            "Maurane",
+            "Marie Myriam",
+            "Nana Mouskouri",
+            "Jeanne Mas"
+          ],
+          "réponse": "Maurane",
+          "anecdote": "Maurane fut révélée dans les années 1980 par son rôle de Marie-Jeanne dans la deuxième version de l'opéra-rock « Starmania »."
+        },
+        {
+          "id": 29,
+          "question": "Quel boys band new-yorkais a repris « Je l'aime à mourir » en version salsa ?",
+          "propositions": [
+            "NSYNC",
+            "DLG",
+            "Backstreet Boys",
+            "3T"
+          ],
+          "réponse": "DLG",
+          "anecdote": "Formé en 1996, le groupe d'origine cubaine joue une salsa dynamique teintée de ragga principalement destinée aux danseurs."
+        },
+        {
+          "id": 30,
+          "question": "Qui a chanté « Octobre » en 1998 dans un album de reprises ?",
+          "propositions": [
+            "Nana Mouskouri",
+            "Lio",
+            "Guesch Patti",
+            "Juliette Gréco"
+          ],
+          "réponse": "Guesch Patti",
+          "anecdote": "En 1998, douze artistes ont repris des grands classique de Cabrel dans « Ils chantent Francis Cabrel », sorti aux éditions Atlas."
+        }
+      ]
+    }
+  }
+}

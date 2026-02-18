@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 1,
+  "mise-à-jour": "2024-03-31",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Musique",
+      "nom": "France Gall",
+      "slogan": "Tout pour la musique"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quel grand concours musical France Gall a-t-elle remporté en 1965 ?",
+          "propositions": [
+            "Miss France",
+            "Intervilles",
+            "Nouvelle Star",
+            "Eurovision"
+          ],
+          "réponse": "Eurovision",
+          "anecdote": "Le Concours fut diffusé dans les pays d'Europe de l'Est via le réseau Intervision, avec une audience de 150 millions de téléspectateurs."
+        },
+        {
+          "id": 2,
+          "question": "Quel musicien deviendra en 1976 l'époux puis le compositeur de France Gall ?",
+          "propositions": [
+            "Gilbert Bécaud",
+            "Michel Berger",
+            "Daniel Guichard",
+            "Daniel Lavoie"
+          ],
+          "réponse": "Michel Berger",
+          "anecdote": "Avec « La Déclaration d'amour », Michel Berger relancera la carrière de la chanteuse et produira tous ses albums à partir de 1975."
+        },
+        {
+          "id": 3,
+          "question": "Quelle comédie musicale de 2015 a été écrite par France Gall et Bruck Dawit ?",
+          "propositions": [
+            "Grease",
+            "Résiste",
+            "Annie",
+            "Mathilda"
+          ],
+          "réponse": "Résiste",
+          "anecdote": "Cette comédie musicale a obtenu en 2017 le Trophée du public lors de la première cérémonie des Trophées de la Comédie Musicale."
+        },
+        {
+          "id": 4,
+          "question": "Qui a écrit et composé la chanson de France Gall « Laisse tomber les filles » ?",
+          "propositions": [
+            "Jacques Dutronc",
+            "Claude François",
+            "Serge Gainsbourg",
+            "Eddy Mitchell"
+          ],
+          "réponse": "Serge Gainsbourg",
+          "anecdote": "France Gall ordonne aux garçons volages de renoncer aux filles tout en proférant des menaces s'ils persistent dans cette mauvaise voie."
+        },
+        {
+          "id": 5,
+          "question": "Qui aurait déclaré à France Gall : « Tu as gagné, mais tu m'as perdu. » ?",
+          "propositions": [
+            "Hugues Aufray",
+            "Daniel Balavoine",
+            "Julien Clerc",
+            "Claude François"
+          ],
+          "réponse": "Claude François",
+          "anecdote": "Claude François lui a annoncé la rupture de leur couple juste après l'annonce de sa victoire au Concours Eurovision de la chanson."
+        },
+        {
+          "id": 6,
+          "question": "Quel titre de France Gall est célèbre pour ses deux niveaux de lecture ?",
+          "propositions": [
+            "Les Sucettes",
+            "Il neige",
+            "La Cloche",
+            "La Petite"
+          ],
+          "réponse": "Les Sucettes",
+          "anecdote": "L'un décrit la scène innocente d'une fillette friande de sucettes achetées au drugstore, l'autre décrit implicitement une fellation."
+        },
+        {
+          "id": 7,
+          "question": "En hommage à quel artiste disparu France Gall a-t-elle chanté « Évidemment » ?",
+          "propositions": [
+            "Sacha Distel",
+            "Coluche",
+            "Daniel Balavoine",
+            "Michel Berger"
+          ],
+          "réponse": "Daniel Balavoine",
+          "anecdote": "Lors de l'enregistrement de la chanson, France Gall dut s'y reprendre plusieurs fois tellement le texte la touchait."
+        },
+        {
+          "id": 8,
+          "question": "Dans quel album retrouve-t-on à la fois France Gall et Michel Berger ?",
+          "propositions": [
+            "France Gall",
+            "Débranche !",
+            "Baby pop",
+            "Double Jeu"
+          ],
+          "réponse": "Double Jeu",
+          "anecdote": "Michel Berger et France Gall présentèrent leur album à leurs proches lors d'une session au club de jazz le New Morning en 1992."
+        },
+        {
+          "id": 9,
+          "question": "Quelle artiste a sorti l'album « Ma déclaration » proposant des reprises de France Gall ?",
+          "propositions": [
+            "Alizée",
+            "Jenifer",
+            "Lââm",
+            "Lorie"
+          ],
+          "réponse": "Jenifer",
+          "anecdote": "Suite à la polémique avec France Gall, la promotion de l'album s'arrêta le 22 juin 2013, Jenifer ne souhaitant pas poursuivre."
+        },
+        {
+          "id": 10,
+          "question": "Quel titre France Gall a-t-elle sorti en hommage à la chanteuse Ella Fitzgerald ?",
+          "propositions": [
+            "Résiste",
+            "Calypso",
+            "Ella, elle l'a",
+            "Babacar"
+          ],
+          "réponse": "Ella, elle l'a",
+          "anecdote": "Il s'agit du plus grand succès musical de France Gall, qui s'est vendu à 1.5 million d'exemplaires dans le monde, dont 452 000 en France."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel pays France Gall représentait-elle au dixième concours Eurovision de la chanson ?",
+          "propositions": [
+            "France",
+            "Suisse",
+            "Belgique",
+            "Luxembourg"
+          ],
+          "réponse": "Luxembourg",
+          "anecdote": "La chanson fut intégralement interprétée en français, une des langues nationales du Luxembourg, comme le voulait la coutume."
+        },
+        {
+          "id": 12,
+          "question": "En quelle année France Gall a-t-elle officiellement quitté la scène musicale ?",
+          "propositions": [
+            "1997",
+            "1999",
+            "2001",
+            "2003"
+          ],
+          "réponse": "1997",
+          "anecdote": "À partir de 1992, marquée par la mort de son mari puis celle de sa fille, France Gall sera aussi victime de problèmes de santé."
+        },
+        {
+          "id": 13,
+          "question": "Comment France Gall fut-elle surnommée par sa famille jusqu'à sa mort ?",
+          "propositions": [
+            "Fafa",
+            "Cosette",
+            "Babou",
+            "Nini"
+          ],
+          "réponse": "Babou",
+          "anecdote": "Son père, Robert Gall, ancien élève du conservatoire, lui octroiera le titre de petit caporal devant son caractère affirmé."
+        },
+        {
+          "id": 14,
+          "question": "Dans quel pays France Gall a-t-elle rencontré le succès fin des années 1960 ?",
+          "propositions": [
+            "Luxembourg",
+            "Espagne",
+            "Allemagne",
+            "Suisse"
+          ],
+          "réponse": "Allemagne",
+          "anecdote": "En France, à la même époque, France Gall ne fait plus de succès et son association avec Serge Gainsbourg ne fonctionne plus."
+        },
+        {
+          "id": 15,
+          "question": "Quel est le titre du premier album studio enregistré par France Gall ?",
+          "propositions": [
+            "Babacar",
+            "Dancing Disco",
+            "Débranche !",
+            "France Gall"
+          ],
+          "réponse": "France Gall",
+          "anecdote": "Sorti le 6 janvier 1976, cet album s'est vendu à plus de 100 000 exemplaires en France (182 100 exemplaires selon InfoDisc)."
+        },
+        {
+          "id": 16,
+          "question": "Avec qui France Gall a-t-elle chanté sur scène pour la dernière fois ?",
+          "propositions": [
+            "Johnny Hallyday",
+            "Jacques Dutronc",
+            "Florent Pagny",
+            "Michel Sardou"
+          ],
+          "réponse": "Johnny Hallyday",
+          "anecdote": "Les 12 et 15 août 2000, France Gall fait deux apparitions sur la scène de l'Olympia pour interpréter « Quelque chose de Tennessee »."
+        },
+        {
+          "id": 17,
+          "question": "Avec quel chanteur français France Gall a-t-elle vécu de 1970 à 1974 ?",
+          "propositions": [
+            "Claude François",
+            "Serge Gainsbourg",
+            "Michel Berger",
+            "Julien Clerc"
+          ],
+          "réponse": "Julien Clerc",
+          "anecdote": "Sa collaboration avec Michel Berger, entamée en 1973, se muera progressivement en relation amoureuse jusqu'au mariage en 1976."
+        },
+        {
+          "id": 18,
+          "question": "Quelle actrice incarne France Gall dans le film « Cloclo », de Florent Emilio-Siri ?",
+          "propositions": [
+            "Charlotte Deysine",
+            "Mélanie Thierry",
+            "Isabelle Ganz",
+            "Joséphine Japy"
+          ],
+          "réponse": "Joséphine Japy",
+          "anecdote": "Joséphine Japy a été nommée pour le César du meilleur espoir féminin 2015 à la 40e cérémonie des César pour « Respire »."
+        },
+        {
+          "id": 19,
+          "question": "Quel album reste à ce jour le plus grand succès commercial de France Gall ?",
+          "propositions": [
+            "Double Jeu",
+            "Débranche !",
+            "Babacar",
+            "Dancing Disco"
+          ],
+          "réponse": "Babacar",
+          "anecdote": "L'album contient des tubes incontournables comme « Ella, elle l'a », « Évidemment » (hommage à Daniel Balavoine) et « La Chanson d'Azima »."
+        },
+        {
+          "id": 20,
+          "question": "Sur quel album retrouve-t-on les titres « Hong-Kong Star » et « Cézanne peint » ?",
+          "propositions": [
+            "Babacar",
+            "Débranche !",
+            "Dancing Disco",
+            "Double Jeu"
+          ],
+          "réponse": "Débranche !",
+          "anecdote": "En exergue sur la pochette: « Je dédie ce disque à tous ceux qui ne m'entendent pas seulement mais qui m'écoutent »."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel était le véritable prénom de la chanteuse française France Gall ?",
+          "propositions": [
+            "Catherine",
+            "Dorothée",
+            "Isabelle",
+            "Francine"
+          ],
+          "réponse": "Isabelle",
+          "anecdote": "France Gall est née le 9 octobre 1947 dans le 12e arrondissement de Paris et morte le 7 janvier 2018 à Neuilly-sur-Seine."
+        },
+        {
+          "id": 22,
+          "question": "Pour ne pas interférer avec qui France Gall a-t-elle dû changer de prénom ?",
+          "propositions": [
+            "Isabelle Adjani",
+            "Isabelle Georges",
+            "Isabelle Bonnadier",
+            "Isabelle Aubret"
+          ],
+          "réponse": "Isabelle Aubret",
+          "anecdote": "Isabelle Aubret a remporté en 1962 le Concours Eurovision de la chanson pour la France avec la chanson « Un premier amour »."
+        },
+        {
+          "id": 23,
+          "question": "Quel rôle France Gall interprétait-elle dans l'opéra-rock « Starmania » ?",
+          "propositions": [
+            "Marie-Jeanne",
+            "Cristal",
+            "Stella",
+            "Ziggy"
+          ],
+          "réponse": "Cristal",
+          "anecdote": "La comédie musicale de Michel Berger, sur un livret de Luc Plamondon, fut au fil du temps l'un des spectacles les plus joués."
+        },
+        {
+          "id": 24,
+          "question": "Sous quel label France Gall avait-elle signé jusqu'à sa majorité ?",
+          "propositions": [
+            "Atlantic",
+            "Philips",
+            "Warner",
+            "Polydor"
+          ],
+          "réponse": "Philips",
+          "anecdote": "La même année (1968), France Gall en profitera également pour voler de ses propres ailes en se séparant de Denis Bourgeois."
+        },
+        {
+          "id": 25,
+          "question": "Quel spectacle de France Gall était exclusivement composé de femmes ?",
+          "propositions": [
+            "Double Jeu",
+            "Ella, elle l'a",
+            "Débranche !",
+            "Made in France"
+          ],
+          "réponse": "Made in France",
+          "anecdote": "Petit clin d'oeil: les seuls garçons à partager la scène des filles furent les deux chanteurs travestis brésiliens du groupe Les Étoiles."
+        },
+        {
+          "id": 26,
+          "question": "À l'initiative de quelle chanteuse France Gall rejoindra-t-elle Chanteurs sans frontières ?",
+          "propositions": [
+            "Anne Sylvestre",
+            "Valérie Lagrange",
+            "Catherine Ringer",
+            "Françoise Hardy"
+          ],
+          "réponse": "Valérie Lagrange",
+          "anecdote": "Valérie Lagrange rencontrera Benjamin Biolay en 2000 avec qui elle collaborera sur l'album « Fleuve Congo » paru en avril 2003."
+        },
+        {
+          "id": 27,
+          "question": "À qui France Gall a-t-elle demandé de réaliser le clip de sa chanson « Plus haut » ?",
+          "propositions": [
+            "Jacques Demy",
+            "Claude Chabrol",
+            "Jean-Luc Godard",
+            "François Truffaut"
+          ],
+          "réponse": "Jean-Luc Godard",
+          "anecdote": "Ayant fortement aimé le film « Nouvelle Vague » (1990), sa demande fut acceptée par Jean-Luc Godard pour la sortie de son album « France »."
+        },
+        {
+          "id": 28,
+          "question": "En quelle année France Gall fut-elle faite Chevalier de la Légion d'honneur ?",
+          "propositions": [
+            "2013",
+            "2014",
+            "2015",
+            "2016"
+          ],
+          "réponse": "2013",
+          "anecdote": "Cette décoration honorifique récompense les militaires comme les civils ayant rendu des services éminents à la Nation."
+        },
+        {
+          "id": 29,
+          "question": "Pour quel label américain France Gall fut-elle la première à enregistrer en France ?",
+          "propositions": [
+            "CBS",
+            "Atlantic",
+            "Philips",
+            "Concord"
+          ],
+          "réponse": "Atlantic",
+          "anecdote": "Atlantic Records a été rachetée par Warner Communications Inc. En 1967, elle sera le A du sigle WEA (Warner-Elektra-Atlantic)."
+        },
+        {
+          "id": 30,
+          "question": "Quel titre porte l'unique album-concept enregistré par France Gall ?",
+          "propositions": [
+            "Double Jeu",
+            "Débranche !",
+            "Dancing Disco",
+            "Babacar"
+          ],
+          "réponse": "Dancing Disco",
+          "anecdote": "L'héroïne de « Dancing Disco » n'est pas sans rappeler Marie-Jeanne, la serveuse automate du futur opéra-rock « Starmania »."
+        }
+      ]
+    }
+  }
+}

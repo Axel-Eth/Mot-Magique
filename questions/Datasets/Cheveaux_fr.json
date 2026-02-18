@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "2 / 5",
+  "version": 1,
+  "mise-à-jour": "2024-03-31",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Animaux",
+      "nom": "Chevaux",
+      "slogan": "De la famille des Équidés"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quelle position les chevaux adoptent-ils pour un sommeil léger ?",
+          "propositions": [
+            "Sur le flanc gauche",
+            "Sur le ventre",
+            "Sur le flanc droit",
+            "Debout"
+          ],
+          "réponse": "Debout",
+          "anecdote": "Comme la plupart des grands herbivores, le cheval dort peu (3 à 5 heures par jour) en raison de sa vulnérabilité aux prédateurs."
+        },
+        {
+          "id": 2,
+          "question": "Quel cheval les Grecs ont-ils utilisé comme ruse en 1180 avant Jésus-Christ ?",
+          "propositions": [
+            "Cheval de Thor",
+            "Cheval de Troie",
+            "Cheval de Polybe",
+            "Cheval de Lotos"
+          ],
+          "réponse": "Cheval de Troie",
+          "anecdote": "L'expression « cheval de Troie » désigne aujourd'hui les dons qui s'avèrent être des pièges pour ceux qui les reçoivent."
+        },
+        {
+          "id": 3,
+          "question": "Quel est le nom du cheval de Lucky Luke, célèbre cow-boy de bande dessinée ?",
+          "propositions": [
+            "Yakari",
+            "Pégase",
+            "Bonfire",
+            "Jolly Jumper"
+          ],
+          "réponse": "Jolly Jumper",
+          "anecdote": "Par certains côtés, notamment son intelligence, son caractère et sa couleur de robe, Jolly Jumper ressemble à Milou, le chien de Tintin."
+        },
+        {
+          "id": 4,
+          "question": "Quel aliment est réputé pour être fort apprécié des chevaux ?",
+          "propositions": [
+            "Foin",
+            "Avoine",
+            "Fourrage",
+            "Muesli"
+          ],
+          "réponse": "Avoine",
+          "anecdote": "L'avoine, qui fait partie des céréales à paille, est fort utilisée dans l'alimentation animale (notamment celle des équidés)."
+        },
+        {
+          "id": 5,
+          "question": "Combien de temps après la naissance un poulain est-il en mesure de marcher ?",
+          "propositions": [
+            "Deux semaines",
+            "Un mois",
+            "Immédiatement",
+            "Quatre semaines"
+          ],
+          "réponse": "Immédiatement",
+          "anecdote": "Cette particularité est héritée de leurs ancêtres les chevaux sauvages étant effectivement la proie de nombreux prédateurs."
+        },
+        {
+          "id": 6,
+          "question": "Quel accessoire fort utile maintient la selle du cheval bien en place ?",
+          "propositions": [
+            "Sangle",
+            "Sous-ventrière",
+            "Rênes",
+            "Ventrière"
+          ],
+          "réponse": "Sangle",
+          "anecdote": "Les cavaliers qui souhaitent évoluer devront consentir à investir dans une selle spécialisée et fabriquée sur mesure."
+        },
+        {
+          "id": 7,
+          "question": "Dans quoi sont positionnés vos pieds lorsque vous montez un cheval correctement équipé ?",
+          "propositions": [
+            "Baudriers",
+            "Sangles",
+            "Rênes",
+            "Etriers"
+          ],
+          "réponse": "Etriers",
+          "anecdote": "L'étrier serait une invention chinoise, alors que pour d'autres, il viendrait des peuples nomades d'Asie centrale ou de Sibérie."
+        },
+        {
+          "id": 8,
+          "question": "Quelle célèbre marque automobile a pour emblème un cheval cabré ?",
+          "propositions": [
+            "Ferrari",
+            "Alfa Romeo",
+            "Peugeot",
+            "Lamborghini"
+          ],
+          "réponse": "Ferrari",
+          "anecdote": "Dès 1947, le logo initial, dit Scudetto, est réservé aux modèles préparés par la Scuderia Ferrari, l'écurie de compétition."
+        },
+        {
+          "id": 9,
+          "question": "À quelle fréquence faut-il idéalement curer les sabots du cheval ?",
+          "propositions": [
+            "1 fois par semaine",
+            "1 fois par mois",
+            "1 fois par jour",
+            "1 fois par an"
+          ],
+          "réponse": "1 fois par jour",
+          "anecdote": "Les animaux à sabots marchent sur la pointe de leurs doigts, à la différence des humains qui marchent sur la plante des pieds."
+        },
+        {
+          "id": 10,
+          "question": "Comment s'appelle le cheval ailé relaté dans la mythologie grecque ?",
+          "propositions": [
+            "Fungus",
+            "Argus",
+            "Merengo",
+            "Pégase"
+          ],
+          "réponse": "Pégase",
+          "anecdote": "Pégase est monté au ciel après sa naissance pour se mettre au service de Zeus qui le chargera d'apporter les éclairs sur l'Olympe."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Combien peut-on compter de cavaliers parmi l'ensemble des pièces d'un échiquier ?",
+          "propositions": [
+            "Trois",
+            "Quatre",
+            "Deux",
+            "Un"
+          ],
+          "réponse": "Quatre",
+          "anecdote": "On dispose l'échiquier de façon telle que, pour chacun des adversaires, la case du coin gauche de l'échiquier soit noire."
+        },
+        {
+          "id": 12,
+          "question": "Jusqu'à combien de litres d'eau un cheval adulte peut-il boire chaque jour ?",
+          "propositions": [
+            "10 litres",
+            "20 litres",
+            "40 litres",
+            "30 litres"
+          ],
+          "réponse": "40 litres",
+          "anecdote": "Le cheval possède un sens développé de l'odorat lui permettant de trouver de l'eau et de détecter une femelle en chaleur."
+        },
+        {
+          "id": 13,
+          "question": "Dans quel état se trouve un cheval qui replie ses oreilles sur son cou ?",
+          "propositions": [
+            "Fâché",
+            "Terrifié",
+            "Fatigué",
+            "Heureux"
+          ],
+          "réponse": "Fâché",
+          "anecdote": "L'étude de la gestuelle du cheval, des mouvements d'oreilles et des attitudes de sa tête, permet de déterminer son humeur."
+        },
+        {
+          "id": 14,
+          "question": "Quelle est la couleur de Stewball dans la chanson d'Hugues Aufray ?",
+          "propositions": [
+            "Gris",
+            "Alezan",
+            "Noir",
+            "Blanc"
+          ],
+          "réponse": "Blanc",
+          "anecdote": "La chanson d'Hugues Aufray célèbre la victoire d'un cheval blanc à taches alezanes sur une jument grise lors d'une course hippique."
+        },
+        {
+          "id": 15,
+          "question": "Combien le poulain nouveau-né d'un cheval ordinaire pèse-t-il environ ?",
+          "propositions": [
+            "60 kg",
+            "45 kg",
+            "15 kg",
+            "30 kg"
+          ],
+          "réponse": "45 kg",
+          "anecdote": "À l'état domestique, le poulain reste avec sa mère jusqu'au sevrage, généralement à l'âge de six mois, après quoi l'éleveur les sépare."
+        },
+        {
+          "id": 16,
+          "question": "Pourquoi les chevaux aiment-ils se rouler dans le sable sec ?",
+          "propositions": [
+            "Pour se moquer",
+            "Pour se détendre",
+            "Pour se stimuler",
+            "Pour se gratter"
+          ],
+          "réponse": "Pour se gratter",
+          "anecdote": "À l'état sauvage ou domestique, le cheval peut-être affecté par des parasites et des maladies telles que le tétanos ou la rage."
+        },
+        {
+          "id": 17,
+          "question": "Qu'observe-t-on généralement pour connaître l'âge approximatif d'un cheval ?",
+          "propositions": [
+            "Crinière",
+            "Jambes",
+            "Sabots",
+            "Dents"
+          ],
+          "réponse": "Dents",
+          "anecdote": "Les dents du cheval poussant en permanence, le mouvement masticatoire n'est souvent pas suffisant pour user la table dentaire."
+        },
+        {
+          "id": 18,
+          "question": "Combien de temps la gestation dure-t-elle en moyenne chez le cheval ?",
+          "propositions": [
+            "9 mois",
+            "5 mois",
+            "11 mois",
+            "7 mois"
+          ],
+          "réponse": "11 mois",
+          "anecdote": "La jument donne naissance au printemps à un poulain qui peut en effet marcher moins d'une heure après la naissance."
+        },
+        {
+          "id": 19,
+          "question": "Que signifie l'expression ne pas se trouver sous le sabot d'un cheval ?",
+          "propositions": [
+            "Être rare",
+            "Être rapide",
+            "Être prudent",
+            "Être avare"
+          ],
+          "réponse": "Être rare",
+          "anecdote": "À l'origine, au XVIIe siècle, l'expression contenait dans le pas d'un cheval, le pas voulant signifier le mot trace."
+        },
+        {
+          "id": 20,
+          "question": "Sur combien d'orteils posés au sol le cheval marche-t-il ?",
+          "propositions": [
+            "Quatre",
+            "Trois",
+            "Un seul",
+            "Deux"
+          ],
+          "réponse": "Un seul",
+          "anecdote": "Le cheval est un périssodactyle, ordre de mammifères ongulés, à nombre impair de doigts, en l'occurrence un seul."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Laquelle de ces quatre robes est distinctive de par ses grandes taches ?",
+          "propositions": [
+            "Isabelle",
+            "Pommelée",
+            "Pie",
+            "Bai"
+          ],
+          "réponse": "Pie",
+          "anecdote": "Le terme pie, par analogie à l'animal du même nom, est préféré à celui de bicolore pour désigner de telles robes."
+        },
+        {
+          "id": 22,
+          "question": "Environ combien de races de chevaux différentes existe-t-il encore à ce jour ?",
+          "propositions": [
+            "500",
+            "200",
+            "400",
+            "300"
+          ],
+          "réponse": "300",
+          "anecdote": "En 2008, d'après les données de la FAO, 58 millions de chevaux étaient répertoriés dans le monde sur les cinq continents."
+        },
+        {
+          "id": 23,
+          "question": "À quelle fréquence moyenne le coeur d'un cheval bat-il au repos ?",
+          "propositions": [
+            "100 ppm",
+            "60 ppm",
+            "80 ppm",
+            "40 ppm"
+          ],
+          "réponse": "40 ppm",
+          "anecdote": "Les maladies cardiaques, circulatoires, nerveuses et les vices d'écurie n'affectent que les chevaux domestiques."
+        },
+        {
+          "id": 24,
+          "question": "Quel nom porte la saillie en forme de V située sous le pied du cheval ?",
+          "propositions": [
+            "Bourrelet",
+            "Coin",
+            "Poinçon",
+            "Fourchette"
+          ],
+          "réponse": "Fourchette",
+          "anecdote": "La fourchette du cheval est une saillie en forme de V à pointe antérieure, composée d'une corne tubulaire plus molle."
+        },
+        {
+          "id": 25,
+          "question": "Combien de fois par jour un poulain peut-il téter sa mère ?",
+          "propositions": [
+            "20 à 30 fois",
+            "10 à 20 fois",
+            "30 à 40 fois",
+            "50 à 60 fois"
+          ],
+          "réponse": "50 à 60 fois",
+          "anecdote": "Les poulains tètent leur mère après la naissance pour absorber le colostrum qui renforce leurs défenses immunitaires."
+        },
+        {
+          "id": 26,
+          "question": "Laquelle de ces couleurs de robe n'existe pas chez les chevaux ?",
+          "propositions": [
+            "Camouflage",
+            "Pie",
+            "Alezan",
+            "Isabelle"
+          ],
+          "réponse": "Camouflage",
+          "anecdote": "Un certain nombre de robes du cheval consistent en un mélange de poils blancs ou noirs sur l'une des trois robes de base."
+        },
+        {
+          "id": 27,
+          "question": "Quelle race de chevaux est caractérisée par une robe alezane et une queue blanche ?",
+          "propositions": [
+            "Frison",
+            "Haflinger",
+            "Fjord",
+            "Shetland"
+          ],
+          "réponse": "Haflinger",
+          "anecdote": "De son élevage pour le travail en terrain accidenté, le Haflinger, originaire du Tyrol, a hérité d'une grande robustesse."
+        },
+        {
+          "id": 28,
+          "question": "Combien de temps la digestion dure-t-elle chez un cheval adulte en bonne santé ?",
+          "propositions": [
+            "35 à 50 h",
+            "5 à 15 h",
+            "25 à 35 h",
+            "15 à 20 h"
+          ],
+          "réponse": "35 à 50 h",
+          "anecdote": "Les chevaux disposent d'un seul estomac, capable de digérer les fibres végétales qui proviennent de l'herbe et du foin."
+        },
+        {
+          "id": 29,
+          "question": "À partir de quelle distance les chevaux peuvent-ils reconnaître les odeurs ?",
+          "propositions": [
+            "150 m",
+            "600 m",
+            "450 m",
+            "300 m"
+          ],
+          "réponse": "600 m",
+          "anecdote": "Le cheval effectue un flehmen, comportement particulier de flairage, permettant entre autres de détecter les phéromones."
+        },
+        {
+          "id": 30,
+          "question": "Que faut-il masser pour calmer un cheval apparemment nerveux ?",
+          "propositions": [
+            "Oreilles",
+            "Queue",
+            "Dos",
+            "Ventre"
+          ],
+          "réponse": "Oreilles",
+          "anecdote": "Les contacts tactiles sont peu nombreux entre chevaux, à l'exception de la mère avec son poulain."
+        }
+      ]
+    }
+  }
+}
