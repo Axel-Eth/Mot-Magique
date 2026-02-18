@@ -314,8 +314,11 @@ export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag
 export function showGeneralQuestion(payload = {}) {
   const overlay = ensureGeneralQuestionOverlay();
   const text = overlay.querySelector("#generalQuestionText");
+  const questionWindow = overlay.querySelector(".general-question-window");
   const choicesStage = overlay.querySelector("#generalQuestionChoices");
   if (text) text.textContent = String(payload.question || "").trim() || "Question indisponible";
+  const showQuestion = payload.showQuestion !== false;
+  if (questionWindow) questionWindow.classList.toggle("hidden", !showQuestion);
 
   const options = Array.isArray(payload.options)
     ? payload.options.filter((x) => String(x || "").trim())
@@ -337,6 +340,14 @@ export function showGeneralQuestion(payload = {}) {
     } else {
       choicesStage.classList.add("hidden");
     }
+  }
+
+  const showChoices = !!(payload.showChoices && options.length);
+  if (!showQuestion && !showChoices) {
+    overlay.classList.remove("active");
+    gridEl.style.display = "";
+    defBar?.classList.remove("hidden");
+    return;
   }
 
   overlay.classList.add("active");

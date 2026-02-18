@@ -546,6 +546,7 @@ function refreshGeneralLevelFilterOptions() {
         checkbox.checked = true;
       }
       state.generalQuestionCurrent = null;
+      state.generalQuestionVisible = false;
       state.generalQuestionChoicesVisible = false;
       state.generalQuestionAnswerMarks = {};
       refreshGeneralLevelSummary();
@@ -664,7 +665,10 @@ function updateGeneralQuestionButtons() {
   const hasFourOptions = !!(current && Array.isArray(current.options) && current.options.length === 4);
 
   const showQuestionBtn = $("btnGeneralShowQuestion");
-  if (showQuestionBtn) showQuestionBtn.disabled = !canShowQuestion;
+  if (showQuestionBtn) {
+    showQuestionBtn.disabled = !canShowQuestion;
+    showQuestionBtn.textContent = state.generalQuestionVisible ? "Cacher question" : "Afficher question";
+  }
 
   const showChoicesBtn = $("btnGeneralShowChoices");
   if (showChoicesBtn) {
@@ -721,7 +725,8 @@ function renderGeneralQuestionCard() {
       choice.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
       choice.addEventListener("click", () => {
         if (!state.generalQuestionChoicesVisible) {
-          sendGeneralQuestionToPlateau(true);
+          state.generalQuestionChoicesVisible = true;
+          sendGeneralQuestionToPlateau();
         }
         const isCorrect = isCorrectGeneralOption(q, opt);
         state.generalQuestionAnswerMarks[idx] = isCorrect ? "correct" : "wrong";
@@ -831,16 +836,18 @@ function selectGeneralQuestion({ random = false } = {}) {
 
   markPlayed("generalQuestions", picked.id);
   state.generalQuestionCurrent = picked;
+  state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   state.generalQuestionAnswerMarks = {};
   refreshGeneralCategorySelect();
   renderGeneralQuestionCard();
 }
 
-function sendGeneralQuestionToPlateau(showChoices = false) {
+function sendGeneralQuestionToPlateau() {
   const q = state.generalQuestionCurrent;
   if (!q) return;
-  state.generalQuestionChoicesVisible = !!showChoices;
+  const showQuestion = !!state.generalQuestionVisible;
+  const showChoices = !!state.generalQuestionChoicesVisible;
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "HIDE_MEDIA" });
   postToPlateau({
@@ -851,7 +858,8 @@ function sendGeneralQuestionToPlateau(showChoices = false) {
     question: q.question,
     options: q.options || [],
     answer: q.answer || "",
-    showChoices: !!showChoices
+    showQuestion,
+    showChoices
   });
   updateGeneralQuestionButtons();
 }
@@ -862,6 +870,7 @@ export async function loadGeneralQuestionsList() {
 
   state.generalQuestions = [];
   state.generalQuestionCurrent = null;
+  state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   state.generalQuestionAnswerMarks = {};
   select.innerHTML = "";
@@ -911,6 +920,7 @@ function runXMediaFlow() {
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "HIDE_MEDIA" });
   postToPlateau({ type: "STOP_MUSIC" });
+  state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   updateGeneralQuestionButtons();
 }
@@ -1054,6 +1064,7 @@ export function registerMediaEvents() {
 
   $("generalCategorySelect")?.addEventListener("change", () => {
     state.generalQuestionCurrent = null;
+    state.generalQuestionVisible = false;
     state.generalQuestionChoicesVisible = false;
     state.generalQuestionAnswerMarks = {};
     renderGeneralQuestionCard();
@@ -1073,14 +1084,17 @@ export function registerMediaEvents() {
   });
 
   $("btnGeneralShowQuestion")?.addEventListener("click", () => {
-    sendGeneralQuestionToPlateau(false);
+    const q = state.generalQuestionCurrent;
+    if (!q) return;
+    state.generalQuestionVisible = !state.generalQuestionVisible;
+    sendGeneralQuestionToPlateau();
   });
 
   $("btnGeneralShowChoices")?.addEventListener("click", () => {
     const q = state.generalQuestionCurrent;
     if (!q || !Array.isArray(q.options) || q.options.length !== 4) return;
-    const next = !state.generalQuestionChoicesVisible;
-    sendGeneralQuestionToPlateau(next);
+    state.generalQuestionChoicesVisible = !state.generalQuestionChoicesVisible;
+    sendGeneralQuestionToPlateau();
   });
 
   $("btnReplayMusic")?.addEventListener("click", () => {
@@ -1148,6 +1162,7 @@ export function resetMediaForNewShow() {
   state.lastPeopleLabel = "";
   state.capitalesLastFile = "";
   state.generalQuestionCurrent = null;
+  state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   state.generalQuestionAnswerMarks = {};
   renderGeneralQuestionCard();

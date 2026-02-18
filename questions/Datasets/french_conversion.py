@@ -33,7 +33,7 @@ def process_file(in_path: Path, mode: str = "suffix") -> Path:
       - "suffix": écrit <nom>_fr.json puis supprime l'original
       - "replace": remplace l'original (écriture atomique via fichier temp)
     """
-    with in_path.open("r", encoding="utf-8") as f:
+    with in_path.open("r",  encoding="utf-8") as f:
         data = json.load(f)
 
     filtered = keep_only_french(data)

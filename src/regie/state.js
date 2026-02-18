@@ -31,6 +31,7 @@ export const state = {
   lastPeopleLabel: "",
   generalQuestions: [],
   generalQuestionCurrent: null,
+  generalQuestionVisible: false,
   generalQuestionChoicesVisible: false,
   generalQuestionAnswerMarks: {}
 };

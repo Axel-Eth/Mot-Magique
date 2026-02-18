@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 1,
+  "mise-à-jour": "2025-03-02",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Pour adultes",
+      "nom": "Katsuni",
+      "slogan": "Actrice X la plus récompensée"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quel est le véritable nom de l'ancienne actrice X Katsuni ?",
+          "propositions": [
+            "Julia Channel",
+            "Céline Tran",
+            "Mélanie Dagréo",
+            "Donia Eden"
+          ],
+          "réponse": "Céline Tran",
+          "anecdote": "Céline Tran est aujourd'hui scénariste de bande dessinée et blogueuse française, anciennement actrice pornographique."
+        },
+        {
+          "id": 2,
+          "question": "Pour quelle chaîne a-t-elle réalisé des reportages dans le « Journal du hard » ?",
+          "propositions": [
+            "Canal+",
+            "TF1",
+            "M6",
+            "La Cinq"
+          ],
+          "réponse": "Canal+",
+          "anecdote": "« Le Journal du hard » est une émission  mensuelle diffusée chaque premier samedi du mois à minuit sur Canal+."
+        },
+        {
+          "id": 3,
+          "question": "Combien de fois a-t-elle obtenu l'AVN Award de la meilleure actrice étrangère ?",
+          "propositions": [
+            "Cinq",
+            "Deux",
+            "Quatre",
+            "Trois"
+          ],
+          "réponse": "Trois",
+          "anecdote": "Les AVN Awards sont des récompenses de l'industrie pornographique décernées depuis 1984 par le magazine Adult Video News."
+        },
+        {
+          "id": 4,
+          "question": "Après la France, dans quel autre pays Katsuni a-t-elle poursuivi sa carrière ?",
+          "propositions": [
+            "Espagne",
+            "Allemagne",
+            "Japon",
+            "États-Unis"
+          ],
+          "réponse": "États-Unis",
+          "anecdote": "Également productrice et réalisatrice, elle a obtenu de nombreux prix spécialisés, parmi lesquels divers AVN Awards et Hots d'or."
+        },
+        {
+          "id": 5,
+          "question": "Quel pseudo Katsuni a-t-elle utilisé pour ses films avant 2007 ?",
+          "propositions": [
+            "Tarra",
+            "Tabatha",
+            "Nikki",
+            "Katsumi"
+          ],
+          "réponse": "Katsumi",
+          "anecdote": "Sous son nouveau nom, Katsuni a poursuivi sa carrière d'actrice X tout en continuant à se produire comme stripteaseuse."
+        },
+        {
+          "id": 6,
+          "question": "Quelle est la nationalité du père de l'ex actrice du X Katsuni ?",
+          "propositions": [
+            "Tibétaine",
+            "Japonaise",
+            "Indienne",
+            "Vietnamienne"
+          ],
+          "réponse": "Vietnamienne",
+          "anecdote": "Après son bac, elle envisage de faire hypokhâgne mais intègre pour ses ses parents l'Institut d'études politiques de Grenoble."
+        },
+        {
+          "id": 7,
+          "question": "Qui a produit son second film, intitulé « L'Affaire Katsumi » ?",
+          "propositions": [
+            "Christian Lavil",
+            "Tony Carrera",
+            "Greg Lansky",
+            "Marc Dorcel"
+          ],
+          "réponse": "Marc Dorcel",
+          "anecdote": "En 2015, la société Marc Dorcel a investi dans la réalité virtuelle en se lançant dans la production de films tournés à 360 degrés."
+        },
+        {
+          "id": 8,
+          "question": "Dans quelle ville des États-Unis Katsumi s'est-elle installé ?",
+          "propositions": [
+            "Miami",
+            "New York",
+            "Detroit",
+            "Los Angeles"
+          ],
+          "réponse": "Los Angeles",
+          "anecdote": "Le secteur du porno français entamait à ce moment une phase de déclin, avec la fin des Hot d'or et la fin des grandes stars du X."
+        },
+        {
+          "id": 9,
+          "question": "Avec quel acteur a-t-elle tourné dans deux films de la série « Fashionistas » ?",
+          "propositions": [
+            "Mario Salieri",
+            "Rocco Siffredi",
+            "John Stagliano",
+            "Joe d'Amato"
+          ],
+          "réponse": "Rocco Siffredi",
+          "anecdote": "Son pseudonyme reprend deux personnages joués par Alain Delon : Rocco Parondi (« Rocco et ses frères ») et Roch Siffredi (« Borsalino »)."
+        },
+        {
+          "id": 10,
+          "question": "Combien de Hots d'or Katsuni a-t-elle reçu durant sa carrière dans le porno ?",
+          "propositions": [
+            "Cinq",
+            "Quatre",
+            "Trois",
+            "Deux"
+          ],
+          "réponse": "Deux",
+          "anecdote": "Décernés pendant dix ans depuis 1992, soit à Cannes ou à Paris, les Hots d'or ont fait un retour éphémère en 2009."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Pour quel magazine Katsumi a-t-elle tourné son premier bout d'essai ?",
+          "propositions": [
+            "Penthouse",
+            "Hustler",
+            "Playboy",
+            "Lui"
+          ],
+          "réponse": "Penthouse",
+          "anecdote": "« Penthouse » est un magazine pour hommes fondé par Bob Guccione, combinant articles sur la vie urbaine et images pornographiques soft."
+        },
+        {
+          "id": 12,
+          "question": "Par quel vétéran du hard Katsumi a-t-elle été conseillée en début de carrière ?",
+          "propositions": [
+            "Alain Payet",
+            "Hervé Bodilis",
+            "Guy Maria",
+            "Francis Leroi"
+          ],
+          "réponse": "Alain Payet",
+          "anecdote": "Dans le secteur du cinéma traditionnel, on doit à Alain Payet le film d'exploitation « L'Émir préfère les blondes » avec Paul Préboist."
+        },
+        {
+          "id": 13,
+          "question": "Quel studios français a mis Katsumi en vedette dans une série de films ?",
+          "propositions": [
+            "Blue One",
+            "Puzzy Power",
+            "Cinemagic",
+            "Moodyz"
+          ],
+          "réponse": "Blue One",
+          "anecdote": "C'est également Blue One qui, au début des années 2000, lança la carrière de Clara Morgane en signant un contrat d'exclusivité."
+        },
+        {
+          "id": 14,
+          "question": "Sur quelle chaîne télé est-elle apparue dans deux téléfilms érotiques ?",
+          "propositions": [
+            "AB3",
+            "M6",
+            "La Cinq",
+            "TF1"
+          ],
+          "réponse": "M6",
+          "anecdote": "Elle se fait rapidement remarquer par ses prestations : le journaliste Christophe Lemaire écrira « Sa voracité sexuelle semble sans limite »."
+        },
+        {
+          "id": 15,
+          "question": "Dans le clip de quel titre de Doc Gynéco Katsumi est-elle apparue ?",
+          "propositions": [
+            "Funky Maxime",
+            "Pauvre de moi",
+            "Les censeurs",
+            "Vaya con dios"
+          ],
+          "réponse": "Funky Maxime",
+          "anecdote": "Le titre « Funky Maxime » est apparu sur le troisième album de Doc Gynéco intitulé « Solitaire » et sorti dans les bacs à l'automne 2002."
+        },
+        {
+          "id": 16,
+          "question": "En 2005, combien de films X français Kastumi avait-elle déjà tourné ?",
+          "propositions": [
+            "Vingt",
+            "Quarante",
+            "Dix",
+            "Trente"
+          ],
+          "réponse": "Vingt",
+          "anecdote": "Elle décidera ensuite de s'expatrier aux États-Unis dont le marché offre davantage d'opportunités et de meilleures conditions de travail."
+        },
+        {
+          "id": 17,
+          "question": "En mai 2006, à quelle taille est-elle passé après ses implants mammaires ?",
+          "propositions": [
+            "85D",
+            "90E",
+            "100D",
+            "95C"
+          ],
+          "réponse": "85D",
+          "anecdote": "Je voulais sentir le poids de ma poitrine, perdre ma silhouette que je trouvais alors trop juvénile. C'était là une étape symbolique."
+        },
+        {
+          "id": 18,
+          "question": "Pour quelle société Kastumi fut-elle la première française à signer un contrat ?",
+          "propositions": [
+            "Titan Media",
+            "Reality Kings",
+            "Bang Bros",
+            "Digital Playground"
+          ],
+          "réponse": "Digital Playground",
+          "anecdote": "Digital Playground est un studio pornographique américain à gros budget dont le siège est situé à Van Nuys (Californie, États-Unis)."
+        },
+        {
+          "id": 19,
+          "question": "Vers quelles études s'est-elle dirigée, conseillée par ses parents ?",
+          "propositions": [
+            "Sciences-Po",
+            "Informatique",
+            "Marketing",
+            "Comptabilité"
+          ],
+          "réponse": "Sciences-Po",
+          "anecdote": "Pas suffisamment mûre pour apprécier Sciences-Po, elle décidera au bout d'un an de s'orienter vers des études de lettres modernes."
+        },
+        {
+          "id": 20,
+          "question": "En quelle année Katsuni a-t-elle définitivement pris sa retraite du porno ?",
+          "propositions": [
+            "2011",
+            "2015",
+            "2017",
+            "2013"
+          ],
+          "réponse": "2013",
+          "anecdote": "Elle dira alors : « Il faut être mentalement stable tout en cultivant une forme de folie, savoir jongler avec ses limites et ses priorités »."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Avec quel studio a-t-elle signé un contrat d'exclusivité après ses débuts ?",
+          "propositions": [
+            "Magmafilm",
+            "Sweet Sinner",
+            "Dogma",
+            "Colmax"
+          ],
+          "réponse": "Colmax",
+          "anecdote": "Fondée en 1983, Colmax est, avec Blue One et Marc Dorcel, l'une des plus anciennes entreprises de production de films X en France."
+        },
+        {
+          "id": 22,
+          "question": "Avec quel réalisateur italien Katsumi a-t-elle travaillé dès ses débuts ?",
+          "propositions": [
+            "Mario Salieri",
+            "Gabriel Pontello",
+            "Manuel Ferrara",
+            "Rocky Volcano"
+          ],
+          "réponse": "Mario Salieri",
+          "anecdote": "L'épouse de Mario Salieri, Nicky Ranieri, a tourné dans des productions de son mari sous le nom de scène de Magdalena Lynn."
+        },
+        {
+          "id": 23,
+          "question": "Pour quel film Katsuni est-elle revenue en France avec sa nouvelle poitrine ?",
+          "propositions": [
+            "French conneXion",
+            "Orgy II",
+            "Raw 8",
+            "Nurses"
+          ],
+          "réponse": "French conneXion",
+          "anecdote": "« French conneXion » est un film pornographique français avec Katsuni et Yasmine, réalisé par Hervé Bodilis et sorti en DVD en 2007."
+        },
+        {
+          "id": 24,
+          "question": "Avec quelle collègue a-t-elle tourné son premier film aux États-Unis ?",
+          "propositions": [
+            "Nomi",
+            "Ovidie",
+            "Perron",
+            "Oksana"
+          ],
+          "réponse": "Nomi",
+          "anecdote": "Le film « Katsumi et Nomi à Los Angeles » sera d'ailleurs récompensé en 2002 au festival international de cinéma érotique de Barcelone."
+        },
+        {
+          "id": 25,
+          "question": "Pour la couverture de quel magazine de référence du fétichisme a-t-elle posé ?",
+          "propositions": [
+            "Newlook",
+            "Playmen",
+            "Union",
+            "Marquis"
+          ],
+          "réponse": "Marquis",
+          "anecdote": "Fondé en 1994, « Marquis » couvre une large palette de sujets concernant la culture fetish : photographie, modèle, livres, films."
+        },
+        {
+          "id": 26,
+          "question": "À cause de quelle femme Katsumi a-t-elle été contrainte de changer de nom ?",
+          "propositions": [
+            "Lory Katsumi",
+            "Sandy Katsumi",
+            "Kelly Katsumi",
+            "Mary Katsumi"
+          ],
+          "réponse": "Mary Katsumi",
+          "anecdote": "En janvier 2007, la justice interdit à l'actrice d'utiliser son nom de scène. Elle modifie simplement l'orthographe et se rebaptise Katsuni."
+        },
+        {
+          "id": 27,
+          "question": "Quel journal l'a nommé actrice porno la plus récompensée au monde ?",
+          "propositions": [
+            "Le Monde",
+            "Le Figaro",
+            "Libération",
+            "La Croix"
+          ],
+          "réponse": "Libération",
+          "anecdote": "Devenue une vedette internationale du X, Katsuni a reçu plus de trente récompenses dans ce domaine durant sa carrière."
+        },
+        {
+          "id": 28,
+          "question": "Pour quel masturbateur masculin Kastuni a-t-elle un modèle à son nom ?",
+          "propositions": [
+            "Fleshlight",
+            "Poppers",
+            "Aneros",
+            "Tenga"
+          ],
+          "réponse": "Fleshlight",
+          "anecdote": "Un Fleshlight est une marque de masturbateur manuel pour hommes en forme de vagin inventé en 1998 aux États-Unis."
+        },
+        {
+          "id": 29,
+          "question": "Quel semi-documentaire produit par Marc Dorcel a-t-elle réalisé en 2008 ?",
+          "propositions": [
+            "La Nymphomane",
+            "La Dolce vita",
+            "My Fucking Life",
+            "Amazonesex"
+          ],
+          "réponse": "My Fucking Life",
+          "anecdote": "Le film la suit pendant plus d'un an dans son quotidien, son travail entre le salon de Las Vegas, les séances photos et les tournages."
+        },
+        {
+          "id": 30,
+          "question": "Quelle marque de lingerie Kastuni a-t-elle lancé en 2009 ?",
+          "propositions": [
+            "Steffy",
+            "Petit Coeur",
+            "Wacoal",
+            "Rosa Pichon"
+          ],
+          "réponse": "Petit Coeur",
+          "anecdote": "Outre son salaire fixe chez Digital Playground et ses spectacles érotiques, elle tire des revenus de produits dérivés à son effigie."
+        }
+      ]
+    }
+  }
+}

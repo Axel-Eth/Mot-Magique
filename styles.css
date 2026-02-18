@@ -479,7 +479,8 @@ h2{
   border:1px solid rgba(255,255,255,.2);
   background: rgba(255,255,255,.04);
   color:#d7e8ff;
-  font-size:14px;
+  font-size:17px;
+  font-weight:800;
   line-height:1.35;
 }
 
@@ -1439,6 +1440,10 @@ body.plateau .general-question-window{
   background: linear-gradient(180deg, rgba(12,34,58,.95), rgba(7,24,43,.95));
   box-shadow: 0 24px 52px rgba(0,0,0,.38);
   padding:26px 28px;
+}
+
+body.plateau .general-question-window.hidden{
+  display:none;
 }
 
 body.plateau .general-question-text{
