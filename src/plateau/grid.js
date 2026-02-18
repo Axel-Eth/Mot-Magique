@@ -42,6 +42,10 @@ export function isMagicWordCell(pos) {
   return state.grid?.magicWordCells && state.grid.magicWordCells.has(pos);
 }
 
+function isMagicHintCell(pos) {
+  return state.grid?.magicHints && state.grid.magicHints.has(pos);
+}
+
 function isMagicHighlightCell(pos) {
   return (state.grid?.magic && state.grid.magic.has(pos))
     || (state.grid?.magicWordCells && state.grid.magicWordCells.has(pos));
@@ -85,6 +89,7 @@ export function rebuildGrid(payload) {
     numbers: new Map(payload.numbers),
     revealed: new Map(payload.revealed),
     magic: new Set(payload.magic || []),
+    magicHints: new Set(payload.magicHints || []),
     words: payload.words,
     cellToWords: new Map(payload.cellToWords),
     numberPosToWord: new Map(payload.numberPosToWord),
@@ -198,7 +203,7 @@ export function renderCell(r, c) {
   if (state.grid.letters.has(pos)) {
     const revealed = state.grid.revealed.get(pos);
     const magicWordCell = isMagicWordCell(pos);
-    const canReveal = !magicWordCell || state.grid.magicSolved;
+    const canReveal = !magicWordCell || state.grid.magicSolved || isMagicHintCell(pos);
     el.classList.remove("revealed", "dim", "nop", "orange", "magic", "selected-word");
     if (isMagicHighlightCell(pos)) el.classList.add("magic");
 
@@ -217,7 +222,7 @@ function clearHighlight() {
     if (!el) continue;
 
     const magicWordCell = isMagicWordCell(pos);
-    const canReveal = !magicWordCell || state.grid.magicSolved;
+    const canReveal = !magicWordCell || state.grid.magicSolved || isMagicHintCell(pos);
     el.classList.remove("dim", "nop", "orange", "magic", "selected-word");
     if (isMagicHighlightCell(pos)) el.classList.add("magic");
 
@@ -308,7 +313,7 @@ export function showNumbersForLetter(letter) {
     if (!word?.cells?.length) return false;
     return word.cells.every((p) => {
       const pos = key(p.r, p.c);
-      const canReveal = !isMagicWordCell(pos) || state.grid.magicSolved;
+      const canReveal = !isMagicWordCell(pos) || state.grid.magicSolved || isMagicHintCell(pos);
       return canReveal && !!state.grid.revealed.get(pos);
     });
   };

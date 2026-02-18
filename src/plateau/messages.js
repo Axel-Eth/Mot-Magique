@@ -104,7 +104,8 @@ export function registerMessageHandlers() {
         state.grid.magicWordCells = buildMagicWordCells(state.grid.magicWordId);
         if (!state.grid.magicSolved) {
           for (const pos of state.grid.magicWordCells) {
-            state.grid.revealed.set(pos, false);
+            const hinted = state.grid.magicHints && state.grid.magicHints.has(pos);
+            state.grid.revealed.set(pos, !!hinted);
           }
         }
         buildGridDOM();
@@ -117,6 +118,7 @@ export function registerMessageHandlers() {
           const [r, c] = pos.split(",").map(Number);
           renderCell(r, c);
         }
+        state.grid.magicHints = new Set();
         state.grid.magicSolved = false;
         applySelection(null);
         updateMultiplierBadge(1);
@@ -125,6 +127,7 @@ export function registerMessageHandlers() {
       case "SET_MAGIC_WORD":
         state.grid.magicWordId = msg.wordId ?? null;
         state.grid.magicWordCells = buildMagicWordCells(state.grid.magicWordId);
+        state.grid.magicHints = new Set();
         state.grid.magicSolved = false;
         for (const pos of state.grid.magicWordCells) {
           state.grid.revealed.set(pos, false);
@@ -150,6 +153,19 @@ export function registerMessageHandlers() {
         safePlay(sounds.reveal);
         startTimer(20);
         break;
+
+      case "REVEAL_MAGIC_HINT_CELL": {
+        const r = Number(msg.r);
+        const c = Number(msg.c);
+        if (!Number.isInteger(r) || !Number.isInteger(c)) break;
+        const pos = `${r},${c}`;
+        if (!state.grid.letters.has(pos)) break;
+        if (!state.grid.magicHints) state.grid.magicHints = new Set();
+        state.grid.magicHints.add(pos);
+        state.grid.revealed.set(pos, true);
+        renderCell(r, c);
+        break;
+      }
 
       case "STOP_REVEAL_SOUND":
         stopRevealSound();

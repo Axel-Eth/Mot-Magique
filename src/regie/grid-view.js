@@ -51,6 +51,46 @@ export function showNumbersForLetter(letter) {
   state.visibleNumbers = s;
 }
 
+function revealLetterEverywhere(letter) {
+  const ltr = String(letter || "").trim().toUpperCase();
+  if (!ltr || !state.grid) return;
+
+  for (const [pos, value] of state.grid.letters) {
+    if (value === ltr && (!isMagicWordCell(pos) || state.magicSolved)) {
+      state.grid.revealed.set(pos, true);
+    }
+  }
+
+  const lastLetter = $("lastLetter");
+  if (lastLetter) lastLetter.textContent = `Lettre : ${ltr}`;
+
+  showNumbersForLetter(ltr);
+  renderRegieGrid();
+
+  // Meme sequence que la saisie clavier: on coupe le media puis on revele.
+  postToPlateau({ type: "HIDE_MEDIA" });
+  postToPlateau({ type: "STOP_MUSIC" });
+  postToPlateau({ type: "REVEAL_LETTER", letter: ltr });
+}
+
+function revealMagicHintCell(pos) {
+  if (!state.grid || !pos) return;
+  if (!state.grid.magicHints) state.grid.magicHints = new Set();
+
+  state.grid.magicHints.add(pos);
+  state.grid.revealed.set(pos, true);
+
+  const [r, c] = pos.split(",").map(Number);
+  const letter = state.grid.letters.get(pos) || "";
+  const lastLetter = $("lastLetter");
+  if (lastLetter && letter) lastLetter.textContent = `Lettre : ${letter}`;
+
+  renderRegieGrid();
+  postToPlateau({ type: "HIDE_MEDIA" });
+  postToPlateau({ type: "STOP_MUSIC" });
+  postToPlateau({ type: "REVEAL_MAGIC_HINT_CELL", r, c });
+}
+
 export function renderRegieGrid() {
   const gridEl = $("regieGrid");
   if (!gridEl || !state.grid) return;
@@ -91,7 +131,8 @@ export function renderRegieGrid() {
         cell.className = "cell letter";
         const revealed = state.grid.revealed.get(pos);
         const magicWordCell = isMagicWordCell(pos);
-        const canReveal = !magicWordCell || state.magicSolved;
+        const hintedMagic = !!state.grid.magicHints?.has(pos);
+        const canReveal = !magicWordCell || state.magicSolved || hintedMagic;
         if (isMagicHighlightCell(pos)) cell.classList.add("magic");
         if (selectedWord && selectedCells.has(pos)) {
           cell.classList.add("revealed");
@@ -106,7 +147,15 @@ export function renderRegieGrid() {
         if (selectedCells.has(pos)) {
           cell.classList.add("selected-word");
         }
-        cell.addEventListener("click", () => {
+        cell.addEventListener("click", (e) => {
+          if (e.ctrlKey || e.metaKey) {
+            if (magicWordCell && !state.magicSolved) {
+              revealMagicHintCell(pos);
+            } else {
+              revealLetterEverywhere(state.grid.letters.get(pos));
+            }
+            return;
+          }
           if (!ensureTeamChosen()) return;
           const ids = state.grid.cellToWords.get(pos);
           if (ids && ids.length) {

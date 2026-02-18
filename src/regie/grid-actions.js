@@ -54,6 +54,7 @@ export function resetReveal() {
   for (const pos of state.grid.revealed.keys()) {
     state.grid.revealed.set(pos, false);
   }
+  state.grid.magicHints = new Set();
   state.magicSolved = false;
   state.grid.magicSolved = false;
   for (const pos of state.magicWordCells) {
