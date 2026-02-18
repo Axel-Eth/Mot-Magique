@@ -12,16 +12,17 @@ const playedMedia = loadPlayedMedia();
 function loadPlayedMedia() {
   try {
     const raw = localStorage.getItem(PLAYED_MEDIA_STORAGE_KEY);
-    if (!raw) return { capitales: {}, music: {}, films: {}, peoples: {} };
+    if (!raw) return { capitales: {}, music: {}, films: {}, peoples: {}, generalQuestions: {} };
     const parsed = JSON.parse(raw);
     return {
       capitales: parsed?.capitales && typeof parsed.capitales === "object" ? parsed.capitales : {},
       music: parsed?.music && typeof parsed.music === "object" ? parsed.music : {},
       films: parsed?.films && typeof parsed.films === "object" ? parsed.films : {},
-      peoples: parsed?.peoples && typeof parsed.peoples === "object" ? parsed.peoples : {}
+      peoples: parsed?.peoples && typeof parsed.peoples === "object" ? parsed.peoples : {},
+      generalQuestions: parsed?.generalQuestions && typeof parsed.generalQuestions === "object" ? parsed.generalQuestions : {}
     };
   } catch {
-    return { capitales: {}, music: {}, films: {}, peoples: {} };
+    return { capitales: {}, music: {}, films: {}, peoples: {}, generalQuestions: {} };
   }
 }
 
@@ -455,12 +456,262 @@ export async function loadPeoplesList() {
   });
 }
 
+function getAnyKey(obj, keys) {
+  if (!obj || typeof obj !== "object") return undefined;
+  for (const key of keys) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) return obj[key];
+  }
+  return undefined;
+}
+
+function parseGeneralLevelLabel(rawLevel) {
+  const level = String(rawLevel || "").trim().toLowerCase();
+  if (level.includes("debut")) return "Debutant";
+  if (level.includes("confirm")) return "Confirme";
+  if (level.includes("expert")) return "Expert";
+  return String(rawLevel || "").trim() || "Niveau";
+}
+
+function parseGeneralQuestionsFromDataset(fileName, data) {
+  if (!data || typeof data !== "object") return [];
+
+  const categoryMeta = getAnyKey(data, ["catégorie-nom-slogan", "categorie-nom-slogan"]) || {};
+  const frMeta = getAnyKey(categoryMeta, ["fr"]) || categoryMeta;
+  const category = String(getAnyKey(frMeta, ["catégorie", "categorie"]) || "Culture generale").trim();
+  const sourceName = String(getAnyKey(frMeta, ["nom"]) || fileName.replace(/\.json$/i, "")).trim();
+
+  const quizzNode = getAnyKey(data, ["quizz"]) || {};
+  const frNode = getAnyKey(quizzNode, ["fr"]) || quizzNode;
+  if (!frNode || typeof frNode !== "object") return [];
+
+  const questions = [];
+
+  Object.entries(frNode).forEach(([levelKey, entries]) => {
+    if (!Array.isArray(entries)) return;
+    const level = parseGeneralLevelLabel(levelKey);
+    entries.forEach((entry, index) => {
+      if (!entry || typeof entry !== "object") return;
+      const questionText = String(getAnyKey(entry, ["question"]) || "").trim();
+      if (!questionText) return;
+      const optionsNode = getAnyKey(entry, ["propositions", "options", "choix"]);
+      const options = Array.isArray(optionsNode)
+        ? optionsNode.map((x) => String(x || "").trim()).filter(Boolean)
+        : [];
+      const answer = String(getAnyKey(entry, ["réponse", "reponse", "answer"]) || "").trim();
+      const rawId = getAnyKey(entry, ["id"]);
+      const idPart = rawId != null && String(rawId).trim() ? String(rawId).trim() : String(index + 1);
+      questions.push({
+        id: `${fileName}::${levelKey}::${idPart}`,
+        category,
+        sourceName,
+        level,
+        question: questionText,
+        options,
+        answer
+      });
+    });
+  });
+
+  return questions;
+}
+
+function getGeneralCategoryStats() {
+  const stats = new Map();
+  state.generalQuestions.forEach((q) => {
+    const key = q.category || "Culture generale";
+    if (!stats.has(key)) stats.set(key, { total: 0, remaining: 0 });
+    const info = stats.get(key);
+    info.total += 1;
+    if (!isPlayed("generalQuestions", q.id)) info.remaining += 1;
+  });
+  return stats;
+}
+
+function refreshGeneralCategorySelect() {
+  const select = $("generalCategorySelect");
+  if (!select) return;
+
+  const previous = select.value || "";
+  const stats = getGeneralCategoryStats();
+  const categories = [...stats.keys()].sort((a, b) =>
+    a.localeCompare(b, "fr", { sensitivity: "base" })
+  );
+
+  select.innerHTML = "";
+
+  const allInfo = { total: state.generalQuestions.length, remaining: 0 };
+  state.generalQuestions.forEach((q) => {
+    if (!isPlayed("generalQuestions", q.id)) allInfo.remaining += 1;
+  });
+  const allOption = document.createElement("option");
+  allOption.value = "";
+  allOption.textContent = `Toutes categories (${allInfo.remaining}/${allInfo.total})`;
+  select.appendChild(allOption);
+
+  categories.forEach((category) => {
+    const info = stats.get(category);
+    const opt = document.createElement("option");
+    opt.value = category;
+    opt.textContent = `${category} (${info.remaining}/${info.total})`;
+    select.appendChild(opt);
+  });
+
+  if ([...select.options].some((opt) => opt.value === previous)) {
+    select.value = previous;
+  } else {
+    select.selectedIndex = 0;
+  }
+}
+
+function updateGeneralQuestionButtons() {
+  const current = state.generalQuestionCurrent;
+  const canShowQuestion = !!current;
+  const hasFourOptions = !!(current && Array.isArray(current.options) && current.options.length === 4);
+
+  const showQuestionBtn = $("btnGeneralShowQuestion");
+  if (showQuestionBtn) showQuestionBtn.disabled = !canShowQuestion;
+
+  const showChoicesBtn = $("btnGeneralShowChoices");
+  if (showChoicesBtn) {
+    showChoicesBtn.disabled = !hasFourOptions;
+    showChoicesBtn.textContent = state.generalQuestionChoicesVisible ? "Cacher propositions" : "Afficher propositions";
+  }
+}
+
+function renderGeneralQuestionCard() {
+  const card = $("generalQuestionCard");
+  const metaEl = $("generalQuestionMeta");
+  const textEl = $("generalQuestionText");
+  const listEl = $("generalChoicesList");
+  const answerEl = $("generalAnswerText");
+  if (!card || !metaEl || !textEl || !listEl || !answerEl) return;
+
+  const q = state.generalQuestionCurrent;
+  if (!q) {
+    card.classList.add("hidden");
+    metaEl.textContent = "-";
+    textEl.textContent = "Choisis une question.";
+    listEl.innerHTML = "";
+    answerEl.textContent = "";
+    updateGeneralQuestionButtons();
+    return;
+  }
+
+  card.classList.remove("hidden");
+  metaEl.textContent = `${q.category} • ${q.level} • ${q.sourceName}`;
+  textEl.textContent = q.question;
+  listEl.innerHTML = "";
+  if (Array.isArray(q.options) && q.options.length) {
+    q.options.forEach((opt, idx) => {
+      const li = document.createElement("li");
+      li.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
+      listEl.appendChild(li);
+    });
+  }
+  answerEl.textContent = q.answer ? `Reponse: ${q.answer}` : "";
+  updateGeneralQuestionButtons();
+}
+
+function getGeneralQuestionCandidates() {
+  const selectedCategory = $("generalCategorySelect")?.value || "";
+  const filtered = selectedCategory
+    ? state.generalQuestions.filter((q) => q.category === selectedCategory)
+    : state.generalQuestions.slice();
+  return filtered.filter((q) => !isPlayed("generalQuestions", q.id));
+}
+
+function selectGeneralQuestion({ random = false } = {}) {
+  const candidates = getGeneralQuestionCandidates();
+  if (!candidates.length) {
+    alert("Plus de question disponible dans cette categorie. Utilise Nouvelle emission pour reinitialiser.");
+    return;
+  }
+
+  const picked = random
+    ? candidates[Math.floor(Math.random() * candidates.length)]
+    : candidates[0];
+
+  markPlayed("generalQuestions", picked.id);
+  state.generalQuestionCurrent = picked;
+  state.generalQuestionChoicesVisible = false;
+  refreshGeneralCategorySelect();
+  renderGeneralQuestionCard();
+}
+
+function sendGeneralQuestionToPlateau(showChoices = false) {
+  const q = state.generalQuestionCurrent;
+  if (!q) return;
+  state.generalQuestionChoicesVisible = !!showChoices;
+  postToPlateau({ type: "STOP_FILMS_VIDEO" });
+  postToPlateau({ type: "HIDE_MEDIA" });
+  postToPlateau({
+    type: "SHOW_GENERAL_QUESTION",
+    category: q.category,
+    level: q.level,
+    source: q.sourceName,
+    question: q.question,
+    options: q.options || [],
+    answer: q.answer || "",
+    showChoices: !!showChoices
+  });
+  updateGeneralQuestionButtons();
+}
+
+export async function loadGeneralQuestionsList() {
+  const select = $("generalCategorySelect");
+  if (!select) return;
+
+  state.generalQuestions = [];
+  state.generalQuestionCurrent = null;
+  state.generalQuestionChoicesVisible = false;
+  select.innerHTML = "";
+
+  const base = "questions/Datasets/";
+  try {
+    const res = await fetch(base, { cache: "no-store" });
+    if (!res.ok) {
+      renderGeneralQuestionCard();
+      return;
+    }
+    const html = await res.text();
+    const files = [...html.matchAll(/href=\"([^\"]+\.json)\"/gi)]
+      .map((m) => decodeURIComponent(m[1].split("/").pop() || m[1]))
+      .filter((name) => !name.startsWith("."))
+      .sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
+
+    const allQuestions = [];
+    for (const file of files) {
+      try {
+        const fileRes = await fetch(`${base}${encodeURIComponent(file)}`, { cache: "no-store" });
+        if (!fileRes.ok) continue;
+        const data = await fileRes.json();
+        allQuestions.push(...parseGeneralQuestionsFromDataset(file, data));
+      } catch {}
+    }
+
+    state.generalQuestions = allQuestions.sort((a, b) => {
+      const cat = a.category.localeCompare(b.category, "fr", { sensitivity: "base" });
+      if (cat !== 0) return cat;
+      const src = a.sourceName.localeCompare(b.sourceName, "fr", { sensitivity: "base" });
+      if (src !== 0) return src;
+      const lvl = a.level.localeCompare(b.level, "fr", { sensitivity: "base" });
+      if (lvl !== 0) return lvl;
+      return a.id.localeCompare(b.id, "fr", { sensitivity: "base" });
+    });
+  } catch {}
+
+  refreshGeneralCategorySelect();
+  renderGeneralQuestionCard();
+}
+
 function runXMediaFlow() {
   state.showScores = false;
   syncScoresToPlateau();
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "HIDE_MEDIA" });
   postToPlateau({ type: "STOP_MUSIC" });
+  state.generalQuestionChoicesVisible = false;
+  updateGeneralQuestionButtons();
 }
 
 function playMusicSource(src) {
@@ -571,6 +822,32 @@ export function registerMediaEvents() {
     }
   });
 
+  $("generalCategorySelect")?.addEventListener("change", () => {
+    state.generalQuestionCurrent = null;
+    state.generalQuestionChoicesVisible = false;
+    renderGeneralQuestionCard();
+    refreshGeneralCategorySelect();
+  });
+
+  $("btnGeneralNext")?.addEventListener("click", () => {
+    selectGeneralQuestion({ random: false });
+  });
+
+  $("btnGeneralRandom")?.addEventListener("click", () => {
+    selectGeneralQuestion({ random: true });
+  });
+
+  $("btnGeneralShowQuestion")?.addEventListener("click", () => {
+    sendGeneralQuestionToPlateau(false);
+  });
+
+  $("btnGeneralShowChoices")?.addEventListener("click", () => {
+    const q = state.generalQuestionCurrent;
+    if (!q || !Array.isArray(q.options) || q.options.length !== 4) return;
+    const next = !state.generalQuestionChoicesVisible;
+    sendGeneralQuestionToPlateau(next);
+  });
+
   $("btnReplayMusic")?.addEventListener("click", () => {
     const current = $("musicSelect")?.value || "";
     const src = current || state.lastMusicSrc;
@@ -604,6 +881,7 @@ export function registerMediaEvents() {
   });
 
   updateReplayButtonsState();
+  updateGeneralQuestionButtons();
 }
 
 export function resetMediaForNewShow() {
@@ -611,17 +889,19 @@ export function resetMediaForNewShow() {
   playedMedia.music = {};
   playedMedia.films = {};
   playedMedia.peoples = {};
+  playedMedia.generalQuestions = {};
   savePlayedMedia();
 
   refreshSelectPlayedStyles($("capitalesSelect"), "capitales");
   refreshSelectPlayedStyles($("musicSelect"), "music");
   refreshSelectPlayedStyles($("filmsSelect"), "films");
   refreshSelectPlayedStyles($("peoplesSelect"), "peoples");
+  refreshGeneralCategorySelect();
 
   const capitalesInput = $("capitalesInput");
   if (capitalesInput) capitalesInput.value = "";
 
-  const selectIds = ["capitalesSelect", "musicSelect", "plateauMusicSelect", "filmsSelect", "peoplesSelect"];
+  const selectIds = ["capitalesSelect", "musicSelect", "plateauMusicSelect", "filmsSelect", "peoplesSelect", "generalCategorySelect"];
   selectIds.forEach((id) => {
     const sel = $(id);
     if (sel) sel.selectedIndex = 0;
@@ -632,6 +912,9 @@ export function resetMediaForNewShow() {
   state.lastPeopleSrc = "";
   state.lastPeopleLabel = "";
   state.capitalesLastFile = "";
+  state.generalQuestionCurrent = null;
+  state.generalQuestionChoicesVisible = false;
+  renderGeneralQuestionCard();
   updateReplayButtonsState();
 
   setCapitalesTone("doux");

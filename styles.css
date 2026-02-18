@@ -329,6 +329,71 @@ h2{
   line-height:1;
 }
 
+.generalq-block .media-row{
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+
+.generalq-block #generalCategorySelect{
+  min-width: 340px;
+  flex: 1 1 320px;
+}
+
+.general-question-card-regie{
+  margin-top:10px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;
+  padding:10px;
+  background: rgba(0,0,0,.18);
+}
+
+.general-question-card-regie.hidden{
+  display:none;
+}
+
+.general-question-meta-regie{
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+.general-question-text-regie{
+  font-size:20px;
+  line-height:1.28;
+  font-weight:800;
+  color:#ffe873;
+}
+
+.general-question-choices-regie{
+  margin:10px 0 0;
+  padding-left:22px;
+  display:grid;
+  gap:4px;
+}
+
+.general-question-choices-regie li{
+  font-size:17px;
+  color:#ffffff;
+}
+
+.general-question-answer-regie{
+  margin-top:8px;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid rgba(60,179,113,.45);
+  background: rgba(60,179,113,.16);
+  color:#d4ffd4;
+  font-weight:800;
+}
+
+.general-question-actions{
+  margin-top:10px;
+}
+
+.general-question-actions .btn{
+  flex:1;
+}
+
 .word-action-box{
   margin-top:12px;
   width: min(100%, 560px);
@@ -1241,6 +1306,66 @@ body.plateau .flag-image{
   box-shadow: 0 14px 32px rgba(0,0,0,.35);
   opacity: 1;
   transition: opacity .16s ease;
+}
+
+body.plateau .general-question-overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .2s ease;
+  z-index:6;
+  background: rgba(6, 18, 34, 0.58);
+  backdrop-filter: blur(10px);
+}
+
+body.plateau .general-question-overlay.active{
+  opacity:1;
+}
+
+body.plateau .general-question-card{
+  width:min(1200px, 92vw);
+  max-height:86vh;
+  overflow:auto;
+  border-radius:22px;
+  border:2px solid rgba(255,255,255,.25);
+  background: linear-gradient(180deg, rgba(12,34,58,.95), rgba(7,24,43,.95));
+  box-shadow: 0 24px 52px rgba(0,0,0,.38);
+  padding:26px 28px;
+}
+
+body.plateau .general-question-meta{
+  color:#9cc7ff;
+  font-size:18px;
+  font-weight:800;
+}
+
+body.plateau .general-question-text{
+  margin-top:10px;
+  font-size:48px;
+  line-height:1.15;
+  font-weight:900;
+  color:#fffef0;
+}
+
+body.plateau .general-question-choices{
+  margin:18px 0 0;
+  padding-left:34px;
+  display:grid;
+  gap:10px;
+}
+
+body.plateau .general-question-choices.hidden{
+  display:none;
+}
+
+body.plateau .general-question-choice{
+  font-size:36px;
+  font-weight:800;
+  color:#ffe873;
 }
 
 body.plateau .scores-title{

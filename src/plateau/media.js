@@ -12,6 +12,7 @@ const FILMS_FADE_MS = 280;
 let multiplierBadge = null;
 let scoresOverlay = null;
 let flagOverlay = null;
+let generalQuestionOverlay = null;
 let flagLoadToken = 0;
 let genericVideo = null;
 let videoDuckingActive = false;
@@ -247,6 +248,23 @@ function ensureFlagOverlay() {
   return overlay;
 }
 
+function ensureGeneralQuestionOverlay() {
+  if (generalQuestionOverlay) return generalQuestionOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "generalQuestionOverlay";
+  overlay.className = "general-question-overlay";
+  overlay.innerHTML = `
+    <div class="general-question-card">
+      <div class="general-question-meta" id="generalQuestionMeta"></div>
+      <div class="general-question-text" id="generalQuestionText"></div>
+      <ol class="general-question-choices hidden" id="generalQuestionChoices"></ol>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  generalQuestionOverlay = overlay;
+  return overlay;
+}
+
 export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag") {
   const overlay = ensureFlagOverlay();
   const img = overlay.querySelector(".flag-image");
@@ -287,6 +305,44 @@ export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag
   }
 }
 
+export function showGeneralQuestion(payload = {}) {
+  const overlay = ensureGeneralQuestionOverlay();
+  const meta = overlay.querySelector("#generalQuestionMeta");
+  const text = overlay.querySelector("#generalQuestionText");
+  const list = overlay.querySelector("#generalQuestionChoices");
+
+  const category = String(payload.category || "").trim();
+  const level = String(payload.level || "").trim();
+  const source = String(payload.source || "").trim();
+  const bits = [category, level, source].filter(Boolean);
+
+  if (meta) meta.textContent = bits.join("  •  ") || "Culture generale";
+  if (text) text.textContent = String(payload.question || "").trim() || "Question indisponible";
+
+  const options = Array.isArray(payload.options)
+    ? payload.options.filter((x) => String(x || "").trim())
+    : [];
+
+  if (list) {
+    list.innerHTML = "";
+    if (payload.showChoices && options.length) {
+      options.forEach((opt, index) => {
+        const li = document.createElement("li");
+        li.className = "general-question-choice";
+        li.textContent = `${String.fromCharCode(65 + index)}. ${opt}`;
+        list.appendChild(li);
+      });
+      list.classList.remove("hidden");
+    } else {
+      list.classList.add("hidden");
+    }
+  }
+
+  overlay.classList.add("active");
+  gridEl.style.display = "none";
+  defBar?.classList.add("hidden");
+}
+
 export { FLAG_ANTHEM_SRC, PEOPLE_THEME_SRC };
 
 export function hideAllMedia() {
@@ -298,6 +354,7 @@ export function hideAllMedia() {
     if (img) img.style.opacity = "1";
   }
   if (scoresOverlay) scoresOverlay.classList.remove("active");
+  if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
   stopMusic();
   const vid = genericVideo;
   if (vid) {

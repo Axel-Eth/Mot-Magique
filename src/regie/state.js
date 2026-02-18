@@ -28,5 +28,8 @@ export const state = {
   lastMusicSrc: "",
   lastFilmsSrc: "",
   lastPeopleSrc: "",
-  lastPeopleLabel: ""
+  lastPeopleLabel: "",
+  generalQuestions: [],
+  generalQuestionCurrent: null,
+  generalQuestionChoicesVisible: false
 };

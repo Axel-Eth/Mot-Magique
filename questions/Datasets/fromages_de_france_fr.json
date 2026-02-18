@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "4 / 5",
+  "version": 1,
+  "mise-à-jour": "2021-03-23",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Gastronomie",
+      "nom": "Fromages de France",
+      "slogan": "Près de mille fromages différents"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quel fromage français a été représenté par une jeune fille blonde avec des nattes ?",
+          "propositions": [
+            "Palet du Poitou",
+            "Petit chèvre",
+            "Belle des Champs",
+            "Tomme du Jura"
+          ],
+          "réponse": "Belle des Champs",
+          "anecdote": "Ce fromage à pâte molle et à croûte fleurie, à base de lait de chèvre cru, de forme cylindrique, pèse environ deux kilogrammes."
+        },
+        {
+          "id": 2,
+          "question": "Quel fromage industriel est généralement enrobé de paraffine teinte en rouge ?",
+          "propositions": [
+            "Époisses",
+            "Saint-paulin",
+            "Chavroux",
+            "Babybel"
+          ],
+          "réponse": "Babybel",
+          "anecdote": "La version classique du fromage Babybel est composée de lait de vache (98 %), de sel, de ferments lactiques et de coagulant."
+        },
+        {
+          "id": 3,
+          "question": "Quel fromage est enveloppé dans un papier en aluminium gaufré ?",
+          "propositions": [
+            "Boursin",
+            "Emmental",
+            "Roquefort",
+            "Reblochon"
+          ],
+          "réponse": "Boursin",
+          "anecdote": "Créé par François Boursin, on ajoute aux laits de vache mélangés et pasteurisés de la crème et un mélange d'ail et de fines herbes."
+        },
+        {
+          "id": 4,
+          "question": "Quel fromage est réputé dans la commune de Meaux en France ?",
+          "propositions": [
+            "Le gruyère",
+            "Le brie",
+            "Le cantal",
+            "Le roquefort"
+          ],
+          "réponse": "Le brie",
+          "anecdote": "Le nom du fromage vient de la région de Brie et de la commune de Meaux en France, remontant probablement à l'époque romaine."
+        },
+        {
+          "id": 5,
+          "question": "Quel fromage français est principalement produit en Franche-Comté ?",
+          "propositions": [
+            "La fourme",
+            "Le comté",
+            "Le demi-sel",
+            "Le chèvre"
+          ],
+          "réponse": "Le comté",
+          "anecdote": "Avec une production de 60 000 tonnes par an, il faut environ 450 litres de lait pour produire une meule de comté (fromage AOP)."
+        },
+        {
+          "id": 6,
+          "question": "Quel est le premier fromage le plus consommé en France ?",
+          "propositions": [
+            "Gruyère",
+            "Roquefort",
+            "Emmental",
+            "Brie"
+          ],
+          "réponse": "Emmental",
+          "anecdote": "Produit depuis le Moyen Âge, ce fromage suisse à pâte dure doit son nom à la vallée de l'Emme, située dans le canton de Berne."
+        },
+        {
+          "id": 7,
+          "question": "La pâte de quel fromage français doit avoir des trous de par son appellation ?",
+          "propositions": [
+            "Le beaufort",
+            "Le gruyère",
+            "La figuette",
+            "Le brebis"
+          ],
+          "réponse": "Le gruyère",
+          "anecdote": "Le gruyère fait partie de la même famille que le comté, qui s'appelait à l'origine gruyère de comté ou gruyère franc-comtois."
+        },
+        {
+          "id": 8,
+          "question": "Quel fromage a connu son heure de gloire suite à un film de Dany Boon ?",
+          "propositions": [
+            "Le brie",
+            "Le maroilles",
+            "Le gruyère",
+            "Le roquefort"
+          ],
+          "réponse": "Le maroilles",
+          "anecdote": "Le film expose la pratique culinaire qu'auraient les habitants du Nord-Pas-de-Calais de tremper du maroilles dans leur café."
+        },
+        {
+          "id": 9,
+          "question": "Quel fromage est présenté sous forme de cylindre de 5 cm de haut ?",
+          "propositions": [
+            "Le petit-suisse",
+            "Le saint-marcellin",
+            "Le coulommiers",
+            "Le maroilles"
+          ],
+          "réponse": "Le petit-suisse",
+          "anecdote": "Frais et crémeux, le petit-suisse sert également dans des plats salés, comme pour farcir les viandes (volaille) ou les recouvrir (lapin)."
+        },
+        {
+          "id": 10,
+          "question": "Quel fromage français est fabriqué dans quelques fermes aux alentours de Bergues ?",
+          "propositions": [
+            "Le savaron",
+            "Le Bergues",
+            "Le livarot",
+            "Le beaufort"
+          ],
+          "réponse": "Le Bergues",
+          "anecdote": "La plus ancienne trace de ce fromage à pâte molle se retrouve dans les archives communales de Bergues Saint Winoc, dès 1554."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel fromage français a été surnommé le Prince des gruyères par Brillat-Savarin ?",
+          "propositions": [
+            "Le beaufort",
+            "Le brie",
+            "Le morbier",
+            "Le munster"
+          ],
+          "réponse": "Le beaufort",
+          "anecdote": "Le beaufort, bénéficiant d'une AOP, est moulé en forme de meule à talon légèrement concave, avec une base incurvée vers l'intérieur."
+        },
+        {
+          "id": 12,
+          "question": "Lequel de ces fromages français est commercialisé dans une boîte en bois ?",
+          "propositions": [
+            "Époisses",
+            "Petit-suisse",
+            "Roquefort",
+            "Cabécou"
+          ],
+          "réponse": "Époisses",
+          "anecdote": "L'époisses est un fromage français renommé, apprécié par Napoléon Bonaparte pour sa saveur puissante et son odeur prononcée."
+        },
+        {
+          "id": 13,
+          "question": "Quel fromage français est aussi appelé boule de Lille de par sa forme ?",
+          "propositions": [
+            "La rigotte",
+            "Le mouflon",
+            "La Mimolette vieille",
+            "Le pavé du Nord"
+          ],
+          "réponse": "La Mimolette vieille",
+          "anecdote": "Selon la légende, le fromage aurait été inspiré par les fromages néerlandais, auquel on a donné la spécificité de la croûte orange."
+        },
+        {
+          "id": 14,
+          "question": "Quel fromage doit son nom à un terme savoyard qui signifie traire une deuxième fois ?",
+          "propositions": [
+            "Reblochon",
+            "Gruyère",
+            "Roquefort",
+            "Emmental"
+          ],
+          "réponse": "Reblochon",
+          "anecdote": "Jadis, les vaches étaient traitent une deuxième fois après passage leur chez le seigneur, pour ne pas payer d'impôts sur cette traite."
+        },
+        {
+          "id": 15,
+          "question": "Quel fromage à pâte persillée est élaboré avec des laits crus de brebis ?",
+          "propositions": [
+            "Roquefort",
+            "Beaufort",
+            "Munster",
+            "Brie"
+          ],
+          "réponse": "Roquefort",
+          "anecdote": "De réputation internationale, le roquefort à pâte persillée est associé à l'excellence de l'agriculture française et à sa gastronomie."
+        },
+        {
+          "id": 16,
+          "question": "Quel fromage à la pâte onctueuse doit sa renommée à son goût de noisette ?",
+          "propositions": [
+            "Saint-nectaire",
+            "Roquefort",
+            "Livernon",
+            "Époisses"
+          ],
+          "réponse": "Saint-nectaire",
+          "anecdote": "Fromage paysan, fabriqué bien souvent par les femmes, le saint-nectaire fut appelé fromage de seigle jusqu'au milieu du XVIIe siècle."
+        },
+        {
+          "id": 17,
+          "question": "Quel fromage affilié au maroilles a un nom de mammifère ?",
+          "propositions": [
+            "Le marsouin",
+            "Le dauphin",
+            "Le wallaby",
+            "Le lapin"
+          ],
+          "réponse": "Le dauphin",
+          "anecdote": "Aujourd'hui, les agriculteurs emploient majoritairement des formes carrées, rectangulaires ou en losange pour des raisons de coûts."
+        },
+        {
+          "id": 18,
+          "question": "Quel fromage possède un coeur sucré et fruité dû à sa garniture de figues ?",
+          "propositions": [
+            "Figou",
+            "Saint-nectaire",
+            "Tomme de Savoie",
+            "Petit chèvre"
+          ],
+          "réponse": "Figou",
+          "anecdote": "Fabriqué par les éleveurs de chèvres, ce fromage ancien tire son nom du mot figue, en référence à sa forme et à la tradition locale."
+        },
+        {
+          "id": 19,
+          "question": "Quel fromage français du Dauphiné est un proche cousin du saint-félicien ?",
+          "propositions": [
+            "Le saint-siméon",
+            "Le saint-marcellin",
+            "Le saint-julien",
+            "Le saint-paulin"
+          ],
+          "réponse": "Le saint-marcellin",
+          "anecdote": "Ce petit fromage à base de lait de vache est réalisé avec le lait provenant de 274 communes de l'Isère, de la Drôme et du Rhône."
+        },
+        {
+          "id": 20,
+          "question": "Quel est sans doute le plus ancien des fromages de Savoie ?",
+          "propositions": [
+            "La rigotte",
+            "Le vieux moulin",
+            "La tomme de Savoie",
+            "Le vacherin"
+          ],
+          "réponse": "La tomme de Savoie",
+          "anecdote": "La Tomme était fabriquée avec du lait de vache partiellement écrémé, non utilisé pour la production de fromages plus précieux."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel fromage français est moulé en forme de meule à talon légèrement concave ?",
+          "propositions": [
+            "Reblochon",
+            "Livernon",
+            "Beaufort",
+            "Cantal"
+          ],
+          "réponse": "Beaufort",
+          "anecdote": "Autrefois, le beaufort représentait une production importante, mais il a payé un lourd tribut à l'exode rural et à son coût de production."
+        },
+        {
+          "id": 22,
+          "question": "Quel fromage triple-crème est produit dans les régions de Normandie et de Bourgogne ?",
+          "propositions": [
+            "Pélardon",
+            "Mélusine",
+            "Brillat-savarin",
+            "Gaperon"
+          ],
+          "réponse": "Brillat-savarin",
+          "anecdote": "Le brillat-savarin est un fromage triple-crème au fort taux de matières grasses, doux au palais, qui se mange jeune et bien frais."
+        },
+        {
+          "id": 23,
+          "question": "Quel fromage français actuel est parfois aussi appelé brie petit moule ?",
+          "propositions": [
+            "Le coulommiers",
+            "Le chevrotin",
+            "Le charolais",
+            "Le civray"
+          ],
+          "réponse": "Le coulommiers",
+          "anecdote": "Le Coulommiers est un fromage à pâte molle et croûte fleurie, typique de la Brie, plus crémeux et plus doux que le Camembert."
+        },
+        {
+          "id": 24,
+          "question": "Quel fromage est cerclé de trois à cinq bandelettes séchées et découpées ?",
+          "propositions": [
+            "Le montbriac",
+            "Le fédou",
+            "Le livarot",
+            "Le livernon"
+          ],
+          "réponse": "Le livarot",
+          "anecdote": "Ces bandelettes, qui servaient à la bonne tenue du fromage lors de l'affinage, sont à l'origine du surnom de colonel du fromage."
+        },
+        {
+          "id": 25,
+          "question": "Quel fromage possède une fine couche de cendre à la saveur douce et fruitée ?",
+          "propositions": [
+            "Trou du Cru",
+            "Morbier",
+            "Vachard",
+            "Savaron"
+          ],
+          "réponse": "Morbier",
+          "anecdote": "Morbier est une appellation d'origine désignant un fromage de lait cru de vache, fabriqué dans le massif du Jura en France."
+        },
+        {
+          "id": 26,
+          "question": "Quel fromage français utilise le taureau comme logotype ?",
+          "propositions": [
+            "Le livarot",
+            "Le laguiole",
+            "Le barousse",
+            "Le fédou"
+          ],
+          "réponse": "Le laguiole",
+          "anecdote": "Le Laguiole est un fromage également associé au célèbre couteau Laguiole, une lame traditionnelle qui a vu le jour dans la région."
+        },
+        {
+          "id": 27,
+          "question": "Combien de litres de lait sont nécessaires pour confectionner une meule de cantal ?",
+          "propositions": [
+            "200",
+            "100",
+            "400",
+            "300"
+          ],
+          "réponse": "400",
+          "anecdote": "Il existe trois types de Cantal, chacun ayant des caractéristiques distinctes selon le temps d'affinage : jeune, entre-deux et vieux."
+        },
+        {
+          "id": 28,
+          "question": "Quel fromage de lait de vache se nomme géromé en Lorraine ?",
+          "propositions": [
+            "Le savaron",
+            "Le trou du Cru",
+            "Le morbier",
+            "Le munster"
+          ],
+          "réponse": "Le munster",
+          "anecdote": "La recette du munster aurait été laissée aux Vosgiens et aux moines cisterciens du IXe siècle par un moine irlandais de passage."
+        },
+        {
+          "id": 29,
+          "question": "Quel fromage présente une ligne orange en-dessous de sa pâte de couleur ivoire ?",
+          "propositions": [
+            "Le barousse",
+            "Le Curé nantais",
+            "Le munster",
+            "Le mouflon"
+          ],
+          "réponse": "Le barousse",
+          "anecdote": "Pendant les deux premières semaines d'affinage, le Barousse est lavé, essuyé et retourné tous les jours pour renforcer ses arômes."
+        },
+        {
+          "id": 30,
+          "question": "Quel fromage a une pâte qui révèle une saveur de lard fumé et un final épicé ?",
+          "propositions": [
+            "La figuette",
+            "Le Curé nantais",
+            "Le charolais",
+            "Le boursin"
+          ],
+          "réponse": "Le Curé nantais",
+          "anecdote": "La recette du fromage aurait été transmise au XIXe siècle à Saint-Julien-de-Concelles dans le vignoble nantais par un curé de passage."
+        }
+      ]
+    }
+  }
+}

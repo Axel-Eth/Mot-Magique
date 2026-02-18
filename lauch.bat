@@ -18,11 +18,19 @@ echo Dossier: %CD%
 echo URL:     %BASEURL%
 echo.
 
-REM === 1) Tenter Python (recommandé) ===
+REM === 1) Tenter Python (recommande) ===
 where python >nul 2>nul
 if %errorlevel%==0 (
   echo [OK] Python detecte. Lancement du serveur sur le port %PORT%...
   start "AVM Server (Python)" cmd /c "python -m http.server %PORT% --bind 127.0.0.1"
+  goto :OPEN
+)
+
+REM === 1bis) Tenter le launcher py ===
+where py >nul 2>nul
+if %errorlevel%==0 (
+  echo [OK] Launcher py detecte. Lancement du serveur sur le port %PORT%...
+  start "AVM Server (py)" cmd /c "py -m http.server %PORT% --bind 127.0.0.1"
   goto :OPEN
 )
 
@@ -56,7 +64,7 @@ pause
 exit /b 1
 
 :OPEN
-REM Petite pause pour laisser le serveur démarrer
+REM Petite pause pour laisser le serveur demarrer
 timeout /t 1 /nobreak >nul
 
 echo Ouverture de la Regie...

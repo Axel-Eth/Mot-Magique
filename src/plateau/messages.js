@@ -35,6 +35,7 @@ import {
   playDoubleVideo,
   playFilmsOverlayVideo,
   playGenericVideo,
+  showGeneralQuestion,
   stopFilmsOverlayVideo,
   playTripleVideo,
   showFlag,
@@ -191,6 +192,10 @@ export function registerMessageHandlers() {
 
       case "SHOW_PEOPLE":
         if (msg.src) showFlag(msg.src, msg.alt || "Personnalite", PEOPLE_THEME_SRC, "people");
+        break;
+
+      case "SHOW_GENERAL_QUESTION":
+        showGeneralQuestion(msg);
         break;
 
       case "PLAY_MUSIC":

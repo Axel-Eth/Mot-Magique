@@ -7,6 +7,7 @@ import {
   loadCapitalesList,
   loadCapitalesNotes,
   loadFilmsList,
+  loadGeneralQuestionsList,
   loadMusicList,
   loadPeoplesList,
   loadPlateauMusicList,
@@ -20,20 +21,31 @@ registerMediaEvents();
 initLetterInput();
 
 (async function init() {
-  try {
-    await loadGridList();
-    await loadCapitalesNotes();
-    await loadCapitalesList();
-    await loadMusicList();
-    await loadPlateauMusicList();
-    await loadFilmsList();
-    await loadPeoplesList();
-    await loadSelectedGrid();
-    renderTeams();
-    setPlateauLabel();
-    document.getElementById("letterInput")?.focus();
-  } catch (err) {
-    console.error(err);
-    alert(String(err?.message ?? err));
+  const errors = [];
+  const safeRun = async (label, fn) => {
+    try {
+      await fn();
+    } catch (err) {
+      console.error(`[regie:init] ${label}`, err);
+      errors.push(`${label}: ${String(err?.message ?? err)}`);
+    }
+  };
+
+  await safeRun("loadGridList", loadGridList);
+  await safeRun("loadCapitalesNotes", loadCapitalesNotes);
+  await safeRun("loadCapitalesList", loadCapitalesList);
+  await safeRun("loadMusicList", loadMusicList);
+  await safeRun("loadPlateauMusicList", loadPlateauMusicList);
+  await safeRun("loadFilmsList", loadFilmsList);
+  await safeRun("loadPeoplesList", loadPeoplesList);
+  await safeRun("loadGeneralQuestionsList", loadGeneralQuestionsList);
+  await safeRun("loadSelectedGrid", loadSelectedGrid);
+  await safeRun("renderTeams", () => renderTeams());
+  await safeRun("setPlateauLabel", () => setPlateauLabel());
+
+  document.getElementById("letterInput")?.focus();
+
+  if (errors.length) {
+    alert(`Initialisation partielle.\n\n${errors.join("\n")}`);
   }
 })();
