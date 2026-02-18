@@ -548,6 +548,7 @@ function refreshGeneralLevelFilterOptions() {
       state.generalQuestionCurrent = null;
       state.generalQuestionVisible = false;
       state.generalQuestionChoicesVisible = false;
+      state.generalQuestionChoicesRevealCount = 0;
       state.generalQuestionAnswerMarks = {};
       refreshGeneralLevelSummary();
       refreshGeneralCategorySelect();
@@ -608,17 +609,67 @@ function parseGeneralQuestionsFromDataset(fileName, data) {
   return questions;
 }
 
+function makeCategorySelectionValue(category) {
+  return `cat::${encodeURIComponent(String(category || "").trim())}`;
+}
+
+function makeThemeSelectionValue(category, sourceName) {
+  return `theme::${encodeURIComponent(String(category || "").trim())}::${encodeURIComponent(String(sourceName || "").trim())}`;
+}
+
+function parseGeneralSelectionValue(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return { mode: "all" };
+  if (raw.startsWith("cat::")) {
+    return { mode: "category", category: decodeURIComponent(raw.slice("cat::".length)) };
+  }
+  if (raw.startsWith("theme::")) {
+    const rest = raw.slice("theme::".length);
+    const sep = rest.indexOf("::");
+    if (sep === -1) return { mode: "all" };
+    const category = decodeURIComponent(rest.slice(0, sep));
+    const sourceName = decodeURIComponent(rest.slice(sep + 2));
+    return { mode: "theme", category, sourceName };
+  }
+  return { mode: "all" };
+}
+
+function matchesGeneralSelection(question, selectionValue) {
+  const selection = parseGeneralSelectionValue(selectionValue);
+  if (selection.mode === "all") return true;
+  if (selection.mode === "category") {
+    return String(question?.category || "") === String(selection.category || "");
+  }
+  if (selection.mode === "theme") {
+    return (
+      String(question?.category || "") === String(selection.category || "")
+      && String(question?.sourceName || "") === String(selection.sourceName || "")
+    );
+  }
+  return true;
+}
+
 function getGeneralCategoryStats() {
-  const stats = new Map();
+  const categories = new Map();
+  const themes = new Map();
+
   state.generalQuestions.forEach((q) => {
     if (!matchesGeneralLevelFilter(q)) return;
-    const key = q.category || "Culture generale";
-    if (!stats.has(key)) stats.set(key, { total: 0, remaining: 0 });
-    const info = stats.get(key);
-    info.total += 1;
-    if (!isPlayed("generalQuestions", q.id)) info.remaining += 1;
+    const category = q.category || "Culture generale";
+    const source = q.sourceName || "Theme";
+    if (!categories.has(category)) categories.set(category, { total: 0, remaining: 0 });
+    const catInfo = categories.get(category);
+    catInfo.total += 1;
+    if (!isPlayed("generalQuestions", q.id)) catInfo.remaining += 1;
+
+    const themeKey = `${category}|||${source}`;
+    if (!themes.has(themeKey)) themes.set(themeKey, { category, sourceName: source, total: 0, remaining: 0 });
+    const themeInfo = themes.get(themeKey);
+    themeInfo.total += 1;
+    if (!isPlayed("generalQuestions", q.id)) themeInfo.remaining += 1;
   });
-  return stats;
+
+  return { categories, themes };
 }
 
 function refreshGeneralCategorySelect() {
@@ -627,7 +678,7 @@ function refreshGeneralCategorySelect() {
 
   const previous = select.value || "";
   const stats = getGeneralCategoryStats();
-  const categories = [...stats.keys()].sort((a, b) =>
+  const categories = [...stats.categories.keys()].sort((a, b) =>
     a.localeCompare(b, "fr", { sensitivity: "base" })
   );
 
@@ -645,11 +696,26 @@ function refreshGeneralCategorySelect() {
   select.appendChild(allOption);
 
   categories.forEach((category) => {
-    const info = stats.get(category);
-    const opt = document.createElement("option");
-    opt.value = category;
-    opt.textContent = `${category} (${info.remaining}/${info.total})`;
-    select.appendChild(opt);
+    const info = stats.categories.get(category);
+    const optCat = document.createElement("option");
+    optCat.value = makeCategorySelectionValue(category);
+    optCat.textContent = `${category} - Tous themes (${info.remaining}/${info.total})`;
+    optCat.className = "general-category-option";
+    optCat.style.color = "#8bd3ff";
+    optCat.style.fontWeight = "800";
+    select.appendChild(optCat);
+
+    const themeItems = [...stats.themes.values()]
+      .filter((item) => item.category === category)
+      .sort((a, b) => a.sourceName.localeCompare(b.sourceName, "fr", { sensitivity: "base" }));
+
+    themeItems.forEach((item) => {
+      const optTheme = document.createElement("option");
+      optTheme.value = makeThemeSelectionValue(item.category, item.sourceName);
+      optTheme.textContent = `↳ ${item.sourceName} (${item.remaining}/${item.total})`;
+      optTheme.className = "general-theme-option";
+      select.appendChild(optTheme);
+    });
   });
 
   if ([...select.options].some((opt) => opt.value === previous)) {
@@ -662,7 +728,9 @@ function refreshGeneralCategorySelect() {
 function updateGeneralQuestionButtons() {
   const current = state.generalQuestionCurrent;
   const canShowQuestion = !!current;
-  const hasFourOptions = !!(current && Array.isArray(current.options) && current.options.length === 4);
+  const totalOptions = current && Array.isArray(current.options)
+    ? current.options.filter((x) => String(x || "").trim()).length
+    : 0;
 
   const showQuestionBtn = $("btnGeneralShowQuestion");
   if (showQuestionBtn) {
@@ -672,8 +740,11 @@ function updateGeneralQuestionButtons() {
 
   const showChoicesBtn = $("btnGeneralShowChoices");
   if (showChoicesBtn) {
-    showChoicesBtn.disabled = !hasFourOptions;
-    showChoicesBtn.textContent = state.generalQuestionChoicesVisible ? "Cacher propositions" : "Afficher propositions";
+    showChoicesBtn.disabled = totalOptions === 0;
+    const revealCount = Math.min(state.generalQuestionChoicesRevealCount || 0, totalOptions);
+    showChoicesBtn.textContent = revealCount >= totalOptions && totalOptions > 0
+      ? "Cacher propositions"
+      : "Afficher propositions";
   }
 }
 
@@ -689,6 +760,27 @@ function markGeneralAnswerOnPlateau(index, isCorrect) {
     type: "GENERAL_ANSWER_MARK",
     index,
     isCorrect: !!isCorrect
+  });
+}
+
+function applyGeneralChoicesRevealUI() {
+  const listEl = $("generalChoicesList");
+  const q = state.generalQuestionCurrent;
+  if (!listEl || !q || !Array.isArray(q.options)) return;
+
+  const total = q.options.filter((x) => String(x || "").trim()).length;
+  const revealCount = Math.max(0, Math.min(state.generalQuestionChoicesRevealCount || 0, total));
+
+  const choices = listEl.querySelectorAll(".general-question-choice-regie");
+  choices.forEach((choice, idx) => {
+    const shouldShow = idx < revealCount;
+    const wasHidden = choice.classList.contains("choice-hidden");
+    choice.classList.toggle("choice-hidden", !shouldShow);
+    if (shouldShow && wasHidden) {
+      choice.classList.remove("choice-reveal-anim");
+      void choice.offsetWidth;
+      choice.classList.add("choice-reveal-anim");
+    }
   });
 }
 
@@ -721,11 +813,14 @@ function renderGeneralQuestionCard() {
     q.options.forEach((opt, idx) => {
       const choice = document.createElement("button");
       choice.type = "button";
-      choice.className = "general-question-choice-regie";
+      choice.className = "general-question-choice-regie choice-hidden";
       choice.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
       choice.addEventListener("click", () => {
+        if (choice.classList.contains("choice-hidden")) return;
         if (!state.generalQuestionChoicesVisible) {
+          state.generalQuestionChoicesRevealCount = Math.max(1, state.generalQuestionChoicesRevealCount || 0);
           state.generalQuestionChoicesVisible = true;
+          applyGeneralChoicesRevealUI();
           sendGeneralQuestionToPlateau();
         }
         const isCorrect = isCorrectGeneralOption(q, opt);
@@ -742,6 +837,7 @@ function renderGeneralQuestionCard() {
       if (mark === "wrong") choice.classList.add("attempted-wrong");
       listEl.appendChild(choice);
     });
+    applyGeneralChoicesRevealUI();
     answerEl.textContent = "";
   } else {
     answerEl.textContent = q.answer ? `Reponse: ${q.answer}` : "";
@@ -816,10 +912,10 @@ function initGeneralQuestionsModalDrag() {
 }
 
 function getGeneralQuestionCandidates() {
-  const selectedCategory = $("generalCategorySelect")?.value || "";
-  const filtered = selectedCategory
-    ? state.generalQuestions.filter((q) => q.category === selectedCategory && matchesGeneralLevelFilter(q))
-    : state.generalQuestions.filter((q) => matchesGeneralLevelFilter(q));
+  const selectionValue = $("generalCategorySelect")?.value || "";
+  const filtered = state.generalQuestions.filter((q) =>
+    matchesGeneralLevelFilter(q) && matchesGeneralSelection(q, selectionValue)
+  );
   return filtered.filter((q) => !isPlayed("generalQuestions", q.id));
 }
 
@@ -838,6 +934,7 @@ function selectGeneralQuestion({ random = false } = {}) {
   state.generalQuestionCurrent = picked;
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
+  state.generalQuestionChoicesRevealCount = 0;
   state.generalQuestionAnswerMarks = {};
   refreshGeneralCategorySelect();
   renderGeneralQuestionCard();
@@ -859,7 +956,8 @@ function sendGeneralQuestionToPlateau() {
     options: q.options || [],
     answer: q.answer || "",
     showQuestion,
-    showChoices
+    showChoices,
+    choicesRevealCount: state.generalQuestionChoicesRevealCount || 0
   });
   updateGeneralQuestionButtons();
 }
@@ -872,6 +970,7 @@ export async function loadGeneralQuestionsList() {
   state.generalQuestionCurrent = null;
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
+  state.generalQuestionChoicesRevealCount = 0;
   state.generalQuestionAnswerMarks = {};
   select.innerHTML = "";
 
@@ -922,6 +1021,7 @@ function runXMediaFlow() {
   postToPlateau({ type: "STOP_MUSIC" });
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
+  state.generalQuestionChoicesRevealCount = 0;
   updateGeneralQuestionButtons();
 }
 
@@ -1066,6 +1166,7 @@ export function registerMediaEvents() {
     state.generalQuestionCurrent = null;
     state.generalQuestionVisible = false;
     state.generalQuestionChoicesVisible = false;
+    state.generalQuestionChoicesRevealCount = 0;
     state.generalQuestionAnswerMarks = {};
     renderGeneralQuestionCard();
     refreshGeneralCategorySelect();
@@ -1092,8 +1193,16 @@ export function registerMediaEvents() {
 
   $("btnGeneralShowChoices")?.addEventListener("click", () => {
     const q = state.generalQuestionCurrent;
-    if (!q || !Array.isArray(q.options) || q.options.length !== 4) return;
-    state.generalQuestionChoicesVisible = !state.generalQuestionChoicesVisible;
+    if (!q || !Array.isArray(q.options) || !q.options.length) return;
+    const total = q.options.filter((x) => String(x || "").trim()).length;
+    if (!total) return;
+    if ((state.generalQuestionChoicesRevealCount || 0) < total) {
+      state.generalQuestionChoicesRevealCount = Math.min(total, (state.generalQuestionChoicesRevealCount || 0) + 1);
+    } else {
+      state.generalQuestionChoicesRevealCount = 0;
+    }
+    state.generalQuestionChoicesVisible = state.generalQuestionChoicesRevealCount > 0;
+    applyGeneralChoicesRevealUI();
     sendGeneralQuestionToPlateau();
   });
 
@@ -1164,6 +1273,7 @@ export function resetMediaForNewShow() {
   state.generalQuestionCurrent = null;
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
+  state.generalQuestionChoicesRevealCount = 0;
   state.generalQuestionAnswerMarks = {};
   renderGeneralQuestionCard();
   updateReplayButtonsState();

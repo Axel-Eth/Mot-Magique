@@ -33,5 +33,6 @@ export const state = {
   generalQuestionCurrent: null,
   generalQuestionVisible: false,
   generalQuestionChoicesVisible: false,
+  generalQuestionChoicesRevealCount: 0,
   generalQuestionAnswerMarks: {}
 };

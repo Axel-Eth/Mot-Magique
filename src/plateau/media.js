@@ -325,7 +325,12 @@ export function showGeneralQuestion(payload = {}) {
     : [];
 
   if (choicesStage) {
-    if (payload.showChoices && options.length) {
+    const requestedCount = Number(payload.choicesRevealCount);
+    const revealCount = Number.isInteger(requestedCount)
+      ? Math.max(0, Math.min(options.length, requestedCount))
+      : (payload.showChoices ? options.length : 0);
+
+    if (payload.showChoices && revealCount > 0 && options.length) {
       for (let i = 0; i < 4; i++) {
         const win = overlay.querySelector(`#generalQuestionChoice${i}`)?.closest(".general-question-choice-window");
         const box = overlay.querySelector(`#generalQuestionChoice${i}`);
@@ -334,11 +339,24 @@ export function showGeneralQuestion(payload = {}) {
         box.textContent = value;
         box.classList.remove("answer-correct", "answer-wrong");
         win.classList.remove("answer-correct", "answer-wrong");
-        win.classList.toggle("hidden", !value);
+        const shouldShow = !!value && i < revealCount;
+        const wasHidden = win.classList.contains("hidden");
+        win.classList.toggle("hidden", !shouldShow);
+        if (shouldShow && wasHidden) {
+          win.classList.remove("choice-reveal-anim");
+          void win.offsetWidth;
+          win.classList.add("choice-reveal-anim");
+        }
       }
       choicesStage.classList.remove("hidden");
     } else {
       choicesStage.classList.add("hidden");
+      for (let i = 0; i < 4; i++) {
+        const win = overlay.querySelector(`#generalQuestionChoice${i}`)?.closest(".general-question-choice-window");
+        if (!win) continue;
+        win.classList.remove("choice-reveal-anim");
+        win.classList.add("hidden");
+      }
     }
   }
 
