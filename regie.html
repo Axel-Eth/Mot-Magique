@@ -32,7 +32,7 @@
     <div id="capitalesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="capitalesModalTitle">
       <div class="modal-card">
         <h3 id="capitalesModalTitle">Drapeau selectionne</h3>
-        <p><strong>Fichier :</strong> <span id="capitalesFileName">-</span></p>
+        <p><span id="capitalesFileName">-</span></p>
         <p><strong>Note :</strong> <span id="capitalesNote">-</span></p>
         <div class="row">
           <button id="capitalesModalTone" class="btn ghost capitales-tone-modal" type="button" aria-pressed="false">Doux</button>
@@ -65,7 +65,12 @@
       <div class="modal-card generalq-modal-card">
         <div id="generalQuestionsDragHandle" class="row space-between">
           <h3 id="generalQuestionsTitle">Questions culture generale</h3>
-          <button id="btnCloseQuestions" class="btn ghost" type="button">Fermer</button>
+          <div class="row generalq-top-actions">
+            <details id="generalLevelFilter" class="general-level-filter">
+              <summary id="generalLevelFilterSummary" class="btn ghost">Niveaux: Tous</summary>
+              <div id="generalLevelFilterOptions" class="general-level-filter-options"></div>
+            </details>
+          </div>
         </div>
         <div class="music-block generalq-block">
           <div class="media-row">

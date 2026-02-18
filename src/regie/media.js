@@ -91,7 +91,7 @@ function showCapitaleModal(fileName) {
   modal.classList.remove("hidden");
   state.capitalesLastFile = fileName;
   const baseName = String(fileName || "").replace(/\.png$/i, "");
-  $("capitalesFileName").textContent = `${baseName}.png`;
+  $("capitalesFileName").textContent = baseName;
   $("capitalesNote").textContent = getCapitaleNote(baseName);
 }
 
@@ -100,7 +100,7 @@ function refreshCapitaleModal() {
   if (!modal || modal.classList.contains("hidden")) return;
   if (!state.capitalesLastFile) return;
   const baseName = String(state.capitalesLastFile || "").replace(/\.png$/i, "");
-  $("capitalesFileName").textContent = `${baseName}.png`;
+  $("capitalesFileName").textContent = baseName;
   $("capitalesNote").textContent = getCapitaleNote(baseName);
 }
 
@@ -472,6 +472,96 @@ function parseGeneralLevelLabel(rawLevel) {
   return String(rawLevel || "").trim() || "Niveau";
 }
 
+function generalLevelSortValue(level) {
+  const v = String(level || "").trim().toLowerCase();
+  if (v === "debutant") return 1;
+  if (v === "confirme") return 2;
+  if (v === "expert") return 3;
+  return 99;
+}
+
+function getAllGeneralLevels() {
+  const set = new Set();
+  state.generalQuestions.forEach((q) => {
+    const level = String(q.level || "").trim();
+    if (level) set.add(level);
+  });
+  return [...set].sort((a, b) => {
+    const da = generalLevelSortValue(a);
+    const db = generalLevelSortValue(b);
+    if (da !== db) return da - db;
+    return a.localeCompare(b, "fr", { sensitivity: "base" });
+  });
+}
+
+function getSelectedGeneralLevels() {
+  const optionsRoot = $("generalLevelFilterOptions");
+  if (!optionsRoot) return [];
+  const inputs = optionsRoot.querySelectorAll('input[type="checkbox"][name="general-level"]');
+  return [...inputs]
+    .filter((el) => el.checked)
+    .map((el) => String(el.value || "").trim())
+    .filter(Boolean);
+}
+
+function refreshGeneralLevelSummary() {
+  const summary = $("generalLevelFilterSummary");
+  if (!summary) return;
+  const allLevels = getAllGeneralLevels();
+  const selected = getSelectedGeneralLevels();
+  if (!allLevels.length || selected.length === allLevels.length || !selected.length) {
+    summary.textContent = "Niveaux: Tous";
+    return;
+  }
+  summary.textContent = `Niveaux: ${selected.join(", ")}`;
+}
+
+function matchesGeneralLevelFilter(question) {
+  const selected = getSelectedGeneralLevels();
+  if (!selected.length) return true;
+  const level = String(question?.level || "").trim();
+  return selected.includes(level);
+}
+
+function refreshGeneralLevelFilterOptions() {
+  const optionsRoot = $("generalLevelFilterOptions");
+  if (!optionsRoot) return;
+
+  const previousSelected = new Set(getSelectedGeneralLevels());
+  const allLevels = getAllGeneralLevels();
+  optionsRoot.innerHTML = "";
+
+  allLevels.forEach((level) => {
+    const id = `general-level-${String(level).toLowerCase()}`.replace(/[^a-z0-9_-]/g, "-");
+    const label = document.createElement("label");
+    label.className = "general-level-filter-option";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = "general-level";
+    checkbox.value = level;
+    checkbox.id = id;
+    checkbox.checked = previousSelected.size ? previousSelected.has(level) : true;
+    checkbox.addEventListener("change", () => {
+      if (!getSelectedGeneralLevels().length) {
+        checkbox.checked = true;
+      }
+      state.generalQuestionCurrent = null;
+      state.generalQuestionChoicesVisible = false;
+      state.generalQuestionAnswerMarks = {};
+      refreshGeneralLevelSummary();
+      refreshGeneralCategorySelect();
+      renderGeneralQuestionCard();
+    });
+    const text = document.createElement("span");
+    text.textContent = level;
+    label.appendChild(checkbox);
+    label.appendChild(text);
+    optionsRoot.appendChild(label);
+  });
+
+  refreshGeneralLevelSummary();
+}
+
 function parseGeneralQuestionsFromDataset(fileName, data) {
   if (!data || typeof data !== "object") return [];
 
@@ -518,6 +608,7 @@ function parseGeneralQuestionsFromDataset(fileName, data) {
 function getGeneralCategoryStats() {
   const stats = new Map();
   state.generalQuestions.forEach((q) => {
+    if (!matchesGeneralLevelFilter(q)) return;
     const key = q.category || "Culture generale";
     if (!stats.has(key)) stats.set(key, { total: 0, remaining: 0 });
     const info = stats.get(key);
@@ -540,7 +631,9 @@ function refreshGeneralCategorySelect() {
   select.innerHTML = "";
 
   const allInfo = { total: state.generalQuestions.length, remaining: 0 };
+  allInfo.total = state.generalQuestions.filter((q) => matchesGeneralLevelFilter(q)).length;
   state.generalQuestions.forEach((q) => {
+    if (!matchesGeneralLevelFilter(q)) return;
     if (!isPlayed("generalQuestions", q.id)) allInfo.remaining += 1;
   });
   const allOption = document.createElement("option");
@@ -627,11 +720,17 @@ function renderGeneralQuestionCard() {
           sendGeneralQuestionToPlateau(true);
         }
         const isCorrect = isCorrectGeneralOption(q, opt);
+        state.generalQuestionAnswerMarks[idx] = isCorrect ? "correct" : "wrong";
+        choice.classList.remove("attempted-correct", "attempted-wrong");
+        choice.classList.add(isCorrect ? "attempted-correct" : "attempted-wrong");
         markGeneralAnswerOnPlateau(idx, isCorrect);
       });
       if (isCorrectGeneralOption(q, opt)) {
         choice.classList.add("correct-answer");
       }
+      const mark = state.generalQuestionAnswerMarks[idx];
+      if (mark === "correct") choice.classList.add("attempted-correct");
+      if (mark === "wrong") choice.classList.add("attempted-wrong");
       listEl.appendChild(choice);
     });
     answerEl.textContent = "";
@@ -676,6 +775,7 @@ function initGeneralQuestionsModalDrag() {
   handle.addEventListener("mousedown", (e) => {
     if (e.button !== 0) return;
     if (e.target?.closest?.("button")) return;
+    if (e.target?.closest?.("#generalLevelFilter")) return;
 
     const rect = card.getBoundingClientRect();
     card.style.position = "fixed";
@@ -697,8 +797,8 @@ function initGeneralQuestionsModalDrag() {
 function getGeneralQuestionCandidates() {
   const selectedCategory = $("generalCategorySelect")?.value || "";
   const filtered = selectedCategory
-    ? state.generalQuestions.filter((q) => q.category === selectedCategory)
-    : state.generalQuestions.slice();
+    ? state.generalQuestions.filter((q) => q.category === selectedCategory && matchesGeneralLevelFilter(q))
+    : state.generalQuestions.filter((q) => matchesGeneralLevelFilter(q));
   return filtered.filter((q) => !isPlayed("generalQuestions", q.id));
 }
 
@@ -716,6 +816,7 @@ function selectGeneralQuestion({ random = false } = {}) {
   markPlayed("generalQuestions", picked.id);
   state.generalQuestionCurrent = picked;
   state.generalQuestionChoicesVisible = false;
+  state.generalQuestionAnswerMarks = {};
   refreshGeneralCategorySelect();
   renderGeneralQuestionCard();
 }
@@ -746,6 +847,7 @@ export async function loadGeneralQuestionsList() {
   state.generalQuestions = [];
   state.generalQuestionCurrent = null;
   state.generalQuestionChoicesVisible = false;
+  state.generalQuestionAnswerMarks = {};
   select.innerHTML = "";
 
   const base = "questions/Datasets/";
@@ -782,6 +884,7 @@ export async function loadGeneralQuestionsList() {
     });
   } catch {}
 
+  refreshGeneralLevelFilterOptions();
   refreshGeneralCategorySelect();
   renderGeneralQuestionCard();
 }
@@ -877,10 +980,6 @@ export function registerMediaEvents() {
     }
   });
 
-  $("btnCloseQuestions")?.addEventListener("click", () => {
-    hideGeneralQuestionsModal();
-  });
-
   $("generalQuestionsModal")?.addEventListener("click", (e) => {
     if (e.target?.id === "generalQuestionsModal") {
       hideGeneralQuestionsModal();
@@ -933,8 +1032,13 @@ export function registerMediaEvents() {
   $("generalCategorySelect")?.addEventListener("change", () => {
     state.generalQuestionCurrent = null;
     state.generalQuestionChoicesVisible = false;
+    state.generalQuestionAnswerMarks = {};
     renderGeneralQuestionCard();
     refreshGeneralCategorySelect();
+  });
+
+  $("generalLevelFilter")?.addEventListener("toggle", () => {
+    refreshGeneralLevelSummary();
   });
 
   $("btnGeneralNext")?.addEventListener("click", () => {
@@ -1022,6 +1126,7 @@ export function resetMediaForNewShow() {
   state.capitalesLastFile = "";
   state.generalQuestionCurrent = null;
   state.generalQuestionChoicesVisible = false;
+  state.generalQuestionAnswerMarks = {};
   renderGeneralQuestionCard();
   updateReplayButtonsState();
 
