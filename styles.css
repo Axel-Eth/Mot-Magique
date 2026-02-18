@@ -1352,14 +1352,8 @@ body.plateau .general-question-card{
   padding:26px 28px;
 }
 
-body.plateau .general-question-meta{
-  color:#9cc7ff;
-  font-size:18px;
-  font-weight:800;
-}
-
 body.plateau .general-question-text{
-  margin-top:10px;
+  margin-top:0;
   font-size:48px;
   line-height:1.15;
   font-weight:900;
@@ -1367,10 +1361,10 @@ body.plateau .general-question-text{
 }
 
 body.plateau .general-question-choices{
-  margin:18px 0 0;
-  padding-left:34px;
+  margin:22px 0 0;
   display:grid;
-  gap:10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:14px;
 }
 
 body.plateau .general-question-choices.hidden{
@@ -1378,9 +1372,20 @@ body.plateau .general-question-choices.hidden{
 }
 
 body.plateau .general-question-choice{
-  font-size:36px;
-  font-weight:800;
-  color:#ffe873;
+  min-height: 112px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,.26);
+  background: rgba(8, 30, 52, .72);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:32px;
+  line-height:1.2;
+  font-weight:900;
+  color:#ffffff;
+  box-shadow: 0 10px 22px rgba(0,0,0,.22);
 }
 
 body.plateau .scores-title{

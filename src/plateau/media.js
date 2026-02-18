@@ -255,9 +255,8 @@ function ensureGeneralQuestionOverlay() {
   overlay.className = "general-question-overlay";
   overlay.innerHTML = `
     <div class="general-question-card">
-      <div class="general-question-meta" id="generalQuestionMeta"></div>
       <div class="general-question-text" id="generalQuestionText"></div>
-      <ol class="general-question-choices hidden" id="generalQuestionChoices"></ol>
+      <div class="general-question-choices hidden" id="generalQuestionChoices"></div>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -307,16 +306,8 @@ export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag
 
 export function showGeneralQuestion(payload = {}) {
   const overlay = ensureGeneralQuestionOverlay();
-  const meta = overlay.querySelector("#generalQuestionMeta");
   const text = overlay.querySelector("#generalQuestionText");
   const list = overlay.querySelector("#generalQuestionChoices");
-
-  const category = String(payload.category || "").trim();
-  const level = String(payload.level || "").trim();
-  const source = String(payload.source || "").trim();
-  const bits = [category, level, source].filter(Boolean);
-
-  if (meta) meta.textContent = bits.join("  •  ") || "Culture generale";
   if (text) text.textContent = String(payload.question || "").trim() || "Question indisponible";
 
   const options = Array.isArray(payload.options)
@@ -326,11 +317,11 @@ export function showGeneralQuestion(payload = {}) {
   if (list) {
     list.innerHTML = "";
     if (payload.showChoices && options.length) {
-      options.forEach((opt, index) => {
-        const li = document.createElement("li");
-        li.className = "general-question-choice";
-        li.textContent = `${String.fromCharCode(65 + index)}. ${opt}`;
-        list.appendChild(li);
+      options.forEach((opt) => {
+        const box = document.createElement("div");
+        box.className = "general-question-choice";
+        box.textContent = opt;
+        list.appendChild(box);
       });
       list.classList.remove("hidden");
     } else {
