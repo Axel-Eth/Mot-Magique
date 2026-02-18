@@ -72,3 +72,48 @@ export function resetSelectionUi() {
   updateMagicButtonState();
   setActionButtonsEnabled(false);
 }
+
+export function initWordSelectModalDrag() {
+  const modal = $("wordSelectModal");
+  const card = modal?.querySelector(".word-select-card");
+  const handle = $("regieWordHeader");
+  if (!modal || !card || !handle) return;
+
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  const onMouseMove = (e) => {
+    if (!dragging) return;
+    const nextLeft = e.clientX - offsetX;
+    const nextTop = e.clientY - offsetY;
+    card.style.left = `${Math.max(8, nextLeft)}px`;
+    card.style.top = `${Math.max(8, nextTop)}px`;
+  };
+
+  const stopDrag = () => {
+    dragging = false;
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", stopDrag);
+  };
+
+  handle.addEventListener("mousedown", (e) => {
+    if (e.button !== 0) return;
+    const rect = card.getBoundingClientRect();
+
+    // Keep the existing centered appearance until first drag.
+    card.style.position = "fixed";
+    card.style.margin = "0";
+    card.style.left = `${rect.left}px`;
+    card.style.top = `${rect.top}px`;
+    card.style.transform = "none";
+
+    dragging = true;
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    e.preventDefault();
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", stopDrag);
+  });
+}

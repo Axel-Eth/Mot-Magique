@@ -1,4 +1,4 @@
-import { setPlateauLabel } from "./ui.js";
+import { initWordSelectModalDrag, setPlateauLabel } from "./ui.js";
 import { loadGridList } from "./grid-select.js";
 import { loadSelectedGrid } from "./grid-actions.js";
 import { renderTeams } from "./teams.js";
@@ -19,6 +19,7 @@ registerActionEvents();
 registerWindowEvents();
 registerMediaEvents();
 initLetterInput();
+initWordSelectModalDrag();
 
 (async function init() {
   const errors = [];
