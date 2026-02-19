@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "2 / 5",
+  "version": 8,
+  "mise-à-jour": "2024-05-12",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Vie quotidienne",
+      "nom": "Marques et slogans",
+      "slogan": "Identité visuelle, sonore et olfactive"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "De quelle filiale du groupe Nestlé George Clooney est-il devenu l'ambassadeur ?",
+          "propositions": [
+            "Carte Noire",
+            "Jacques Vabre",
+            "Ricoré",
+            "Nespresso"
+          ],
+          "réponse": "Nespresso",
+          "anecdote": "Éric Favre s'est inspiré d'un bar très prisé de Rome où il remarqua que le barista pompait l'air pour créer une mousse crémeuse."
+        },
+        {
+          "id": 2,
+          "question": "Quelle marque de jeans mondialement connue fabrique le célèbre 501 ?",
+          "propositions": [
+            "Lee Cooper",
+            "Lacoste",
+            "Lindex",
+            "Levis"
+          ],
+          "réponse": "Levis",
+          "anecdote": "Levi Strauss, un émigrant bavarois aux États-Unis, avait d'abord pour idée de vendre de la toile de tente pour les chercheurs d'or."
+        },
+        {
+          "id": 3,
+          "question": "Une marque de whisky écossais extrêmement populaire se nomme « Johnnie... »",
+          "propositions": [
+            "Monster",
+            "Parker",
+            "Bunker",
+            "Walker"
+          ],
+          "réponse": "Walker",
+          "anecdote": "C'est le fils de Johnnie Walker, Alexander, qui a eu l'idée de la bouteille carrée pour éviter la casse pendant le transport des colis."
+        },
+        {
+          "id": 4,
+          "question": "Quelle marque vous invite à savourer « un café nommé désir » ?",
+          "propositions": [
+            "Nespresso",
+            "Ricoré",
+            "Carte Noire",
+            "Jacques Vabre"
+          ],
+          "réponse": "Carte Noire",
+          "anecdote": "Ancienne marque du groupe américain Mondelez, Carte Noire appartient désormais au groupe italien Lavazza depuis février 2016."
+        },
+        {
+          "id": 5,
+          "question": "Quelle marque vous garantit « le goût des choses simples » ?",
+          "propositions": [
+            "Buitoni",
+            "Maggi",
+            "Purina",
+            "Herta"
+          ],
+          "réponse": "Herta",
+          "anecdote": "La marque a aussi innové en lançant le knacki, une saucisse prête à consommer, qui devint vite un produit phare de l'entreprise."
+        },
+        {
+          "id": 6,
+          "question": "Quelle grande marque de matériel informatique a pour logo une pomme ?",
+          "propositions": [
+            "IBM",
+            "Acer",
+            "Apple",
+            "Dell"
+          ],
+          "réponse": "Apple",
+          "anecdote": "En plus d'apprécier les pommes, Steve Jobs voulait que sa marque apparaisse avant Atari (société concurrente) dans les annuaires."
+        },
+        {
+          "id": 7,
+          "question": "Quelle enseigne vous invite à rester « tous unis contre la vie chère » ?",
+          "propositions": [
+            "Carrefour",
+            "Cora",
+            "Intermarché",
+            "Super U"
+          ],
+          "réponse": "Intermarché",
+          "anecdote": "Fondée en 1969 par Jean-Pierre Le Roch sous le nom des EX Offices de distribution, l'enseigne est devenue Intermarché en 1972."
+        },
+        {
+          "id": 8,
+          "question": "De quelle poudre chocolatée pourriez-vous avoir « une énorme envie » ?",
+          "propositions": [
+            "Nestea",
+            "Nalu",
+            "Nesquik",
+            "Nespresso"
+          ],
+          "réponse": "Nesquik",
+          "anecdote": "À l'origine, la poudre chocolatée portait le nom de Quik avant de devenir Nesquik, à l'occasion de son lancement en Europe en 1950."
+        },
+        {
+          "id": 9,
+          "question": "« Secouez-moi, secouez-moi » a longtemps été le slogan de quelle grande marque ?",
+          "propositions": [
+            "Coca-Cola",
+            "Schweppes",
+            "Pepsi",
+            "Orangina"
+          ],
+          "réponse": "Orangina",
+          "anecdote": "La célébrité de la marque vient en partie de l'originalité de sa bouteille arrondie, en forme d'orange, avec une surface granulée."
+        },
+        {
+          "id": 10,
+          "question": "Quel détaillant vous invite au « pays où la vie est moins chère » ?",
+          "propositions": [
+            "Conforama",
+            "Pixmania",
+            "Bricoman",
+            "Darty"
+          ],
+          "réponse": "Conforama",
+          "anecdote": "La hiérarchie est très courte chez Conforama : on ne compte que sept niveaux entre le PDG du groupe et un employé de magasin."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quelle marque spécialisée en eaux minérales a pour logo un volcan vert ?",
+          "propositions": [
+            "Vichy",
+            "Vittel",
+            "Volvic",
+            "Valvert"
+          ],
+          "réponse": "Volvic",
+          "anecdote": "Cette eau minérale est filtrée naturellement à travers des roches volcaniques pendant plus de cinq ans avant d'être embouteillée."
+        },
+        {
+          "id": 12,
+          "question": "Quel assureur, cinquième gestionnaire d'actifs au monde, est « avec vous de A à Z » ?",
+          "propositions": [
+            "Allianz",
+            "Axa",
+            "Generali",
+            "Aviva"
+          ],
+          "réponse": "Allianz",
+          "anecdote": "Allianz est l'une des rares entreprises qui a survécu à deux guerres mondiales et qui a continué à se développer malgré les défis."
+        },
+        {
+          "id": 13,
+          "question": "Quelle marque de parfum doit en partie sa célébrité à Marilyn Monroe ?",
+          "propositions": [
+            "Chanel",
+            "Lancôme",
+            "Gucci",
+            "Cacharel"
+          ],
+          "réponse": "Chanel",
+          "anecdote": "Révolutionnaire, le No. 5 a été le premier parfum à utiliser des aldéhydes (molécules de synthèse) pour rehausser les notes florales."
+        },
+        {
+          "id": 14,
+          "question": "La Cayenne est un modèle de quelle marque automobile allemande ?",
+          "propositions": [
+            "Mercedes",
+            "Volkswagen",
+            "Porsche",
+            "Audi"
+          ],
+          "réponse": "Porsche",
+          "anecdote": "Le logo de Porsche s'inspire des armoiries de la ville de Stuttgart, où est basé le constructeur, le cheval noir symbolisant la région."
+        },
+        {
+          "id": 15,
+          "question": "La publicité de quelle marque de chocolat a été inspirée par la couleur mauve ?",
+          "propositions": [
+            "Smarties",
+            "Kwatta",
+            "Treets",
+            "Milka"
+          ],
+          "réponse": "Milka",
+          "anecdote": "La couleur violette de la vache n'était pas censée être permanente, mais le succès fut tel que la marque a décidé de la maintenir."
+        },
+        {
+          "id": 16,
+          "question": "Quelle entreprise française vous propose son « contrat de confiance » ?",
+          "propositions": [
+            "Virgin",
+            "Darty",
+            "Orange",
+            "Free"
+          ],
+          "réponse": "Darty",
+          "anecdote": "Instauré dans les années 1970, le contrat de confiance offrait des garanties uniques en France (délais précis et réparations rapides)."
+        },
+        {
+          "id": 17,
+          "question": "Quel emblème est utilisé dans toutes les stations de la marque Shell ?",
+          "propositions": [
+            "Trèfle vert",
+            "Soleil bleu",
+            "Lion rouge",
+            "Coquillage jaune"
+          ],
+          "réponse": "Coquillage jaune",
+          "anecdote": "Shell trouve ses racines dans une petite entreprise londonienne qui importait des coquillages orientaux dans les années 1830."
+        },
+        {
+          "id": 18,
+          "question": "Par quoi est représenté le logo de la marque Adidas, spécialisée dans les articles de sport ?",
+          "propositions": [
+            "Trois carrés",
+            "Trois losanges",
+            "Trois cercles",
+            "Trois bandes"
+          ],
+          "réponse": "Trois bandes",
+          "anecdote": "La célèbre triple bande de la marque Adidas, ajoutée pour stabiliser les chaussures, est rapidement devenue un symbole mondial."
+        },
+        {
+          "id": 19,
+          "question": "Quel animal est représenté sur les vêtements de la marque Lacoste ?",
+          "propositions": [
+            "Un crocodile",
+            "Un chameau",
+            "Un taureau",
+            "Un ours"
+          ],
+          "réponse": "Un crocodile",
+          "anecdote": "La marque Lacoste a été fondée en 1933 par le joueur de tennis René Lacoste, appelé le crocodile, car connu pour son jeu agressif."
+        },
+        {
+          "id": 20,
+          "question": "Quelle bière belge a pour slogan : « Les hommes savent pourquoi » ?",
+          "propositions": [
+            "Jopen",
+            "Judas",
+            "Jupiler",
+            "Jacobin"
+          ],
+          "réponse": "Jupiler",
+          "anecdote": "Très populaires en Belgique, la bière Jupiler a été créée en 1966 par la Brasserie Piedboeuf dans la ville de Jupille-sur-Meuse."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel acteur a réalisé certaines publicités de la marque Orangina ?",
+          "propositions": [
+            "Gérard Jugnot",
+            "Michel Blanc",
+            "Thierry Lhermitte",
+            "Alain Chabat"
+          ],
+          "réponse": "Alain Chabat",
+          "anecdote": "Orangina a été créée en 1936 par un pharmacien espagnol du nom de Trigo Mirallès, qui voulait une boisson à base de vraie pulpe."
+        },
+        {
+          "id": 22,
+          "question": "Créée en 1971, quelle est « la plus chaude des boissons froides » ?",
+          "propositions": [
+            "Nestea",
+            "Gini",
+            "Schweppes",
+            "Canada Dry"
+          ],
+          "réponse": "Gini",
+          "anecdote": "Dans les années 2000, Gini a continué d'alimenter la controverse en mettant en avant des publicités flirtant parfois avec l'érotisme."
+        },
+        {
+          "id": 23,
+          "question": "Quelle chaîne de magasins française est un « agitateur de curiosité » ?",
+          "propositions": [
+            "Sony",
+            "Virgin",
+            "Fnac",
+            "HMV"
+          ],
+          "réponse": "Fnac",
+          "anecdote": "FNAC fut longtemps l'une des principales enseignes de la distribution de produits culturels et de loisirs en France et en Belgique."
+        },
+        {
+          "id": 24,
+          "question": "Quelle marque de café avait pour emblème un serveur noir avec un turban ?",
+          "propositions": [
+            "Négresco",
+            "Melita",
+            "Ricoré",
+            "Barista"
+          ],
+          "réponse": "Négresco",
+          "anecdote": "Bien que sans lien, le café Negresco est un produit emblématique qui tire son nom de la renommée de l'hôtel Negresco, à Nice."
+        },
+        {
+          "id": 25,
+          "question": "Quelle marque a fabriqué les premiers mouchoirs en papier jetables ?",
+          "propositions": [
+            "Kinder",
+            "Kleenex",
+            "Kappa",
+            "Kenzo"
+          ],
+          "réponse": "Kleenex",
+          "anecdote": "Créée en 1924 aux États-Unis, ce produit avait été conçu comme un tissu démaquillant jetable pour les actrices d'Hollywood."
+        },
+        {
+          "id": 26,
+          "question": "À quelle marque française de bière doit-on le slogan « Quatre chiffres. Une bière. » ?",
+          "propositions": [
+            "1789",
+            "1515",
+            "1832",
+            "1664"
+          ],
+          "réponse": "1664",
+          "anecdote": "La 1664 serait la bière française la plus vendue au monde, marque premium de la brasserie Kronenbourg, fondée en 1664."
+        },
+        {
+          "id": 27,
+          "question": "Quelle marque de surf a été inspirée, pour son logo, par une estampe japonaise ?",
+          "propositions": [
+            "Qloom",
+            "Qupid",
+            "Quiksilver",
+            "Quetsche"
+          ],
+          "réponse": "Quiksilver",
+          "anecdote": "Le logo de Quiksilver est inspiré de l'estampe japonaise « La Grande Vague de Kanagawa » de Hokusai, oeuvre du XIXe siècle."
+        },
+        {
+          "id": 28,
+          "question": "Quel gouverneur hollandais a donné son nom à des cigarettes blondes ?",
+          "propositions": [
+            "Pieter De Grebber",
+            "Pieter Codde",
+            "Pieter de Graeff",
+            "Pieter Stuyvesant"
+          ],
+          "réponse": "Pieter Stuyvesant",
+          "anecdote": "La firme British American Tobacco lance en 1960 la marque Pieter Stuyvesant, symbolisant dans le monde l'aventure et l'exotisme."
+        },
+        {
+          "id": 29,
+          "question": "Quel bouquet satellite français vous proposait « le meilleur du numérique » ?",
+          "propositions": [
+            "SFR",
+            "TPS",
+            "Bouygues",
+            "Canalsat"
+          ],
+          "réponse": "Canalsat",
+          "anecdote": "L'objectif de CanalSat était de donner accès à de nombreuses chaînes internationales et françaises, le tout en une seule offre."
+        },
+        {
+          "id": 30,
+          "question": "Quelle compagnie aérienne « fait du ciel le plus bel endroit de la terre » ?",
+          "propositions": [
+            "Airbus Transport",
+            "Air France",
+            "Air Corsica",
+            "Twin Jet"
+          ],
+          "réponse": "Air France",
+          "anecdote": "Les activités principales d'Air France sont le transport de passagers et de fret ainsi que la maintenance et l'entretien des avions."
+        }
+      ]
+    }
+  }
+}

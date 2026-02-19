@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 7,
+  "mise-à-jour": "2025-03-01",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Vie quotidienne",
+      "nom": "Marques de boisson",
+      "slogan": "Pour les petits et les grands"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quelle boisson fut présentée en 1989 comme la première boisson festive pour enfants ?",
+          "propositions": [
+            "Capri-Sun",
+            "Champomy",
+            "Honest Kids",
+            "Juicy Juice"
+          ],
+          "réponse": "Champomy",
+          "anecdote": "La marque est ainsi parfois accusée d'encourager indirectement la consommation d'alcool auprès des jeunes consommateurs."
+        },
+        {
+          "id": 2,
+          "question": "Quel célèbre soda à l'orange a été créé à l'époque du Troisième Reich ?",
+          "propositions": [
+            "Fanta",
+            "Finley",
+            "Sprite",
+            "Appletiser"
+          ],
+          "réponse": "Fanta",
+          "anecdote": "Durant la guerre, les consommateurs allemands, en pénurie alimentaire, s'en servirent notamment comme bouillon de soupe."
+        },
+        {
+          "id": 3,
+          "question": "Quelle boisson énergétique tout public est commercialisée par The Coca-Cola Company ?",
+          "propositions": [
+            "Bang Energy",
+            "Aquarius",
+            "Celsius",
+            "Adrenaline"
+          ],
+          "réponse": "Aquarius",
+          "anecdote": "La boisson fut commercialisée dans un premier temps dans les magasins Carrefour, puis ensuite plus largement courant 2020."
+        },
+        {
+          "id": 4,
+          "question": "Quelle marque française de soda au citron a été créée par le groupe Perrier ?",
+          "propositions": [
+            "Gini",
+            "SevenUp",
+            "Sanpellegrino",
+            "Sprite"
+          ],
+          "réponse": "Gini",
+          "anecdote": "Gini est particulièrement notoire sur le territoire français pour ses publicités (les premières ayant été réalisées par Serge Gainsbourg)."
+        },
+        {
+          "id": 5,
+          "question": "Suite à quel produit phare le groupe Besnier est-il devenu Lactalis ?",
+          "propositions": [
+            "Yoplait",
+            "Silk",
+            "Danone",
+            "Lactel"
+          ],
+          "réponse": "Lactel",
+          "anecdote": "En France, l'origine française du lait est indiqué sur l'emballage, conformément à la loi, et pour l'information du consommateur."
+        },
+        {
+          "id": 6,
+          "question": "Quelle marque est identifiée par une ribambelle de fruits déjantés ?",
+          "propositions": [
+            "Oasis",
+            "Capri-Sun",
+            "Lemonade",
+            "Calypso"
+          ],
+          "réponse": "Oasis",
+          "anecdote": "Dans les années 1980, le chanteur Carlos devint ambassadeur de la marque avec sa chanson « Rosalie » aux paroles détournées."
+        },
+        {
+          "id": 7,
+          "question": "Quel jus de fruit est vendu dans une poche conçue pour ne pas se déchirer ?",
+          "propositions": [
+            "Tropicana",
+            "Andros",
+            "Capri-Sun",
+            "Casino"
+          ],
+          "réponse": "Capri-Sun",
+          "anecdote": "Le succès de Capri-Sun repose aussi sur son emballage : la poche est résistante et peut par conséquent être emportée partout."
+        },
+        {
+          "id": 8,
+          "question": "Quelle célèbre marque britannique de thé propose le « Yellow Label » ?",
+          "propositions": [
+            "Lipton",
+            "Nestea",
+            "Éléphant",
+            "Twinnings"
+          ],
+          "réponse": "Lipton",
+          "anecdote": "À Glasgow en 1871, le commerçant écossais Thomas Lipton fonda une chaîne d'épiceries dans toute la Grande-Bretagne."
+        },
+        {
+          "id": 9,
+          "question": "Quel yaourt à boire est commercialisé par le groupe agroalimentaire Yoplait ?",
+          "propositions": [
+            "Yop",
+            "Sik",
+            "Chobani",
+            "Yakult"
+          ],
+          "réponse": "Yop",
+          "anecdote": "Yop a utilisé de jeunes personnalités des campagnes publicitaires télévisuelles pour faire la promotion de sa marque."
+        },
+        {
+          "id": 10,
+          "question": "Quelle boisson énergisante autrichienne est faite à base de taurine ?",
+          "propositions": [
+            "NOS",
+            "Red Bull",
+            "Rockstar",
+            "XS Energy"
+          ],
+          "réponse": "Red Bull",
+          "anecdote": "Lors d'un voyage en Asie en 1984, Dietrich Mateschitz a découvert le Krating Daeng, une boisson tonique thaïlandaise très populaire."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quelle marque est particulièrement connue pour son soda au gingembre ?",
+          "propositions": [
+            "Ricqlès",
+            "Canada Dry",
+            "Gini",
+            "Schweppes"
+          ],
+          "réponse": "Canada Dry",
+          "anecdote": "Bien que Canada Dry soit originaire du Canada, ses quartiers généraux industriels sont actuellement situés au Texas."
+        },
+        {
+          "id": 12,
+          "question": "Quelle boisson se compose d'une teneur élevée de jus et de pulpe d'orange ?",
+          "propositions": [
+            "Joker",
+            "Jafaden",
+            "Pressade",
+            "Orangina"
+          ],
+          "réponse": "Orangina",
+          "anecdote": "La célébrité de la marque Orangina vient en partie de l'originalité de sa bouteille, en forme d'orange avec une surface granulée."
+        },
+        {
+          "id": 13,
+          "question": "Quelle marque de thé glacé est distribuée par Nestlé ?",
+          "propositions": [
+            "Nestea",
+            "Lipton",
+            "Éléphant",
+            "Twinnings"
+          ],
+          "réponse": "Nestea",
+          "anecdote": "Au niveau mondial, cette marque est en concurrence avec Lipton Ice Tea, coentreprise formée par Unilever et PepsiCo."
+        },
+        {
+          "id": 14,
+          "question": "Quelle boisson suisse à base de malt d'orge et de cacao est vendue en poudre ?",
+          "propositions": [
+            "Cacolac",
+            "Ovomaltine",
+            "Chocomel",
+            "Banania"
+          ],
+          "réponse": "Ovomaltine",
+          "anecdote": "Lors des Jeux olympiques d'hiver de 1936, Ovomaltine bénéficiera du tout premier partenariat privé autorisé par le CIO."
+        },
+        {
+          "id": 15,
+          "question": "Pour quelle marque de boisson Nicole Kidman fut-elle égérie de 2009 à 2011 ?",
+          "propositions": [
+            "Gini",
+            "Schweppes",
+            "Aquarius",
+            "Get 27"
+          ],
+          "réponse": "Schweppes",
+          "anecdote": "L'actrice prononce le slogan « What did you expect » (À quoi vous attendiez-vous), qui reste le slogan actuel de Schweppes."
+        },
+        {
+          "id": 16,
+          "question": "Quelle marque française de vermouth aromatisé se décline en rouge et blanc ?",
+          "propositions": [
+            "Martini",
+            "Dubonnet",
+            "Cinzano",
+            "Martell"
+          ],
+          "réponse": "Dubonnet",
+          "anecdote": "C'est à Paris, du côté du futur emplacement de l'opéra Garnier, que Joseph Dubonnet élabora en 1846 son vin de quinquina."
+        },
+        {
+          "id": 17,
+          "question": "Pour quelle marque de boisson Omar Sy a-t-il fait plusieurs publicités ?",
+          "propositions": [
+            "Ovomaltine",
+            "Get 27",
+            "Ricqlès",
+            "Finley"
+          ],
+          "réponse": "Finley",
+          "anecdote": "Finley est une ancienne marque de boisson gazeuse, à l'origine un tonic, distribuée par The Coca-Cola Company depuis 2014."
+        },
+        {
+          "id": 18,
+          "question": "Quelle marque propose trois parfums phares : Exotique, Rio et Iced Tea Pêche ?",
+          "propositions": [
+            "Joker",
+            "Orangina",
+            "Tropico",
+            "Andros"
+          ],
+          "réponse": "Tropico",
+          "anecdote": "Tropico a été revendue le 23 septembre 2018 à Coca-Cola, tandis que son chiffre d'affaires se montait à 29 millions d'euros."
+        },
+        {
+          "id": 19,
+          "question": "Quelle liqueur de menthe créée en 1796 appartient aujourd'hui à Bacardi-Martini ?",
+          "propositions": [
+            "Génépi",
+            "Get 27",
+            "Campari",
+            "Ricqlès"
+          ],
+          "réponse": "Get 27",
+          "anecdote": "Le Pippermint Get est devenu Get 27 en 1972, à la suite d'un changement de stratégie marketing décidé par Bénédictine SA."
+        },
+        {
+          "id": 20,
+          "question": "Quel apéritif est à base de mélange de mistelle et de plantes aromatiques ?",
+          "propositions": [
+            "Byrrh",
+            "Aperol",
+            "Dubonnet",
+            "Saint-Raphaël"
+          ],
+          "réponse": "Saint-Raphaël",
+          "anecdote": "Vendue comme fortifiant et digestif, la marque Saint-Raphaël Quinquina a longtemps mis en avant les vertus du quinquina."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quelle fut la première marque de lait à voir le jour sur le marché français ?",
+          "propositions": [
+            "Lactel",
+            "Danone",
+            "Candia",
+            "Yoplait"
+          ],
+          "réponse": "Candia",
+          "anecdote": "La marque s'inspire du latin candia qui signifie blanc : cette couleur se réfère au lait, produit commercialisé sous cette marque."
+        },
+        {
+          "id": 22,
+          "question": "Quelle marque commerciale de thé fut créée à Marseille, en Provence ?",
+          "propositions": [
+            "Éléphant",
+            "La Tisanière",
+            "Pagès",
+            "Twinnings"
+          ],
+          "réponse": "Éléphant",
+          "anecdote": "En 1977, la marque Éléphant fut intégrée à Fralib, filiale d'Unilever qui regroupe la société des Thés de l'Éléphant et la STPA Lipton."
+        },
+        {
+          "id": 23,
+          "question": "Quels jus de fruits sont transformés dans l'usine historique de Mâcon ?",
+          "propositions": [
+            "Pampryl",
+            "Joker",
+            "Minute Maid",
+            "Tropicana"
+          ],
+          "réponse": "Joker",
+          "anecdote": "Cette boisson, qui fut créée à Mâcon (Saône-et-Loire) en 1936 par Henri Malvoisin, a reçu en 1988 l'oscar de l'emballage."
+        },
+        {
+          "id": 24,
+          "question": "Quel jus de citron était vendu à sa création sous la marque Cresca ?",
+          "propositions": [
+            "Alnatura",
+            "Teisseire",
+            "Pulco",
+            "Monin"
+          ],
+          "réponse": "Pulco",
+          "anecdote": "En 2014, la marque Pulco lance une nouvelle campagne de communication et avec un nouveau slogan : « La Paresse a du Bon »."
+        },
+        {
+          "id": 25,
+          "question": "Quel soda mentholé était jadis consommé comme alcool de menthe ?",
+          "propositions": [
+            "Aperol",
+            "Campari",
+            "Ricqlès",
+            "Saint-Raphaël"
+          ],
+          "réponse": "Ricqlès",
+          "anecdote": "Durant la Première Guerre mondiale, les poilus prennaient l'habitude d'avoir dans leur paquetage ce produit, réputé antiseptique."
+        },
+        {
+          "id": 26,
+          "question": "Quel apéritif est élaboré à base de trente-cinq plantes aromatiques des Alpes ?",
+          "propositions": [
+            "Lillet",
+            "Cinzano",
+            "Routin",
+            "Martini"
+          ],
+          "réponse": "Cinzano",
+          "anecdote": "Créé par deux frères herboristes, ce vermouth a été le premier produit à être annoncé avec une enseigne au néon à Paris en 1912."
+        },
+        {
+          "id": 27,
+          "question": "Quelle boisson énergétique pour le sport fut créée en 1988 ?",
+          "propositions": [
+            "XS Energy",
+            "Red Bull",
+            "Gatorade",
+            "Powerade"
+          ],
+          "réponse": "Powerade",
+          "anecdote": "La marque Powerade est partenaire de l'équipe de France aux Jeux olympiques mais aussi de la Coupe du monde de la FIFA."
+        },
+        {
+          "id": 28,
+          "question": "Quel jus d'orange en poudre fut ensuite un produit concentré surgelé ?",
+          "propositions": [
+            "Joker",
+            "Tropico",
+            "Minute Maid",
+            "Andros"
+          ],
+          "réponse": "Minute Maid",
+          "anecdote": "Le procédé éliminait 80 % de l'eau contenue dans le jus, tout en conservant un meilleur goût que le produit en poudre."
+        },
+        {
+          "id": 29,
+          "question": "Quelle est la plus ancienne des marques de soda américaines ?",
+          "propositions": [
+            "Coca-Cola",
+            "Pepsi",
+            "Dr Pepper",
+            "Red Bull"
+          ],
+          "réponse": "Dr Pepper",
+          "anecdote": "Fabriquée artisanalement dans une pharmacie de Waco (Texas), la boisson fut mise en vente en 1885 (un an avant Coca-Cola)."
+        },
+        {
+          "id": 30,
+          "question": "De quelle boisson la marionnette de Jean-Pierre Papin était-elle friande ?",
+          "propositions": [
+            "Ovomaltine",
+            "Cacolac",
+            "Pulco",
+            "Tropico"
+          ],
+          "réponse": "Cacolac",
+          "anecdote": "Le Cacolac est une boisson lactée au cacao (qui peut se boire froide ou chaude) créée en 1954 par l'entreprise bordelaise du même nom."
+        }
+      ]
+    }
+  }
+}

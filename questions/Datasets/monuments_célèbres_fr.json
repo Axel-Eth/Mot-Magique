@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "1 / 5",
+  "version": 7,
+  "mise-à-jour": "2025-01-25",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Tourisme",
+      "nom": "Monuments célèbres",
+      "slogan": "Merveilles architecturales de la planète"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Dans quelle ville se situe Big Ben, que seuls les anglais peuvent visiter ?",
+          "propositions": [
+            "Liverpool",
+            "Londres",
+            "Manchester",
+            "Birmingham"
+          ],
+          "réponse": "Londres",
+          "anecdote": "Big Ben est le surnom de la grande cloche de 13,5 tonnes se trouvant au sommet de la tour Elizabeth (Elizabeth Tower)."
+        },
+        {
+          "id": 2,
+          "question": "Dans quelle ville la Sagrada Familia est-elle toujours en chantier ?",
+          "propositions": [
+            "Barcelone",
+            "Grenade",
+            "Madrid",
+            "Séville"
+          ],
+          "réponse": "Barcelone",
+          "anecdote": "Oeuvre inachevée de l'architecte catalan Antoni Gaudi, la Sagrada Família est sans conteste le monument le plus visité d'Espagne."
+        },
+        {
+          "id": 3,
+          "question": "Dans quelle ville l'Empire State Building propose-t-il un style Art déco ?",
+          "propositions": [
+            "Boston",
+            "New York",
+            "Philadelphie",
+            "Washington"
+          ],
+          "réponse": "New York",
+          "anecdote": "En 2015, il était le troisième immeuble de la ville de New York par sa hauteur, derrière le One World Trade Center et le 432 Park Avenue."
+        },
+        {
+          "id": 4,
+          "question": "Dans quelle ville le Parthénon est-il entièrement réalisé en marbre pentélique ?",
+          "propositions": [
+            "Athènes",
+            "Larissa",
+            "Chalandri",
+            "Patras"
+          ],
+          "réponse": "Athènes",
+          "anecdote": "Symbole architectural de la suprématie athénienne, le Parthénon est le temple qui a le plus inspiré les architectes néo-classiques."
+        },
+        {
+          "id": 5,
+          "question": "Au centre de quelle ville se dresse le désormais célèbre Colisée ?",
+          "propositions": [
+            "Turin",
+            "Milan",
+            "Naples",
+            "Rome"
+          ],
+          "réponse": "Rome",
+          "anecdote": "Le nom d'amphithéâtre Flavien dérive du nom de famille (gens Flavii) de l'empereur Vespasien et ses fils Titus et Domitien."
+        },
+        {
+          "id": 6,
+          "question": "Dans quelle capitale l'opéra Garnier a-t-il une vocation lyrique ?",
+          "propositions": [
+            "Paris",
+            "Bruxelles",
+            "Londres",
+            "Berlin"
+          ],
+          "réponse": "Paris",
+          "anecdote": "L'opéra Garnier est situé place de l'Opéra, à l'extrémité nord de l'avenue de l'Opéra et au carrefour de nombreuses voies."
+        },
+        {
+          "id": 7,
+          "question": "Dans quelle ville belge l'Atomium représente-t-il la maille du cristal de fer ?",
+          "propositions": [
+            "Bruxelles",
+            "Liège",
+            "Anvers",
+            "Namur"
+          ],
+          "réponse": "Bruxelles",
+          "anecdote": "Situé à Laeken sur le plateau du Heysel, l'Atomium fut construit construit à l'occasion de l'Exposition universelle de 1958."
+        },
+        {
+          "id": 8,
+          "question": "Dans quelle ville fut édifiée il y a plus de 4 500 ans la pyramide de Khéops ?",
+          "propositions": [
+            "Alexandrie",
+            "Gizeh",
+            "Suez",
+            "Le Caire"
+          ],
+          "réponse": "Gizeh",
+          "anecdote": "La pyramide de Khéops est la seule (et la plus ancienne) des Sept Merveilles du monde à avoir survécu jusqu'à nos jours."
+        },
+        {
+          "id": 9,
+          "question": "À la fois forteresse et palais, dans quelle ville se dresse le Palais des papes ?",
+          "propositions": [
+            "Avignon",
+            "Menton",
+            "Martigues",
+            "Toulon"
+          ],
+          "réponse": "Avignon",
+          "anecdote": "Le palais fut le lieu qui, par son ampleur, permit une transformation générale du mode de vie et d'organisation de l'Église."
+        },
+        {
+          "id": 10,
+          "question": "Dans quelle ville pouvez-vous assister à un match au stade Vélodrome ?",
+          "propositions": [
+            "Lyon",
+            "Nice",
+            "Toulouse",
+            "Marseille"
+          ],
+          "réponse": "Marseille",
+          "anecdote": "Le Vélodrome est, avec une capacité de 67 394 spectateurs, le deuxième stade de France en termes de places disponibles."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quelle ville du Brésil est dominée par le statue du Christ Rédempteur ?",
+          "propositions": [
+            "Porto Alegre",
+            "Belem",
+            "Brasilia",
+            "Rio de Janeiro"
+          ],
+          "réponse": "Rio de Janeiro",
+          "anecdote": "La statue fut conçue par l'ingénieur brésilien Heitor da Silva Costa et réalisée par le sculpteur français Paul Landowski."
+        },
+        {
+          "id": 12,
+          "question": "Quelle ville est reliée à Sausalito par le biais du pont du Golden Gate ?",
+          "propositions": [
+            "Santa Barbara",
+            "San Diego",
+            "San Francisco",
+            "Los Angeles"
+          ],
+          "réponse": "San Francisco",
+          "anecdote": "Réalisé sur une durée de quatre ans, le pont du Golden Gate fut, jusqu'en 1964, le pont suspendu le plus long du monde."
+        },
+        {
+          "id": 13,
+          "question": "Dans quelle ville de Basse-Égypte le Sphinx est-il le gardien des pyramides ?",
+          "propositions": [
+            "Gizeh",
+            "Alexandrie",
+            "Le Caire",
+            "Suez"
+          ],
+          "réponse": "Gizeh",
+          "anecdote": "Le sphinx de Gizeh est la statue thérianthrope qui se dresse devant les grandes pyramides du plateau de Gizeh."
+        },
+        {
+          "id": 14,
+          "question": "Dans quelle ville se situe la résidence officielle du président des États-Unis ?",
+          "propositions": [
+            "Philadelphie",
+            "Washington",
+            "New York",
+            "Boston"
+          ],
+          "réponse": "Washington",
+          "anecdote": "La Maison-Blanche, en grès d'Aquia Creek et peinte en blanc, fut construite entre 1792 et 1800, s'inspirant du style géorgien."
+        },
+        {
+          "id": 15,
+          "question": "Dans quelle ville la basilique Saint-Pierre rassemble-t-elle de nombreux fidèles ?",
+          "propositions": [
+            "Vatican City",
+            "Milan",
+            "Turin",
+            "Naples"
+          ],
+          "réponse": "Vatican City",
+          "anecdote": "La basilique Saint-Pierre est la deuxième des quatre basiliques majeures de Rome, après Saint-Jean de Latran."
+        },
+        {
+          "id": 16,
+          "question": "Dans quelle ville la tour de Pise possède-t-elle une inclinaison caractéristique ?",
+          "propositions": [
+            "Sienne",
+            "Pise",
+            "Florence",
+            "Livourne"
+          ],
+          "réponse": "Pise",
+          "anecdote": "Ce défaut d'inclinaison serait dû soit à un défaut de fondation, soit à un affaissement de terrain dû à une roche : la marne."
+        },
+        {
+          "id": 17,
+          "question": "Dans quelle ville la Cité interdite s'étend-elle sur une superficie de 72 hectares ?",
+          "propositions": [
+            "Pékin",
+            "Hong Kong",
+            "Shanghai",
+            "Shenzhen"
+          ],
+          "réponse": "Pékin",
+          "anecdote": "Au sud de la Cité interdite s'étend l'immense place Tian'anmen, au centre de laquelle se trouve le mausolée de Mao Zedong."
+        },
+        {
+          "id": 18,
+          "question": "Dans quelle ville le Flatiron Building se présente-t-il en forme de fer à repasser ?",
+          "propositions": [
+            "Boston",
+            "Washington",
+            "New York",
+            "Philadelphie"
+          ],
+          "réponse": "New York",
+          "anecdote": "Il fut construit sur la seule avenue ne respectant pas le plan d'alignement avec croisements à angles droits des autres artères."
+        },
+        {
+          "id": 19,
+          "question": "De quelle ville du Canada la tour CN est-elle devenue l'emblème ?",
+          "propositions": [
+            "Toronto",
+            "Montréal",
+            "Calgary",
+            "Vancouver"
+          ],
+          "réponse": "Toronto",
+          "anecdote": "Pendant 34 ans, la tour Canadien National a été la plus haute tour du monde avant d'être dépassée en 2009 par la Burj Khalifa."
+        },
+        {
+          "id": 20,
+          "question": "Dans quelle ville l'Alhambra constitue-t-il un ensemble palatial majestueux ?",
+          "propositions": [
+            "Cordoue",
+            "Tolède",
+            "Madrid",
+            "Grenade"
+          ],
+          "réponse": "Grenade",
+          "anecdote": "L'acropole médiévale, située sur le plateau de la Sabika, se compose de quatre parties incluses dans son enceinte fortifiée."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "À quelle ville de France la tour Saint-Jacques appartient-elle depuis 1836 ?",
+          "propositions": [
+            "Marseille",
+            "Grenoble",
+            "Paris",
+            "Nantes"
+          ],
+          "réponse": "Paris",
+          "anecdote": "La tour Saint-Jacques est dressée au milieu du premier square parisien, qui porte son nom, dans le 4e arrondissement de Paris."
+        },
+        {
+          "id": 22,
+          "question": "Dans quelle ville Henri III fit-il construire l'abbaye de Westminster ?",
+          "propositions": [
+            "Manchester",
+            "Londres",
+            "Liverpool",
+            "Nottingham"
+          ],
+          "réponse": "Londres",
+          "anecdote": "Plus de 3 000 personnes sont inhumées dans l'église de l'abbaye de Westminster, dont 16 ou 174 monarques britanniques."
+        },
+        {
+          "id": 23,
+          "question": "Le Mur des Lamentations est situé dans le quartier juif de quelle ville ?",
+          "propositions": [
+            "Jérusalem",
+            "Damas",
+            "Amman",
+            "Bagdad"
+          ],
+          "réponse": "Jérusalem",
+          "anecdote": "Il est révéré par une partie des juifs comme mur du Mont du Temple et pour sa proximité avec le Saint des Saints du Temple d'Hérode."
+        },
+        {
+          "id": 24,
+          "question": "Dans quelle ville se visite le Taj Mahal, au bord de la rivière Yamuna ?",
+          "propositions": [
+            "Mumbai",
+            "Bénarès",
+            "Bangalore",
+            "Agra"
+          ],
+          "réponse": "Agra",
+          "anecdote": "Ce mausolée de marbre blanc fut construit par l'empereur moghol Shâh Jahân en mémoire de son épouse Arjumand Bânu Begam."
+        },
+        {
+          "id": 25,
+          "question": "De quelle ville Burj Khalifa est-elle la plus grande tour du monde ?",
+          "propositions": [
+            "Dammam",
+            "Dubaï",
+            "Doha",
+            "Abou Dhabi"
+          ],
+          "réponse": "Dubaï",
+          "anecdote": "La tour comporte sur 160 niveaux des étages d'appartements, des étages de bureaux et un hôtel de luxe de la chaîne Armani hotels."
+        },
+        {
+          "id": 26,
+          "question": "Dans quelle ville pouvez-vous visiter le musée de la basilique Sainte-Sophie ?",
+          "propositions": [
+            "Konya",
+            "Ankara",
+            "Istanbul",
+            "Tarsus"
+          ],
+          "réponse": "Istanbul",
+          "anecdote": "Souvent surnommée la Grande Église, la basilique est dédiée au Christ, selon la tradition théologique chrétienne."
+        },
+        {
+          "id": 27,
+          "question": "Au nord de quelle ville se dresse le complexe monumental d'Angkor Vat ?",
+          "propositions": [
+            "Siem Reap",
+            "Phnom Penh",
+            "Takeo",
+            "Kampot"
+          ],
+          "réponse": "Siem Reap",
+          "anecdote": "Devenu le symbole du Cambodge, figurant sur son drapeau national, le temple est aujourd'hui le principal lieu touristique du pays."
+        },
+        {
+          "id": 28,
+          "question": "Dans quelle ville valait-il mieux éviter la prison fédérale d'Alcatraz ?",
+          "propositions": [
+            "San Diego",
+            "San Francisco",
+            "Los Angeles",
+            "Santa Barbara"
+          ],
+          "réponse": "San Francisco",
+          "anecdote": "Le complexe d'Alcatraz est aujourd'hui reconverti en un site historique géré par le service des parcs nationaux des États-Unis."
+        },
+        {
+          "id": 29,
+          "question": "Dans quelle ville le palais de la place d'Espagne est-il construit sur trois étages ?",
+          "propositions": [
+            "Séville",
+            "Cordoue",
+            "Grenade",
+            "Malaga"
+          ],
+          "réponse": "Séville",
+          "anecdote": "La place d'Espagne a servi de décor à une scène du film « Star Wars, épisode II : L'Attaque des clones » sorti en 2002."
+        },
+        {
+          "id": 30,
+          "question": "Dans quelle ville la cathédrale Basile-le-Bienheureux est-elle un symbole russe ?",
+          "propositions": [
+            "Samara",
+            "Omsk",
+            "Saint-Pétersbourg",
+            "Moscou"
+          ],
+          "réponse": "Moscou",
+          "anecdote": "Se trouvant sur la place Rouge de Moscou, sa construction a commencé en 1555 et son inauguration a eu lieu en 1561."
+        }
+      ]
+    }
+  }
+}

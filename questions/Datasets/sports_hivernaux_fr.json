@@ -1,0 +1,289 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 1,
+  "mise-à-jour": "2020-09-08",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Sports",
+      "nom": "Sports hivernaux",
+      "slogan": "En famille ou entre amis"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "En ski, quel est le niveau de difficulté associé à une piste verte ?",
+          "propositions": [
+            "Facile",
+            "Moyen",
+            "Difficile",
+            "Très difficile"
+          ],
+          "réponse": "Facile",
+          "anecdote": "Les couleurs des pistes sont attribuées en fonction de la pente, de la longueur, de la largeur et de l'exposition au soleil et au vent."
+        },
+        {
+          "id": 3,
+          "question": "Après une journée de glisse, quel est l'ingrédient principal de la fondue savoyarde ?",
+          "propositions": [
+            "Saucisse",
+            "Viande",
+            "Fromage",
+            "Lard"
+          ],
+          "réponse": "Fromage",
+          "anecdote": "La fondue savoyarde est devenue une recette de cuisine populaire en France avec l'essor des sports d'hiver et du tourisme alpin."
+        },
+        {
+          "id": 4,
+          "question": "Quel autre nom plus familier donne-t-on au téléski qui vous mène en haut des pistes ?",
+          "propositions": [
+            "Porte-pieds",
+            "Tire-fesses",
+            "Casse-tête",
+            "Attache-bras"
+          ],
+          "réponse": "Tire-fesses",
+          "anecdote": "Le principe du tire-fesses consiste à passer entre les jambes un agrès (perche ou enrouleur) généralement terminé par une rondelle."
+        },
+        {
+          "id": 5,
+          "question": "Laquelle de ces couleurs ne permet pas de connaître la difficulté d'une piste de ski ?",
+          "propositions": [
+            "Rouge",
+            "Bleu",
+            "Mauve",
+            "Vert"
+          ],
+          "réponse": "Mauve",
+          "anecdote": "Toutefois, aucune norme ne définit la façon dont sont attribuées les couleurs aux pistes de skis, le choix étant laissé aux exploitants."
+        },
+        {
+          "id": 7,
+          "question": "Qu'allez-vous chausser pour faire une randonnée sur de la neige molle ?",
+          "propositions": [
+            "Bottes",
+            "Rollers",
+            "Espadrilles",
+            "Raquettes"
+          ],
+          "réponse": "Raquettes",
+          "anecdote": "La raquette, fixée sous la chaussure de marche, augmente la surface de contact avec la neige et permet souvent de ne pas s'enfoncer."
+        },
+        {
+          "id": 9,
+          "question": "À quoi procède-t-on sur les pistes de ski entre 17h le soir et 9h du matin ?",
+          "propositions": [
+            "Séchage",
+            "Mouillage",
+            "Saupoudrage",
+            "Damage"
+          ],
+          "réponse": "Damage",
+          "anecdote": "Une dameuse est un véhicule sur chenilles conçu pour améliorer la qualité de la neige pour la pratique des sports de glisse."
+        },
+        {
+          "id": 10,
+          "question": "Quel sport est pratiqué sur la glace avec de lourdes pierres en granit poli ?",
+          "propositions": [
+            "Bobsleigh",
+            "Curling",
+            "Luge",
+            "Skeleton"
+          ],
+          "réponse": "Curling",
+          "anecdote": "Le but du curling est de placer les pierres le plus près possible d'une cible circulaire dessinée sur la glace, appelée la maison."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel nom donne-t-on à la partie située à l'avant d'une fixation de ski ?",
+          "propositions": [
+            "Talonnière",
+            "Ressort",
+            "Télémark",
+            "Butée"
+          ],
+          "réponse": "Butée",
+          "anecdote": "La fixation est un composant capable de supporter les brusques secousses du ski tout en pouvant se relâcher en cas de chute."
+        },
+        {
+          "id": 12,
+          "question": "Quelles cartes vous permettent de vous repérer en montagne lors des randonnées ?",
+          "propositions": [
+            "PMU",
+            "APK",
+            "DKV",
+            "IGN"
+          ],
+          "réponse": "IGN",
+          "anecdote": "L'IGN a été créé par décret en 1940 (signé par Albert Lebrun et Philippe Pétain) et a succédé au Service géographique de l'Armée."
+        },
+        {
+          "id": 13,
+          "question": "Par quelle couleur lumineuse les engins de damage signalent-ils leur présence ?",
+          "propositions": [
+            "Bleue",
+            "Verte",
+            "Orange",
+            "Mauve"
+          ],
+          "réponse": "Orange",
+          "anecdote": "Les termes resurfaceuse et surfaceuse désignent les véhicules utilisés pour retravailler les surfaces de glace."
+        },
+        {
+          "id": 14,
+          "question": "Lequel de ces fromages n'est pas nécessaire à la réalisation d'une fondue savoyarde ?",
+          "propositions": [
+            "Emmental",
+            "Roquefort",
+            "Beaufort",
+            "Comté"
+          ],
+          "réponse": "Roquefort",
+          "anecdote": "Certaines variantes de la recette autorisent l'adjonction d'une petite quantité d'alcool de cerise (kirsch) pour rehausser le goût."
+        },
+        {
+          "id": 15,
+          "question": "Quelle substance utilise-t-on pour obtenir une glisse parfaite de ses skis ?",
+          "propositions": [
+            "Crème Anglaise",
+            "Cérumen",
+            "Fart",
+            "Jojoba"
+          ],
+          "réponse": "Fart",
+          "anecdote": "Globalement, il existe deux grandes catégories de ce revêtement spécifique : le fart de glisse et le fart de retenue."
+        },
+        {
+          "id": 18,
+          "question": "Quelle technique utilise-t-on pour monter une pente douce sans remontée mécanique ?",
+          "propositions": [
+            "Montée en ours",
+            "Montée en canard",
+            "Montée en lapin",
+            "Montée en zèbre"
+          ],
+          "réponse": "Montée en canard",
+          "anecdote": "Bien que prévues pour hisser les skieurs vers le haut de la montagne, les remontées peuvent aussi servir en descente."
+        },
+        {
+          "id": 19,
+          "question": "Dans quel pays se situe la station skiable très prisée d'Innsbruck ?",
+          "propositions": [
+            "Autriche",
+            "France",
+            "Suisse",
+            "Allemagne"
+          ],
+          "réponse": "Autriche",
+          "anecdote": "Innsbruck a un niveau de vie très élevé, comme le reste des alpes autrichiennes, avec un PIB de 75 000 dollars par an et par habitant."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quelle station française est considérée comme le berceau du ski nordique ?",
+          "propositions": [
+            "Les Arcs",
+            "Isola 2000",
+            "Chamrousse",
+            "Autrans"
+          ],
+          "réponse": "Autrans",
+          "anecdote": "Le ski nordique fait référence à plusieurs disciplines de ski d'inspiration scandinave relevant des activités nordiques."
+        },
+        {
+          "id": 22,
+          "question": "Dans quel pays pourrez-vous utiliser le grand domaine skiable de Courmayeur ?",
+          "propositions": [
+            "Italie",
+            "France",
+            "Suisse",
+            "Autriche"
+          ],
+          "réponse": "Italie",
+          "anecdote": "La saison d'exploitation hivernale de Courmayeur commence généralement début décembre, et se termine à la mi-avril."
+        },
+        {
+          "id": 23,
+          "question": "Quel type de skieur peut-on parfois voir virer en génuflexion ?",
+          "propositions": [
+            "Pisteur",
+            "Télémarkeur",
+            "Snowboardeur",
+            "Freestyleur"
+          ],
+          "réponse": "Télémarkeur",
+          "anecdote": "C'est l'une des plus anciennes techniques de ski inventée par un menuisier du comté de Telemark en Norvège, Sondre Norheim."
+        },
+        {
+          "id": 24,
+          "question": "Sur neige, quelle sensibilité ISO est la mieux adaptée pour la photographie ?",
+          "propositions": [
+            "200 ISO",
+            "100 ISO",
+            "800 ISO",
+            "400 ISO"
+          ],
+          "réponse": "100 ISO",
+          "anecdote": "En photographie, la sensibilité ISO est la mesure de la sensibilité à la lumière des pellicules et des capteurs numériques."
+        },
+        {
+          "id": 25,
+          "question": "Combien de niveaux compte l'échelle d'intensité d'avalanche ?",
+          "propositions": [
+            "Six",
+            "Huit",
+            "Cinq",
+            "Sept"
+          ],
+          "réponse": "Cinq",
+          "anecdote": "Il existe bien 5 niveaux d'intensité pour mesurer une avalanche."
+        },
+        {
+          "id": 26,
+          "question": "Dans quelle station française peut-on skier sur une piste longue de 22 kilomètres ?",
+          "propositions": [
+            "Grenoble",
+            "Chamrousse",
+            "Autrans",
+            "Alpe d'Huez"
+          ],
+          "réponse": "Alpe d'Huez",
+          "anecdote": "L'Alpe d'Huez comporte 135 pistes balisées dont 42 vertes, 37 bleues, 39 rouges et 17 noires, mais aussi 2 snowparks."
+        },
+        {
+          "id": 28,
+          "question": "Quelle est la différence entre un télésiège débrayable et un autre à pinces fixes ?",
+          "propositions": [
+            "Couleur",
+            "Confort",
+            "Matériau",
+            "Vitesse"
+          ],
+          "réponse": "Vitesse",
+          "anecdote": "Un siège suspendu sur pince fixe tourne toujours à la même vitesse alors qu'un siège débrayable ralenti à son entrée en gare."
+        },
+        {
+          "id": 30,
+          "question": "Quel sport de descente se pratique sur un engin muni d'un guidon ?",
+          "propositions": [
+            "Télémark",
+            "Snowscoot",
+            "Snowkite",
+            "Speed riding"
+          ],
+          "réponse": "Snowscoot",
+          "anecdote": "Ce sport d'hiver, né dans les années 1990 et inspiré du BMX, se pratique en glissant sur la neige à l'aide d'un guidon."
+        }
+      ]
+    }
+  }
+}

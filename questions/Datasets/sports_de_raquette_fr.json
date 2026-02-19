@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "4 / 5",
+  "version": 7,
+  "mise-à-jour": "2024-03-24",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Sports",
+      "nom": "Sports de raquette",
+      "slogan": "Basés sur le principe du duel"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quel sport de raquette peut se jouer sur gazon ou sur terre battue ?",
+          "propositions": [
+            "Padel",
+            "Squash",
+            "Tennis",
+            "Ping-pong"
+          ],
+          "réponse": "Tennis",
+          "anecdote": "La terre battue, surface du tournoi de Roland-Garros, est une surface composée d'une chape de calcaire recouverte de brique pilée."
+        },
+        {
+          "id": 2,
+          "question": "Opposant deux ou quatre joueurs, comment est aussi appelé le tennis de table ?",
+          "propositions": [
+            "Padel",
+            "Ping-pong",
+            "Pelote basque",
+            "Jokari"
+          ],
+          "réponse": "Ping-pong",
+          "anecdote": "Le mot ping-pong proviendrait de la marque commerciale sous laquelle le jeu fut produit aux États-Unis au début du XXe siècle."
+        },
+        {
+          "id": 3,
+          "question": "Quel sport se joue sur un court encadré de vitres et grillages, divisé par un filet ?",
+          "propositions": [
+            "Beach tennis",
+            "Jeu de paume",
+            "Padel",
+            "Tennis"
+          ],
+          "réponse": "Padel",
+          "anecdote": "Sa plus grande différence avec le tennis est que les balles peuvent être jouées après rebonds sur les parois, un peu comme au squash."
+        },
+        {
+          "id": 4,
+          "question": "Dans quel sport les joueurs se servent-ils d'une crosse à filet pour marquer des buts ?",
+          "propositions": [
+            "Crosse",
+            "Croquet",
+            "Cricket",
+            "Cabale"
+          ],
+          "réponse": "Crosse",
+          "anecdote": "L'une des particularités de ce sport collectif est l'unique existence, sur le plan international, d'une équipe des Cinq-Nations."
+        },
+        {
+          "id": 5,
+          "question": "Quel jeu de tennis avec filet est adapté aux conditions de la plage ?",
+          "propositions": [
+            "Beach volley",
+            "Beach tennis",
+            "Beach ball",
+            "Beach plage"
+          ],
+          "réponse": "Beach tennis",
+          "anecdote": "Le beach tennis reprend les mêmes principes que le tennis, exception faite du rebond : la balle se frappe uniquement de volée."
+        },
+        {
+          "id": 6,
+          "question": "Dans quel jeu un chistera est-il fixé à la main du joueur au travers d'un gant ?",
+          "propositions": [
+            "Jokari",
+            "Padel",
+            "Tennis",
+            "Pelote basque"
+          ],
+          "réponse": "Pelote basque",
+          "anecdote": "Le chistera fut inventé en 1857 par Jean Dithurbide à Saint-Pée-sur-Nivelle, pour remplacer les lourds gants de cuir d'origine."
+        },
+        {
+          "id": 7,
+          "question": "Quel sport de raquette se joue sur un terrain de jeu entièrement entouré de murs ?",
+          "propositions": [
+            "Badminton",
+            "Tennis",
+            "Squash",
+            "Crosse"
+          ],
+          "réponse": "Squash",
+          "anecdote": "Ce sport consiste à frapper une petite balle noire en caoutchouc, de telle sorte que son adversaire ne puisse pas la reprendre."
+        },
+        {
+          "id": 8,
+          "question": "Quel jeu utilise une balle en caoutchouc attachée à un socle par un élastique ?",
+          "propositions": [
+            "Jokari",
+            "Chuiwan",
+            "Smolball",
+            "Footbag"
+          ],
+          "réponse": "Jokari",
+          "anecdote": "La balle, après avoir été frappée avec une raquette en bois, revient vers les joueurs comme si elle avait rebondi contre un fronton."
+        },
+        {
+          "id": 9,
+          "question": "Quel est le poids maximal autorisé pour un volant au badminton ?",
+          "propositions": [
+            "5,5 gr",
+            "7,5 gr",
+            "11,5 gr",
+            "9,5 gr"
+          ],
+          "réponse": "5,5 gr",
+          "anecdote": "Le record de vitesse pour un volant en compétition est détenu depuis le 11 janvier 2017 par Mads Pieler Kolding, avec 426 km/h."
+        },
+        {
+          "id": 10,
+          "question": "Quelle association organise les compétitions professionnelles tennistiques féminines ?",
+          "propositions": [
+            "ATP",
+            "NHL",
+            "CSA",
+            "WTA"
+          ],
+          "réponse": "WTA",
+          "anecdote": "En 1973, Billie Jean King créa la WTA en vue de défendre l'intérêt des joueuses et de rassembler un maximum d'épreuves féminines."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel jeu est considéré comme l'ancêtre des sports de raquette ?",
+          "propositions": [
+            "Jeu de paume",
+            "Jeu de poignet",
+            "Jeu de main",
+            "Jeu de doigt"
+          ],
+          "réponse": "Jeu de paume",
+          "anecdote": "Il est l'ancêtre direct de la pelote basque, de la pelote valencienne, de la balle pelote, du jeu de balle au tambourinet du tennis."
+        },
+        {
+          "id": 12,
+          "question": "Quelle discipline sportive agrège quatre sports de raquette olympiques ?",
+          "propositions": [
+            "Biathlon",
+            "Racketlon",
+            "Triathlon",
+            "Decathlon"
+          ],
+          "réponse": "Racketlon",
+          "anecdote": "Un match de racketlon se déroule en quatre manches de 21 points, un par sport : tennis de table, badminton, squash puis tennis."
+        },
+        {
+          "id": 13,
+          "question": "Combien dénombre-t-on environ de pratiquants de badminton dans le monde ?",
+          "propositions": [
+            "100 millions",
+            "80 millions",
+            "60 millions",
+            "40 millions"
+          ],
+          "réponse": "100 millions",
+          "anecdote": "En France, des stats de 2014 démontrent que les femmes représentent 36 % du total des licenciés, 37 % des 15-24 ans."
+        },
+        {
+          "id": 14,
+          "question": "Quel carton, synonyme de disqualification directe, peut être délivré au badminton ?",
+          "propositions": [
+            "Carton rouge",
+            "Carton vert",
+            "Carton jaune",
+            "Carton noir"
+          ],
+          "réponse": "Carton noir",
+          "anecdote": "En cas d'infractions persistantes, un juge-arbitre peut décider de délivrer un carton noir, disqualifiant pour le reste d'une compétition."
+        },
+        {
+          "id": 15,
+          "question": "Que représentent les points de couleurs inscrits sur une balle de squash ?",
+          "propositions": [
+            "Son prix",
+            "Son usure",
+            "Son dynamisme",
+            "Sa valeur"
+          ],
+          "réponse": "Son dynamisme",
+          "anecdote": "La balle utilisée lors des compétitions officielles est marquée de deux points jaunes, extrêmement lente avec un rebond très bas."
+        },
+        {
+          "id": 16,
+          "question": "Quel joueur professionnel de badminton a été surnommé Super Dan ?",
+          "propositions": [
+            "Dan Depeeck",
+            "Dan Hait",
+            "Bonney Dan",
+            "Lin Dan"
+          ],
+          "réponse": "Lin Dan",
+          "anecdote": "Lin Dan a contribué aux victoires successives de la Chine en remportant 3 fois d'affilée la Thomas Cup, en 2004, 2006 et en 2008."
+        },
+        {
+          "id": 17,
+          "question": "Comment appelle-t-on un sportif pratiquant le tennis de table ?",
+          "propositions": [
+            "Pongiste",
+            "Tennissiste",
+            "Raquetteur",
+            "Tabliste"
+          ],
+          "réponse": "Pongiste",
+          "anecdote": "Le terme ping-pong, bien que banni de la terminologie officielle, est resté très populaire et les joueurs sont toujours appelés pongistes."
+        },
+        {
+          "id": 18,
+          "question": "Quels Jeux vont définitivement intégrer le squash aux Jeux Olympiques d'été ?",
+          "propositions": [
+            "2028",
+            "2032",
+            "2040",
+            "2036"
+          ],
+          "réponse": "2028",
+          "anecdote": "Le squash figurait en 2013 et en 2015 sur une short liste des sports destinés à intégrer l'olympisme lors des Jeux de Tokyo en 2020."
+        },
+        {
+          "id": 19,
+          "question": "Quel sport se joue sur quatre tables de tennis de table accolées ensemble ?",
+          "propositions": [
+            "Ultimate ping",
+            "Racquetball",
+            "Pickleball",
+            "Speed-ball"
+          ],
+          "réponse": "Ultimate ping",
+          "anecdote": "La hauteur du filet est généralement supérieure à 32 cm, deux séparations étant nécessaires pour couvrir la largeur des tables."
+        },
+        {
+          "id": 20,
+          "question": "Outre l'Angleterre, quelle autre grande nation domine le squash actuel ?",
+          "propositions": [
+            "Égypte",
+            "Nouvelle-Zélande",
+            "Australie",
+            "Pakistan"
+          ],
+          "réponse": "Égypte",
+          "anecdote": "L'Égypte est représentée par deux légendes : Amr Shabana et Ramy Ashour, respectivement quatre et trois fois champion du monde."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel sport de raquette fut nommé d'après un château anglais ?",
+          "propositions": [
+            "Padel",
+            "Tennis",
+            "Squash",
+            "Badminton"
+          ],
+          "réponse": "Badminton",
+          "anecdote": "Badminton House est un château situé à Badminton, dans le Gloucestershire, siège des ducs de Beaufort depuis le XVIIe siècle."
+        },
+        {
+          "id": 22,
+          "question": "Quel jeu de tennis sans filet est adapté aux conditions de la plage ?",
+          "propositions": [
+            "Beach tennis",
+            "Beach volley",
+            "Beach plage",
+            "Beach ball"
+          ],
+          "réponse": "Beach ball",
+          "anecdote": "Le but des joueurs de beach ball n'est pas de battre l'adversaire, mais bien d'effectuer le plus d'échanges possibles avec celui-ci."
+        },
+        {
+          "id": 23,
+          "question": "Quel sport a adapté les règles du squash à un terrain de handball gaélique ?",
+          "propositions": [
+            "Pickleball",
+            "Frescobol",
+            "Touchtennis",
+            "Racquetball"
+          ],
+          "réponse": "Racquetball",
+          "anecdote": "La balle peut le frapper aussi bas que l'on veut, à condition bien sûr de ne frapper le sol qu'après le rebond sur le mur, et pas avant."
+        },
+        {
+          "id": 24,
+          "question": "Quel sport consiste à frapper une balle en inversant son sens de rotation ?",
+          "propositions": [
+            "Supersolo",
+            "Speed-ball",
+            "Paddle-tennis",
+            "Racquetball"
+          ],
+          "réponse": "Speed-ball",
+          "anecdote": "Le speed-ball est unique dans les sports de raquette, car c'est le seul sport de raquette symétrique, se jouant avec les deux mains."
+        },
+        {
+          "id": 25,
+          "question": "Quel sport de tennis léger se pratique avec une balle en plastique creuse perforée ?",
+          "propositions": [
+            "Racquetball",
+            "Frescobol",
+            "Pickleball",
+            "Peloc"
+          ],
+          "réponse": "Pickleball",
+          "anecdote": "Le pickleball a été inventé en 1965 sur l'île de Bainbridge, dans l'État de Washington, dans la résidence d'été de Joel Pritchard."
+        },
+        {
+          "id": 26,
+          "question": "Quel sport s'est développé sur les plages de Copacabana et de Rio de Janeiro ?",
+          "propositions": [
+            "Racquetball",
+            "Beach ball",
+            "Supersolo",
+            "Frescobol"
+          ],
+          "réponse": "Frescobol",
+          "anecdote": "Le frescobol est un concept inventé par Lian Pontes Carvalho en 1946, sur le principe d'un jeu de balle avec des raquettes en bois."
+        },
+        {
+          "id": 27,
+          "question": "Quelle version modifiée du tennis est jouée avec des balles en mousse ?",
+          "propositions": [
+            "Beach plage",
+            "Paddle-tennis",
+            "Beach ball",
+            "Touchtennis"
+          ],
+          "réponse": "Touchtennis",
+          "anecdote": "Le touchtennis a été créé en 2002 par un homme d'affaires, Rashid Ahmad, pour divertir sa fille et Aurélien Guyot."
+        },
+        {
+          "id": 28,
+          "question": "Laquelle de ces disciplines ne fait pas partie du speed-ball ?",
+          "propositions": [
+            "Rotation",
+            "Supersolo",
+            "Double",
+            "Relais"
+          ],
+          "réponse": "Supersolo",
+          "anecdote": "Elles imposent de faire des déplacements rapides (simple et double) ainsi qu'un travail d'endurance (supersolo et relais)."
+        },
+        {
+          "id": 29,
+          "question": "Quel sport utilise des balles de tennis dépressurisées et un service à la cuillère ?",
+          "propositions": [
+            "Paddle-tennis",
+            "Touchtennis",
+            "Racquetball",
+            "Pickleball"
+          ],
+          "réponse": "Paddle-tennis",
+          "anecdote": "Le paddle-tennis est né sur des bateaux britanniques (vers 1890), afin de divertir les passagers en fonction de l'espace disponible."
+        },
+        {
+          "id": 30,
+          "question": "Quel sport combine le terrain de tennis et une règle du badminton ?",
+          "propositions": [
+            "Crosse",
+            "Peloc",
+            "Padel",
+            "Racquetball"
+          ],
+          "réponse": "Peloc",
+          "anecdote": "Dérivé de la chistera, ce sport se joue en plein air, avec deux arcs lanceurs courbés et un volant à plume sur un tri pieds."
+        }
+      ]
+    }
+  }
+}

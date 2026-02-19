@@ -1,0 +1,337 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 1,
+  "mise-à-jour": "2024-07-10",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Vie quotidienne",
+      "nom": "COVID-19",
+      "slogan": "Coronavirus à l'impact mondial"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quelle ville chinoise est considérée comme l'épicentre du démarrage du COVID-19 ?",
+          "propositions": [
+            "Taiwan",
+            "Shanghai",
+            "Wuhan",
+            "Beijing"
+          ],
+          "réponse": "Wuhan",
+          "anecdote": "Municipalité de 11 millions d'habitants, Wuhan est la septième ville la plus peuplée de Chine et deuxième zone urbaine de l'intérieur."
+        },
+        {
+          "id": 2,
+          "question": "Avec quel film de Steven Soderbergh le COVID-19 présente-t-il des points communs ?",
+          "propositions": [
+            "Bubble",
+            "Contagion",
+            "Traffic",
+            "Paranoïa"
+          ],
+          "réponse": "Contagion",
+          "anecdote": "Ce film marque la sixième collaboration entre Steven Soderbergh et Matt Damon, démarrée avec la désormais célèbre trilogie « Ocean »."
+        },
+        {
+          "id": 3,
+          "question": "Quelles émissions furent réduites suite aux effets de l'épidémie de COVID-19 ?",
+          "propositions": [
+            "NO",
+            "H2O",
+            "CO2",
+            "FeO"
+          ],
+          "réponse": "CO2",
+          "anecdote": "Cette réduction s'explique par des réductions de la production de 15 à 40 % et des mesures de confinement au fort impact aérien."
+        },
+        {
+          "id": 4,
+          "question": "La baisse du cours de quelle ressource est due à la chute de l'économie suite au COVID-19 ?",
+          "propositions": [
+            "Nickel",
+            "Pétrole",
+            "Charbon",
+            "Zinc"
+          ],
+          "réponse": "Pétrole",
+          "anecdote": "Le baril de Brent est passé sous la barre des 60 dollars le 27 janvier 2020, le 26 février celui du WTI passa lui sous les 50 dollars."
+        },
+        {
+          "id": 5,
+          "question": "Quel célèbre carnaval international a annulé ses deux derniers jours de festivité en 2020 ?",
+          "propositions": [
+            "Rome",
+            "Binche",
+            "Venise",
+            "Rio"
+          ],
+          "réponse": "Venise",
+          "anecdote": "La chanson populaire « Le Carnaval de Venise » est une mélodie napolitaine, « Oh cara mama mia », de la moitié du XIXe siècle."
+        },
+        {
+          "id": 7,
+          "question": "Qu'a-t-on contrôlé en 2020 chez les voyageurs qui sortaient des avions venant de Chine ?",
+          "propositions": [
+            "Sang",
+            "Pupilles",
+            "Température",
+            "Mains"
+          ],
+          "réponse": "Température",
+          "anecdote": "Ce dépistage s'effectue très souvent par contrôle de la température frontale des voyageurs au moyen d'un thermomètre électronique."
+        },
+        {
+          "id": 8,
+          "question": "Qu'est-il préférable de porter pour minimiser la propagation d'un coronavirus ?",
+          "propositions": [
+            "Cagoule",
+            "Bonnet",
+            "Écharpe",
+            "Masque facial"
+          ],
+          "réponse": "Masque facial",
+          "anecdote": "En 2014, quatre milliards de masques ont été produits ou importés au Japon, pour un chiffre d'affaires de 23 milliards de yens."
+        },
+        {
+          "id": 9,
+          "question": "Au cours de quel mois l'épidémie du COVID-19 aurait-elle débuté ?",
+          "propositions": [
+            "Mars 2020",
+            "Février 2020",
+            "Décembre 2019",
+            "Janvier 2020"
+          ],
+          "réponse": "Décembre 2019",
+          "anecdote": "La maladie a été appelée NCP (Novel Coronavirus Pneumonia), puis nommée officiellement COVID-19 (COronaVIrus Disease 2019)."
+        },
+        {
+          "id": 10,
+          "question": "Quelle organisation a déclaré face au COVID-19 l'état d'urgence sanitaire le 30 janvier 2020 ?",
+          "propositions": [
+            "UNICEF",
+            "OMS",
+            "CESAP",
+            "UNESCO"
+          ],
+          "réponse": "OMS",
+          "anecdote": "L'OMS dépend directement du Conseil économique et social des Nations unies, son siège se situant à Pregny-Chambésy, en Suisse."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Le 28 février 2020, quel pays d'Europe était le plus touché par le COVID-19 ?",
+          "propositions": [
+            "France",
+            "Suisse",
+            "Allemagne",
+            "Italie"
+          ],
+          "réponse": "Italie",
+          "anecdote": "Le président de la Lombardie, région très touchée, s'est mis de lui-même en quarantaine après une infection d'un de ses collègues."
+        },
+        {
+          "id": 12,
+          "question": "Au cours du COVID-19, quelle ministre de la Santé a annoncé le décès d'un premier patient en France ?",
+          "propositions": [
+            "Françoise Nyssen",
+            "Muriel Pénicaud",
+            "Sylvie Goulard",
+            "Agnès Buzyn"
+          ],
+          "réponse": "Agnès Buzyn",
+          "anecdote": "Agnès Buzyn a effectué l'essentiel de sa carrière de médecin et d'enseignante-chercheuse à l'université Paris-Descartes (Paris-V)."
+        },
+        {
+          "id": 13,
+          "question": "Quels bâtiments ont été construits à Wuhan en seulement quinze jours par 7 500 ouvriers ?",
+          "propositions": [
+            "Théâtres",
+            "Crêches",
+            "Hôpitaux",
+            "Prisons"
+          ],
+          "réponse": "Hôpitaux",
+          "anecdote": "Deux hôpitaux d'une capacité de 1 000 et 1 600 lits furent ainsi construits en réponse à l'épidémie de coronavirus de 2019-2020."
+        },
+        {
+          "id": 14,
+          "question": "De quelle autre maladie les symptômes de COVID-19 sont-ils assez proches ?",
+          "propositions": [
+            "Hépatite",
+            "Grippe",
+            "Oreillons",
+            "Rougeole"
+          ],
+          "réponse": "Grippe",
+          "anecdote": "Sont relevés : de la fièvre, de la toux, des frissons, des courbatures, des maux de tête, une fatigue générale et parfois une diarrhée."
+        },
+        {
+          "id": 16,
+          "question": "En février 2020, quel pays a décidé d'expulser les étrangers contaminés par le COVID-19 ?",
+          "propositions": [
+            "Russie",
+            "Brésil",
+            "Canada",
+            "Inde"
+          ],
+          "réponse": "Russie",
+          "anecdote": "Le 30 janvier 2020, le gouvernement russe décréta la fermeture de sa frontière terrestre avec la Chine, supprimant les visas."
+        },
+        {
+          "id": 18,
+          "question": "Quel célèbre et gigantesque parc de Shanghai a fermé ses portes le 24 janvier 2020 ?",
+          "propositions": [
+            "Ocean Park",
+            "Disneyland",
+            "Everland",
+            "Magic Kingdom"
+          ],
+          "réponse": "Disneyland",
+          "anecdote": "La réalisation du complexe représentera un coût total de 4,87 milliards d'euros, ce qui en fait le parc Disney le plus cher."
+        },
+        {
+          "id": 19,
+          "question": "Quel pays a confiné des personnes contaminées dans un bâtiment du National Health Service ?",
+          "propositions": [
+            "Canada",
+            "Irlande",
+            "Royaume-Uni",
+            "Australie"
+          ],
+          "réponse": "Royaume-Uni",
+          "anecdote": "La quarantaine y sera conseillée pour les rentrants d'Italie du Nord avec symptômes et des villes en quarantaine sans symptômes."
+        },
+        {
+          "id": 20,
+          "question": "Selon des études scientifiques, quel animal aurait transmis le COVID-19 à l'homme ?",
+          "propositions": [
+            "Singe",
+            "Chauve-souris",
+            "Grenouille",
+            "Lapin"
+          ],
+          "réponse": "Chauve-souris",
+          "anecdote": "SARS-CoV-2 partageait un ancêtre commun avec les coronavirus du SARS-CoV, ressemblant au coronavirus de la chauve-souris HKU9-1."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Concernant le COVID-19, quelle ville chinoise a décrété le niveau d'alerte sanitaire maximal le 25 janvier 2020 ?",
+          "propositions": [
+            "Tianjin",
+            "Shanghai",
+            "Hong Kong",
+            "Chongqing"
+          ],
+          "réponse": "Hong Kong",
+          "anecdote": "Hong Kong se place dans le rang des grands centres financiers avec New York et Londres (cette trilogie étant appelée Nylonkong)."
+        },
+        {
+          "id": 22,
+          "question": "Quel navire de croisière fut confiné dans le port de Yokohama durant quatorze jours ?",
+          "propositions": [
+            "Emerald Princess",
+            "Diamond Princess",
+            "Golden Princess",
+            "Island Princess"
+          ],
+          "réponse": "Diamond Princess",
+          "anecdote": "Deux passagers qui avaient été évacués dans un hôpital japonais les 11 et 12 février 2020 seront déclarés morts le 20 février 2020."
+        },
+        {
+          "id": 23,
+          "question": "Quelle commune de Lombardie constituait en février 2020 le principal foyer italien du COVID ?",
+          "propositions": [
+            "Maleo",
+            "Codogno",
+            "Mulazzano",
+            "Bertonico"
+          ],
+          "réponse": "Codogno",
+          "anecdote": "Le 23 février 2020, Codogno et dix communes alentours furent placées en quarantaine (avec 52 000 personnes confinées)."
+        },
+        {
+          "id": 24,
+          "question": "Quel coronavirus est à l'origine de l'épidémie qui a débuté fin 2019 dans le monde ?",
+          "propositions": [
+            "Chikungunya",
+            "Dengue",
+            "SARS-CoV-2",
+            "Zika"
+          ],
+          "réponse": "SARS-CoV-2",
+          "anecdote": "Le coronavirus du syndrome respiratoire aigu sévère 2 est apparenté au coronavirus du SRAS, appartenant au sous-genre Sarbecovirus."
+        },
+        {
+          "id": 25,
+          "question": "Dans quel pays les trois premiers malades européens du COVID-19 furent-ils annoncés ?",
+          "propositions": [
+            "Espagne",
+            "Italie",
+            "France",
+            "Belgique"
+          ],
+          "réponse": "France",
+          "anecdote": "Deux personnes à Paris et une autre à Bordeaux furent détectées positives au virus, les trois patients ayant séjourné à Wuhan."
+        },
+        {
+          "id": 26,
+          "question": "Quelle était la période d'incubation maximale fixée en février 2020 à l'égard du COVID-19 ?",
+          "propositions": [
+            "21 jours",
+            "35 jours",
+            "28 jours",
+            "14 jours"
+          ],
+          "réponse": "14 jours",
+          "anecdote": "La période d'incubation semble être le plus souvent comprise entre quatre et sept jours et très certainement inférieure à quatorze jours."
+        },
+        {
+          "id": 27,
+          "question": "En 2020, quelle ville a dû reporter le Salon international des inventions ?",
+          "propositions": [
+            "Genève",
+            "Madrid",
+            "Bruxelles",
+            "Berlin"
+          ],
+          "réponse": "Genève",
+          "anecdote": "En 2009, le Salon a obtenu le patronage de l'Organisation mondiale de la propriété intellectuelle (OMPI), et le patronage de la Suisse."
+        },
+        {
+          "id": 29,
+          "question": "Quel pays fut le théâtre d'un foyer épidémique centré sur la secte Shincheonji ?",
+          "propositions": [
+            "Japon",
+            "Corée du Sud",
+            "Corée du Nord",
+            "Chine"
+          ],
+          "réponse": "Corée du Sud",
+          "anecdote": "Le 31 janvier, la Corée du Sud a décidé de rapatrier 367 de ses ressortissants à l'aide d'un Boeing 747 de Korean Air."
+        },
+        {
+          "id": 30,
+          "question": "Quel médecin a déclaré que `Le monde n'est tout simplement pas prêt à faire face au coronavirus ?`",
+          "propositions": [
+            "Hans Klug",
+            "Michel Fernex",
+            "Bruce Aylward",
+            "Robert Wylie"
+          ],
+          "réponse": "Bruce Aylward",
+          "anecdote": "C'est Bruce Aylward a dirigé la mission internationale envoyée en Chine par l’OMS pour enquêter sur la propagation du COVID-19."
+        }
+      ]
+    }
+  }
+}

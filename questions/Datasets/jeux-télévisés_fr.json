@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "2 / 5",
+  "version": 7,
+  "mise-à-jour": "2025-05-13",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Télévision",
+      "nom": "Jeux télévisés",
+      "slogan": "C'est mon dernier mot Jean-Pierre"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quels objets sont à la base du jeu télévisé « À prendre ou à laisser » ?",
+          "propositions": [
+            "Boîtes",
+            "Jetons",
+            "Cadeaux",
+            "Boules"
+          ],
+          "réponse": "Boîtes",
+          "anecdote": "24 candidats possèdent une boîte, répartie au hasard par un huissier de justice dans laquelle se cache une somme d'argent différente."
+        },
+        {
+          "id": 2,
+          "question": "Dans quel jeu d'aventure plusieurs binômes voyagent-ils en auto-stop ?",
+          "propositions": [
+            "Fear Factor",
+            "Ninja Warrior",
+            "Pékin Express",
+            "Intervilles"
+          ],
+          "réponse": "Pékin Express",
+          "anecdote": "Au cours du jeu, les candidats peuvent gagner des amulettes, une avance dans la course ou un coffre-fort pour ne pas quitter la partie."
+        },
+        {
+          "id": 3,
+          "question": "Dans quel jeu fallait-il, durant 29 saisons, éviter de piocher une boule noire ?",
+          "propositions": [
+            "Pyramide",
+            "L'Or à l'appel",
+            "Le Bigdil",
+            "Motus"
+          ],
+          "réponse": "Motus",
+          "anecdote": "La plus grosse cagnotte de l'histoire du jeu avec Thierry Beccaro est de 17 600 €, soit 22 émissions sans Super partie gagnée."
+        },
+        {
+          "id": 4,
+          "question": "Sur quelle chaîne de télévision se déroule « Le Grand Concours des animateurs » ?",
+          "propositions": [
+            "C8",
+            "France 2",
+            "TF1",
+            "Canal+"
+          ],
+          "réponse": "TF1",
+          "anecdote": "Cette émission réunit les animateurs des chaînes françaises qui se battent pour remporter le Trophée du Grand Concours."
+        },
+        {
+          "id": 5,
+          "question": "À bord de quel engin voyagent les candidats de la « Chasse aux trésors » ?",
+          "propositions": [
+            "Hydravion",
+            "Sous-marin",
+            "Hélicoptère",
+            "Taxi"
+          ],
+          "réponse": "Hélicoptère",
+          "anecdote": "Philippe de Dieuleveult incarnait le rôle d'un journaliste-aventurier, prêt à tous les exploits pour le jeu aux quatre coins du monde."
+        },
+        {
+          "id": 6,
+          "question": "Qui a animé « Questions pour un champion » durant 28 ans ?",
+          "propositions": [
+            "Philippe Risoli",
+            "Vincent Perrot",
+            "Julien Lepers",
+            "Samuel Étienne"
+          ],
+          "réponse": "Julien Lepers",
+          "anecdote": "L'émission est souvent parodiée et de nombreux extraits de plusieurs candidats reviennent dans les bêtisiers et zappings."
+        },
+        {
+          "id": 7,
+          "question": "Dans quel célèbre jeu des aventuriers sont-ils livrés à eux-mêmes sur une île ?",
+          "propositions": [
+            "Koh-Lanta",
+            "La Cible",
+            "Pékin Express",
+            "Ninja Warrior"
+          ],
+          "réponse": "Koh-Lanta",
+          "anecdote": "Ces aventuriers, qui s'affrontent au cours d'épreuves souvent physiques, sont répartis en plusieurs équipes avant d'être réunifiés."
+        },
+        {
+          "id": 8,
+          "question": "Qui est le présentateur emblématique de « Qui veut gagner des millions » ?",
+          "propositions": [
+            "Jonathan Cohen",
+            "Jean-Pierre Foucault",
+            "Denis Brogniart",
+            "Jarry"
+          ],
+          "réponse": "Jean-Pierre Foucault",
+          "anecdote": "Le 27 août 2004, Marie Friedel a obtenu 1 million d'euros, ce qui fut le record du plus gros gain acquis par un candidat dans ce jeu."
+        },
+        {
+          "id": 9,
+          "question": "Quel jeu télévisé matrimonial français a proposé « Le Jeu des célibataires » ?",
+          "propositions": [
+            "Motus",
+            "Le Maillon faible",
+            "Slam",
+            "Tournez Manège"
+          ],
+          "réponse": "Tournez Manège",
+          "anecdote": "Le couple sélectionné revenait une semaine après pour tenter de gagner un voyage dans le jeu des questions de Simone Garnier."
+        },
+        {
+          "id": 10,
+          "question": "Quel jeu télévisé français est aussi connu comme le parcours des héros ?",
+          "propositions": [
+            "Ninja Warrior",
+            "Total Wipeout",
+            "District Z",
+            "Pékin Express"
+          ],
+          "réponse": "Ninja Warrior",
+          "anecdote": "Présenté par Christophe Beaugrand, Denis Brogniart et Iris Mittenaere, le format est adapté d'une émission japonaise, « Sasuke »."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel président français a inspiré la création de « Jeux sans frontières » ?",
+          "propositions": [
+            "Mitterrand",
+            "De Gaulle",
+            "Pompidou",
+            "Chirac"
+          ],
+          "réponse": "De Gaulle",
+          "anecdote": "En 2019, plusieurs sociétés privées ont racheté les droits du programme à l'UER pour créer un jeu baptisé Eurogames."
+        },
+        {
+          "id": 12,
+          "question": "Dans quel jeu des boules étaient lancées du haut d'une planche de douze mètres ?",
+          "propositions": [
+            "The Wall",
+            "Le Bigdil",
+            "Pyramide",
+            "Fear Factor"
+          ],
+          "réponse": "The Wall",
+          "anecdote": "Le mur est habillé de diodes électroluminescentes, ce qui lui permet également d'être un écran et d'apporter une ambiance lumineuse."
+        },
+        {
+          "id": 13,
+          "question": "Dans quel jeu fallait-il faire deviner un mot en utilisant des synonymes ?",
+          "propositions": [
+            "Motus",
+            "Strike",
+            "Le Juste Prix",
+            "Pyramide"
+          ],
+          "réponse": "Pyramide",
+          "anecdote": "Pépita était chargée, à chaque émission, de tirer au sort une carte postale dont l'auteur était invité à participer au jeu téléphonique."
+        },
+        {
+          "id": 14,
+          "question": "Quel jeu télévisé comprend une quête de clés et une salle du trésor ?",
+          "propositions": [
+            "Money Drop",
+            "Fort Boyard",
+            "Koh-Lanta",
+            "Ninja Warrior"
+          ],
+          "réponse": "Fort Boyard",
+          "anecdote": "La plus jeune célébrité ayant participé est Gloria Palermo de Blasi, chanteuse du groupe Kids United, alors âgée de 9 ans."
+        },
+        {
+          "id": 15,
+          "question": "Dans que jeu en sept saisons Vincent Lagaf' était-il entouré des Gafettes ?",
+          "propositions": [
+            "Le Bigdil",
+            "La Cible",
+            "Burger Quiz",
+            "Le Maillon faible"
+          ],
+          "réponse": "Le Bigdil",
+          "anecdote": "Bill est un extraterrestre originaire de la planète Fricus, ayant atterri sur Paris après que sa soucoupe a été frappée par la foudre."
+        },
+        {
+          "id": 16,
+          "question": "Dans quelle émission, créée en 1962 par Guy Lux, retrouvait-on des vachettes ?",
+          "propositions": [
+            "Zone rouge",
+            "Intervilles",
+            "Atoukado",
+            "Tournez Manège"
+          ],
+          "réponse": "Intervilles",
+          "anecdote": "Il est l'un des jeux télévisés français à la plus importante longévité et l'un des programmes français les plus adaptés à l'étranger."
+        },
+        {
+          "id": 17,
+          "question": "Dans quel jeu Laurence Boccolini était-elle froide et cinglante avec les candidats ?",
+          "propositions": [
+            "Le Maillon faible",
+            "Money Drop",
+            "La Cible",
+            "Le Juste Prix"
+          ],
+          "réponse": "Le Maillon faible",
+          "anecdote": "Ce jeu était basé sur des questions élémentaires de culture générale posées à neuf candidats, de la vitesse et de la stratégie."
+        },
+        {
+          "id": 18,
+          "question": "Quel jeu proposait de gagner 250 000 € répartis en 50 liasses indivisibles ?",
+          "propositions": [
+            "The Wall",
+            "Le Bigdil",
+            "Boom",
+            "Money Drop"
+          ],
+          "réponse": "Money Drop",
+          "anecdote": "Pour repartir avec la totalité de l'argent, les candidats devaient répondre correctement à huit questions de culture générale."
+        },
+        {
+          "id": 19,
+          "question": "Qui fut le tout premier animateur à présenter « Une famille en or » ?",
+          "propositions": [
+            "Bernard Montiel",
+            "Pascal Brunner",
+            "Patrick Roy",
+            "Laurent Cabrol"
+          ],
+          "réponse": "Patrick Roy",
+          "anecdote": "Le but du jeu est de répondre à des questions ouvertes posées à un panel de Français sondés composé de cent personnes."
+        },
+        {
+          "id": 20,
+          "question": "Quel jeu présenté par Olivier Minne a remplacé le jeu « Pyramide » ?",
+          "propositions": [
+            "Slam",
+            "La Cible",
+            "Strike",
+            "Fear Factor"
+          ],
+          "réponse": "La Cible",
+          "anecdote": "Le jeu « La Cible » sera quant à lui remplacé par le jeu « Tout le monde veut prendre sa place », animé par Nagui à partir du 3 juillet 2006."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel fut le premier jeu en France à montrer des candidats avec des billets de banque ?",
+          "propositions": [
+            "1 contre 100",
+            "Je compte sur toi",
+            "Le Banquier",
+            "Money Drop"
+          ],
+          "réponse": "Je compte sur toi",
+          "anecdote": "Ce jeu télévisé créé par Jacques Antoine (Fort Boyard) et Jean Yanne fut présenté par Olivier Lejeune assisté de Valérie Lamour."
+        },
+        {
+          "id": 22,
+          "question": "Pour quel jeu télévisé Philippe Risoli a-t-il remplacé Patrick Roy à l'animation ?",
+          "propositions": [
+            "L'Or à l'appel",
+            "Le Maillon faible",
+            "Le Juste Prix",
+            "Le Bigdil"
+          ],
+          "réponse": "Le Juste Prix",
+          "anecdote": "De novembre 1992 à 1996, l'arrivée de Philippe Risoli s'est faite par une entrée spécifique entre la vitrine de droite et la Roue."
+        },
+        {
+          "id": 23,
+          "question": "Quel jeu télévisé a été inventé par Alain Chabat et Kader Aoun ?",
+          "propositions": [
+            "Fear Factor",
+            "Slam",
+            "Burger Quiz",
+            "Kamoulox"
+          ],
+          "réponse": "Burger Quiz",
+          "anecdote": "Le jeu est produit par la société de production Chez Wam, puis par la société RG Productions et réalisée par Jérôme Revon."
+        },
+        {
+          "id": 24,
+          "question": "Quel jeu diffusé sur TF1 était basé sur les peurs et les phobies des candidats ?",
+          "propositions": [
+            "Ninja Warrior",
+            "Koh-Lanta",
+            "Fear Factor",
+            "Pékin Express"
+          ],
+          "réponse": "Fear Factor",
+          "anecdote": "Chaque épisode présentait des défis différents et variés comme le saut à l'élastique, des épreuves de plongée ou d'escalade."
+        },
+        {
+          "id": 25,
+          "question": "Quel jeu télévisé français est présenté par Cyril Féraud depuis octobre 2009 ?",
+          "propositions": [
+            "Pyramide",
+            "Mask Singer",
+            "District Z",
+            "Slam"
+          ],
+          "réponse": "Slam",
+          "anecdote": "Les enregistrements ont lieu tous les mois, six fois par jour, du lundi au samedi, pour des diffusions dans les deux mois qui suivent."
+        },
+        {
+          "id": 26,
+          "question": "Quel jeu s'effectue entre des célébrités masquées et entièrement déguisées ?",
+          "propositions": [
+            "Fear Factor",
+            "The Wall",
+            "La Cible",
+            "Mask Singer"
+          ],
+          "réponse": "Mask Singer",
+          "anecdote": "Leurs prestations sont jugées par un jury d'enquêteurs et le public présent, auquel peut s'ajouter un enquêteur invité certains soirs."
+        },
+        {
+          "id": 27,
+          "question": "Quel jeu télévisé parodique a été créé par les humoristes Kad et Olivier ?",
+          "propositions": [
+            "Strike",
+            "Kamoulox",
+            "Atoukado",
+            "Le Banquier"
+          ],
+          "réponse": "Kamoulox",
+          "anecdote": "Le nom Kamoulox serait le résultat d'une contraction assez libre des noms des deux auteurs, Kad Merad et Olivier Baroux."
+        },
+        {
+          "id": 28,
+          "question": "Dans quel jeu un candidat devait-il affronter un groupe de personnes appelé le Mur ?",
+          "propositions": [
+            "Fear Factor",
+            "Strike",
+            "La Cible",
+            "1 contre 100"
+          ],
+          "réponse": "1 contre 100",
+          "anecdote": "« 1 contre 100 » est un jeu télévisé français d'origine néerlandaise, diffusé sur TF1 de 2007 à 2008 et présenté par Benjamin Castaldi."
+        },
+        {
+          "id": 29,
+          "question": "Quel ancien jeu télé était adapté du jeu américain « Hollywood Squares » ?",
+          "propositions": [
+            "Le Banquier",
+            "Atoukado",
+            "L'Académie des neuf",
+            "Atout Coeur"
+          ],
+          "réponse": "L'Académie des neuf",
+          "anecdote": "Lors de L'Académie des neuf, neuf personnalités étaient invitées et réparties dans les neuf cases du décor, sur trois étages."
+        },
+        {
+          "id": 30,
+          "question": "Quel célèbre jeu télévisé luxembourgeois était animé par Fabrice et Sophie Garel ?",
+          "propositions": [
+            "Le Banquier",
+            "Atoukado",
+            "Charivari",
+            "Atout Coeur"
+          ],
+          "réponse": "Atoukado",
+          "anecdote": "Ce sont les premières notes de la chanson « Le Pornographe » de Georges Brassens qui on construit le jingle du jeu « Atoukado »."
+        }
+      ]
+    }
+  }
+}
