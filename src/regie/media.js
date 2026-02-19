@@ -1051,8 +1051,18 @@ function showPeopleSource(src, label) {
   if (!src) return;
   state.lastPeopleSrc = src;
   state.lastPeopleLabel = label || "Personnalite";
+  updatePeopleFileName(src);
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "SHOW_PEOPLE", src, alt: state.lastPeopleLabel });
+}
+
+function updatePeopleFileName(src) {
+  const el = $("peoplesFileName");
+  if (!el) return;
+  const fileName = src
+    ? decodeURIComponent(String(src).split("/").pop() || String(src))
+    : "";
+  el.textContent = fileName ? `Fichier : ${fileName}` : "Fichier : -";
 }
 
 function updateReplayButtonsState() {
@@ -1248,6 +1258,7 @@ export function registerMediaEvents() {
   });
 
   updateReplayButtonsState();
+  updatePeopleFileName(state.lastPeopleSrc || "");
   updateGeneralQuestionButtons();
 }
 
@@ -1278,6 +1289,7 @@ export function resetMediaForNewShow() {
   state.lastFilmsSrc = "";
   state.lastPeopleSrc = "";
   state.lastPeopleLabel = "";
+  updatePeopleFileName("");
   state.capitalesLastFile = "";
   state.generalQuestionCurrent = null;
   state.generalQuestionVisible = false;

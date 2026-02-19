@@ -381,6 +381,13 @@ h2{
   min-width:0;
 }
 
+.media-file-name{
+  margin-top:6px;
+  font-size:12px;
+  color: var(--muted);
+  word-break: break-word;
+}
+
 .replay-btn{
   min-width:44px;
   width:44px;
