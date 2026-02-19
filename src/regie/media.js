@@ -839,10 +839,10 @@ function renderGeneralQuestionCard() {
       listEl.appendChild(choice);
     });
     applyGeneralChoicesRevealUI();
-    answerEl.textContent = "";
   } else {
-    answerEl.textContent = q.answer ? `Reponse: ${q.answer}` : "";
+    // no-op: fallback handled below
   }
+  answerEl.textContent = q.answer ? `Reponse: ${q.answer}` : "";
   anecdoteEl.textContent = q.anecdote ? `Anecdote: ${q.anecdote}` : "";
   updateGeneralQuestionButtons();
 }
