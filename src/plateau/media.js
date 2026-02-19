@@ -1,10 +1,11 @@
 import { gridEl, defBar } from "./dom.js";
 import { state } from "./state.js";
-import { beginExternalDucking, endExternalDucking, playMusic, setDuckLevelOverride, stopAllFx, stopMusic } from "./audio.js";
+import { beginExternalDucking, endExternalDucking, playFx, playMusic, setDuckLevelOverride, sounds, stopAllFx, stopMusic } from "./audio.js";
 
 const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
 const FILMS_EXTRACTS_VIDEO_SRC = "sounds/extraits_films.mp4";
+const GENERAL_QUESTION_MUSIC_SRC = "sounds/question_song.mp3";
 const FILMS_EXTRACTS_VIDEO_VOLUME = 0.08;
 const FILMS_DUCK_LEVEL = 0.02;
 const FILMS_FADE_MS = 280;
@@ -18,6 +19,7 @@ let genericVideo = null;
 let videoDuckingActive = false;
 let currentVideoMode = null;
 let mediaLifecycleBound = false;
+let generalQuestionMusicActive = false;
 
 function bindMediaLifecycleEvents() {
   if (mediaLifecycleBound) return;
@@ -325,6 +327,7 @@ export function showGeneralQuestion(payload = {}) {
       questionWindow.classList.remove("question-reveal-anim");
       void questionWindow.offsetWidth;
       questionWindow.classList.add("question-reveal-anim");
+      playFx(sounds.appear);
     }
   }
 
@@ -354,6 +357,7 @@ export function showGeneralQuestion(payload = {}) {
           win.classList.remove("choice-reveal-anim");
           void win.offsetWidth;
           win.classList.add("choice-reveal-anim");
+          playFx(sounds.appear);
         }
       }
       choicesStage.classList.remove("hidden");
@@ -371,12 +375,20 @@ export function showGeneralQuestion(payload = {}) {
   const showChoices = !!(payload.showChoices && options.length);
   if (!showQuestion && !showChoices) {
     overlay.classList.remove("active");
+    if (generalQuestionMusicActive) {
+      stopMusic();
+      generalQuestionMusicActive = false;
+    }
     gridEl.style.display = "";
     defBar?.classList.remove("hidden");
     return;
   }
 
   overlay.classList.add("active");
+  if (!generalQuestionMusicActive) {
+    generalQuestionMusicActive = true;
+    playMusic(GENERAL_QUESTION_MUSIC_SRC, { visualizer: false });
+  }
   gridEl.style.display = "none";
   defBar?.classList.add("hidden");
 }
@@ -413,6 +425,7 @@ export function hideAllMedia() {
   }
   if (scoresOverlay) scoresOverlay.classList.remove("active");
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
+  generalQuestionMusicActive = false;
   stopMusic();
   const vid = genericVideo;
   if (vid) {

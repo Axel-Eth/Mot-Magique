@@ -34,5 +34,6 @@ export const state = {
   generalQuestionVisible: false,
   generalQuestionChoicesVisible: false,
   generalQuestionChoicesRevealCount: 0,
+  generalQuestionDisplayActive: false,
   generalQuestionAnswerMarks: {}
 };

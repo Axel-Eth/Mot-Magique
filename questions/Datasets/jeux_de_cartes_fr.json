@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "4 / 5",
+  "version": 7,
+  "mise-à-jour": "2025-02-08",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Vie quotidienne",
+      "nom": "Jeux de cartes",
+      "slogan": "Traditionnelles ou spécifiques"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Que jeu de cartes a fait son apparition sous le nom de 21 ?",
+          "propositions": [
+            "Dame de Pique",
+            "Blackjack",
+            "8 américain",
+            "Bataille"
+          ],
+          "réponse": "Blackjack",
+          "anecdote": "Au Canada, 50% des joueurs qui se connectent régulièrement sur un site de casino virtuel le font pour jouer au blackjack."
+        },
+        {
+          "id": 2,
+          "question": "Pour quel jeu de cartes Patrick Bruel a-t-il remporté de nombreuses compétitions ?",
+          "propositions": [
+            "Canasta",
+            "Nain jaune",
+            "Poker",
+            "Crapette"
+          ],
+          "réponse": "Poker",
+          "anecdote": "Le but est de remporter les jetons de ses adversaires en constituant, avec le croupier, la meilleure combinaison de cinq cartes."
+        },
+        {
+          "id": 3,
+          "question": "Quel jeu de cartes à un seul joueur est aussi appelé la Ruée vers l'Or ?",
+          "propositions": [
+            "Uno",
+            "Solitaire",
+            "Bataille",
+            "Rami"
+          ],
+          "réponse": "Solitaire",
+          "anecdote": "Si la distribution des cartes semble aléatoire sous Windows, elle est en réalité calculée en fonction de l'heure de l'horloge."
+        },
+        {
+          "id": 4,
+          "question": "Quel jeu s'apparente au jeu de cartes connu sous le nom de Crazy Eights ?",
+          "propositions": [
+            "Sept et Demi",
+            "8 américain",
+            "7 familles",
+            "1000 bornes"
+          ],
+          "réponse": "8 américain",
+          "anecdote": "Ce jeu a été popularisé par le jeu Uno qui en reprend les principes dans une version commerciale, plus simple et plus attractive."
+        },
+        {
+          "id": 5,
+          "question": "Dans quel jeu de cartes ne faut-il pas prendre le valet de pique ?",
+          "propositions": [
+            "Baccara",
+            "Janus",
+            "Pouilleux",
+            "Kilo de merde"
+          ],
+          "réponse": "Pouilleux",
+          "anecdote": "Le pouilleux étant un jeu de hasard, il ne possède pas de technique particulière pour augmenter ses chances de gagner."
+        },
+        {
+          "id": 6,
+          "question": "Quel très ancien jeu de cartes de hasard peut se pratiquer à partir de 5 ans ?",
+          "propositions": [
+            "Crib",
+            "Gin rami",
+            "Blackjack",
+            "Bataille"
+          ],
+          "réponse": "Bataille",
+          "anecdote": "Par simulation numérique, on peut estimer à 90 % de chance de victoire une main initiale à la bataille contenant les quatre as."
+        },
+        {
+          "id": 7,
+          "question": "Dans quel jeu de cartes a-t-on parfois la possibilité de tirer la chasse ?",
+          "propositions": [
+            "Canasta",
+            "1000 bornes",
+            "Citadelles",
+            "Kilo de merde"
+          ],
+          "réponse": "Kilo de merde",
+          "anecdote": "Quand un joueur tire un 7, il a la possibilité de se débarrasser de tous ses kilos de merde qu'il remet sous le tas de merde."
+        },
+        {
+          "id": 8,
+          "question": "Quel jeu dérivé du barbu est l'un des jeux de cartes de base de Windows ?",
+          "propositions": [
+            "Canasta",
+            "Bang !",
+            "Mao",
+            "Dame de Pique"
+          ],
+          "réponse": "Dame de Pique",
+          "anecdote": "La partie s'achève lorsqu'un joueur obtient un total de 100 points ou plus, le vainqueur étant celui qui a le moins de points."
+        },
+        {
+          "id": 9,
+          "question": "Quel jeu de cartes regroupe grand-père, grand-mère, père, mère, fils et fille ?",
+          "propositions": [
+            "1000 bornes",
+            "Bataille",
+            "7 familles",
+            "Solitaire"
+          ],
+          "réponse": "7 familles",
+          "anecdote": "Faisant intervenir la mémoire et l'observation, le gagnant est le joueur qui pose devant lui le plus de familles complètes."
+        },
+        {
+          "id": 10,
+          "question": "Que jeu utilise des cartes spéciales sur le thème de la course automobile ?",
+          "propositions": [
+            "Crapette",
+            "Jungle Speed",
+            "Baccara",
+            "1000 bornes"
+          ],
+          "réponse": "1000 bornes",
+          "anecdote": "Il a été inventé en 1954 par Edmond Dujardin, un éditeur de matériel pour auto-écoles, illustré par Joseph Le Callennec."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Dans quel jeu de cartes faut-il totaliser au minimum 5 000 points ?",
+          "propositions": [
+            "Nain jaune",
+            "Canasta",
+            "Rami",
+            "Crapette"
+          ],
+          "réponse": "Canasta",
+          "anecdote": "Quand une canasta devient complète on forme une pile en mettant au-dessus une couleur indiquant la couleur de la canasta."
+        },
+        {
+          "id": 12,
+          "question": "Quel jeu des communautés asiatiques est aussi appelé « Treize » ?",
+          "propositions": [
+            "Hanabi",
+            "Dixit",
+            "Poker chinois",
+            "Crib"
+          ],
+          "réponse": "Poker chinois",
+          "anecdote": "Il s'agit pour le joueur de disposer ses cartes en trois parties, chaque partie devant être moins forte que la précédente."
+        },
+        {
+          "id": 13,
+          "question": "Quel jeu de cartes de combinaisons est d'origine indienne ?",
+          "propositions": [
+            "Mao",
+            "Janus",
+            "Rami",
+            "Vitou"
+          ],
+          "réponse": "Rami",
+          "anecdote": "Le jeu du rami est directement inspiré d'un jeu dénommé Conquian apparu à la frontière du Mexique et des États-Unis."
+        },
+        {
+          "id": 14,
+          "question": "Quel jeu de cartes s'apparente à une patience jouée en concurrence ?",
+          "propositions": [
+            "Baccara",
+            "Crapette",
+            "Canasta",
+            "Crib"
+          ],
+          "réponse": "Crapette",
+          "anecdote": "Se jouant avec deux jeux, les deux paquets de cartes auront un dos différent afin de faciliter leur reconstitution après la partie."
+        },
+        {
+          "id": 15,
+          "question": "Quel jeu de cartes utilise un tableau composé de cinq cases ?",
+          "propositions": [
+            "Blackjack",
+            "Poker",
+            "Nain jaune",
+            "Canasta"
+          ],
+          "réponse": "Nain jaune",
+          "anecdote": "C'est un jeu de hasard raisonné car il mêle les aléas de la distribution des cartes et la stratégie de la construction des suites."
+        },
+        {
+          "id": 16,
+          "question": "Que jeu de cartes édité par Mattel est basé sur les règles du 8 américain ?",
+          "propositions": [
+            "Uncharted",
+            "Urbex",
+            "Uno",
+            "Ultima"
+          ],
+          "réponse": "Uno",
+          "anecdote": "Pour gagner une manche, il faut être le premier joueur à n'avoir plus de cartes en mains sur les 108 cartes qui composent le jeu."
+        },
+        {
+          "id": 17,
+          "question": "Que jeu de cartes parodique met en scène des sociétés secrètes ?",
+          "propositions": [
+            "Citadelles",
+            "In extremis",
+            "Illuminati",
+            "Dixit"
+          ],
+          "réponse": "Illuminati",
+          "anecdote": "On peut y jouer de 2 à 7 personnes pour des parties qui durent de une à cinq heures en fonction du nombre de joueurs présents."
+        },
+        {
+          "id": 18,
+          "question": "Quel jeu de cartes se joue avec un banquier et des joueurs appelés pontes ?",
+          "propositions": [
+            "Crapette",
+            "Baccara",
+            "Mao",
+            "Crib"
+          ],
+          "réponse": "Baccara",
+          "anecdote": "Ce jeu est devenu renommé par le film « James Bond 007 contre Dr No », où le héros joue à ce jeu contre Sylvia Trench."
+        },
+        {
+          "id": 19,
+          "question": "Quel jeu de cartes de mémoire est basé sur le thème de Rome ?",
+          "propositions": [
+            "Janus",
+            "Citadelles",
+            "Hanabi",
+            "In extremis"
+          ],
+          "réponse": "Janus",
+          "anecdote": "Le jeu inventé par Lothar Hannappel et édité en 1996 se pratique avec des cartes spéciales qui ont deux faces différentes."
+        },
+        {
+          "id": 20,
+          "question": "Quel jeu fut en 2010 le premier jeu de l'année en Allemagne d'un auteur français ?",
+          "propositions": [
+            "Uno",
+            "Mao",
+            "Dixit",
+            "Crib"
+          ],
+          "réponse": "Dixit",
+          "anecdote": "Créé en 2008 par Jean-Louis Roubira, « Dixit » proposa en octobre 2017 sa huitième extension, toujours avec des cartes sans texte."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel jeu de bluff médiéval a été créé en 2000 par Bruno Faidutti ?",
+          "propositions": [
+            "Mao",
+            "Citadelles",
+            "Vitou",
+            "Hanabi"
+          ],
+          "réponse": "Citadelles",
+          "anecdote": "Le vainqueur sera le plus souvent celui qui aura su déduire ou sentir les personnages qu'allaient choisir ses adversaires."
+        },
+        {
+          "id": 22,
+          "question": "De quel jeu de cartes Stu Ungar est-il le plus grand joueur de l'histoire ?",
+          "propositions": [
+            "Poker",
+            "Canasta",
+            "Gin rami",
+            "Baccara"
+          ],
+          "réponse": "Gin rami",
+          "anecdote": "Une fois sa renommée faite, il ne trouvait d'ailleurs plus d'adversaire contre qui jouer tellement sa victoire était assurée."
+        },
+        {
+          "id": 23,
+          "question": "Dans quel jeu l'objectif est-il d'être le premier à atteindre 121 points ?",
+          "propositions": [
+            "Jungle Speed",
+            "Nain jaune",
+            "Bang !",
+            "Crib"
+          ],
+          "réponse": "Crib",
+          "anecdote": "Le Crib est un jeu de cartes inventé en 1630 par Sir John Suckling (1609-1642), un chevalier anglais et poète à ses heures."
+        },
+        {
+          "id": 24,
+          "question": "Dans quel jeu inspiré du blackjack utilise-t-on seulement 44 cartes sur 52 ?",
+          "propositions": [
+            "Crapette",
+            "Canasta",
+            "Baccara",
+            "Sept et Demi"
+          ],
+          "réponse": "Sept et Demi",
+          "anecdote": "Il existe plusieurs variantes de ce jeu notamment le Siete y media espagnol se jouant aux cartes ainsi qu'une version dés."
+        },
+        {
+          "id": 25,
+          "question": "Dans quel jeu de cartes les règles s'inventent-elles au fur et à mesure ?",
+          "propositions": [
+            "Hanabi",
+            "Bang !",
+            "Vitou",
+            "Mao"
+          ],
+          "réponse": "Mao",
+          "anecdote": "Lorsque l'on joue avec une personne qui n'a jamais joué au Mao, celle-ci n'est censée savoir qu'une seule chose sur le jeu : rien."
+        },
+        {
+          "id": 26,
+          "question": "Quel jeu Niçois repose à la fois sur les enchères et sur le jeu de carte ?",
+          "propositions": [
+            "Illuminati",
+            "Vitou",
+            "Pouilleux",
+            "7 familles"
+          ],
+          "réponse": "Vitou",
+          "anecdote": "Tout l'intérêt du jeu est dans le bluff (les enchères) mais aussi dans le jeu de la carte, le premier pli étant déterminant."
+        },
+        {
+          "id": 27,
+          "question": "Dans quel jeu de cartes faut-il attraper un bouchon posé au centre de la table ?",
+          "propositions": [
+            "Hanabi",
+            "Janus",
+            "Jungle Speed",
+            "Illuminati"
+          ],
+          "réponse": "Jungle Speed",
+          "anecdote": "Il existe une extension pour le Jungle Speed qui ajoute 80 cartes et symboles supplémentaires, augmentant le niveau de difficulté."
+        },
+        {
+          "id": 28,
+          "question": "Dans quel jeu de cartes un mot doit-il commencer par une face verte ?",
+          "propositions": [
+            "In extremis",
+            "Rami",
+            "Dixit",
+            "8 américain"
+          ],
+          "réponse": "In extremis",
+          "anecdote": "Le premier joueur à trouver un mot valable (tout sauf les verbes conjugués) remporte toutes les cartes posées sur la table."
+        },
+        {
+          "id": 29,
+          "question": "Dans quel jeu original voit-on toutes les cartes sauf les siennes ?",
+          "propositions": [
+            "Hanabi",
+            "Vitou",
+            "Mao",
+            "Bang !"
+          ],
+          "réponse": "Hanabi",
+          "anecdote": "Le jeu de base complet comporte 50 cartes : trois cartes 1, deux cartes 2, deux cartes 3, deux cartes 4 et une carte 5."
+        },
+        {
+          "id": 30,
+          "question": "Quel jeu de cartes sur le thème du western est proposé par Emiliano Sciarra ?",
+          "propositions": [
+            "Bang !",
+            "Crib",
+            "Dixit",
+            "Janus"
+          ],
+          "réponse": "Bang !",
+          "anecdote": "Le jeu a été complété par quatre extensions : « Dodge City » (2004), « High Noon » et « A Fistfull of cards » (2005), puis « Wild West Show » (2010)."
+        }
+      ]
+    }
+  }
+}

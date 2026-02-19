@@ -7,6 +7,7 @@ const FX_SOURCES = {
   gridComplete: "sounds/correct_answer.mp3",
   timer: "sounds/Magic_Word_Countdown.mp3",
   reveal: "sounds/lettre_revele_regie.mp3",
+  appear: "sounds/bruitage_apparition.mp3",
   fail: "sounds/fail_sound_effect.mp3",
   selectWord: "sounds/selection_mot_grille.mp3",
   magicSelect: "sounds/Magic_Word_Countdown.mp3"

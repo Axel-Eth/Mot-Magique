@@ -549,6 +549,7 @@ function refreshGeneralLevelFilterOptions() {
       state.generalQuestionVisible = false;
       state.generalQuestionChoicesVisible = false;
       state.generalQuestionChoicesRevealCount = 0;
+      state.generalQuestionDisplayActive = false;
       state.generalQuestionAnswerMarks = {};
       refreshGeneralLevelSummary();
       refreshGeneralCategorySelect();
@@ -935,6 +936,7 @@ function selectGeneralQuestion({ random = false } = {}) {
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   state.generalQuestionChoicesRevealCount = 0;
+  state.generalQuestionDisplayActive = false;
   state.generalQuestionAnswerMarks = {};
   refreshGeneralCategorySelect();
   renderGeneralQuestionCard();
@@ -945,8 +947,11 @@ function sendGeneralQuestionToPlateau() {
   if (!q) return;
   const showQuestion = !!state.generalQuestionVisible;
   const showChoices = !!state.generalQuestionChoicesVisible;
-  postToPlateau({ type: "STOP_FILMS_VIDEO" });
-  postToPlateau({ type: "HIDE_MEDIA" });
+  const showAny = showQuestion || showChoices;
+  if (showAny && !state.generalQuestionDisplayActive) {
+    postToPlateau({ type: "STOP_FILMS_VIDEO" });
+    postToPlateau({ type: "HIDE_MEDIA" });
+  }
   postToPlateau({
     type: "SHOW_GENERAL_QUESTION",
     category: q.category,
@@ -959,6 +964,7 @@ function sendGeneralQuestionToPlateau() {
     showChoices,
     choicesRevealCount: state.generalQuestionChoicesRevealCount || 0
   });
+  state.generalQuestionDisplayActive = showAny;
   updateGeneralQuestionButtons();
 }
 
@@ -971,6 +977,7 @@ export async function loadGeneralQuestionsList() {
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   state.generalQuestionChoicesRevealCount = 0;
+  state.generalQuestionDisplayActive = false;
   state.generalQuestionAnswerMarks = {};
   select.innerHTML = "";
 
@@ -1022,6 +1029,7 @@ function runXMediaFlow() {
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   state.generalQuestionChoicesRevealCount = 0;
+  state.generalQuestionDisplayActive = false;
   updateGeneralQuestionButtons();
 }
 
@@ -1167,6 +1175,7 @@ export function registerMediaEvents() {
     state.generalQuestionVisible = false;
     state.generalQuestionChoicesVisible = false;
     state.generalQuestionChoicesRevealCount = 0;
+    state.generalQuestionDisplayActive = false;
     state.generalQuestionAnswerMarks = {};
     renderGeneralQuestionCard();
     refreshGeneralCategorySelect();
@@ -1274,6 +1283,7 @@ export function resetMediaForNewShow() {
   state.generalQuestionVisible = false;
   state.generalQuestionChoicesVisible = false;
   state.generalQuestionChoicesRevealCount = 0;
+  state.generalQuestionDisplayActive = false;
   state.generalQuestionAnswerMarks = {};
   renderGeneralQuestionCard();
   updateReplayButtonsState();
