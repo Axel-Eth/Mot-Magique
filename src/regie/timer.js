@@ -38,6 +38,7 @@ export function resetRegieTimer() {
 export function initRegieTimerDrag() {
   const win = $("regieTimerWindow");
   const handle = $("regieTimerHandle");
+  const closeBtn = $("regieTimerClose");
   if (!win || !handle) return;
 
   let dragging = false;
@@ -69,5 +70,11 @@ export function initRegieTimerDrag() {
     e.preventDefault();
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseup", stop);
+  });
+
+  closeBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    resetRegieTimer();
   });
 }

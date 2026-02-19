@@ -306,6 +306,8 @@ export function registerWindowEvents() {
           target.closest("#teamsContainer") ||
           target.closest("#teamModal") ||
           target.closest("#teamModalOk") ||
+          target.closest("#regieTimerWindow") ||
+          target.closest("#regieTimerClose") ||
           target.closest(".modal-card")
         );
 
