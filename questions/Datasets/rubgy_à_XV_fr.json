@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "2 / 5",
+  "version": 6,
+  "mise-à-jour": "2023-05-04",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Sports",
+      "nom": "Rugby à XV",
+      "slogan": "Variante la plus pratiquée du rugby"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Combien de joueurs composent chacune des deux équipes de rugby à XV sur le terrain ?",
+          "propositions": [
+            "Quinze",
+            "Dix",
+            "Onze",
+            "Douze"
+          ],
+          "réponse": "Quinze",
+          "anecdote": "L'objectif du rugby à XV est de marquer plus de points que l'adversaire par des essais donnant droit à des transformations."
+        },
+        {
+          "id": 2,
+          "question": "En rugby à XV, combien de points vaut un essai, s'il est transformé ?",
+          "propositions": [
+            "Quatre",
+            "Sept",
+            "Six",
+            "Cinq"
+          ],
+          "réponse": "Sept",
+          "anecdote": "Il n'est pas possible à la défense de marquer sur transformation, à l'inverse de ce que permet le football américain."
+        },
+        {
+          "id": 3,
+          "question": "Quelle fédération internationale gouverne depuis 2014 le rugby à XV ?",
+          "propositions": [
+            "Central Rugby",
+            "Rugby Europe",
+            "World Rugby",
+            "Rugby Passion"
+          ],
+          "réponse": "World Rugby",
+          "anecdote": "Elle définit notamment les règles du jeu et organise les principaux tournois, dont la Coupe du monde de rugby à XV depuis 1987."
+        },
+        {
+          "id": 4,
+          "question": "Quel surnom est donné à l'équipe d'Afrique du Sud de rugby à XV ?",
+          "propositions": [
+            "All Blacks",
+            "Diables rouges",
+            "Chardon",
+            "Springboks"
+          ],
+          "réponse": "Springboks",
+          "anecdote": "La rivalité entre les All Blacks et les Springboks commença en 1921, suite à une tournée des Springboks en Nouvelle-Zélande."
+        },
+        {
+          "id": 5,
+          "question": "Que marque un joueur lorsqu'il effectue un touché à terre dans l'en-but ?",
+          "propositions": [
+            "Essai",
+            "Transformation",
+            "But",
+            "Drop"
+          ],
+          "réponse": "Essai",
+          "anecdote": "Si un joueur s'intercale entre le ballon et l'en-but au moment où le ballon est aplati, l'essai n'est pas accordé."
+        },
+        {
+          "id": 6,
+          "question": "De nos jours, quelle est la forme du ballon utilisé en rugby à XV ?",
+          "propositions": [
+            "Rond",
+            "Sphérique",
+            "Rectangulaire",
+            "Ovale"
+          ],
+          "réponse": "Ovale",
+          "anecdote": "De section elliptique, le ballon de rugby peut être lancé à la main, frappé au pied ou porté par les joueurs."
+        },
+        {
+          "id": 7,
+          "question": "Quelle action sanctionne des fautes mineures ou des remises en jeu incorrectes ?",
+          "propositions": [
+            "Transformation",
+            "Mêlée",
+            "Essai",
+            "Drop"
+          ],
+          "réponse": "Mêlée",
+          "anecdote": "La mêlée se forme à l'endroit de la faute ou de l'arrêt de jeu, ou aussi près que possible de ce point dans le champ de jeu."
+        },
+        {
+          "id": 8,
+          "question": "Quelle est la durée des deux mi-temps d'un match de rugby à XV ?",
+          "propositions": [
+            "30 minutes",
+            "35 minutes",
+            "40 minutes",
+            "45 minutes"
+          ],
+          "réponse": "40 minutes",
+          "anecdote": "Dans certaines compétitions, il peut toutefois y avoir une prolongation de deux fois dix minutes en cas de match nul."
+        },
+        {
+          "id": 9,
+          "question": "Que doit faire un joueur de rugby à XV qui saigne sur le terrain ?",
+          "propositions": [
+            "Plonger au sol",
+            "Être remplacé",
+            "Ne plus bouger",
+            "Attendre la mort"
+          ],
+          "réponse": "Être remplacé",
+          "anecdote": "Le joueur pourra ensuite reprendre sa place, si la durée pour se faire soigner n'excède pas quinze minutes."
+        },
+        {
+          "id": 10,
+          "question": "Quel joueur reste souvent en retrait pour réceptionner les ballons frappés ?",
+          "propositions": [
+            "Aillier",
+            "Centre",
+            "Demi de mêlée",
+            "Arrière"
+          ],
+          "réponse": "Arrière",
+          "anecdote": "Lorsqu'il est employé au pluriel, le mot arrières désigne également l'ensemble des joueurs des lignes arrière."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quelle est la longueur du terrain gazonné sur lequel se joue le rugby à XV ?",
+          "propositions": [
+            "80 mètres",
+            "60 mètres",
+            "100 mètres",
+            "120 mètres"
+          ],
+          "réponse": "100 mètres",
+          "anecdote": "Au milieu de chaque ligne de but sont implantés des poteaux de huit mètres de haut, distants l'un de l'autre de 5,60 m."
+        },
+        {
+          "id": 12,
+          "question": "De nos jours, combien de points vaut un drop au rugby à XV ?",
+          "propositions": [
+            "Trois",
+            "Deux",
+            "Cinq",
+            "Quatre"
+          ],
+          "réponse": "Trois",
+          "anecdote": "L'action du drop consiste à lâcher le ballon des mains et à le frapper du pied juste après son rebond au sol."
+        },
+        {
+          "id": 13,
+          "question": "Que dit-on lorsque le ballon passe entre les poteaux, au-dessus de la barre transversale ?",
+          "propositions": [
+            "But",
+            "Essai",
+            "Transformation",
+            "Drop"
+          ],
+          "réponse": "But",
+          "anecdote": "Sauf pour la transformation réussie après qu'un essai ait été marqué, au rgby à XV, les buts rapportent trois points."
+        },
+        {
+          "id": 14,
+          "question": "S'il n'y a pas anti-jeu, par quoi peut être pénalisé un en-avant ?",
+          "propositions": [
+            "Mêlée",
+            "Transformation",
+            "Drop",
+            "Essai"
+          ],
+          "réponse": "Mêlée",
+          "anecdote": "En cas de faute ou d'arrêt de jeu dans un en-but, la mêlée se forme à cinq mètres de la ligne de but."
+        },
+        {
+          "id": 15,
+          "question": "Quel pays reste le maître incontesté du milieu du rugby à XV ?",
+          "propositions": [
+            "France",
+            "Japon",
+            "Nouvelle-Zélande",
+            "Pays de Galles"
+          ],
+          "réponse": "Nouvelle-Zélande",
+          "anecdote": "Depuis maintenant près de cent ans, les Néo-Zélandais sont fiers, à juste titre, des performances de leur équipe de rugby à XV."
+        },
+        {
+          "id": 16,
+          "question": "Quelle est la hauteur de la barre transversale située entre les poteaux ?",
+          "propositions": [
+            "3 mètres",
+            "2 mètres",
+            "4 mètres",
+            "5 mètres"
+          ],
+          "réponse": "3 mètres",
+          "anecdote": "Il est possible de jouer au rugby sur de la neige, à condition que la neige et la surface sous la neige ne soient pas dangereuses."
+        },
+        {
+          "id": 17,
+          "question": "De quel pays est originaire le rugby à XV que nous connaissons aujourd'hui ?",
+          "propositions": [
+            "Angleterre",
+            "Afrique du Sud",
+            "Nouvelle-Zélande",
+            "Australie"
+          ],
+          "réponse": "Angleterre",
+          "anecdote": "Le rugby à XV s'est développé dans les pays anglo-saxons (Royaume-Uni, Afrique du Sud, Australie, Nouvelle-Zélande) et en France."
+        },
+        {
+          "id": 18,
+          "question": "Quel accessoire synthétique maintient le ballon pour un coup de pied placé ?",
+          "propositions": [
+            "Bree",
+            "Glee",
+            "Tee",
+            "Bee"
+          ],
+          "réponse": "Tee",
+          "anecdote": "Auparavant, les botteurs avaient l'habitude de creuser des trous dans le gazon, avec leur talon, pour placer le ballon."
+        },
+        {
+          "id": 19,
+          "question": "Pour quelle durée un joueur ayant reçu une carte jaune est-il temporairement exclu ?",
+          "propositions": [
+            "Vingt minutes",
+            "Dix minutes",
+            "Quinze minutes",
+            "Cinq minutes"
+          ],
+          "réponse": "Dix minutes",
+          "anecdote": "Une faute volontaire d'anti-jeu ou une faute mettant en danger la sécurité d'un joueur peut entraîner une exclusion."
+        },
+        {
+          "id": 20,
+          "question": "Quelle est la hauteur des poteaux implantés au milieu de chaque ligne de but ?",
+          "propositions": [
+            "6 mètres",
+            "8 mètres",
+            "5 mètres",
+            "7 mètres"
+          ],
+          "réponse": "8 mètres",
+          "anecdote": "Les en-buts, zones dans lesquelles le ballon doit être aplati, doivent mesurer entre 10 mètres et 22 mètres de long."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Qu'indique l'arbitre par un bras cassé à angle droit, l'avant-bras vers le haut ?",
+          "propositions": [
+            "Drop",
+            "Essai",
+            "Coup franc",
+            "But"
+          ],
+          "réponse": "Coup franc",
+          "anecdote": "Le coup franc ne donne pas droit à une tentative de but, une touche trouvée ne bénéficiant pas de règles privilégiées."
+        },
+        {
+          "id": 22,
+          "question": "Quel protocole a été mis en place après qu'un joueur ait subi un choc violent ?",
+          "propositions": [
+            "Destruction",
+            "Réanimation",
+            "Expulsion",
+            "Commotion"
+          ],
+          "réponse": "Commotion",
+          "anecdote": "Il consiste à autoriser le remplacement temporaire d'un joueur afin de vérifier si ce dernier sera ensuite apte à revenir sur le terrain."
+        },
+        {
+          "id": 23,
+          "question": "Quel poste tiennent généralement les joueurs numérotés 1 et 3 ?",
+          "propositions": [
+            "Pilier",
+            "Troisième ligne",
+            "Talonneur",
+            "Deuxième ligne"
+          ],
+          "réponse": "Pilier",
+          "anecdote": "Leur rôle reste essentiel au sein des mêlées où leur compétences techniques sont aussi déterminantes que leur force."
+        },
+        {
+          "id": 24,
+          "question": "Quel joueur est chargé de remettre le ballon en jeu lors des touches ?",
+          "propositions": [
+            "Arrière",
+            "Pilier",
+            "Talonneur",
+            "Ailier"
+          ],
+          "réponse": "Talonneur",
+          "anecdote": "Le poste de talonneur constitue l'un des postes clés, il fait partie de la colonne vertébrale d'une équipe de rugby."
+        },
+        {
+          "id": 25,
+          "question": "Quel cordonnier a donné son nom à une entreprise éponyme d'équipements de rugby ?",
+          "propositions": [
+            "Joseph Umbro",
+            "William Guilbert",
+            "Robert Dunlop",
+            "René Lacoste"
+          ],
+          "réponse": "William Guilbert",
+          "anecdote": "William Guilbert a conçu un ballon de forme ovoïde, à partir d'une vessie de porc, alors bien plus gros que le ballon actuel."
+        },
+        {
+          "id": 26,
+          "question": "Quelle action consiste à pousser du pied le ballon vers l'arrière ?",
+          "propositions": [
+            "Décalage",
+            "Cabotage",
+            "Talonnage",
+            "Repassage"
+          ],
+          "réponse": "Talonnage",
+          "anecdote": "Dans le jeu au pied, le talonnage consiste à pousser du pied le ballon vers l'arrière, et ce, généralement dans les mêlées."
+        },
+        {
+          "id": 27,
+          "question": "Quels joueurs sont souvent les plus grands en taille dans une équipe de rugby à XV ?",
+          "propositions": [
+            "Première ligne",
+            "Deuxième ligne",
+            "Troisième ligne",
+            "Centres"
+          ],
+          "réponse": "Deuxième ligne",
+          "anecdote": "À l'origine, ils servaient à sauter en touche mais désormais, il est aussi autorisé de porter son partenaire lors des touches."
+        },
+        {
+          "id": 28,
+          "question": "Quel est le numéro de maillot souvent porté par le demi d'ouverture ?",
+          "propositions": [
+            "8",
+            "6",
+            "12",
+            "10"
+          ],
+          "réponse": "10",
+          "anecdote": "Ses qualités de jeu au pied sont reconnues mais ce n'est cependant pas systématiquement lui qui tape les pénalités."
+        },
+        {
+          "id": 29,
+          "question": "Lequel de ces pays ne faisait pas partie de l'ancien Tournoi des Cinq Nations ?",
+          "propositions": [
+            "Angleterre",
+            "France",
+            "Écosse",
+            "Australie"
+          ],
+          "réponse": "Australie",
+          "anecdote": "Le Tournoi des Six Nations est une compétition de rugby à XV, disputée chaque année en février et mars."
+        },
+        {
+          "id": 30,
+          "question": "Quand se déroula la première édition de la Coupe du monde féminine de rugby à XV ?",
+          "propositions": [
+            "1997",
+            "1991",
+            "1994",
+            "2000"
+          ],
+          "réponse": "1991",
+          "anecdote": "Les États-Unis sont ainsi devenus la première nation championne du monde, suivie par l'Angleterre en 1994."
+        }
+      ]
+    }
+  }
+}
