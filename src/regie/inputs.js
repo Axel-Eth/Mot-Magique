@@ -2,12 +2,14 @@ import { state, isSingleLetter } from "./state.js";
 import { showNumbersForLetter, renderRegieGrid } from "./grid-view.js";
 import { isMagicWordCell } from "./magic.js";
 import { postToPlateau } from "./bridge.js";
+import { startRegieTimer } from "./timer.js";
 
 function revealLetterOnPlateau(letter) {
   // Meme comportement que le bouton X media avant une revelation.
   postToPlateau({ type: "HIDE_MEDIA" });
   postToPlateau({ type: "STOP_MUSIC" });
   postToPlateau({ type: "REVEAL_LETTER", letter });
+  startRegieTimer(20);
 }
 
 function showRevealWheel(letter) {

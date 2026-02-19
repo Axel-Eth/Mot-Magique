@@ -17,6 +17,7 @@ import {
   updateSelectedInfo
 } from "./ui.js";
 import { resetMediaForNewShow } from "./media.js";
+import { resetRegieTimer, startRegieTimer } from "./timer.js";
 
 const controlChannel = (() => {
   try {
@@ -55,7 +56,10 @@ export function registerActionEvents() {
 
   $("btnReset")?.addEventListener("click", () => {
     if (!state.grid) return;
-    if (confirm("Reset les revelations ?")) resetReveal();
+    if (confirm("Reset les revelations ?")) {
+      resetReveal();
+      resetRegieTimer();
+    }
   });
 
   $("btnNewShow")?.addEventListener("click", () => {
@@ -86,6 +90,7 @@ export function registerActionEvents() {
     if (letterInput) letterInput.value = "";
     const lastLetter = $("lastLetter");
     if (lastLetter) lastLetter.textContent = "Lettre : -";
+    resetRegieTimer();
   });
 
   $("btnGeneric")?.addEventListener("click", () => {
@@ -160,6 +165,7 @@ export function registerActionEvents() {
     updateSelectedInfo();
     updateMagicButtonState();
     setActionButtonsEnabled(false);
+    resetRegieTimer();
   });
 
   $("btnNop")?.addEventListener("click", () => {
@@ -189,6 +195,7 @@ export function registerActionEvents() {
     updateSelectedInfo();
     updateMagicButtonState();
     setActionButtonsEnabled(false);
+    resetRegieTimer();
   });
 
   $("btnDouble")?.addEventListener("click", () => {
@@ -269,10 +276,12 @@ export function registerWindowEvents() {
       state.selectedWordId = msg.wordId ?? null;
       if (state.selectedWordId == null) {
         clearVisibleNumbers();
+        resetRegieTimer();
       } else {
         const w = state.grid?.words?.[state.selectedWordId];
         clearVisibleNumbers();
         if (w?.numberPos) state.visibleNumbers.add(`${w.numberPos.r},${w.numberPos.c}`);
+        startRegieTimer(30);
       }
       updateSelectedInfo();
       updateMagicButtonState();

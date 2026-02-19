@@ -282,6 +282,43 @@ h2{
   height:34px;
 }
 
+.regie-timer-window{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 25;
+  min-width: 180px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius: 14px;
+  background: rgba(8, 26, 42, .92);
+  box-shadow: 0 12px 26px rgba(0,0,0,.34);
+  overflow: hidden;
+}
+
+.regie-timer-window.hidden{
+  display:none;
+}
+
+.regie-timer-handle{
+  padding:8px 12px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.02em;
+  color:#cfe6ff;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  cursor: move;
+  user-select: none;
+}
+
+.regie-timer-text{
+  padding:10px 12px 12px;
+  text-align:center;
+  font-size:40px;
+  font-weight:900;
+  line-height:1;
+  color:#ffffff;
+}
+
 .capitales-block{
   margin-top:10px;
 }

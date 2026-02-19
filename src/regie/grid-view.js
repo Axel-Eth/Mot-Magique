@@ -6,6 +6,7 @@ import { postToPlateau } from "./bridge.js";
 import { setActionButtonsEnabled, updateSelectedInfo } from "./ui.js";
 import { updateMagicButtonState } from "./magic.js";
 import { keyPos } from "./grid-data.js";
+import { startRegieTimer } from "./timer.js";
 
 export function clearVisibleNumbers() {
   state.visibleNumbers = new Set();
@@ -167,6 +168,7 @@ export function renderRegieGrid() {
             setActionButtonsEnabled(true);
             updateMagicButtonState();
             postToPlateau({ type: "SELECT_WORD", wordId: state.selectedWordId });
+            startRegieTimer(30);
             renderRegieGrid();
           }
         });
@@ -187,6 +189,7 @@ export function renderRegieGrid() {
               setActionButtonsEnabled(true);
               updateMagicButtonState();
               postToPlateau({ type: "SELECT_WORD", wordId: state.selectedWordId });
+              startRegieTimer(30);
               renderRegieGrid();
             }
           });

@@ -14,12 +14,14 @@ import {
   registerMediaEvents
 } from "./media.js";
 import { registerActionEvents, registerWindowEvents } from "./actions.js";
+import { initRegieTimerDrag } from "./timer.js";
 
 registerActionEvents();
 registerWindowEvents();
 registerMediaEvents();
 initLetterInput();
 initWordSelectModalDrag();
+initRegieTimerDrag();
 
 (async function init() {
   const errors = [];
