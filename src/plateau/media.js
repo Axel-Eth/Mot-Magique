@@ -318,7 +318,15 @@ export function showGeneralQuestion(payload = {}) {
   const choicesStage = overlay.querySelector("#generalQuestionChoices");
   if (text) text.textContent = String(payload.question || "").trim() || "Question indisponible";
   const showQuestion = payload.showQuestion !== false;
-  if (questionWindow) questionWindow.classList.toggle("hidden", !showQuestion);
+  if (questionWindow) {
+    const wasHidden = questionWindow.classList.contains("hidden");
+    questionWindow.classList.toggle("hidden", !showQuestion);
+    if (showQuestion && wasHidden) {
+      questionWindow.classList.remove("question-reveal-anim");
+      void questionWindow.offsetWidth;
+      questionWindow.classList.add("question-reveal-anim");
+    }
+  }
 
   const options = Array.isArray(payload.options)
     ? payload.options.filter((x) => String(x || "").trim())

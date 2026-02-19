@@ -1463,6 +1463,10 @@ body.plateau .general-question-window.hidden{
   display:none;
 }
 
+body.plateau .general-question-window.question-reveal-anim{
+  animation: generalChoiceReveal .26s ease-out;
+}
+
 body.plateau .general-question-text{
   margin-top:0;
   font-size:48px;
