@@ -84,9 +84,21 @@
               <summary id="generalLevelFilterSummary" class="btn ghost">Niveaux: Tous</summary>
               <div id="generalLevelFilterOptions" class="general-level-filter-options"></div>
             </details>
+            <button id="btnMisfortuneWheel" class="btn ghost" type="button">Roue de l'infortune</button>
           </div>
         </div>
         <div class="music-block generalq-block">
+          <div id="misfortuneWheelPanel" class="misfortune-wheel-panel hidden">
+            <div class="misfortune-wheel-header">
+              <div class="misfortune-wheel-title">Roue de l'infortune</div>
+              <button id="btnSpinMisfortuneWheel" class="btn" type="button">Lancer la roue</button>
+            </div>
+            <div class="misfortune-wheel-stage">
+              <div class="misfortune-wheel-pointer" aria-hidden="true"></div>
+              <canvas id="misfortuneWheelCanvas" width="600" height="600" aria-label="Roue des catégories"></canvas>
+            </div>
+            <div id="misfortuneWheelResult" class="misfortune-wheel-result">Fais tourner la roue pour choisir une categorie.</div>
+          </div>
           <div class="media-row">
             <select id="generalCategorySelect" class="select" aria-label="Categories culture generale"></select>
             <button id="btnGeneralNext" class="btn ghost" type="button">Suivante</button>

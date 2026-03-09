@@ -6,6 +6,12 @@ const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
 const FILMS_EXTRACTS_VIDEO_SRC = "sounds/extraits_films.mp4";
 const GENERAL_QUESTION_MUSIC_SRC = "sounds/question_song.mp3";
+const MISFORTUNE_WHEEL_COLORS = [
+  "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
+  "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
+  "#84cc16", "#06b6d4", "#eab308", "#6366f1"
+];
+const TWO_PI = Math.PI * 2;
 const FILMS_EXTRACTS_VIDEO_VOLUME = 0.08;
 const FILMS_DUCK_LEVEL = 0.02;
 const FILMS_FADE_MS = 280;
@@ -14,12 +20,15 @@ let multiplierBadge = null;
 let scoresOverlay = null;
 let flagOverlay = null;
 let generalQuestionOverlay = null;
+let misfortuneWheelOverlay = null;
 let flagLoadToken = 0;
 let genericVideo = null;
 let videoDuckingActive = false;
 let currentVideoMode = null;
 let mediaLifecycleBound = false;
 let generalQuestionMusicActive = false;
+let misfortuneWheelItems = [];
+let misfortuneWheelAngle = 0;
 
 function bindMediaLifecycleEvents() {
   if (mediaLifecycleBound) return;
@@ -229,6 +238,7 @@ function renderScores(teams) {
 export function toggleScores(show, teams) {
   const overlay = ensureScoresOverlay();
   renderScores(teams);
+  if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   if (show) {
     overlay.classList.add("active");
     gridEl.style.display = "none";
@@ -273,8 +283,121 @@ function ensureGeneralQuestionOverlay() {
   return overlay;
 }
 
+function normalizeWheelAngle(angle) {
+  return ((angle % TWO_PI) + TWO_PI) % TWO_PI;
+}
+
+function ensureMisfortuneWheelOverlay() {
+  if (misfortuneWheelOverlay) return misfortuneWheelOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "misfortuneWheelOverlay";
+  overlay.className = "misfortune-wheel-overlay";
+  overlay.innerHTML = `
+    <div class="misfortune-wheel-stage plateau-wheel-stage">
+      <div class="misfortune-wheel-pointer" aria-hidden="true"></div>
+      <canvas id="plateauMisfortuneWheelCanvas" width="600" height="600" aria-label="Roue des categories"></canvas>
+    </div>
+    <div id="plateauMisfortuneWheelResult" class="misfortune-wheel-result plateau-wheel-result">Roue de l'infortune</div>
+  `;
+  document.body.appendChild(overlay);
+  misfortuneWheelOverlay = overlay;
+  return overlay;
+}
+
+function drawMisfortuneWheel() {
+  const overlay = ensureMisfortuneWheelOverlay();
+  const canvas = overlay.querySelector("#plateauMisfortuneWheelCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const size = canvas.width;
+  const radius = size / 2;
+  const cx = radius;
+  const cy = radius;
+  const items = misfortuneWheelItems.length ? misfortuneWheelItems : ["Aucune categorie"];
+
+  ctx.clearRect(0, 0, size, size);
+  const slice = TWO_PI / items.length;
+
+  for (let i = 0; i < items.length; i++) {
+    const start = misfortuneWheelAngle + i * slice - Math.PI / 2;
+    const end = start + slice;
+
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, radius - 10, start, end);
+    ctx.closePath();
+    ctx.fillStyle = MISFORTUNE_WHEEL_COLORS[i % MISFORTUNE_WHEEL_COLORS.length];
+    ctx.fill();
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(start + slice / 2);
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 24px Arial";
+    const label = items[i].length > 22 ? `${items[i].slice(0, 22)}...` : items[i];
+    ctx.fillText(label, radius - 28, 8);
+    ctx.restore();
+  }
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, 52, 0, TWO_PI);
+  ctx.fillStyle = "#102c40";
+  ctx.fill();
+  ctx.lineWidth = 8;
+  ctx.strokeStyle = "#f3f4f6";
+  ctx.stroke();
+
+  ctx.fillStyle = "#f9fafb";
+  ctx.font = "bold 20px Arial";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("GO", cx, cy);
+}
+
+export function showMisfortuneWheel(payload = {}) {
+  const overlay = ensureMisfortuneWheelOverlay();
+  misfortuneWheelItems = Array.isArray(payload.items)
+    ? payload.items.map((item) => String(item || "").trim()).filter(Boolean)
+    : misfortuneWheelItems;
+  misfortuneWheelAngle = Number.isFinite(Number(payload.angle))
+    ? normalizeWheelAngle(Number(payload.angle))
+    : misfortuneWheelAngle;
+  drawMisfortuneWheel();
+  overlay.classList.add("active");
+  gridEl.style.display = "none";
+  defBar?.classList.add("hidden");
+}
+
+export function updateMisfortuneWheel(payload = {}) {
+  if (Array.isArray(payload.items)) {
+    misfortuneWheelItems = payload.items.map((item) => String(item || "").trim()).filter(Boolean);
+  }
+  if (payload.angle != null && Number.isFinite(Number(payload.angle))) {
+    misfortuneWheelAngle = normalizeWheelAngle(Number(payload.angle));
+  }
+  drawMisfortuneWheel();
+}
+
+export function showMisfortuneWheelResult(payload = {}) {
+  const overlay = ensureMisfortuneWheelOverlay();
+  const resultEl = overlay.querySelector("#plateauMisfortuneWheelResult");
+  const category = String(payload.category || "").trim();
+  if (resultEl) {
+    resultEl.textContent = category ? `Categorie choisie: ${category}` : "Roue de l'infortune";
+  }
+}
+
+export function hideMisfortuneWheel() {
+  if (!misfortuneWheelOverlay) return;
+  misfortuneWheelOverlay.classList.remove("active");
+}
+
 export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag") {
   const overlay = ensureFlagOverlay();
+  if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   const img = overlay.querySelector(".flag-image");
   const token = ++flagLoadToken;
   if (img) {
@@ -314,6 +437,7 @@ export function showFlag(src, altText = "Drapeau", mediaSrc = null, mode = "flag
 }
 
 export function showGeneralQuestion(payload = {}) {
+  if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   const overlay = ensureGeneralQuestionOverlay();
   const text = overlay.querySelector("#generalQuestionText");
   const questionWindow = overlay.querySelector(".general-question-window");
@@ -425,6 +549,7 @@ export function hideAllMedia() {
   }
   if (scoresOverlay) scoresOverlay.classList.remove("active");
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
+  if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
   stopMusic();
   const vid = genericVideo;

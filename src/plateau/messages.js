@@ -35,12 +35,16 @@ import {
   playDoubleVideo,
   playFilmsOverlayVideo,
   playGenericVideo,
+  hideMisfortuneWheel,
   markGeneralAnswer,
   showGeneralQuestion,
+  showMisfortuneWheel,
+  showMisfortuneWheelResult,
   stopFilmsOverlayVideo,
   playTripleVideo,
   showFlag,
   toggleScores,
+  updateMisfortuneWheel,
   updateMultiplierBadge
 } from "./media.js";
 import { scatterFloatingLetters } from "./letters.js";
@@ -201,6 +205,22 @@ export function registerMessageHandlers() {
 
       case "GENERAL_ANSWER_MARK":
         markGeneralAnswer(msg.index, !!msg.isCorrect);
+        break;
+
+      case "SHOW_MISFORTUNE_WHEEL":
+        showMisfortuneWheel(msg);
+        break;
+
+      case "UPDATE_MISFORTUNE_WHEEL":
+        updateMisfortuneWheel(msg);
+        break;
+
+      case "MISFORTUNE_WHEEL_RESULT":
+        showMisfortuneWheelResult(msg);
+        break;
+
+      case "HIDE_MISFORTUNE_WHEEL":
+        hideMisfortuneWheel();
         break;
 
       case "PLAY_MUSIC":
