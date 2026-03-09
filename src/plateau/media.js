@@ -384,10 +384,7 @@ export function updateMisfortuneWheel(payload = {}) {
 export function showMisfortuneWheelResult(payload = {}) {
   const overlay = ensureMisfortuneWheelOverlay();
   const resultEl = overlay.querySelector("#plateauMisfortuneWheelResult");
-  const category = String(payload.category || "").trim();
-  if (resultEl) {
-    resultEl.textContent = category ? `Categorie choisie: ${category}` : "Roue de l'infortune";
-  }
+  if (resultEl) resultEl.textContent = "Roue de l'infortune";
 }
 
 export function hideMisfortuneWheel() {
