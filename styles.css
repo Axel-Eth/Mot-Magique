@@ -587,17 +587,46 @@ h2{
   display:none;
 }
 
+.misfortune-wheel-panel.windowed{
+  position: fixed;
+  z-index: 32;
+  width: min(92vw, 640px);
+  margin: 0;
+  box-shadow: 0 20px 40px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.26);
+}
+
 .misfortune-wheel-header{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:10px;
+  cursor: move;
+  user-select: none;
+  touch-action: none;
+}
+
+.misfortune-wheel-header .btn,
+.misfortune-wheel-header input{
+  cursor: auto;
 }
 
 .misfortune-wheel-title{
   font-size:18px;
   font-weight:900;
   color:#ffffff;
+}
+
+.misfortune-wheel-controls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.misfortune-wheel-intensity{
+  width: 84px;
+  text-align: center;
+  font-weight: 800;
 }
 
 .misfortune-wheel-stage{

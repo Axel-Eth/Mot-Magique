@@ -91,7 +91,10 @@
           <div id="misfortuneWheelPanel" class="misfortune-wheel-panel hidden">
             <div class="misfortune-wheel-header">
               <div class="misfortune-wheel-title">Roue de l'infortune</div>
-              <button id="btnSpinMisfortuneWheel" class="btn" type="button">Lancer la roue</button>
+              <div class="misfortune-wheel-controls">
+                <input id="misfortuneWheelIntensity" class="input misfortune-wheel-intensity" type="number" min="0" max="12" step="1" inputmode="numeric" value="8" aria-label="Intensite de la roue (0 a 12)" />
+                <button id="btnSpinMisfortuneWheel" class="btn" type="button">Lancer la roue</button>
+              </div>
             </div>
             <div class="misfortune-wheel-stage">
               <div class="misfortune-wheel-pointer" aria-hidden="true"></div>

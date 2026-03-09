@@ -7,7 +7,6 @@ const CAPITALES_BASE_CANDIDATES = ["questions/capitales/", "questions/pays/"];
 let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];
 const PLAYED_MEDIA_STORAGE_KEY = "avm_played_media_v1";
 const TWO_PI = Math.PI * 2;
-const MISFORTUNE_WHEEL_SPIN_MS = 5200;
 const MISFORTUNE_WHEEL_COLORS = [
   "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
   "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
@@ -22,6 +21,10 @@ const misfortuneWheel = {
   dragActive: false,
   dragStartPointerAngle: 0,
   dragStartWheelAngle: 0,
+  windowDragActive: false,
+  windowDragPointerId: null,
+  windowOffsetX: 0,
+  windowOffsetY: 0,
   rafId: 0,
   lastSyncAt: 0,
   visible: false
@@ -665,6 +668,81 @@ function getMisfortuneWheelCanvas() {
   return $("misfortuneWheelCanvas");
 }
 
+function getMisfortuneWheelPanel() {
+  return $("misfortuneWheelPanel");
+}
+
+function clampMisfortuneWheelPanelInViewport() {
+  const panel = getMisfortuneWheelPanel();
+  if (!panel || panel.classList.contains("hidden")) return;
+  const rect = panel.getBoundingClientRect();
+  const maxLeft = Math.max(8, window.innerWidth - rect.width - 8);
+  const maxTop = Math.max(8, window.innerHeight - rect.height - 8);
+  const nextLeft = Math.min(maxLeft, Math.max(8, rect.left));
+  const nextTop = Math.min(maxTop, Math.max(8, rect.top));
+  panel.style.left = `${Math.round(nextLeft)}px`;
+  panel.style.top = `${Math.round(nextTop)}px`;
+}
+
+function ensureMisfortuneWheelPanelWindow() {
+  const panel = getMisfortuneWheelPanel();
+  if (!panel) return;
+  panel.classList.add("windowed");
+
+  if (panel.dataset.windowPlaced !== "1") {
+    const rect = panel.getBoundingClientRect();
+    const left = Math.max(8, (window.innerWidth - rect.width) / 2);
+    const top = Math.max(56, Math.min(window.innerHeight - rect.height - 8, window.innerHeight * 0.12));
+    panel.style.left = `${Math.round(left)}px`;
+    panel.style.top = `${Math.round(top)}px`;
+    panel.dataset.windowPlaced = "1";
+  }
+
+  clampMisfortuneWheelPanelInViewport();
+}
+
+function initMisfortuneWheelWindowDrag() {
+  const panel = getMisfortuneWheelPanel();
+  const handle = panel?.querySelector(".misfortune-wheel-header");
+  if (!panel || !handle) return;
+
+  const onMove = (event) => {
+    if (!misfortuneWheel.windowDragActive) return;
+    if (misfortuneWheel.windowDragPointerId != null && event.pointerId !== misfortuneWheel.windowDragPointerId) return;
+    const rect = panel.getBoundingClientRect();
+    const maxLeft = Math.max(8, window.innerWidth - rect.width - 8);
+    const maxTop = Math.max(8, window.innerHeight - rect.height - 8);
+    const nextLeft = Math.min(maxLeft, Math.max(8, event.clientX - misfortuneWheel.windowOffsetX));
+    const nextTop = Math.min(maxTop, Math.max(8, event.clientY - misfortuneWheel.windowOffsetY));
+    panel.style.left = `${Math.round(nextLeft)}px`;
+    panel.style.top = `${Math.round(nextTop)}px`;
+  };
+
+  const stopDrag = (event) => {
+    if (misfortuneWheel.windowDragPointerId != null && event?.pointerId != null && event.pointerId !== misfortuneWheel.windowDragPointerId) return;
+    misfortuneWheel.windowDragActive = false;
+    misfortuneWheel.windowDragPointerId = null;
+    document.removeEventListener("pointermove", onMove);
+    document.removeEventListener("pointerup", stopDrag);
+    document.removeEventListener("pointercancel", stopDrag);
+  };
+
+  handle.addEventListener("pointerdown", (event) => {
+    if (event.button != null && event.button !== 0) return;
+    if (event.target?.closest?.("button, input, select, textarea, label")) return;
+    ensureMisfortuneWheelPanelWindow();
+    const rect = panel.getBoundingClientRect();
+    misfortuneWheel.windowDragActive = true;
+    misfortuneWheel.windowDragPointerId = event.pointerId ?? null;
+    misfortuneWheel.windowOffsetX = event.clientX - rect.left;
+    misfortuneWheel.windowOffsetY = event.clientY - rect.top;
+    event.preventDefault();
+    document.addEventListener("pointermove", onMove);
+    document.addEventListener("pointerup", stopDrag);
+    document.addEventListener("pointercancel", stopDrag);
+  });
+}
+
 function drawMisfortuneWheel() {
   const canvas = getMisfortuneWheelCanvas();
   if (!canvas) return;
@@ -746,6 +824,21 @@ function clearMisfortuneSpinAnimation() {
   misfortuneWheel.rafId = 0;
 }
 
+function clampMisfortuneIntensity(rawValue) {
+  const parsed = Number.parseInt(String(rawValue ?? "").trim(), 10);
+  if (!Number.isFinite(parsed)) return 8;
+  if (parsed <= 0) return 0;
+  if (parsed >= 12) return 12;
+  return parsed;
+}
+
+function readMisfortuneIntensity() {
+  const input = $("misfortuneWheelIntensity");
+  const intensity = clampMisfortuneIntensity(input?.value);
+  if (input) input.value = String(intensity);
+  return intensity;
+}
+
 function resetGeneralQuestionPreview() {
   state.generalQuestionCurrent = null;
   state.generalQuestionVisible = false;
@@ -788,7 +881,9 @@ function showMisfortuneWheel() {
   }
 
   misfortuneWheel.visible = true;
-  $("misfortuneWheelPanel")?.classList.remove("hidden");
+  const panel = getMisfortuneWheelPanel();
+  panel?.classList.remove("hidden");
+  ensureMisfortuneWheelPanelWindow();
   updateMisfortuneWheelResultText("Fais tourner la roue pour choisir une categorie.");
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "HIDE_MEDIA" });
@@ -803,34 +898,45 @@ function hideMisfortuneWheel({ notifyPlateau = true } = {}) {
   misfortuneWheel.visible = false;
   misfortuneWheel.spinning = false;
   misfortuneWheel.dragActive = false;
+  misfortuneWheel.windowDragActive = false;
+  misfortuneWheel.windowDragPointerId = null;
   clearMisfortuneSpinAnimation();
   $("misfortuneWheelPanel")?.classList.add("hidden");
   if (notifyPlateau) postToPlateau({ type: "HIDE_MISFORTUNE_WHEEL" });
 }
 
-function spinMisfortuneWheel() {
+function spinMisfortuneWheel(rawIntensity = null) {
   if (misfortuneWheel.spinning || misfortuneWheel.dragActive) return;
   updateMisfortuneWheelItems({ keepAngle: true });
   if (misfortuneWheel.items.length < 2) {
     updateMisfortuneWheelResultText("Ajoute au moins deux categories pour lancer la roue.");
     return;
   }
+  const intensity = rawIntensity == null ? readMisfortuneIntensity() : clampMisfortuneIntensity(rawIntensity);
+  const intensityInput = $("misfortuneWheelIntensity");
+  if (intensityInput) intensityInput.value = String(intensity);
+  if (intensity === 0) {
+    updateMisfortuneWheelResultText("Intensite 0: la roue ne se lance pas.");
+    return;
+  }
 
   misfortuneWheel.spinning = true;
   const spinBtn = $("btnSpinMisfortuneWheel");
   if (spinBtn) spinBtn.disabled = true;
+  if (intensityInput) intensityInput.disabled = true;
   updateMisfortuneWheelResultText("La roue tourne...");
 
   const startAngle = misfortuneWheel.angle;
-  const extraTurns = 5 + Math.random() * 4;
+  const extraTurns = (1.2 + intensity * 0.9) + Math.random() * (0.8 + intensity * 0.15);
   const randomOffset = Math.random() * TWO_PI;
   const targetAngle = startAngle + extraTurns * TWO_PI + randomOffset;
+  const durationMs = Math.max(2200, 6400 - intensity * 300);
   const startTime = performance.now();
   misfortuneWheel.lastSyncAt = 0;
 
   const animate = (now) => {
     const elapsed = now - startTime;
-    const t = Math.min(elapsed / MISFORTUNE_WHEEL_SPIN_MS, 1);
+    const t = Math.min(elapsed / durationMs, 1);
     const eased = 1 - ((1 - t) ** 3);
     misfortuneWheel.angle = startAngle + (targetAngle - startAngle) * eased;
     drawMisfortuneWheel();
@@ -848,6 +954,7 @@ function spinMisfortuneWheel() {
     misfortuneWheel.rafId = 0;
     misfortuneWheel.spinning = false;
     if (spinBtn) spinBtn.disabled = false;
+    if (intensityInput) intensityInput.disabled = false;
 
     const idx = getMisfortuneWinnerIndex(misfortuneWheel.angle, misfortuneWheel.items.length);
     const winner = idx >= 0 ? misfortuneWheel.items[idx] : "";
@@ -1351,6 +1458,11 @@ function updateReplayButtonsState() {
 
 export function registerMediaEvents() {
   initGeneralQuestionsModalDrag();
+  initMisfortuneWheelWindowDrag();
+  window.addEventListener("resize", () => {
+    if (!misfortuneWheel.visible) return;
+    clampMisfortuneWheelPanelInViewport();
+  });
 
   $("btnCapitalesSend")?.addEventListener("click", sendCapitale);
   $("capitalesInput")?.addEventListener("keydown", (e) => {
@@ -1407,6 +1519,14 @@ export function registerMediaEvents() {
 
   $("btnSpinMisfortuneWheel")?.addEventListener("click", () => {
     spinMisfortuneWheel();
+  });
+  $("misfortuneWheelIntensity")?.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    spinMisfortuneWheel(e.target?.value);
+  });
+  $("misfortuneWheelIntensity")?.addEventListener("change", () => {
+    readMisfortuneIntensity();
   });
 
   const wheelCanvas = getMisfortuneWheelCanvas();
