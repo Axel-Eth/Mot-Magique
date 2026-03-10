@@ -81,7 +81,7 @@ echo [OK] Demarrage du serveur HTTP sur %BASEURL%
 echo.
 
 REM /k garde la fenetre ouverte meme en cas d'erreur (port occupe, runtime invalide, etc.)
-start "Mot-Magique Server" cmd /k "\"%PYTHON_EXE%\" -I -m http.server %PORT% --bind %HOST%"
+start "Mot-Magique Server" cmd /k ""%PYTHON_EXE%" -I -m http.server %PORT% --bind %HOST%""
 
 timeout /t 1 /nobreak >nul
 
