@@ -1,76 +1,62 @@
 @echo off
 setlocal EnableExtensions
 
-REM === CONFIG ===
-set PORT=8000
-set BASEURL=http://localhost:%PORT%
-set REGIE=%BASEURL%/regie.html
-set REGIE_ONLY=%BASEURL%/regie.html
-
-REM Se placer dans le dossier du .bat (racine projet)
 cd /d "%~dp0"
 
+REM === Configuration ===
+set "PORT=8000"
+set "HOST=127.0.0.1"
+set "BASEURL=http://%HOST%:%PORT%"
+set "START_PAGE=regie.html"
+set "PYTHON_EXE=runtime\python\python.exe"
+
 echo.
 echo ==========================================
-echo   AVM - Lancement serveur + pages
+echo   MOT-MAGIQUE - Lancement local
 echo ==========================================
-echo Dossier: %CD%
-echo URL:     %BASEURL%
+echo Dossier projet : %CD%
+echo Runtime Python : %PYTHON_EXE%
+echo URL cible      : %BASEURL%/%START_PAGE%
 echo.
 
-REM === 1) Tenter Python (recommande) ===
-where python >nul 2>nul
-if %errorlevel%==0 (
-  echo [OK] Python detecte. Lancement du serveur sur le port %PORT%...
-  start "AVM Server (Python)" cmd /c "python -m http.server %PORT% --bind 127.0.0.1"
-  goto :OPEN
+if not exist "%PYTHON_EXE%" (
+  echo [ERREUR] Runtime Python embarque introuvable.
+  echo [INFO]   Fichier attendu : %PYTHON_EXE%
+  echo [INFO]   Voir : runtime\README.md
+  echo.
+  pause
+  exit /b 1
 )
 
-REM === 1bis) Tenter le launcher py ===
-where py >nul 2>nul
-if %errorlevel%==0 (
-  echo [OK] Launcher py detecte. Lancement du serveur sur le port %PORT%...
-  start "AVM Server (py)" cmd /c "py -m http.server %PORT% --bind 127.0.0.1"
-  goto :OPEN
+"%PYTHON_EXE%" --version >nul 2>nul
+if errorlevel 1 (
+  echo [ERREUR] Le runtime Python existe mais ne demarre pas correctement.
+  echo [INFO]   Verifie l'extraction du package embeddable officiel dans runtime\python\
+  echo [INFO]   Puis execute runtime\configure_embedded_python.bat
+  echo.
+  pause
+  exit /b 1
 )
 
-REM === 2) Fallback PowerShell (si pas de Python) ===
-where powershell >nul 2>nul
-if %errorlevel%==0 (
-  echo [WARN] Python introuvable. Fallback PowerShell HttpListener...
-  start "AVM Server (PowerShell)" powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "$p=%PORT%; $root=(Resolve-Path '.').Path; " ^
-    "$l=New-Object System.Net.HttpListener; " ^
-    "$l.Prefixes.Add(\"http://127.0.0.1:$p/\"); $l.Start(); " ^
-    "Write-Host \"Serving $root on http://127.0.0.1:$p/\"; " ^
-    "while($l.IsListening){ " ^
-    "  $c=$l.GetContext(); $path=$c.Request.Url.AbsolutePath.TrimStart('/'); " ^
-    "  if([string]::IsNullOrWhiteSpace($path)){ $path='index.html' } " ^
-    "  $file=Join-Path $root $path; " ^
-    "  if(Test-Path $file){ " ^
-    "    $bytes=[IO.File]::ReadAllBytes($file); " ^
-    "    $c.Response.ContentLength64=$bytes.Length; " ^
-    "    $c.Response.OutputStream.Write($bytes,0,$bytes.Length) " ^
-    "  } else { " ^
-    "    $c.Response.StatusCode=404; " ^
-    "  } " ^
-    "  $c.Response.OutputStream.Close(); " ^
-    "}"
-  goto :OPEN
+if exist "runtime\python\pyvenv.cfg" (
+  echo [WARN] pyvenv.cfg detecte dans runtime\python\. Ce fichier peut perturber le runtime embarque.
+  echo [WARN] Supprime-le si le serveur ne demarre pas.
+  echo.
 )
 
-echo [ERROR] Ni python ni powershell disponibles. Impossible de demarrer un serveur.
-pause
-exit /b 1
+echo [OK] Runtime Python detecte.
+echo [OK] Demarrage du serveur HTTP sur %BASEURL%
+echo.
 
-:OPEN
-REM Petite pause pour laisser le serveur demarrer
+REM /k garde la fenetre ouverte meme en cas d'erreur (port occupe, runtime invalide, etc.)
+start "Mot-Magique Server" cmd /k "\"%PYTHON_EXE%\" -m http.server %PORT% --bind %HOST%"
+
 timeout /t 1 /nobreak >nul
 
-echo Ouverture de la Regie...
-start "" "%REGIE_ONLY%"
+echo [OK] Ouverture de %START_PAGE% dans le navigateur...
+start "" "%BASEURL%/%START_PAGE%"
 
 echo.
-echo C'est lance. (Ferme la fenetre "AVM Server" pour couper le serveur.)
+echo Serveur lance. Fermer la fenetre "Mot-Magique Server" pour l'arreter.
 echo.
 exit /b 0
