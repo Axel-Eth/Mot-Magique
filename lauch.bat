@@ -22,7 +22,7 @@ REM === 1) Tenter Python (recommande) ===
 where python >nul 2>nul
 if %errorlevel%==0 (
   echo [OK] Python detecte. Lancement du serveur sur le port %PORT%...
-  start "AVM Server (Python)" cmd /c "python -m http.server %PORT% --bind 127.0.0.1"
+  start "AVM Server (Python)" cmd /k "python -m http.server %PORT% --bind 127.0.0.1"
   goto :OPEN
 )
 
@@ -30,7 +30,7 @@ REM === 1bis) Tenter le launcher py ===
 where py >nul 2>nul
 if %errorlevel%==0 (
   echo [OK] Launcher py detecte. Lancement du serveur sur le port %PORT%...
-  start "AVM Server (py)" cmd /c "py -m http.server %PORT% --bind 127.0.0.1"
+  start "AVM Server (py)" cmd /k "py -m http.server %PORT% --bind 127.0.0.1"
   goto :OPEN
 )
 
