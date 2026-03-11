@@ -82,6 +82,21 @@ function forceActionDucking(durationMs = 900) {
   }, durationMs);
 }
 
+function prepareWordOutcome(fxType) {
+  stopAllFx(fxType);
+  forceActionDucking();
+  requestRestartPlateauMusic();
+  schedulePlateauMusicRestart(200);
+}
+
+function renderAllLettersRevealed() {
+  for (const [pos] of state.grid.letters) {
+    state.grid.revealed.set(pos, true);
+    const [r, c] = pos.split(",").map(Number);
+    renderCell(r, c);
+  }
+}
+
 export function registerMessageHandlers() {
   if (controlChannel) {
     controlChannel.onmessage = (ev) => {
@@ -280,11 +295,8 @@ export function registerMessageHandlers() {
         const word = state.grid.words[msg.wordId];
         if (!word) return;
 
-        stopAllFx("correct");
-        forceActionDucking();
-        requestRestartPlateauMusic();
+        prepareWordOutcome("correct");
         safePlay(sounds.correct);
-        schedulePlateauMusicRestart(200);
 
         for (const p of word.cells) {
           const pos = `${p.r},${p.c}`;
@@ -305,17 +317,10 @@ export function registerMessageHandlers() {
         const word = state.grid.words[msg.wordId];
         if (!word) return;
 
-        stopAllFx("correct");
-        forceActionDucking();
-        requestRestartPlateauMusic();
+        prepareWordOutcome("correct");
         safePlay(sounds.correct);
-        schedulePlateauMusicRestart(200);
         state.grid.magicSolved = true;
-        for (const [pos] of state.grid.letters) {
-          state.grid.revealed.set(pos, true);
-          const [r, c] = pos.split(",").map(Number);
-          renderCell(r, c);
-        }
+        renderAllLettersRevealed();
         animateWordReveal(word);
         applySelection(null);
         updateMultiplierBadge(1);
@@ -326,11 +331,8 @@ export function registerMessageHandlers() {
       case "NOP_WORD": {
         const word = state.grid.words[msg.wordId];
         if (!word) return;
-        stopAllFx("fail");
-        forceActionDucking();
-        requestRestartPlateauMusic();
+        prepareWordOutcome("fail");
         playFx(sounds.fail);
-        schedulePlateauMusicRestart(200);
 
         const wordCells = new Set(word.cells.map((p) => `${p.r},${p.c}`));
 

@@ -33,18 +33,23 @@ initRegieTimerDrag();
       errors.push(`${label}: ${String(err?.message ?? err)}`);
     }
   };
+  const bootSteps = [
+    ["loadGridList", loadGridList],
+    ["loadCapitalesNotes", loadCapitalesNotes],
+    ["loadCapitalesList", loadCapitalesList],
+    ["loadMusicList", loadMusicList],
+    ["loadPlateauMusicList", loadPlateauMusicList],
+    ["loadFilmsList", loadFilmsList],
+    ["loadPeoplesList", loadPeoplesList],
+    ["loadGeneralQuestionsList", loadGeneralQuestionsList],
+    ["loadSelectedGrid", loadSelectedGrid],
+    ["renderTeams", () => renderTeams()],
+    ["setPlateauLabel", () => setPlateauLabel()]
+  ];
 
-  await safeRun("loadGridList", loadGridList);
-  await safeRun("loadCapitalesNotes", loadCapitalesNotes);
-  await safeRun("loadCapitalesList", loadCapitalesList);
-  await safeRun("loadMusicList", loadMusicList);
-  await safeRun("loadPlateauMusicList", loadPlateauMusicList);
-  await safeRun("loadFilmsList", loadFilmsList);
-  await safeRun("loadPeoplesList", loadPeoplesList);
-  await safeRun("loadGeneralQuestionsList", loadGeneralQuestionsList);
-  await safeRun("loadSelectedGrid", loadSelectedGrid);
-  await safeRun("renderTeams", () => renderTeams());
-  await safeRun("setPlateauLabel", () => setPlateauLabel());
+  for (const [label, fn] of bootSteps) {
+    await safeRun(label, fn);
+  }
 
   document.getElementById("letterInput")?.focus();
 
