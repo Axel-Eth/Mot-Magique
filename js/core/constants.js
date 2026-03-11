@@ -9,7 +9,7 @@ export const SFX = {
   FAIL: "/sounds/fail_sound_effect.mp3",
 };
 
-export const PLATEAU_MUSIC = "/sounds/musique-plateau/musique_plateau.mp3";
+export const PLATEAU_MUSIC = "/sounds/musique_plateau/musique_plateau.mp3";
 
 export const MEDIA_PRESETS = {
   generique: { type: "video", src: "/sounds/generique_avm_new.mp4" },
