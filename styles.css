@@ -1777,8 +1777,7 @@ body.plateau .score-points{
   width:100%;
   height:100%;
   display:none;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
+  image-rendering: auto;
 }
 
 #bg[data-theme="retro"]{
