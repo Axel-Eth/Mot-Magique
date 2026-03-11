@@ -47,7 +47,7 @@ import {
   updateMisfortuneWheel,
   updateMultiplierBadge
 } from "./media.js";
-import { scatterFloatingLetters } from "./letters.js";
+import { applyFloatingDecorTheme, scatterFloatingLetters } from "./letters.js";
 import { applyBackgroundTheme } from "./background.js";
 
 const controlChannel = (() => {
@@ -241,7 +241,7 @@ export function registerMessageHandlers() {
         break;
 
       case "SET_BACKGROUND_THEME":
-        applyBackgroundTheme(msg.theme);
+        applyFloatingDecorTheme(applyBackgroundTheme(msg.theme));
         break;
 
       case "STOP_MUSIC":

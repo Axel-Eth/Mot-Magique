@@ -4,6 +4,14 @@ const FORBIDDEN_RECT = 24;
 const LETTER_REPULSE_MARGIN = 14;
 const LETTER_REPULSE_STRENGTH = 0.16;
 const LETTER_FRICTION = 0.88;
+const DECOR_THEME_BUBBLES = "bubbles";
+const DECOR_THEME_RETRO = "retro";
+const DECOR_PATHS = {
+  [DECOR_THEME_BUBBLES]: "illustrations/lettres/",
+  [DECOR_THEME_RETRO]: "illustrations/retro/"
+};
+
+let currentDecorTheme = DECOR_THEME_BUBBLES;
 
 let floatingLettersRoot = null;
 const letterPhysics = new WeakMap();
@@ -183,34 +191,6 @@ export function startLettersPhysics() {
   lettersPhysicsHandle = requestAnimationFrame(tickLettersPhysics);
 }
 
-async function loadLetterImages() {
-  try {
-    const res = await fetch("illustrations/lettres/", { cache: "no-store" });
-    if (!res.ok) return [];
-    const html = await res.text();
-    const regex = /href="([^"]+\.png)"/gi;
-    const files = [];
-    let match;
-    while ((match = regex.exec(html)) !== null) {
-      const raw = match[1];
-      if (!raw) continue;
-      const clean = raw.replace(/[#?].*$/, "");
-      const name = clean.split("/").pop();
-      if (!name) continue;
-      files.push(`illustrations/lettres/${name}`);
-    }
-    if (!files.length) {
-      const fallback = html.match(/([\w\-]+\.png)/gi) || [];
-      fallback.forEach((name) => {
-        files.push(`illustrations/lettres/${name}`);
-      });
-    }
-    return [...new Set(files)];
-  } catch {
-    return [];
-  }
-}
-
 function spawnFloatingLetter(src) {
   const root = ensureFloatingLettersRoot();
   const img = document.createElement("img");
@@ -258,14 +238,15 @@ function spawnFloatingLetter(src) {
   root.appendChild(img);
 }
 
-export async function initFloatingLetters() {
-  const files = await loadLetterImages();
-  if (!files.length) return;
-  const count = Math.min(14, Math.max(8, files.length));
-  for (let i = 0; i < count; i++) {
-    const src = files[Math.floor(Math.random() * files.length)];
-    spawnFloatingLetter(src);
-  }
+function normalizeDecorTheme(theme) {
+  return String(theme || "").toLowerCase() === DECOR_THEME_RETRO ? DECOR_THEME_RETRO : DECOR_THEME_BUBBLES;
+}
+
+function clearFloatingDecor() {
+  const root = ensureFloatingLettersRoot();
+  if (root) root.innerHTML = "";
+  const host = document.getElementById("lettersLayer") || document.body;
+  host.querySelectorAll(".draggable-letter").forEach((el) => el.remove());
 }
 
 export function initBackgroundBubbles() {
@@ -295,12 +276,12 @@ export function initBackgroundBubbles() {
   }
 }
 
-function createDraggableLetter(src) {
+function createDraggableLetter(src, altText = "Lettre") {
   const box = document.createElement("div");
   box.className = "draggable-letter";
   const img = document.createElement("img");
   img.src = src;
-  img.alt = "Lettre";
+  img.alt = altText;
   box.appendChild(img);
   const host = document.getElementById("lettersLayer") || document.body;
   host.appendChild(box);
@@ -311,40 +292,109 @@ function createDraggableLetter(src) {
   box.style.transform = `rotate(${(-12 + Math.random() * 24).toFixed(1)}deg)`;
   box.style.animationDelay = `${(Math.random() * 4).toFixed(2)}s`;
 
-  let dragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
+  box.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) {
+      return;
+    }
 
-  box.addEventListener("mousedown", (e) => {
-    dragging = true;
     const rect = box.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
+    const offsetX = event.clientX - rect.left;
+    const offsetY = event.clientY - rect.top;
+
+    box.style.left = `${rect.left}px`;
+    box.style.top = `${rect.top}px`;
     box.classList.add("dragging");
-  });
 
-  window.addEventListener("mousemove", (e) => {
-    if (!dragging) return;
-    const x = Math.max(0, e.clientX - offsetX);
-    const y = Math.max(0, e.clientY - offsetY);
-    box.style.left = `${x}px`;
-    box.style.top = `${y}px`;
-  });
+    const onMove = (moveEvent) => {
+      const x = Math.max(0, moveEvent.clientX - offsetX);
+      const y = Math.max(0, moveEvent.clientY - offsetY);
+      box.style.left = `${x}px`;
+      box.style.top = `${y}px`;
+    };
 
-  window.addEventListener("mouseup", () => {
-    if (!dragging) return;
-    dragging = false;
-    box.classList.remove("dragging");
-    nudgeElementOutsideForbidden(box, size);
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      box.releasePointerCapture(event.pointerId);
+      box.classList.remove("dragging");
+      nudgeElementOutsideForbidden(box, size);
+    };
+
+    box.setPointerCapture(event.pointerId);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
   });
 }
 
-export async function initDraggableLetters() {
-  const files = await loadLetterImages();
-  if (!files.length) return;
-  const count = Math.min(files.length, 12);
-  for (let i = 0; i < count; i++) {
-    const src = files[i];
-    createDraggableLetter(src);
+async function loadDecorImages(theme) {
+  const normalized = normalizeDecorTheme(theme);
+  const basePath = DECOR_PATHS[normalized] || DECOR_PATHS[DECOR_THEME_BUBBLES];
+  try {
+    const res = await fetch(basePath, { cache: "no-store" });
+    if (!res.ok) return [];
+    const html = await res.text();
+    const regex = /href="([^"]+\.png)"/gi;
+    const files = [];
+    let match;
+    while ((match = regex.exec(html)) !== null) {
+      const raw = match[1];
+      if (!raw) continue;
+      const clean = raw.replace(/[#?].*$/, "");
+      const name = clean.split("/").pop();
+      if (!name) continue;
+      files.push(`${basePath}${name}`);
+    }
+    if (!files.length) {
+      const fallback = html.match(/([\w\-]+\.png)/gi) || [];
+      fallback.forEach((name) => {
+        files.push(`${basePath}${name}`);
+      });
+    }
+    return [...new Set(files)];
+  } catch {
+    return [];
   }
+}
+
+function floatingCountForTheme(theme, filesLength) {
+  if (theme === DECOR_THEME_RETRO) {
+    return Math.min(12, Math.max(6, filesLength * 4));
+  }
+  return Math.min(14, Math.max(8, filesLength));
+}
+
+function draggableCountForTheme(theme, filesLength) {
+  if (theme === DECOR_THEME_RETRO) {
+    return Math.min(filesLength, 6);
+  }
+  return Math.min(filesLength, 12);
+}
+
+export async function applyFloatingDecorTheme(theme) {
+  const normalized = normalizeDecorTheme(theme);
+  currentDecorTheme = normalized;
+  clearFloatingDecor();
+
+  const files = await loadDecorImages(normalized);
+  if (!files.length) return;
+
+  const floatingCount = floatingCountForTheme(normalized, files.length);
+  for (let i = 0; i < floatingCount; i++) {
+    const src = files[Math.floor(Math.random() * files.length)];
+    spawnFloatingLetter(src);
+  }
+
+  const draggableCount = draggableCountForTheme(normalized, files.length);
+  for (let i = 0; i < draggableCount; i++) {
+    const src = files[i % files.length];
+    createDraggableLetter(src, normalized === DECOR_THEME_RETRO ? "Item retro" : "Lettre");
+  }
+}
+
+export async function initFloatingLetters() {
+  await applyFloatingDecorTheme(currentDecorTheme);
+}
+
+export async function initDraggableLetters() {
+  await applyFloatingDecorTheme(currentDecorTheme);
 }
