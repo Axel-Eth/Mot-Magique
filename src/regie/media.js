@@ -7,6 +7,7 @@ const CAPITALES_BASE_CANDIDATES = ["questions/capitales/", "questions/pays/"];
 let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];
 const PLAYED_MEDIA_STORAGE_KEY = "avm_played_media_v1";
 const PLATEAU_BG_STORAGE_KEY = "avm_plateau_background_theme_v1";
+const RETRO_PLATEAU_MUSIC_SRC = "sounds/musique_plateau/retro_musique_platea_medley_pokemon_heartgold.mp3";
 const TWO_PI = Math.PI * 2;
 const MISFORTUNE_WHEEL_COLORS = [
   "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
@@ -1465,11 +1466,26 @@ function refreshPlateauBackgroundButton() {
   btn.textContent = getPlateauBackgroundButtonLabel(state.plateauBackgroundTheme);
 }
 
+function playPlateauMusicSource(src) {
+  if (!src) return;
+  const select = $("plateauMusicSelect");
+  if (select) {
+    const option = [...select.options].find((opt) => opt.value === src);
+    if (option) {
+      select.value = src;
+    }
+  }
+  postToPlateau({ type: "PLAY_PLATEAU_MUSIC", src });
+}
+
 export function syncPlateauBackgroundTheme() {
   postToPlateau({
     type: "SET_BACKGROUND_THEME",
     theme: state.plateauBackgroundTheme
   });
+  if (state.plateauBackgroundTheme === "retro") {
+    playPlateauMusicSource(RETRO_PLATEAU_MUSIC_SRC);
+  }
 }
 
 function setPlateauBackgroundTheme(theme, { notify = true } = {}) {
@@ -1611,7 +1627,7 @@ export function registerMediaEvents() {
   $("plateauMusicSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
-      postToPlateau({ type: "PLAY_PLATEAU_MUSIC", src: value });
+      playPlateauMusicSource(value);
     }
   });
 

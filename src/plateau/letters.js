@@ -10,7 +10,7 @@ const DECOR_PATHS = {
   [DECOR_THEME_BUBBLES]: "illustrations/lettres/",
   [DECOR_THEME_RETRO]: "illustrations/retro/"
 };
-const RETRO_ITEM_SIZE_PX = 170;
+const RETRO_ITEM_SIZE_PX = 110;
 
 let currentDecorTheme = DECOR_THEME_BUBBLES;
 
