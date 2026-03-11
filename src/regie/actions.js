@@ -16,7 +16,7 @@ import {
   setPlateauLabel,
   updateSelectedInfo
 } from "./ui.js";
-import { resetMediaForNewShow } from "./media.js";
+import { resetMediaForNewShow, syncPlateauBackgroundTheme } from "./media.js";
 import { resetRegieTimer, startRegieTimer } from "./timer.js";
 
 const controlChannel = (() => {
@@ -263,6 +263,7 @@ export function registerWindowEvents() {
         postToPlateau({ type: "LOAD_GRID", grid: serializeGridForPlateau(state.grid) });
       }
       syncScoresToPlateau();
+      syncPlateauBackgroundTheme();
       return;
     }
 

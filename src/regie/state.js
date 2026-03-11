@@ -29,6 +29,7 @@ export const state = {
   lastFilmsSrc: "",
   lastPeopleSrc: "",
   lastPeopleLabel: "",
+  plateauBackgroundTheme: "bubbles",
   generalQuestions: [],
   generalQuestionCurrent: null,
   generalQuestionVisible: false,

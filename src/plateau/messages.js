@@ -48,6 +48,7 @@ import {
   updateMultiplierBadge
 } from "./media.js";
 import { scatterFloatingLetters } from "./letters.js";
+import { applyBackgroundTheme } from "./background.js";
 
 const controlChannel = (() => {
   try {
@@ -237,6 +238,10 @@ export function registerMessageHandlers() {
 
       case "PLAY_PLATEAU_MUSIC":
         playPlateauMusic(msg.src);
+        break;
+
+      case "SET_BACKGROUND_THEME":
+        applyBackgroundTheme(msg.theme);
         break;
 
       case "STOP_MUSIC":
