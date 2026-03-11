@@ -3,6 +3,7 @@ import { initBackgroundBubbles } from "./letters.js";
 const BG_THEME_BUBBLES = "bubbles";
 const BG_THEME_RETRO = "retro";
 const BG_STORAGE_KEY = "avm_plateau_background_theme_v1";
+const ENABLE_RETRO_SCANLINES = false;
 
 const PAL = {
   skyTop: "#5fa9ff",
@@ -308,11 +309,12 @@ function drawRunner() {
 }
 
 function drawScanlines() {
-  const isLargeScreen = retroWidth >= 1920 || retroHeight >= 1080;
-  const hStep = isLargeScreen ? 6 : 4;
-  const vStep = isLargeScreen ? 8 : 6;
-  const hAlpha = isLargeScreen ? 0.008 : 0.02;
-  const vAlpha = isLargeScreen ? 0.015 : 0.035;
+  if (!ENABLE_RETRO_SCANLINES) return;
+
+  const hStep = 4;
+  const vStep = 6;
+  const hAlpha = 0.02;
+  const vAlpha = 0.035;
 
   retroCtx.fillStyle = `rgba(255,255,255,${hAlpha})`;
   for (let y = 0; y < retroHeight; y += hStep) {
