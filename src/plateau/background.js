@@ -308,12 +308,19 @@ function drawRunner() {
 }
 
 function drawScanlines() {
-  retroCtx.fillStyle = "rgba(255,255,255,0.02)";
-  for (let y = 0; y < retroHeight; y += 4) {
+  const isLargeScreen = retroWidth >= 1920 || retroHeight >= 1080;
+  const hStep = isLargeScreen ? 6 : 4;
+  const vStep = isLargeScreen ? 8 : 6;
+  const hAlpha = isLargeScreen ? 0.008 : 0.02;
+  const vAlpha = isLargeScreen ? 0.015 : 0.035;
+
+  retroCtx.fillStyle = `rgba(255,255,255,${hAlpha})`;
+  for (let y = 0; y < retroHeight; y += hStep) {
     retroCtx.fillRect(0, y, retroWidth, 1);
   }
-  retroCtx.fillStyle = "rgba(0,0,0,0.035)";
-  for (let x = 0; x < retroWidth; x += 6) {
+
+  retroCtx.fillStyle = `rgba(0,0,0,${vAlpha})`;
+  for (let x = 0; x < retroWidth; x += vStep) {
     retroCtx.fillRect(x, 0, 1, retroHeight);
   }
 }

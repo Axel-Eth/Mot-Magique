@@ -11,6 +11,7 @@ const DECOR_PATHS = {
   [DECOR_THEME_RETRO]: "illustrations/retro/"
 };
 const RETRO_ITEM_SIZE_PX = 110;
+const DECOR_SELECTOR = ".floating-letter, .draggable-letter";
 
 let currentDecorTheme = DECOR_THEME_BUBBLES;
 let decorApplyToken = 0;
@@ -18,15 +19,29 @@ let decorApplyToken = 0;
 let floatingLettersRoot = null;
 const letterPhysics = new WeakMap();
 let lettersPhysicsHandle = null;
+let lettersLayerHost = null;
 
 function ensureFloatingLettersRoot() {
   if (floatingLettersRoot) return floatingLettersRoot;
   const root = document.createElement("div");
   root.className = "floating-letters";
-  const host = document.getElementById("lettersLayer") || document.body;
+  const host = getLettersLayerHost();
   host.appendChild(root);
   floatingLettersRoot = root;
   return root;
+}
+
+function getLettersLayerHost() {
+  if (lettersLayerHost && document.body.contains(lettersLayerHost)) {
+    return lettersLayerHost;
+  }
+  lettersLayerHost = document.getElementById("lettersLayer") || document.body;
+  return lettersLayerHost;
+}
+
+function getDecorElements() {
+  const host = getLettersLayerHost();
+  return Array.from(host.querySelectorAll(DECOR_SELECTOR));
 }
 
 function getForbiddenRect() {
@@ -99,8 +114,7 @@ function nudgeElementOutsideForbidden(el, fallbackSize) {
 }
 
 export function scatterFloatingLetters() {
-  const elements = document.querySelectorAll(".floating-letter, .draggable-letter");
-  elements.forEach((el) => {
+  getDecorElements().forEach((el) => {
     const rect = el.getBoundingClientRect();
     const w = rect.width || 160;
     const h = rect.height || 160;
@@ -124,7 +138,12 @@ function getLetterState(el) {
 }
 
 function tickLettersPhysics() {
-  const elements = Array.from(document.querySelectorAll(".floating-letter, .draggable-letter"));
+  const elements = getDecorElements();
+  if (!elements.length) {
+    lettersPhysicsHandle = requestAnimationFrame(tickLettersPhysics);
+    return;
+  }
+
   const items = elements.map((el) => {
     const rect = el.getBoundingClientRect();
     return {
@@ -247,7 +266,7 @@ function normalizeDecorTheme(theme) {
 function clearFloatingDecor() {
   const root = ensureFloatingLettersRoot();
   if (root) root.innerHTML = "";
-  const host = document.getElementById("lettersLayer") || document.body;
+  const host = getLettersLayerHost();
   host.querySelectorAll(".draggable-letter").forEach((el) => el.remove());
 }
 
@@ -285,7 +304,7 @@ function createDraggableLetter(src, altText = "Lettre") {
   img.src = src;
   img.alt = altText;
   box.appendChild(img);
-  const host = document.getElementById("lettersLayer") || document.body;
+  const host = getLettersLayerHost();
   host.appendChild(box);
   const size = 220;
   const pos = findValidPosition(size, size);
@@ -407,12 +426,4 @@ export async function applyFloatingDecorTheme(theme) {
     const src = files[i % files.length];
     createDraggableLetter(src, normalized === DECOR_THEME_RETRO ? "Item retro" : "Lettre");
   }
-}
-
-export async function initFloatingLetters() {
-  await applyFloatingDecorTheme(currentDecorTheme);
-}
-
-export async function initDraggableLetters() {
-  await applyFloatingDecorTheme(currentDecorTheme);
 }
