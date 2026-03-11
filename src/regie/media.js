@@ -343,7 +343,7 @@ export async function loadPlateauMusicList() {
   const select = $("plateauMusicSelect");
   if (!select) return;
   select.innerHTML = "";
-  const base = "sounds/musique-plateau/";
+  const base = "sounds/musique_plateau/";
   try {
     const res = await fetch(base, { cache: "no-store" });
     if (!res.ok) return;

@@ -10,6 +10,7 @@ const DECOR_PATHS = {
   [DECOR_THEME_BUBBLES]: "illustrations/lettres/",
   [DECOR_THEME_RETRO]: "illustrations/retro/"
 };
+const RETRO_ITEM_SIZE_PX = 170;
 
 let currentDecorTheme = DECOR_THEME_BUBBLES;
 
@@ -191,13 +192,13 @@ export function startLettersPhysics() {
   lettersPhysicsHandle = requestAnimationFrame(tickLettersPhysics);
 }
 
-function spawnFloatingLetter(src) {
+function spawnFloatingLetter(src, options = {}) {
   const root = ensureFloatingLettersRoot();
   const img = document.createElement("img");
   img.className = "floating-letter";
   img.src = src;
   img.draggable = false;
-  const size = 140 + Math.random() * 200;
+  const size = Number.isFinite(options.sizePx) ? options.sizePx : (140 + Math.random() * 200);
   img.style.width = `${size}px`;
   const pos = findValidPosition(size, size);
   img.style.left = `${pos.x}px`;
@@ -358,14 +359,14 @@ async function loadDecorImages(theme) {
 
 function floatingCountForTheme(theme, filesLength) {
   if (theme === DECOR_THEME_RETRO) {
-    return Math.min(12, Math.max(6, filesLength * 4));
+    return filesLength;
   }
   return Math.min(14, Math.max(8, filesLength));
 }
 
 function draggableCountForTheme(theme, filesLength) {
   if (theme === DECOR_THEME_RETRO) {
-    return Math.min(filesLength, 6);
+    return 0;
   }
   return Math.min(filesLength, 12);
 }
@@ -378,10 +379,17 @@ export async function applyFloatingDecorTheme(theme) {
   const files = await loadDecorImages(normalized);
   if (!files.length) return;
 
-  const floatingCount = floatingCountForTheme(normalized, files.length);
-  for (let i = 0; i < floatingCount; i++) {
-    const src = files[Math.floor(Math.random() * files.length)];
-    spawnFloatingLetter(src);
+  if (normalized === DECOR_THEME_RETRO) {
+    // Retro: 1 seule occurrence visible par item, taille uniforme.
+    files.forEach((src) => {
+      spawnFloatingLetter(src, { sizePx: RETRO_ITEM_SIZE_PX });
+    });
+  } else {
+    const floatingCount = floatingCountForTheme(normalized, files.length);
+    for (let i = 0; i < floatingCount; i++) {
+      const src = files[Math.floor(Math.random() * files.length)];
+      spawnFloatingLetter(src);
+    }
   }
 
   const draggableCount = draggableCountForTheme(normalized, files.length);
