@@ -13,6 +13,7 @@ const DECOR_PATHS = {
 const RETRO_ITEM_SIZE_PX = 110;
 
 let currentDecorTheme = DECOR_THEME_BUBBLES;
+let decorApplyToken = 0;
 
 let floatingLettersRoot = null;
 const letterPhysics = new WeakMap();
@@ -351,7 +352,14 @@ async function loadDecorImages(theme) {
         files.push(`${basePath}${name}`);
       });
     }
-    return [...new Set(files)];
+    const uniqByName = new Map();
+    files.forEach((src) => {
+      const key = String(src).split("/").pop()?.toLowerCase() || src.toLowerCase();
+      if (!uniqByName.has(key)) {
+        uniqByName.set(key, src);
+      }
+    });
+    return [...uniqByName.values()];
   } catch {
     return [];
   }
@@ -372,11 +380,13 @@ function draggableCountForTheme(theme, filesLength) {
 }
 
 export async function applyFloatingDecorTheme(theme) {
+  const token = ++decorApplyToken;
   const normalized = normalizeDecorTheme(theme);
   currentDecorTheme = normalized;
-  clearFloatingDecor();
-
   const files = await loadDecorImages(normalized);
+  if (token !== decorApplyToken) return;
+
+  clearFloatingDecor();
   if (!files.length) return;
 
   if (normalized === DECOR_THEME_RETRO) {
