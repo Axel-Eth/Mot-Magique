@@ -6,6 +6,7 @@ import { postToPlateau } from "./bridge.js";
 const CAPITALES_BASE_CANDIDATES = ["questions/capitales/", "questions/pays/"];
 let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];
 const PLAYED_MEDIA_STORAGE_KEY = "avm_played_media_v1";
+const PLATEAU_BG_STORAGE_KEY = "avm_plateau_background_theme_v1";
 const TWO_PI = Math.PI * 2;
 const MISFORTUNE_WHEEL_COLORS = [
   "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
@@ -29,6 +30,24 @@ const misfortuneWheel = {
   lastSyncAt: 0,
   visible: false
 };
+
+function normalizePlateauBackgroundTheme(value) {
+  return String(value || "").toLowerCase() === "retro" ? "retro" : "bubbles";
+}
+
+function loadPlateauBackgroundTheme() {
+  try {
+    return normalizePlateauBackgroundTheme(localStorage.getItem(PLATEAU_BG_STORAGE_KEY));
+  } catch {
+    return "bubbles";
+  }
+}
+
+function savePlateauBackgroundTheme(theme) {
+  try {
+    localStorage.setItem(PLATEAU_BG_STORAGE_KEY, normalizePlateauBackgroundTheme(theme));
+  } catch {}
+}
 
 function loadPlayedMedia() {
   try {
@@ -1436,6 +1455,32 @@ function showPeopleSource(src, label) {
   postToPlateau({ type: "SHOW_PEOPLE", src, alt: state.lastPeopleLabel });
 }
 
+function getPlateauBackgroundButtonLabel(theme) {
+  return normalizePlateauBackgroundTheme(theme) === "retro" ? "Fond : Retro Jeux" : "Fond : Bulles";
+}
+
+function refreshPlateauBackgroundButton() {
+  const btn = $("btnPlateauBg");
+  if (!btn) return;
+  btn.textContent = getPlateauBackgroundButtonLabel(state.plateauBackgroundTheme);
+}
+
+export function syncPlateauBackgroundTheme() {
+  postToPlateau({
+    type: "SET_BACKGROUND_THEME",
+    theme: state.plateauBackgroundTheme
+  });
+}
+
+function setPlateauBackgroundTheme(theme, { notify = true } = {}) {
+  state.plateauBackgroundTheme = normalizePlateauBackgroundTheme(theme);
+  savePlateauBackgroundTheme(state.plateauBackgroundTheme);
+  refreshPlateauBackgroundButton();
+  if (notify) {
+    syncPlateauBackgroundTheme();
+  }
+}
+
 function updatePeopleFileName(src) {
   const el = $("peoplesFileName");
   if (!el) return;
@@ -1459,6 +1504,7 @@ function updateReplayButtonsState() {
 export function registerMediaEvents() {
   initGeneralQuestionsModalDrag();
   initMisfortuneWheelWindowDrag();
+  setPlateauBackgroundTheme(loadPlateauBackgroundTheme(), { notify: false });
   window.addEventListener("resize", () => {
     if (!misfortuneWheel.visible) return;
     clampMisfortuneWheelPanelInViewport();
@@ -1567,6 +1613,11 @@ export function registerMediaEvents() {
     if (value) {
       postToPlateau({ type: "PLAY_PLATEAU_MUSIC", src: value });
     }
+  });
+
+  $("btnPlateauBg")?.addEventListener("click", () => {
+    const next = state.plateauBackgroundTheme === "retro" ? "bubbles" : "retro";
+    setPlateauBackgroundTheme(next);
   });
 
   $("filmsSelect")?.addEventListener("change", (e) => {

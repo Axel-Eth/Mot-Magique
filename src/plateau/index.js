@@ -1,10 +1,11 @@
 import { hostWindow } from "./bridge.js";
-import { initBackgroundBubbles, initDraggableLetters, initFloatingLetters, startLettersPhysics } from "./letters.js";
+import { initDraggableLetters, initFloatingLetters, startLettersPhysics } from "./letters.js";
+import { initBackgroundTheme } from "./background.js";
 import { registerMessageHandlers } from "./messages.js";
 import { initTitleDrag } from "./title.js";
 
 registerMessageHandlers();
-initBackgroundBubbles();
+initBackgroundTheme();
 initFloatingLetters();
 initDraggableLetters();
 startLettersPhysics();
