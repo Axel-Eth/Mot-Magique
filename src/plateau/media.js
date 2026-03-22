@@ -1,6 +1,6 @@
 import { gridEl, defBar } from "./dom.js";
 import { state } from "./state.js";
-import { beginExternalDucking, endExternalDucking, playFx, playFxSequence, playMusic, setDuckLevelOverride, sounds, stopAllFx, stopMusic } from "./audio.js";
+import { beginExternalDucking, endExternalDucking, getPlateauMusicSource, pausePlateauMusic, playFx, playFxSequence, playMusic, playPlateauMusic, setDuckLevelOverride, sounds, stopAllFx, stopMusic } from "./audio.js";
 
 const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
@@ -24,6 +24,8 @@ let podiumConfettiCanvas = null;
 let podiumConfettiCtx = null;
 let podiumConfettiFrame = 0;
 let podiumLastCelebratedStep = -1;
+let podiumRestoreMusicSrc = null;
+let podiumSuspenseActive = false;
 let flagOverlay = null;
 let generalQuestionOverlay = null;
 let misfortuneWheelOverlay = null;
@@ -260,6 +262,25 @@ function ensurePodiumOverlay() {
   return overlay;
 }
 
+function startPodiumSuspense() {
+  if (podiumSuspenseActive) return;
+  podiumRestoreMusicSrc = getPlateauMusicSource();
+  podiumSuspenseActive = true;
+  playPlateauMusic("sounds/selection_mot_grille.mp3");
+}
+
+function stopPodiumSuspense({ restore = true } = {}) {
+  if (!podiumSuspenseActive && podiumRestoreMusicSrc == null) return;
+  pausePlateauMusic();
+  if (restore) {
+    playPlateauMusic(podiumRestoreMusicSrc || null);
+  } else {
+    playPlateauMusic(null);
+  }
+  podiumSuspenseActive = false;
+  if (restore) podiumRestoreMusicSrc = null;
+}
+
 function resizePodiumConfetti() {
   if (!podiumConfettiCanvas) return;
   podiumConfettiCanvas.width = window.innerWidth;
@@ -395,14 +416,15 @@ function renderPodium(teams, podiumStep = 0) {
   });
 
   if (podiumStep === 1 && podiumLastCelebratedStep < 1) {
-    stopAllFx("podiumThird");
+    stopAllFx();
     playFx(sounds.podiumThird);
     stopPodiumConfetti();
   } else if (podiumStep === 2 && podiumLastCelebratedStep < 2) {
-    stopAllFx("podiumSecond");
+    stopAllFx();
     playFx(sounds.podiumSecond);
     stopPodiumConfetti();
   } else if (podiumStep >= 3 && podiumLastCelebratedStep < 3) {
+    stopPodiumSuspense({ restore: false });
     stopAllFx();
     playFxSequence([sounds.podiumFirst, sounds.podiumVictory]);
     startPodiumConfetti();
@@ -423,8 +445,11 @@ export function toggleScores(show, teams, mode = "scores", podiumStep = 0) {
     overlay.classList.toggle("active", mode !== "podium");
     podium.classList.toggle("active", mode === "podium");
     if (mode === "podium" && !podiumWasActive) {
+      startPodiumSuspense();
       stopAllFx("selectWord");
       playFx(sounds.selectWord);
+    } else if (mode !== "podium" && podiumWasActive) {
+      stopPodiumSuspense({ restore: true });
     }
     gridEl.style.display = "none";
     defBar?.classList.add("hidden");
@@ -433,6 +458,7 @@ export function toggleScores(show, teams, mode = "scores", podiumStep = 0) {
     podium.classList.remove("active");
     stopPodiumConfetti();
     podiumLastCelebratedStep = -1;
+    stopPodiumSuspense({ restore: true });
     gridEl.style.display = "";
     defBar?.classList.remove("hidden");
   }
@@ -738,6 +764,7 @@ export function hideAllMedia() {
   if (filmsOverlay) filmsOverlay.classList.remove("active");
   stopPodiumConfetti();
   podiumLastCelebratedStep = -1;
+  stopPodiumSuspense({ restore: true });
   stopAllFx();
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");

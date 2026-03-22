@@ -40,6 +40,7 @@ let mediaSource = null;
 let mediaAnalyser = null;
 let duckCount = 0;
 let currentFxKey = null;
+let currentFxDucksMedia = false;
 let currentFxToken = 0;
 let fxStopTimer = null;
 let mediaToken = 0;
@@ -52,6 +53,10 @@ const DUCK_LEVEL = 0.02;
 const BASE_LEVEL = 1;
 const DUCK_ATTACK_MS = 30;
 const DUCK_RELEASE_MS = 350;
+const MEDIA_DUCK_FACTOR = 0.32;
+
+let mediaBaseVolume = 1;
+let mediaDuckCount = 0;
 
 function ensureAudioGraph() {
   if (audioCtx) return;
@@ -92,6 +97,23 @@ function smoothPlateauGain(target, ms) {
   g.cancelScheduledValues(now);
   g.setValueAtTime(g.value, now);
   g.linearRampToValueAtTime(target, now + ms / 1000);
+}
+
+function applyMediaVolume() {
+  mediaPlayer.volume = Math.max(
+    0,
+    Math.min(1, mediaBaseVolume * (mediaDuckCount > 0 ? MEDIA_DUCK_FACTOR : 1))
+  );
+}
+
+function duckMediaOn() {
+  mediaDuckCount += 1;
+  applyMediaVolume();
+}
+
+function duckMediaOff() {
+  mediaDuckCount = Math.max(0, mediaDuckCount - 1);
+  applyMediaVolume();
 }
 
 function duckOn() {
@@ -136,6 +158,8 @@ function stopCurrentFx() {
     fxPlayer.currentTime = 0;
   } catch {}
   currentFxKey = null;
+  if (currentFxDucksMedia) duckMediaOff();
+  currentFxDucksMedia = false;
   duckOff();
 }
 
@@ -144,14 +168,16 @@ function getKeyFromAudioRef(audioRef) {
   return typeof audioRef.key === "string" ? audioRef.key : null;
 }
 
-async function playFxByKey(key, maxDurationMs = null) {
+async function playFxByKey(key, maxDurationMs = null, options = {}) {
   const src = FX_SOURCES[key];
   if (!src) return;
 
   stopCurrentFx();
   currentFxKey = key;
+  currentFxDucksMedia = !!options.duckMedia;
   const token = ++currentFxToken;
   duckOn();
+  if (options.duckMedia) duckMediaOn();
   let finish = null;
   const done = new Promise((resolve) => {
     finish = resolve;
@@ -166,6 +192,8 @@ async function playFxByKey(key, maxDurationMs = null) {
     if (currentFxToken === token) {
       currentFxKey = null;
       duckOff();
+      if (options.duckMedia) duckMediaOff();
+      currentFxDucksMedia = false;
     }
     finish?.();
     return done;
@@ -176,6 +204,8 @@ async function playFxByKey(key, maxDurationMs = null) {
     clearFxTimer();
     currentFxKey = null;
     duckOff();
+    if (options.duckMedia) duckMediaOff();
+    currentFxDucksMedia = false;
     finish?.();
   };
 
@@ -260,6 +290,22 @@ function playFxSequence(audioRefs) {
   })();
 }
 
+function playFxDuckingMedia(audioRef, maxDurationMs = null) {
+  const key = getKeyFromAudioRef(audioRef);
+  if (!key) return;
+  void playFxByKey(key, maxDurationMs, { duckMedia: true });
+}
+
+function playFxSequenceDuckingMedia(audioRefs) {
+  const keys = (audioRefs || []).map(getKeyFromAudioRef).filter(Boolean);
+  if (!keys.length) return;
+  void (async () => {
+    for (const key of keys) {
+      await playFxByKey(key, null, { duckMedia: true });
+    }
+  })();
+}
+
 function stopAllFx(exceptKey = null) {
   if (currentFxKey && currentFxKey !== exceptKey) {
     stopCurrentFx();
@@ -310,8 +356,10 @@ function stopMusic() {
     mediaPlayer.pause();
     mediaPlayer.currentTime = 0;
     mediaPlayer.loop = false;
-    mediaPlayer.volume = 1;
   } catch {}
+  mediaBaseVolume = 1;
+  mediaDuckCount = 0;
+  applyMediaVolume();
   mediaVisualizerEnabled = false;
   stopVisualizer();
   duckOff();
@@ -325,9 +373,10 @@ async function playMusic(src, options = {}) {
   const token = ++mediaToken;
   mediaVisualizerEnabled = !!options.visualizer;
   mediaPlayer.loop = !!options.loop;
-  mediaPlayer.volume = typeof options.volume === "number"
+  mediaBaseVolume = typeof options.volume === "number"
     ? Math.max(0, Math.min(1, options.volume))
     : 1;
+  applyMediaVolume();
   try {
     await ensureAudioReady();
     if (mediaVisualizerEnabled && mediaAnalyser) {
@@ -366,6 +415,10 @@ function playPlateauMusic(src) {
   void tryPlayPlateauMusic();
 }
 
+function getPlateauMusicSource() {
+  return plateauMusicWanted;
+}
+
 function beginExternalDucking() {
   duckOn();
 }
@@ -386,6 +439,7 @@ export {
   playMusic,
   stopMusic,
   playPlateauMusic,
+  getPlateauMusicSource,
   pausePlateauMusic,
   requestRestartPlateauMusic,
   resumePlateauMusic,
@@ -395,6 +449,8 @@ export {
   safeStop,
   playFx,
   playFxSequence,
+  playFxDuckingMedia,
+  playFxSequenceDuckingMedia,
   stopAllFx,
   stopRevealSound,
   beginExternalDucking,
