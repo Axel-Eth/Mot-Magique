@@ -4,7 +4,6 @@ import { beginExternalDucking, endExternalDucking, playFx, playMusic, setDuckLev
 
 const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
-const FILMS_EXTRACTS_VIDEO_SRC = "sounds/extraits_films.mp4";
 const GENERAL_QUESTION_MUSIC_SRC = "sounds/question_song.mp3";
 const MISFORTUNE_WHEEL_COLORS = [
   "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
@@ -12,17 +11,16 @@ const MISFORTUNE_WHEEL_COLORS = [
   "#84cc16", "#06b6d4", "#eab308", "#6366f1"
 ];
 const TWO_PI = Math.PI * 2;
-const FILMS_EXTRACTS_VIDEO_VOLUME = 0.08;
 const FILMS_DUCK_LEVEL = 0.02;
 const FILMS_FADE_MS = 280;
 
 let multiplierBadge = null;
 let scoresOverlay = null;
 let podiumOverlay = null;
+let filmsOverlay = null;
 let podiumConfettiCanvas = null;
 let podiumConfettiCtx = null;
 let podiumConfettiFrame = 0;
-let podiumConfettiBurstUntil = 0;
 let podiumLastCelebratedStep = -1;
 let flagOverlay = null;
 let generalQuestionOverlay = null;
@@ -183,31 +181,46 @@ export function playBadVideo() {
 }
 
 export function playFilmsOverlayVideo() {
-  playVideo(FILMS_EXTRACTS_VIDEO_SRC, {
-    volume: FILMS_EXTRACTS_VIDEO_VOLUME,
-    loop: true,
-    mode: "films_overlay"
-  });
+  const overlay = ensureFilmsOverlay();
+  stopAllFx();
+  setDuckLevelOverride(FILMS_DUCK_LEVEL);
+  setVideoDucking(true);
+  currentVideoMode = "films_overlay";
+  overlay.classList.add("active");
+  gridEl.style.visibility = "hidden";
+  defBar?.classList.add("hidden");
 }
 
 export function stopFilmsOverlayVideo() {
   if (currentVideoMode !== "films_overlay") return;
-  const vid = genericVideo;
-  if (!vid) return;
-  try {
-    vid.pause();
-    vid.currentTime = 0;
-    vid.loop = false;
-    vid.volume = 1;
-  } catch {}
-  fadeOutVideo(vid, () => {
-    currentVideoMode = null;
-    setVideoDucking(false);
-    setDuckLevelOverride(null);
-    gridEl.style.visibility = "visible";
-    defBar?.classList.remove("hidden");
-    vid.style.opacity = "1";
-  });
+  filmsOverlay?.classList.remove("active");
+  currentVideoMode = null;
+  setVideoDucking(false);
+  setDuckLevelOverride(null);
+  gridEl.style.visibility = "visible";
+  defBar?.classList.remove("hidden");
+}
+
+function ensureFilmsOverlay() {
+  if (filmsOverlay) return filmsOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "filmsOverlay";
+  overlay.className = "films-overlay";
+  overlay.innerHTML = `
+    <div class="films-top-bar"></div>
+    <div class="films-bottom-bar"></div>
+    <div class="films-band">
+      <div class="films-reel left"></div>
+      <div class="films-reel right"></div>
+      <div class="films-strip"></div>
+    </div>
+    <div class="films-flash"></div>
+    <div class="films-title">EXTRAIT <span class="films-emoji">Projection</span></div>
+    <div class="films-vignette"></div>
+  `;
+  document.body.appendChild(overlay);
+  filmsOverlay = overlay;
+  return overlay;
 }
 
 function ensureScoresOverlay() {
@@ -232,8 +245,8 @@ function ensurePodiumOverlay() {
   overlay.innerHTML = `
     <canvas class="podium-confetti" id="podiumConfettiCanvas" aria-hidden="true"></canvas>
     <div class="podium-title-stage">
-      <p class="podium-kicker">C'est fini !</p>
-      <h1 class="podium-title">Bravo !</h1>
+      <p class="podium-kicker">Mot Magique</p>
+      <h1 class="podium-title">Podium</h1>
     </div>
     <div class="podium-stage" id="podiumStage"></div>
   `;
@@ -251,7 +264,6 @@ function resizePodiumConfetti() {
 }
 
 function stopPodiumConfetti() {
-  podiumConfettiBurstUntil = 0;
   if (podiumConfettiFrame) {
     window.cancelAnimationFrame(podiumConfettiFrame);
     podiumConfettiFrame = 0;
@@ -264,7 +276,6 @@ function stopPodiumConfetti() {
 function startPodiumConfetti() {
   ensurePodiumOverlay();
   resizePodiumConfetti();
-  podiumConfettiBurstUntil = performance.now() + 4200;
   if (podiumConfettiFrame) return;
 
   const pieces = Array.from({ length: 140 }, () => ({
@@ -278,7 +289,7 @@ function startPodiumConfetti() {
     spin: -0.2 + Math.random() * 0.4
   }));
 
-  const step = (now) => {
+  const step = () => {
     if (!podiumConfettiCtx || !podiumConfettiCanvas) {
       podiumConfettiFrame = 0;
       return;
@@ -303,7 +314,7 @@ function startPodiumConfetti() {
       ctx.restore();
     }
 
-    if (now < podiumConfettiBurstUntil && podiumOverlay?.classList.contains("active")) {
+    if (podiumOverlay?.classList.contains("active")) {
       podiumConfettiFrame = window.requestAnimationFrame(step);
       return;
     }
@@ -356,13 +367,21 @@ function renderPodium(teams, podiumStep = 0) {
       : podiumStep === 2
         ? new Set([3, 2])
         : new Set([3, 2, 1]);
+  const previousVisibleRanks = podiumLastCelebratedStep <= 0
+    ? new Set()
+    : podiumLastCelebratedStep === 1
+      ? new Set([3])
+      : podiumLastCelebratedStep === 2
+        ? new Set([3, 2])
+        : new Set([3, 2, 1]);
 
   slots.forEach((slot) => {
     const team = visibleRanks.has(slot.rank)
       ? ranked.find((entry, index) => index + 1 === slot.rank)
       : null;
     const block = document.createElement("div");
-    block.className = `podium-block ${slot.className}${team ? "" : " empty"}`;
+    const isNewlyRevealed = !!team && !previousVisibleRanks.has(slot.rank);
+    block.className = `podium-block ${slot.className}${team ? "" : " empty"}${isNewlyRevealed ? " reveal" : ""}`;
     block.innerHTML = `
       <div class="podium-rank">${slot.rank}</div>
       <div class="podium-name">${team?.name || "-"}</div>
@@ -698,6 +717,7 @@ export function hideAllMedia() {
   }
   if (scoresOverlay) scoresOverlay.classList.remove("active");
   if (podiumOverlay) podiumOverlay.classList.remove("active");
+  if (filmsOverlay) filmsOverlay.classList.remove("active");
   stopPodiumConfetti();
   podiumLastCelebratedStep = -1;
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
@@ -717,6 +737,7 @@ export function hideAllMedia() {
   }
   setVideoDucking(false);
   setDuckLevelOverride(null);
+  currentVideoMode = null;
   gridEl.style.display = "";
   if (state.wantsFullscreen && !document.fullscreenElement) {
     document.documentElement.requestFullscreen().catch(() => {});
