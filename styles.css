@@ -1598,6 +1598,30 @@ body.plateau .scores-overlay.active{
   pointer-events:auto;
 }
 
+body.regie #regieScoresModal{
+  z-index: 24;
+  background: rgba(8,40,66,.18);
+  backdrop-filter: blur(4px);
+}
+
+body.regie .regie-scores-overlay{
+  position:relative;
+  inset:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:24px;
+  width: min(1100px, 92vw);
+  max-height: 86vh;
+  overflow:auto;
+  padding:40px;
+  background: rgba(8,40,66,.35);
+  backdrop-filter: blur(6px);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.3);
+}
+
 body.plateau .flag-overlay{
   position:fixed;
   inset:0;
@@ -1801,6 +1825,17 @@ body.plateau .scores-title{
   box-shadow: 0 10px 24px rgba(0,0,0,.25);
 }
 
+body.regie .scores-title{
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color:#fff;
+  padding: 14px 28px;
+  border-radius: 22px;
+  background: linear-gradient(135deg,#ff3ea5,#ff6f7a);
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+
 body.plateau .scores-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1808,7 +1843,22 @@ body.plateau .scores-grid{
   width: min(1100px, 92vw);
 }
 
+body.regie .scores-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:18px;
+  width: 100%;
+}
+
 body.plateau .score-card{
+  border-radius:18px;
+  padding:18px 16px;
+  color:#fff;
+  text-align:center;
+  box-shadow: 0 10px 22px rgba(0,0,0,.2), inset 0 0 0 2px rgba(255,255,255,.25);
+}
+
+body.regie .score-card{
   border-radius:18px;
   padding:18px 16px;
   color:#fff;
@@ -1823,7 +1873,19 @@ body.plateau .score-name{
   margin-bottom:8px;
 }
 
+body.regie .score-name{
+  font-size:18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom:8px;
+}
+
 body.plateau .score-points{
+  font-size:36px;
+  font-weight: 900;
+}
+
+body.regie .score-points{
   font-size:36px;
   font-weight: 900;
 }

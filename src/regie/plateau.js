@@ -1,6 +1,7 @@
 import { state } from "./state.js";
 import { postToPlateau } from "./bridge.js";
 import { setActionButtonsEnabled, setPlateauLabel } from "./ui.js";
+import { hideRegieScores, refreshRegieScores } from "./scores.js";
 
 export function syncScoresToPlateau() {
   postToPlateau({
@@ -12,6 +13,12 @@ export function syncScoresToPlateau() {
       color: t.color
     }))
   });
+
+  if (state.showScores) {
+    refreshRegieScores();
+  } else {
+    hideRegieScores();
+  }
 }
 
 export function openPlateauWindow() {

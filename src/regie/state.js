@@ -20,6 +20,7 @@ export const state = {
   badPointsActive: false,
   pendingPenaltyPoints: 0,
   showScores: false,
+  regieScoresVisible: false,
   capitalesNotesDefault: {},
   capitalesNotesSarcasme: {},
   capitalesNotesMode: "doux",

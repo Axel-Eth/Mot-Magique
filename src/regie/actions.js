@@ -5,6 +5,7 @@ import { isMagicWordCell, updateMagicButtonState } from "./magic.js";
 import { syncScoresToPlateau, openPlateauWindow } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
 import { renderTeams, addTeam, hideTeamModal, showPenaltyRequiredModal } from "./teams.js";
+import { showRegieScores } from "./scores.js";
 import { renderRegieGrid, clearVisibleNumbers } from "./grid-view.js";
 import { loadSelectedGrid, resetReveal } from "./grid-actions.js";
 import { serializeGridForPlateau } from "./grid-data.js";
@@ -112,6 +113,7 @@ export function registerActionEvents() {
   $("btnScores")?.addEventListener("click", () => {
     state.showScores = !state.showScores;
     syncScoresToPlateau();
+    if (state.showScores) showRegieScores();
   });
 
   $("btnCorrect")?.addEventListener("click", () => {
