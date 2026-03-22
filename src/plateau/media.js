@@ -1,9 +1,10 @@
 import { gridEl, defBar } from "./dom.js";
 import { state } from "./state.js";
-import { beginExternalDucking, endExternalDucking, playFx, playMusic, setDuckLevelOverride, sounds, stopAllFx, stopMusic } from "./audio.js";
+import { beginExternalDucking, endExternalDucking, playFx, playFxSequence, playMusic, setDuckLevelOverride, sounds, stopAllFx, stopMusic } from "./audio.js";
 
 const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
+const FILMS_EXTRACTS_AUDIO_SRC = "sounds/extraits_films.mp3";
 const GENERAL_QUESTION_MUSIC_SRC = "sounds/question_song.mp3";
 const MISFORTUNE_WHEEL_COLORS = [
   "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
@@ -12,6 +13,7 @@ const MISFORTUNE_WHEEL_COLORS = [
 ];
 const TWO_PI = Math.PI * 2;
 const FILMS_DUCK_LEVEL = 0.02;
+const FILMS_OVERLAY_AUDIO_VOLUME = 0.12;
 const FILMS_FADE_MS = 280;
 
 let multiplierBadge = null;
@@ -186,6 +188,7 @@ export function playFilmsOverlayVideo() {
   setDuckLevelOverride(FILMS_DUCK_LEVEL);
   setVideoDucking(true);
   currentVideoMode = "films_overlay";
+  playMusic(FILMS_EXTRACTS_AUDIO_SRC, { loop: true, volume: FILMS_OVERLAY_AUDIO_VOLUME });
   overlay.classList.add("active");
   gridEl.style.visibility = "hidden";
   defBar?.classList.add("hidden");
@@ -391,9 +394,17 @@ function renderPodium(teams, podiumStep = 0) {
     stage.appendChild(block);
   });
 
-  if (podiumStep >= 3 && podiumLastCelebratedStep < 3) {
-    stopAllFx("podiumVictory");
-    playFx(sounds.podiumVictory);
+  if (podiumStep === 1 && podiumLastCelebratedStep < 1) {
+    stopAllFx("podiumThird");
+    playFx(sounds.podiumThird);
+    stopPodiumConfetti();
+  } else if (podiumStep === 2 && podiumLastCelebratedStep < 2) {
+    stopAllFx("podiumSecond");
+    playFx(sounds.podiumSecond);
+    stopPodiumConfetti();
+  } else if (podiumStep >= 3 && podiumLastCelebratedStep < 3) {
+    stopAllFx();
+    playFxSequence([sounds.podiumFirst, sounds.podiumVictory]);
     startPodiumConfetti();
   } else if (podiumStep < 3) {
     stopPodiumConfetti();

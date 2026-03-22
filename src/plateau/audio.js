@@ -11,7 +11,10 @@ const FX_SOURCES = {
   fail: "sounds/fail_sound_effect.mp3",
   selectWord: "sounds/selection_mot_grille.mp3",
   magicSelect: "sounds/Magic_Word_Countdown.mp3",
-  podiumVictory: "sounds/victory_podium_sound.mp3"
+  podiumVictory: "sounds/victory_podium_sound.mp3",
+  podiumThird: "sounds/thrid_victory_sound.mp3",
+  podiumSecond: "sounds/second_victory_sound.mp3",
+  podiumFirst: "sounds/first_victory_sound.mp3"
 };
 
 const sounds = Object.fromEntries(Object.keys(FX_SOURCES).map((key) => [key, { key }]));
@@ -149,6 +152,10 @@ async function playFxByKey(key, maxDurationMs = null) {
   currentFxKey = key;
   const token = ++currentFxToken;
   duckOn();
+  let finish = null;
+  const done = new Promise((resolve) => {
+    finish = resolve;
+  });
 
   try {
     await ensureAudioReady();
@@ -160,7 +167,8 @@ async function playFxByKey(key, maxDurationMs = null) {
       currentFxKey = null;
       duckOff();
     }
-    return;
+    finish?.();
+    return done;
   }
 
   const cleanup = () => {
@@ -168,6 +176,7 @@ async function playFxByKey(key, maxDurationMs = null) {
     clearFxTimer();
     currentFxKey = null;
     duckOff();
+    finish?.();
   };
 
   fxPlayer.onended = cleanup;
@@ -186,6 +195,8 @@ async function playFxByKey(key, maxDurationMs = null) {
       cleanup();
     }, maxDurationMs);
   }
+
+  return done;
 }
 
 window.addEventListener(
@@ -239,6 +250,16 @@ function playFx(audioRef, maxDurationMs = null) {
   void playFxByKey(key, maxDurationMs);
 }
 
+function playFxSequence(audioRefs) {
+  const keys = (audioRefs || []).map(getKeyFromAudioRef).filter(Boolean);
+  if (!keys.length) return;
+  void (async () => {
+    for (const key of keys) {
+      await playFxByKey(key);
+    }
+  })();
+}
+
 function stopAllFx(exceptKey = null) {
   if (currentFxKey && currentFxKey !== exceptKey) {
     stopCurrentFx();
@@ -288,6 +309,8 @@ function stopMusic() {
   try {
     mediaPlayer.pause();
     mediaPlayer.currentTime = 0;
+    mediaPlayer.loop = false;
+    mediaPlayer.volume = 1;
   } catch {}
   mediaVisualizerEnabled = false;
   stopVisualizer();
@@ -301,6 +324,10 @@ async function playMusic(src, options = {}) {
   duckOn();
   const token = ++mediaToken;
   mediaVisualizerEnabled = !!options.visualizer;
+  mediaPlayer.loop = !!options.loop;
+  mediaPlayer.volume = typeof options.volume === "number"
+    ? Math.max(0, Math.min(1, options.volume))
+    : 1;
   try {
     await ensureAudioReady();
     if (mediaVisualizerEnabled && mediaAnalyser) {
@@ -367,6 +394,7 @@ export {
   safePlay,
   safeStop,
   playFx,
+  playFxSequence,
   stopAllFx,
   stopRevealSound,
   beginExternalDucking,
