@@ -10,7 +10,8 @@ const FX_SOURCES = {
   appear: "sounds/bruitage_apparition.mp3",
   fail: "sounds/fail_sound_effect.mp3",
   selectWord: "sounds/selection_mot_grille.mp3",
-  magicSelect: "sounds/Magic_Word_Countdown.mp3"
+  magicSelect: "sounds/Magic_Word_Countdown.mp3",
+  podiumVictory: "sounds/victory_podium_sound.mp3"
 };
 
 const sounds = Object.fromEntries(Object.keys(FX_SOURCES).map((key) => [key, { key }]));

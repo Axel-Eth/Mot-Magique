@@ -392,6 +392,8 @@ function renderPodium(teams, podiumStep = 0) {
   });
 
   if (podiumStep >= 3 && podiumLastCelebratedStep < 3) {
+    stopAllFx("podiumVictory");
+    playFx(sounds.podiumVictory);
     startPodiumConfetti();
   } else if (podiumStep < 3) {
     stopPodiumConfetti();
@@ -402,12 +404,17 @@ function renderPodium(teams, podiumStep = 0) {
 export function toggleScores(show, teams, mode = "scores", podiumStep = 0) {
   const overlay = ensureScoresOverlay();
   const podium = ensurePodiumOverlay();
+  const podiumWasActive = podium.classList.contains("active");
   renderScores(teams);
   renderPodium(teams, podiumStep);
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   if (show) {
     overlay.classList.toggle("active", mode !== "podium");
     podium.classList.toggle("active", mode === "podium");
+    if (mode === "podium" && !podiumWasActive) {
+      stopAllFx("selectWord");
+      playFx(sounds.selectWord);
+    }
     gridEl.style.display = "none";
     defBar?.classList.add("hidden");
   } else {
@@ -720,6 +727,7 @@ export function hideAllMedia() {
   if (filmsOverlay) filmsOverlay.classList.remove("active");
   stopPodiumConfetti();
   podiumLastCelebratedStep = -1;
+  stopAllFx();
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
