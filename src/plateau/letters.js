@@ -5,12 +5,9 @@ const LETTER_REPULSE_MARGIN = 14;
 const LETTER_REPULSE_STRENGTH = 0.16;
 const LETTER_FRICTION = 0.88;
 const DECOR_THEME_BUBBLES = "bubbles";
-const DECOR_THEME_RETRO = "retro";
 const DECOR_PATHS = {
-  [DECOR_THEME_BUBBLES]: "illustrations/lettres/",
-  [DECOR_THEME_RETRO]: "illustrations/retro/"
+  [DECOR_THEME_BUBBLES]: "illustrations/lettres/"
 };
-const RETRO_ITEM_SIZE_PX = 110;
 const DECOR_SELECTOR = ".floating-letter, .draggable-letter";
 
 let currentDecorTheme = DECOR_THEME_BUBBLES;
@@ -260,7 +257,7 @@ function spawnFloatingLetter(src, options = {}) {
 }
 
 function normalizeDecorTheme(theme) {
-  return String(theme || "").toLowerCase() === DECOR_THEME_RETRO ? DECOR_THEME_RETRO : DECOR_THEME_BUBBLES;
+  return DECOR_THEME_BUBBLES;
 }
 
 function clearFloatingDecor() {
@@ -385,16 +382,10 @@ async function loadDecorImages(theme) {
 }
 
 function floatingCountForTheme(theme, filesLength) {
-  if (theme === DECOR_THEME_RETRO) {
-    return filesLength;
-  }
   return Math.min(14, Math.max(8, filesLength));
 }
 
 function draggableCountForTheme(theme, filesLength) {
-  if (theme === DECOR_THEME_RETRO) {
-    return 0;
-  }
   return Math.min(filesLength, 12);
 }
 
@@ -408,22 +399,15 @@ export async function applyFloatingDecorTheme(theme) {
   clearFloatingDecor();
   if (!files.length) return;
 
-  if (normalized === DECOR_THEME_RETRO) {
-    // Retro: 1 seule occurrence visible par item, taille uniforme.
-    files.forEach((src) => {
-      spawnFloatingLetter(src, { sizePx: RETRO_ITEM_SIZE_PX });
-    });
-  } else {
-    const floatingCount = floatingCountForTheme(normalized, files.length);
-    for (let i = 0; i < floatingCount; i++) {
-      const src = files[Math.floor(Math.random() * files.length)];
-      spawnFloatingLetter(src);
-    }
+  const floatingCount = floatingCountForTheme(normalized, files.length);
+  for (let i = 0; i < floatingCount; i++) {
+    const src = files[Math.floor(Math.random() * files.length)];
+    spawnFloatingLetter(src);
   }
 
   const draggableCount = draggableCountForTheme(normalized, files.length);
   for (let i = 0; i < draggableCount; i++) {
     const src = files[i % files.length];
-    createDraggableLetter(src, normalized === DECOR_THEME_RETRO ? "Item retro" : "Lettre");
+    createDraggableLetter(src, "Lettre");
   }
 }

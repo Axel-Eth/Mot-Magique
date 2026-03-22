@@ -2258,32 +2258,6 @@ body.plateau .films-vignette{
   overflow:hidden;
 }
 
-#bg .retro-bg-canvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  display:none;
-  image-rendering: auto;
-}
-
-#bg[data-theme="retro"]{
-  background: #111;
-}
-
-#bg[data-theme="retro"]::before,
-#bg[data-theme="retro"]::after{
-  display:none;
-}
-
-#bg[data-theme="retro"] .bg-bubbles{
-  display:none;
-}
-
-#bg[data-theme="retro"] .retro-bg-canvas{
-  display:block;
-}
-
 .bg-bubble{
   position:absolute;
   border-radius:50%;
