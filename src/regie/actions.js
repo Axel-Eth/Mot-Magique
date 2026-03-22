@@ -4,7 +4,7 @@ import { stopSelectSound } from "./audio.js";
 import { isMagicWordCell, updateMagicButtonState } from "./magic.js";
 import { syncScoresToPlateau, openPlateauWindow } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
-import { renderTeams, addTeam } from "./teams.js";
+import { renderTeams, addTeam, hideTeamModal, showPenaltyRequiredModal } from "./teams.js";
 import { renderRegieGrid, clearVisibleNumbers } from "./grid-view.js";
 import { loadSelectedGrid, resetReveal } from "./grid-actions.js";
 import { serializeGridForPlateau } from "./grid-data.js";
@@ -162,6 +162,9 @@ export function registerActionEvents() {
     setMultiplier(1);
     setBadPointsActive(false);
     renderTeams();
+    if (state.pendingPenaltyPoints > 0) {
+      showPenaltyRequiredModal();
+    }
     updateSelectedInfo();
     updateMagicButtonState();
     setActionButtonsEnabled(false);
@@ -217,13 +220,11 @@ export function registerActionEvents() {
   $("addTeam")?.addEventListener("click", addTeam);
 
   $("teamModalOk")?.addEventListener("click", () => {
-    $("teamModal")?.classList.add("hidden");
+    hideTeamModal();
   });
 
   $("teamModal")?.addEventListener("click", (e) => {
-    if (e.target.id === "teamModal") {
-      $("teamModal")?.classList.add("hidden");
-    }
+    if (e.target.id === "teamModal" && state.pendingPenaltyPoints <= 0) hideTeamModal();
   });
 
   setMultiplier(1, true);
@@ -324,7 +325,7 @@ export function registerWindowEvents() {
       if (state.pendingPenaltyPoints > 0) {
         const onTeam = e.target.closest && e.target.closest(".team-square");
         if (!onTeam) {
-          alert("Choisis l'equipe a penaliser.");
+          return;
         }
       }
     },

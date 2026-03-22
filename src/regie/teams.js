@@ -19,6 +19,78 @@ function randomTeamColor() {
   return TEAM_COLORS[Math.floor(Math.random() * TEAM_COLORS.length)];
 }
 
+function setTeamModalContent(title, message) {
+  const titleEl = $("teamModalTitle");
+  const messageEl = $("teamModalMessage");
+  if (titleEl) titleEl.textContent = title;
+  if (messageEl) messageEl.textContent = message;
+}
+
+function configureTeamModal({ title, message, showActions, showPenaltyList }) {
+  setTeamModalContent(title, message);
+  $("teamModalActions")?.classList.toggle("hidden", !showActions);
+  $("teamModalPenaltyList")?.classList.toggle("hidden", !showPenaltyList);
+}
+
+function refreshTeamDisplay(team) {
+  const pointsValue = team.points ?? 0;
+  if (team._labelEl) team._labelEl.textContent = `${pointsValue}`;
+  if (team._pointsInputEl) team._pointsInputEl.value = `${pointsValue}`;
+}
+
+function applyPenaltyToTeam(team) {
+  if (!team || state.pendingPenaltyPoints <= 0) return;
+  team.points = (team.points ?? 0) - state.pendingPenaltyPoints;
+  state.pendingPenaltyPoints = 0;
+  state.currentTeamId = null;
+  hideTeamModal();
+  renderTeams();
+}
+
+function renderPenaltyChoices() {
+  const list = $("teamModalPenaltyList");
+  if (!list) return;
+  list.innerHTML = "";
+
+  state.teams.forEach((team) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "team-modal-choice";
+    button.innerHTML = `
+      <span class="team-modal-choice-color" style="background:${team.color}"></span>
+      <span class="team-modal-choice-name">${team.name || "Equipe"}</span>
+      <span class="team-modal-choice-score">${team.points ?? 0}</span>
+    `;
+    button.addEventListener("click", () => applyPenaltyToTeam(team));
+    list.appendChild(button);
+  });
+}
+
+export function showPenaltyRequiredModal() {
+  configureTeamModal({
+    title: "Penalite requise",
+    message: "Choisis une equipe a penaliser.",
+    showActions: false,
+    showPenaltyList: true
+  });
+  renderPenaltyChoices();
+  $("teamModal")?.classList.remove("hidden");
+}
+
+export function showTeamRequiredModal() {
+  configureTeamModal({
+    title: "Equipe requise",
+    message: "Choisis d'abord une equipe.",
+    showActions: true,
+    showPenaltyList: false
+  });
+  $("teamModal")?.classList.remove("hidden");
+}
+
+export function hideTeamModal() {
+  $("teamModal")?.classList.add("hidden");
+}
+
 export function renderTeams() {
   const container = $("teamsContainer");
   if (!container) return;
@@ -45,38 +117,34 @@ export function renderTeams() {
     input.placeholder = "Nom";
     input.addEventListener("input", () => {
       team.name = input.value;
-      points.textContent = `${team.name || "Equipe"} : ${team.points ?? 0}`;
     });
 
-    const points = document.createElement("div");
+    const points = document.createElement("input");
+    points.type = "number";
+    points.inputMode = "numeric";
     points.className = "team-points";
-    points.textContent = `${team.name || "Equipe"} : ${team.points ?? 0}`;
+    points.value = `${team.points ?? 0}`;
+    points.addEventListener("input", () => {
+      const trimmed = points.value.trim();
+      team.points = trimmed === "" ? 0 : Number.parseInt(trimmed, 10) || 0;
+      refreshTeamDisplay(team);
+      syncScoresToPlateau();
+      if (state.pendingPenaltyPoints > 0 && !$("teamModal")?.classList.contains("hidden")) {
+        renderPenaltyChoices();
+      }
+    });
 
     team._labelEl = label;
-    team._pointsEl = points;
+    team._pointsInputEl = points;
+    refreshTeamDisplay(team);
 
     square.addEventListener("click", () => {
       if (state.pendingPenaltyPoints > 0) {
-        team.points = (team.points ?? 0) - state.pendingPenaltyPoints;
-        state.pendingPenaltyPoints = 0;
-        state.currentTeamId = null;
-        renderTeams();
+        applyPenaltyToTeam(team);
         return;
       }
       state.currentTeamId = team.id;
       renderTeams();
-    });
-
-    square.addEventListener("dblclick", () => {
-      const current = team.points ?? 0;
-      const val = prompt("Points pour cette equipe :", current);
-      if (val === null) return;
-      const num = parseInt(val, 10);
-      if (!Number.isNaN(num)) {
-        team.points = num;
-        label.textContent = `${team.points ?? 0}`;
-        points.textContent = `${team.name || "Equipe"} : ${team.points ?? 0}`;
-      }
     });
 
     item.appendChild(square);
@@ -85,12 +153,15 @@ export function renderTeams() {
     container.appendChild(item);
   });
   syncScoresToPlateau();
+
+  if (state.pendingPenaltyPoints > 0 && !$("teamModal")?.classList.contains("hidden")) {
+    renderPenaltyChoices();
+  }
 }
 
 export function ensureTeamChosen() {
   if (!state.currentTeamId) {
-    const modal = document.getElementById("teamModal");
-    if (modal) modal.classList.remove("hidden");
+    showTeamRequiredModal();
     return false;
   }
   return true;

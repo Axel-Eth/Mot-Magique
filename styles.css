@@ -210,9 +210,25 @@ h2{
   font-size:11px;
 }
 .team-points{
-  color:var(--muted);
-  font-size:11px;
+  width:64px;
   text-align:center;
+  background: rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:8px;
+  color:var(--muted);
+  padding:6px 8px;
+  font-size:11px;
+}
+
+.team-points::-webkit-outer-spin-button,
+.team-points::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+  margin:0;
+}
+
+.team-points[type="number"]{
+  appearance:textfield;
+  -moz-appearance:textfield;
 }
 .btn.small{
   padding:6px 10px;
@@ -731,6 +747,10 @@ h2{
   display:none;
 }
 
+.hidden{
+  display:none !important;
+}
+
 .modal-card{
   background: #0f2a3a;
   color: #fff;
@@ -744,6 +764,51 @@ h2{
 .modal-card h3{
   margin: 0 0 6px;
   font-size: 18px;
+}
+
+.team-modal-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:14px;
+  min-width: 320px;
+}
+
+.team-modal-choice{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color:#fff;
+  cursor:pointer;
+  text-align:left;
+}
+
+.team-modal-choice:hover{
+  background: rgba(255,255,255,.1);
+}
+
+.team-modal-choice-color{
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  flex:0 0 auto;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.18);
+}
+
+.team-modal-choice-name{
+  flex:1;
+  font-weight:800;
+}
+
+.team-modal-choice-score{
+  font-weight:900;
+  opacity:.9;
 }
 
 #wordSelectModal{
