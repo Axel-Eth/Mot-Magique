@@ -21,6 +21,8 @@ export const state = {
   pendingPenaltyPoints: 0,
   showScores: false,
   regieScoresVisible: false,
+  scoreboardMode: "scores",
+  scoreboardPodiumStep: 0,
   capitalesNotesDefault: {},
   capitalesNotesSarcasme: {},
   capitalesNotesMode: "doux",

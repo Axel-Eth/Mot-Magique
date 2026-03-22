@@ -1604,7 +1604,7 @@ body.regie #regieScoresModal{
   backdrop-filter: blur(4px);
 }
 
-body.regie .regie-scores-overlay{
+body.regie .regie-scores-panel{
   position:relative;
   inset:auto;
   display:flex;
@@ -1620,6 +1620,25 @@ body.regie .regie-scores-overlay{
   backdrop-filter: blur(6px);
   border-radius: 24px;
   box-shadow: 0 18px 40px rgba(0,0,0,.3);
+}
+
+body.regie .regie-scores-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  width:100%;
+}
+
+body.regie .regie-scores-actions{
+  display:flex;
+  gap:10px;
+}
+
+body.regie .regie-scores-actions .btn.active{
+  background: linear-gradient(135deg,#ffd85a,#ff9f43);
+  color:#3f2300;
+  border-color: transparent;
 }
 
 body.plateau .flag-overlay{
@@ -1825,7 +1844,7 @@ body.plateau .scores-title{
   box-shadow: 0 10px 24px rgba(0,0,0,.25);
 }
 
-body.regie .scores-title{
+body.regie .regie-scores-title{
   font-size: 42px;
   font-weight: 900;
   letter-spacing: 1px;
@@ -1843,7 +1862,7 @@ body.plateau .scores-grid{
   width: min(1100px, 92vw);
 }
 
-body.regie .scores-grid{
+body.regie .regie-scores-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap:18px;
@@ -1858,7 +1877,7 @@ body.plateau .score-card{
   box-shadow: 0 10px 22px rgba(0,0,0,.2), inset 0 0 0 2px rgba(255,255,255,.25);
 }
 
-body.regie .score-card{
+body.regie .regie-score-card{
   border-radius:18px;
   padding:18px 16px;
   color:#fff;
@@ -1873,7 +1892,7 @@ body.plateau .score-name{
   margin-bottom:8px;
 }
 
-body.regie .score-name{
+body.regie .regie-score-name{
   font-size:18px;
   font-weight: 800;
   text-transform: uppercase;
@@ -1885,9 +1904,150 @@ body.plateau .score-points{
   font-weight: 900;
 }
 
-body.regie .score-points{
+body.regie .regie-score-points{
   font-size:36px;
   font-weight: 900;
+}
+
+body.plateau .podium-overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:34px;
+  padding:40px;
+  background: radial-gradient(circle at top, rgba(27,58,90,.92), rgba(10,27,47,.98) 60%);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .3s ease;
+  z-index: 4;
+}
+
+body.plateau .podium-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+body.plateau .podium-confetti{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+body.plateau .podium-title-stage{
+  text-align:center;
+  color:#fff;
+}
+
+body.plateau .podium-kicker{
+  margin:0 0 10px;
+  font-size:24px;
+  opacity:.9;
+}
+
+body.plateau .podium-title{
+  margin:0;
+  font-size:72px;
+  line-height:1;
+  color:#ffe96a;
+}
+
+body.plateau .podium-stage{
+  width:min(980px, 90vw);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  gap:24px;
+  min-height: 420px;
+}
+
+body.plateau .podium-block{
+  --podium-accent: #ffffff;
+  width:180px;
+  border-radius:22px 22px 10px 10px;
+  padding:22px 18px;
+  text-align:center;
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.24),
+    inset 0 0 0 2px rgba(255,255,255,.18);
+  animation: plateauPodiumPop .7s ease forwards;
+  transform: translateY(50px) scale(.9);
+  opacity:0;
+}
+
+body.plateau .podium-block.first{
+  min-height: 320px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 24%),
+    linear-gradient(180deg, #ffe48d, #ffab2e);
+  color:#5a2d00;
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.24),
+    inset 0 0 0 2px rgba(255,255,255,.22),
+    0 0 0 4px var(--podium-accent, #ffd95e);
+  animation-delay: .08s;
+}
+
+body.plateau .podium-block.second{
+  min-height: 250px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 24%),
+    linear-gradient(180deg, #d9ecff, #84c6ff);
+  color:#0d3562;
+}
+
+body.plateau .podium-block.third{
+  min-height: 210px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 24%),
+    linear-gradient(180deg, #ffd0b2, #ff8b61);
+  color:#5a1f00;
+  animation-delay: .16s;
+}
+
+body.plateau .podium-block.empty{
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.75);
+}
+
+body.plateau .podium-rank{
+  font-size:56px;
+  font-weight:1000;
+  line-height:1;
+  margin-bottom:18px;
+}
+
+body.plateau .podium-name{
+  font-size:28px;
+  font-weight:900;
+  text-transform: uppercase;
+  line-height:1.05;
+  margin-bottom:12px;
+}
+
+body.plateau .podium-points{
+  font-size:26px;
+  font-weight:800;
+  opacity:.88;
+}
+
+@keyframes plateauPodiumPop{
+  0%{
+    transform: translateY(56px) scale(.88);
+    opacity:0;
+  }
+  60%{
+    transform: translateY(-8px) scale(1.02);
+    opacity:1;
+  }
+  100%{
+    transform: translateY(0) scale(1);
+    opacity:1;
+  }
 }
 
 

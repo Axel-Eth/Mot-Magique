@@ -73,6 +73,8 @@ export function registerActionEvents() {
     state.currentTeamId = null;
     state.pendingPenaltyPoints = 0;
     state.showScores = false;
+    state.scoreboardMode = "scores";
+    state.scoreboardPodiumStep = 0;
     state.teams = [];
     clearVisibleNumbers();
 
@@ -112,6 +114,10 @@ export function registerActionEvents() {
 
   $("btnScores")?.addEventListener("click", () => {
     state.showScores = !state.showScores;
+    if (state.showScores) {
+      state.scoreboardMode = "scores";
+      state.scoreboardPodiumStep = 0;
+    }
     syncScoresToPlateau();
     if (state.showScores) showRegieScores();
   });

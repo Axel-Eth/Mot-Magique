@@ -204,7 +204,7 @@ export function registerMessageHandlers() {
         break;
 
       case "SCORES_UPDATE":
-        toggleScores(!!msg.show, msg.teams || []);
+        toggleScores(!!msg.show, msg.teams || [], msg.mode || "scores", Number(msg.podiumStep) || 0);
         break;
 
       case "SHOW_FLAG":

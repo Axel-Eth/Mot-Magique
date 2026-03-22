@@ -7,6 +7,8 @@ export function syncScoresToPlateau() {
   postToPlateau({
     type: "SCORES_UPDATE",
     show: state.showScores,
+    mode: state.scoreboardMode || "scores",
+    podiumStep: state.scoreboardPodiumStep || 0,
     teams: state.teams.map((t) => ({
       name: t.name || "Equipe",
       points: t.points ?? 0,
@@ -19,6 +21,20 @@ export function syncScoresToPlateau() {
   } else {
     hideRegieScores();
   }
+}
+
+export function setScoreboardMode(mode) {
+  state.scoreboardMode = mode === "podium" ? "podium" : "scores";
+  if (state.scoreboardMode !== "podium") {
+    state.scoreboardPodiumStep = 0;
+  }
+  syncScoresToPlateau();
+}
+
+export function advancePodiumStep() {
+  state.scoreboardMode = "podium";
+  state.scoreboardPodiumStep = Math.min(3, (state.scoreboardPodiumStep || 0) + 1);
+  syncScoresToPlateau();
 }
 
 export function openPlateauWindow() {

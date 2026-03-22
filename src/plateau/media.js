@@ -18,6 +18,12 @@ const FILMS_FADE_MS = 280;
 
 let multiplierBadge = null;
 let scoresOverlay = null;
+let podiumOverlay = null;
+let podiumConfettiCanvas = null;
+let podiumConfettiCtx = null;
+let podiumConfettiFrame = 0;
+let podiumConfettiBurstUntil = 0;
+let podiumLastCelebratedStep = -1;
 let flagOverlay = null;
 let generalQuestionOverlay = null;
 let misfortuneWheelOverlay = null;
@@ -218,6 +224,95 @@ function ensureScoresOverlay() {
   return overlay;
 }
 
+function ensurePodiumOverlay() {
+  if (podiumOverlay) return podiumOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "podiumOverlay";
+  overlay.className = "podium-overlay";
+  overlay.innerHTML = `
+    <canvas class="podium-confetti" id="podiumConfettiCanvas" aria-hidden="true"></canvas>
+    <div class="podium-title-stage">
+      <p class="podium-kicker">C'est fini !</p>
+      <h1 class="podium-title">Bravo !</h1>
+    </div>
+    <div class="podium-stage" id="podiumStage"></div>
+  `;
+  document.body.appendChild(overlay);
+  podiumConfettiCanvas = overlay.querySelector("#podiumConfettiCanvas");
+  podiumConfettiCtx = podiumConfettiCanvas?.getContext("2d") || null;
+  podiumOverlay = overlay;
+  return overlay;
+}
+
+function resizePodiumConfetti() {
+  if (!podiumConfettiCanvas) return;
+  podiumConfettiCanvas.width = window.innerWidth;
+  podiumConfettiCanvas.height = window.innerHeight;
+}
+
+function stopPodiumConfetti() {
+  podiumConfettiBurstUntil = 0;
+  if (podiumConfettiFrame) {
+    window.cancelAnimationFrame(podiumConfettiFrame);
+    podiumConfettiFrame = 0;
+  }
+  if (podiumConfettiCtx && podiumConfettiCanvas) {
+    podiumConfettiCtx.clearRect(0, 0, podiumConfettiCanvas.width, podiumConfettiCanvas.height);
+  }
+}
+
+function startPodiumConfetti() {
+  ensurePodiumOverlay();
+  resizePodiumConfetti();
+  podiumConfettiBurstUntil = performance.now() + 4200;
+  if (podiumConfettiFrame) return;
+
+  const pieces = Array.from({ length: 140 }, () => ({
+    x: Math.random() * (podiumConfettiCanvas?.width || window.innerWidth),
+    y: Math.random() * -(podiumConfettiCanvas?.height || window.innerHeight),
+    size: 4 + Math.random() * 8,
+    speed: 2 + Math.random() * 4,
+    drift: -1.5 + Math.random() * 3,
+    color: ["#ff5fa2", "#ffd85a", "#7dd6ff", "#ffffff", "#8df0a9"][Math.floor(Math.random() * 5)],
+    rotation: Math.random() * Math.PI,
+    spin: -0.2 + Math.random() * 0.4
+  }));
+
+  const step = (now) => {
+    if (!podiumConfettiCtx || !podiumConfettiCanvas) {
+      podiumConfettiFrame = 0;
+      return;
+    }
+    const ctx = podiumConfettiCtx;
+    const { width, height } = podiumConfettiCanvas;
+    ctx.clearRect(0, 0, width, height);
+
+    for (const piece of pieces) {
+      piece.y += piece.speed;
+      piece.x += piece.drift;
+      piece.rotation += piece.spin;
+      if (piece.y > height + 20 || piece.x < -30 || piece.x > width + 30) {
+        piece.x = Math.random() * width;
+        piece.y = -20 - Math.random() * height * 0.3;
+      }
+      ctx.save();
+      ctx.translate(piece.x, piece.y);
+      ctx.rotate(piece.rotation);
+      ctx.fillStyle = piece.color;
+      ctx.fillRect(-(piece.size / 2), -(piece.size / 2), piece.size, piece.size * 0.7);
+      ctx.restore();
+    }
+
+    if (now < podiumConfettiBurstUntil && podiumOverlay?.classList.contains("active")) {
+      podiumConfettiFrame = window.requestAnimationFrame(step);
+      return;
+    }
+    stopPodiumConfetti();
+  };
+
+  podiumConfettiFrame = window.requestAnimationFrame(step);
+}
+
 function renderScores(teams) {
   const overlay = ensureScoresOverlay();
   const grid = overlay.querySelector("#scoresGrid");
@@ -235,17 +330,74 @@ function renderScores(teams) {
   });
 }
 
-export function toggleScores(show, teams) {
+function renderPodium(teams, podiumStep = 0) {
+  const overlay = ensurePodiumOverlay();
+  const stage = overlay.querySelector("#podiumStage");
+  if (!stage) return;
+  stage.innerHTML = "";
+
+  const ranked = [...(teams || [])]
+    .sort((a, b) => {
+      const pointsDiff = (b.points ?? 0) - (a.points ?? 0);
+      if (pointsDiff !== 0) return pointsDiff;
+      return String(a.name || "Equipe").localeCompare(String(b.name || "Equipe"), "fr", { sensitivity: "base" });
+    })
+    .slice(0, 3);
+
+  const slots = [
+    { rank: 2, className: "second" },
+    { rank: 1, className: "first" },
+    { rank: 3, className: "third" }
+  ];
+  const visibleRanks = podiumStep <= 0
+    ? new Set()
+    : podiumStep === 1
+      ? new Set([3])
+      : podiumStep === 2
+        ? new Set([3, 2])
+        : new Set([3, 2, 1]);
+
+  slots.forEach((slot) => {
+    const team = visibleRanks.has(slot.rank)
+      ? ranked.find((entry, index) => index + 1 === slot.rank)
+      : null;
+    const block = document.createElement("div");
+    block.className = `podium-block ${slot.className}${team ? "" : " empty"}`;
+    block.innerHTML = `
+      <div class="podium-rank">${slot.rank}</div>
+      <div class="podium-name">${team?.name || "-"}</div>
+      <div class="podium-points">${team ? `${team.points ?? 0} PTS` : ""}</div>
+    `;
+    if (team?.color) block.style.setProperty("--podium-accent", team.color);
+    stage.appendChild(block);
+  });
+
+  if (podiumStep >= 3 && podiumLastCelebratedStep < 3) {
+    startPodiumConfetti();
+  } else if (podiumStep < 3) {
+    stopPodiumConfetti();
+  }
+  podiumLastCelebratedStep = podiumStep;
+}
+
+export function toggleScores(show, teams, mode = "scores", podiumStep = 0) {
   const overlay = ensureScoresOverlay();
+  const podium = ensurePodiumOverlay();
   renderScores(teams);
+  renderPodium(teams, podiumStep);
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   if (show) {
-    overlay.classList.add("active");
+    overlay.classList.toggle("active", mode !== "podium");
+    podium.classList.toggle("active", mode === "podium");
     gridEl.style.display = "none";
     defBar?.classList.add("hidden");
   } else {
     overlay.classList.remove("active");
+    podium.classList.remove("active");
+    stopPodiumConfetti();
+    podiumLastCelebratedStep = -1;
     gridEl.style.display = "";
+    defBar?.classList.remove("hidden");
   }
 }
 
@@ -545,6 +697,9 @@ export function hideAllMedia() {
     if (img) img.style.opacity = "1";
   }
   if (scoresOverlay) scoresOverlay.classList.remove("active");
+  if (podiumOverlay) podiumOverlay.classList.remove("active");
+  stopPodiumConfetti();
+  podiumLastCelebratedStep = -1;
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
