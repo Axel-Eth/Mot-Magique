@@ -2166,13 +2166,15 @@ body.plateau .films-title{
 }
 
 body.plateau .films-emoji{
-  font-size:.26em;
-  padding:.35em .7em;
-  border-radius:999px;
-  letter-spacing:.12em;
-  color:#ffe6a8;
-  background: rgba(0,0,0,.24);
-  text-shadow:none;
+  font-size:1em;
+  padding:0;
+  border-radius:0;
+  letter-spacing:0;
+  color:inherit;
+  background: transparent;
+  text-shadow:
+    6px 6px 0 rgba(255,255,255,.8),
+    0 0 25px rgba(255,255,255,.2);
   transform: translateY(-8%);
 }
 

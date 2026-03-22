@@ -215,7 +215,7 @@ function ensureFilmsOverlay() {
       <div class="films-strip"></div>
     </div>
     <div class="films-flash"></div>
-    <div class="films-title">EXTRAIT <span class="films-emoji">Projection</span></div>
+    <div class="films-title">EXTRAIT <span class="films-emoji" aria-hidden="true">📽️</span></div>
     <div class="films-vignette"></div>
   `;
   document.body.appendChild(overlay);
