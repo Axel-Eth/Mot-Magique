@@ -1,0 +1,410 @@
+{                     
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",       
+  "difficulté": "4 / 5",
+  "version": 8,
+  "mise-à-jour": "2025-02-11",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Tourisme",
+      "nom": "Bruxelles ma belle",
+      "slogan": "Capitale de l'Europe"
+    },
+    "en": {
+      "catégorie": "Tourism",
+      "nom": "Brussels",
+      "slogan": "Capital of Europe"
+    },
+    "es": {
+      "catégorie": "Turismo",
+      "nom": "Bruselas",
+      "slogan": "Capital de Europa"
+    },
+    "it": {
+      "catégorie": "Turismo",
+      "nom": "Bruxelles",
+      "slogan": "Capitale d'Europa"
+    },
+    "de": {
+      "catégorie": "Tourismus",
+      "nom": "Brüssel",
+      "slogan": "Hauptstadt Europas"
+    },
+    "nl": {
+      "catégorie": "Toerisme",
+      "nom": "Brussel",
+      "slogan": "Hoofdstad van Europa"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+      {
+        "id": 1,
+        "question": "Bruxelles est la capitale de la Communauté française et flamande de quel pays ?",
+        "propositions": [
+          "Belgique",
+          "Pays-Bas",
+          "Luxembourg",
+          "Suisse"
+        ],
+        "réponse": "Belgique",
+        "anecdote": "Surnommée la « Capitale de l'Europe », elle accueille le Parlement européen, la Commission européenne et d'autres institutions. "
+      },
+      {
+        "id": 2,
+        "question": "Laquelle des trois régions de Belgique la ville de Bruxelles compose-t-elle ?",
+        "propositions": [
+          "Limbourg",
+          "Bruxelles-Capitale",
+          "Région flamande",
+          "Région wallonne"
+        ],
+        "réponse": "Bruxelles-Capitale",
+        "anecdote": "La ville est une entité propre, formant à elle seule la Région de Bruxelles-Capitale, qui compte 19 communes, dont Anderlecht."
+      },
+      {
+        "id": 3,
+        "question": "À quel endroit du territoire belge est à peu près située la ville de Bruxelles ?",
+        "propositions": [
+          "Nord",
+          "Sud",
+          "Ouest",
+          "Centre"
+        ],
+        "réponse": "Centre",
+        "anecdote": "C'est à Bruxelles-Capitale que siègent la plupart des institutions de l'UE, ainsi que de nombreuses organisations internationales."
+      },
+      {
+        "id": 4,
+        "question": "Par quelle ceinture autoroutière la banlieue de Bruxelles est-elle délimitée ?",
+        "propositions": [
+          "A1",
+          "A17",
+          "Ring",
+          "A601"
+        ],
+        "réponse": "Ring",
+        "anecdote": "Un des premiers tronçons du Ring a été construit à la fin des années 1960 en tant que morceau de l'autoroute Bruxelles-Paris."
+      },
+      {
+        "id": 5,
+        "question": "Quel gratte-ciel situé à Bruxelles est le plus grand de Belgique ?",
+        "propositions": [
+          "Tour Astro",
+          "Tour des Finances",
+          "Tour du Midi",
+          "Tour Rogier"
+        ],
+        "réponse": "Tour du Midi",
+        "anecdote": "Haute de 150 m, la Tour du Midi, qu'il ne faut pas confondre avec la Tour des Finances, se trouve en face de la gare du Midi."
+      },
+      {
+        "id": 6,
+        "question": "Quel bâtiment emblématique est le siège de la Commission européenne de Bruxelles ?",
+        "propositions": [
+          "Berlaymont",
+          "Stoclet",
+          "Solvay",
+          "Castellani"
+        ],
+        "réponse": "Berlaymont",
+        "anecdote": "Le Berlaymont a failli être détruit lors des travaux de désamiantage, mais une rénovation longue et coûteuse a permis de le préserver."
+      },
+      {
+        "id": 7,
+        "question": "Quelle est la principale langue parlée à Bruxelles, ville cosmopolite de Belgique ?",
+        "propositions": [
+          "Allemand",
+          "Néerlandais",
+          "Espagnol",
+          "Français"
+        ],
+        "réponse": "Français",
+        "anecdote": "Le néerlandais reste langue officielle et est enseigné à l'école, mais dans les faits, seuls environ 10% des Bruxellois l'utilisent."
+      },
+      {
+        "id": 8,
+        "question": "Quelle est la principale université francophone de la capitale belge ?",
+        "propositions": [
+          "ULG",
+          "UCL",
+          "USL",
+          "ULB"
+        ],
+        "réponse": "ULB",
+        "anecdote": "Fondée en 1834, l'Université libre de Bruxelles est régulièrement citée comme faisant partie des 150 meilleures universités mondiales."
+      },
+      {
+        "id": 9,
+        "question": "Quel train, inspiré du TGV, assure la liaison entre Bruxelles, Paris et Amsterdam ?",
+        "propositions": [
+          "Eurostar",
+          "Iris",
+          "Thalys",
+          "Elipsos"
+        ],
+        "réponse": "Thalys",
+        "anecdote": "Les rames du Thalys sont basées sur la technologie du TGV français mais adaptées aux différents réseaux électriques européens."
+      },
+      {
+        "id": 10,
+        "question": "En combien de communes la région de Bruxelles-Capitale est-elle divisée ?",
+        "propositions": [
+          "28",
+          "25",
+          "22",
+          "19"
+        ],
+        "réponse": "19",
+        "anecdote": "La ville de Bruxelles, la plus vaste d'entre elles, s'étend du centre au nord de l'agglomération et est entourée par les 18 autres."
+      }
+    ],
+    "confirmé": [
+      {
+        "id": 11,
+        "question": "Quel est le climat de la région de Bruxelles comme de l'ensemble de la Belgique ?",
+        "propositions": [
+          "Tropical humide",
+          "Polaire",
+          "Subarctique",
+          "Tempéré océanique"
+        ],
+        "réponse": "Tempéré océanique",
+        "anecdote": "Ce climat est dû à la proximité de l'océan Atlantique et du Gulf Stream qui régule le temps grâce à l'inertie calorifique de ses eaux."
+      },
+      {
+        "id": 12,
+        "question": "Combien observe-t-on environ de jours de précipitations par an sur Bruxelles ?",
+        "propositions": [
+          "50",
+          "200",
+          "150",
+          "100"
+        ],
+        "réponse": "200",
+        "anecdote": "En Belgique, les régions côtières sont généralement un peu plus sèches, tandis que les Ardennes sont encore bien plus arrosées."
+      },
+      {
+        "id": 13,
+        "question": "Quel quartier de Bruxelles renferme le Palais royal, le Palais de la Nation et la place Royale ?",
+        "propositions": [
+          "Marolles",
+          "Midi-Lemonnier",
+          "Quartier des Palais",
+          "Sablon"
+        ],
+        "réponse": "Quartier des Palais",
+        "anecdote": "En contrebas se situe la gare centrale et le Mont des Arts où se trouvent la Bibliothèque et la Cinémathèque royale de Belgique."
+      },
+      {
+        "id": 14,
+        "question": "Quel est le plus grand quartier d'affaires de Bruxelles et de Belgique ?",
+        "propositions": [
+          "Diamant",
+          "Saint-Job",
+          "Helmet",
+          "Léopold"
+        ],
+        "réponse": "Léopold",
+        "anecdote": "Aujourd'hui, les bâtiments administratifs ont remplacé la majorité des hôtels de maître et des maisons bourgeoises du quartier."
+      },
+      {
+        "id": 15,
+        "question": "À Bruxelles, le bois de la Cambre est une extension de quelle grande forêt historique ?",
+        "propositions": [
+          "Forêt de Brotonne",
+          "Forêt de Retz",
+          "Forêt de Soignes",
+          "Forêt de Chaux"
+        ],
+        "réponse": "Forêt de Soignes",
+        "anecdote": "Aujourd'hui, la forêt de Soignes est un espace protégé classé au patrimoine mondial de l'UNESCO pour ses hêtres remarquables."
+      },
+      {
+        "id": 16,
+        "question": "Quelle est l'estimation du nombre d'étudiants dans la région de Bruxelles-Capitale ?",
+        "propositions": [
+          "80 000",
+          "60 000",
+          "40 000",
+          "100 000"
+        ],
+        "réponse": "100 000",
+        "anecdote": "Bruxelles compte plus de 30 établissements d'enseignement supérieur : universités, écoles d'art et aux hautes écoles."
+      },
+      {
+        "id": 17,
+        "question": "Quel train, majoritairement détenu par la SNCF, relie Bruxelles à Londres ?",
+        "propositions": [
+          "Eurostar",
+          "Vauban",
+          "Alleo",
+          "Thalys"
+        ],
+        "réponse": "Eurostar",
+        "anecdote": "Composée de dix-huit voitures et de deux motrices, chaque rame mesure 393 m de long et peut transporter jusqu'à 750 passagers."
+      },
+      {
+        "id": 18,
+        "question": "Quel axe routier bruxellois comprend huit tunnels et plusieurs voies rapides ?",
+        "propositions": [
+          "Grand ring",
+          "Petit noeud",
+          "Petite ceinture",
+          "Grande boucle"
+        ],
+        "réponse": "Petite ceinture",
+        "anecdote": "Faisant partie de la ceinture autoroutière, son nom fait référence à une ancienne ligne de chemin de fer qui ceinturait Bruxelles."
+      },
+      {
+        "id": 19,
+        "question": "Comment est couramment nommé l'aéroport de Bruxelles-National ?",
+        "propositions": [
+          "Zottegem",
+          "Zandhoven",
+          "Zwevegem",
+          "Zaventem"
+        ],
+        "réponse": "Zaventem",
+        "anecdote": "Le nom Brussels Airport a été adopté en 2006 pour renforcer l'image internationale, le nom Aéroport de Zaventem restant très utilisé."
+      },
+      {
+        "id": 20,
+        "question": "Quelle est la troisième plus grande salle de concert de Bruxelles, en banlieue sud ?",
+        "propositions": [
+          "Cirque Royal",
+          "Forest National",
+          "Tour et Taxis",
+          "Le Botanique"
+        ],
+        "réponse": "Forest National",
+        "anecdote": "Située sur la commune bruxelloise de Forest, elle est inaugurée au début de 1971 par des représentations du Ballet du XXe siècle."
+      }
+    ],
+    "expert": [
+      {
+        "id": 21,
+        "question": "Combien d'habitants pouvait-on compter environ à Bruxelles au 1er janvier 2015 ?",
+        "propositions": [
+          "157 000",
+          "137 000",
+          "197 000",
+          "177 000"
+        ],
+        "réponse": "177 000",
+        "anecdote": "À l'époque, un projet de création d'une zone dont la population et les limites devaient être définies avec précision était en cours."
+      },
+      {
+        "id": 22,
+        "question": "Comment est appelé le coeur historique et géographique de la ville de Bruxelles ?",
+        "propositions": [
+          "Pentagone",
+          "Dodécagone",
+          "Hexagone",
+          "Octogone"
+        ],
+        "réponse": "Pentagone",
+        "anecdote": "Équivalent du City road londonien, le Pentagone est un endroit où la culture bruxelloise prend vie, avec ses commerçants et musées."
+      },
+      {
+        "id": 23,
+        "question": "Combien d'hectares d'espaces verts recouvrent la Région Bruxelles-Capitale ?",
+        "propositions": [
+          "8 000",
+          "2 000",
+          "4 000",
+          "6 000"
+        ],
+        "réponse": "8 000",
+        "anecdote": "« Bruxelles, ville verte » développe davantage de zones de verdure, via des toitures végétalisées et des jardins communautaires."
+      },
+      {
+        "id": 24,
+        "question": "En quelle année la ville de Bruxelles a-t-elle fêté son millénaire officiel ?",
+        "propositions": [
+          "1999",
+          "1959",
+          "1979",
+          "1939"
+        ],
+        "réponse": "1979",
+        "anecdote": "Habitée dès l'Antiquité, c'est au Moyen Âge, à partir de 979, que la ville commença à prendre forme en tant que centre urbain majeur."
+      },
+      {
+        "id": 25,
+        "question": "Avec quelle autre ville Bruxelles compte-t-elle le plus de journalistes accrédités ?",
+        "propositions": [
+          "Washington",
+          "Madrid",
+          "Marseille",
+          "Dublin"
+        ],
+        "réponse": "Washington",
+        "anecdote": "Washington a été créée à la suite de la signature du Residence Act en 1790, qui prévoyait la création d'une capitale fédérale."
+      },
+      {
+        "id": 26,
+        "question": "Quel édifice bruxellois est considéré comme référence de l'architecture éclectique ?",
+        "propositions": [
+          "Café Métropole",
+          "Maison Horta",
+          "Palais de Justice",
+          "Villa Empain"
+        ],
+        "réponse": "Palais de Justice",
+        "anecdote": "Avec sa façade, ses colonnes et son dôme majestueux, le Palais de Justice est l'un des plus grands bâtiments judiciaires au monde."
+      },
+      {
+        "id": 27,
+        "question": "Quel style architectural bruxellois est l'oeuvre de Victor Horta et Henry Van de Velde ?",
+        "propositions": [
+          "Art nouveau",
+          "Art baroque",
+          "Art déco",
+          "Art moderne"
+        ],
+        "réponse": "Art nouveau",
+        "anecdote": "Avant la Première Guerre mondiale, ce mouvement évolua vers un style plus géométrique, caractéristique du mouvement Art déco."
+      },
+      {
+        "id": 28,
+        "question": "À combien de kilomètres s'étend le réseau d'égouts de la ville de Bruxelles ?",
+        "propositions": [
+          "3 000",
+          "1 500",
+          "2 500",
+          "2 000"
+        ],
+        "réponse": "1 500",
+        "anecdote": "Il fait l'objet d'un plan d'assainissement et même de renouvellement des parties les plus anciennes remontant à plus d'un siècle."
+      },
+      {
+        "id": 29,
+        "question": "Quel théâtre bruxellois est très caractéristique de l'architecture des années 1960 ?",
+        "propositions": [
+          "Théâtre 140",
+          "Théâtre Varia",
+          "Théâtre Mercelis",
+          "Théâtre du Méridien"
+        ],
+        "réponse": "Théâtre 140",
+        "anecdote": "Il se distingue par sa programmation originale et son rôle de laboratoire pour des oeuvres contemporaines et expérimentales."
+      },
+      {
+        "id": 30,
+        "question": "Quel célèbre musée bruxellois est logé dans l'Hôtel du Lotto ?",
+        "propositions": [
+          "Musée du jouet",
+          "Musée Magritte",
+          "Musée BELvue",
+          "Musée du cinéma"
+        ],
+        "réponse": "Musée Magritte",
+        "anecdote": "Au cours des siècles, les propriétaires se sont succédés pour transformer le bâtiment en hôtel, en bijouterie et enfin en musée."
+      }
+    ]
+    }
+  }
+}

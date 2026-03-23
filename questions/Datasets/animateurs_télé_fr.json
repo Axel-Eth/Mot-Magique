@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 1,
+  "mise-à-jour": "2021-03-21",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Télévision",
+      "nom": "Animateurs télé",
+      "slogan": "Stars du petit écran"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Qui fut la présentatrice du journal de 20 heures sur TF1 de 2008 à 2012 ?",
+          "propositions": [
+            "Laurence Ferrari",
+            "Florence Schaal",
+            "Anne-Sophie Lapix",
+            "Béatrice Schönberg"
+          ],
+          "réponse": "Laurence Ferrari",
+          "anecdote": "Laurence Ferrari entend désormais « dépoussiérer l'actualité » en traitant toutes sortes de sujets."
+        },
+        {
+          "id": 2,
+          "question": "Qui a remplacé Claude Sérillon au journal de 20 heures de France 2 ?",
+          "propositions": [
+            "Daniel Bilalian",
+            "David Pujadas",
+            "Bruno Masure",
+            "Paul Amar"
+          ],
+          "réponse": "David Pujadas",
+          "anecdote": "David Pujadas a remporté en 2007 le prix Roland-Dorgelès pour son « attachement à la qualité de la langue française »."
+        },
+        {
+          "id": 3,
+          "question": "Qui a animé chaque jour « C à vous » sur France 5 de 2009 à 2013 ?",
+          "propositions": [
+            "Sonia Dubois",
+            "Valérie Bénaïm",
+            "Karine Ferri",
+            "Alessandra Sublet"
+          ],
+          "réponse": "Alessandra Sublet",
+          "anecdote": "Alessandra Sublet est la fille de Joël Sublet, ancien footballeur de l'Olympique lyonnais ayant joué dans les années 1970."
+        },
+        {
+          "id": 4,
+          "question": "Quel animateur de télévision a présenté huit saisons de « Secret Story » ?",
+          "propositions": [
+            "Benjamin Castaldi",
+            "Marc-Olivier Fogiel",
+            "Cyril Hanouna",
+            "Denis Brogniart"
+          ],
+          "réponse": "Benjamin Castaldi",
+          "anecdote": "Benjamin Castaldi est le fils de Jean-Pierre Castaldi et Catherine Allégret mais aussi le petit-fils de l'actrice Simone Signoret."
+        },
+        {
+          "id": 5,
+          "question": "Qui a co-animé de 2011 à 2018 une émission télé aux côtés de Nicolas Canteloup ?",
+          "propositions": [
+            "Nikos Aliagas",
+            "Julien Courbet",
+            "Vincent Lagaf'",
+            "Sébastien Cauet"
+          ],
+          "réponse": "Nikos Aliagas",
+          "anecdote": "En avril 2011, Nikos a doublé un personnage (Flamenco) dans le film « Rio » aux côtés de Karine Ferri et Nicolas Richaud."
+        },
+        {
+          "id": 6,
+          "question": "Qui a succédé à Michel Denisot à la présentation du « Grand Journal » sur Canal+ ?",
+          "propositions": [
+            "Jérôme Bonaldi",
+            "Philippe Gildas",
+            "Antoine de Caunes",
+            "Philippe Risoli"
+          ],
+          "réponse": "Antoine de Caunes",
+          "anecdote": "Antoine de Caunes est l'auteur-compositeur, sous le pseudonyme de Paul Persavon, de génériques d'émissions pour enfants."
+        },
+        {
+          "id": 7,
+          "question": "Quel présentateur de télévision est un fin spécialiste des familles royales ?",
+          "propositions": [
+            "Denis Brogniart",
+            "Stéphane Bern",
+            "Michel Drucker",
+            "Gérard Holtz"
+          ],
+          "réponse": "Stéphane Bern",
+          "anecdote": "Stéphane Bern a fait son coming out dans le magazine « Têtu » en octobre 2009, puis chez Mireille Dumas la même année."
+        },
+        {
+          "id": 8,
+          "question": "Quel animateur télé est incontestablement associé à « Koh-Lanta » ?",
+          "propositions": [
+            "Denis Brogniart",
+            "Nikos Aliagas",
+            "Sébastien Cauet",
+            "Jean-Pierre Foucault"
+          ],
+          "réponse": "Denis Brogniart",
+          "anecdote": "Marié en 2007, Denis Brogniart a quatre enfants (nés entre 2000 et 2007) dont trois avec son épouse Hortense."
+        },
+        {
+          "id": 9,
+          "question": "Qui a présenté jusque 2018 le « Grand Concours des Animateurs » chaque année sur TF1 ?",
+          "propositions": [
+            "Sophie Favier",
+            "Alexandra Kazan",
+            "Carole Rousseau",
+            "Nathalie Simon"
+          ],
+          "réponse": "Carole Rousseau",
+          "anecdote": "Carole Rousseau a également présenté « Scrupules » ainsi que les trois premières saisons de l'émission « MasterChef »."
+        },
+        {
+          "id": 10,
+          "question": "Quel animateur télé vous proposait autrefois de le retrouver sur les « Champs-Élysées » ?",
+          "propositions": [
+            "Alexandre Devoise",
+            "Michel Denisot",
+            "Guillaume Durand",
+            "Michel Drucker"
+          ],
+          "réponse": "Michel Drucker",
+          "anecdote": "Michel Drucker produit aux côtés de Françoise Coquet ses émissions depuis 1984 avec DMD Productions."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel animateur télé aujourd'hui disparu a très vite été surnommé l'homme à l'oreillette ?",
+          "propositions": [
+            "Jean-Luc Delarue",
+            "Philippe Gildas",
+            "Benjamin Castaldi",
+            "Antoine de Caunes"
+          ],
+          "réponse": "Jean-Luc Delarue",
+          "anecdote": "Jean-Luc Delarue a été confronté à différentes difficultés d'ordre judiciaire avec Réservoir Prod ainsi qu'à titre personnel."
+        },
+        {
+          "id": 12,
+          "question": "Qui a le premier animé « La revue de presse » dans « Salut les Terriens » ?",
+          "propositions": [
+            "Antoine de Caunes",
+            "Laurent Baffie",
+            "Stéphane Guillon",
+            "Gaspard Proust"
+          ],
+          "réponse": "Stéphane Guillon",
+          "anecdote": "Dans l'émission « 20h10 pétantes », Stéphane Guillon a parfois été confronté à la colère, à l'hostilité, voire le mépris de certains invités."
+        },
+        {
+          "id": 13,
+          "question": "Laquelle de ces journalistes a été chroniqueuse télé auprès de Laurent Ruquier ?",
+          "propositions": [
+            "Virginie Mouzat",
+            "Natacha Polony",
+            "Anne Fulda",
+            "Élisabeth Quin"
+          ],
+          "réponse": "Natacha Polony",
+          "anecdote": "Le 19 mars 2015, Natacha Polony a reçu le prix du Livre incorrect 2015 pour son livre « Ce pays qu'on abat »."
+        },
+        {
+          "id": 14,
+          "question": "En télévision, quel polémiste et essayiste est souvent associé à Éric Naulleau ?",
+          "propositions": [
+            "Jean Dutourd",
+            "Maurice Joly",
+            "Éric Zemmour",
+            "Christophe Barbier"
+          ],
+          "réponse": "Éric Zemmour",
+          "anecdote": "Après avoir écrit plusieurs biographies d'hommes politiques, Éric Zemmour s'est tourné en 2006-2007 vers les sujets sociétaux."
+        },
+        {
+          "id": 15,
+          "question": "Lequel de ces animateurs a co-produit de nombreuses émissions avec Catherine Barma ?",
+          "propositions": [
+            "Pierre Bellemare",
+            "Bruno Gaccio",
+            "Thierry Ardisson",
+            "Olivier Chiabodo"
+          ],
+          "réponse": "Thierry Ardisson",
+          "anecdote": "En 2005, Thierry Ardisson crée la société Ardimages dans le but de produire des longs-métrages et des séries pour la télévision."
+        },
+        {
+          "id": 16,
+          "question": "Quel animateur télé reste connu pour ses démonstrations presque toujours défaillantes ?",
+          "propositions": [
+            "Laurent Baffie",
+            "Stéphane Guillon",
+            "Patrice Carmouze",
+            "Antoine de Caunes"
+          ],
+          "réponse": "Patrice Carmouze",
+          "anecdote": "Après une jeunesse passée à Limoges, Patrice Carmouze y obtiendra une licence de lettres et une maîtrise de droit."
+        },
+        {
+          "id": 17,
+          "question": "Qui faisait chanter les jeunes enfants à la télévision le dimanche après-midi ?",
+          "propositions": [
+            "Jacques Martin",
+            "Thierry Beccaro",
+            "Bruno Masure",
+            "Alain Chabat"
+          ],
+          "réponse": "Jacques Martin",
+          "anecdote": "Fin cuisinier, Jacques Martin était le petit-fils de Joannès Ducerf, chef de cuisine du tsar Nicolas II de Russie."
+        },
+        {
+          "id": 18,
+          "question": "Quel homme de télé est réputé pour son sens de la répartie et son humour grinçant ?",
+          "propositions": [
+            "Laurent Baffie",
+            "Gérard Holtz",
+            "Michel Drucker",
+            "Stéphane Bern"
+          ],
+          "réponse": "Laurent Baffie",
+          "anecdote": "En 2003, Laurent Baffie réalise son premier long métrage, « Les Clefs de bagnole », dans lequel il partage la vedette avec Daniel Russo."
+        },
+        {
+          "id": 19,
+          "question": "Qui dirige depuis 2003 les candidats de « Fort Boyard » sur France 2 ?",
+          "propositions": [
+            "Olivier Minne",
+            "Frédéric Lopez",
+            "Michel Field",
+            "Florian Gazan"
+          ],
+          "réponse": "Olivier Minne",
+          "anecdote": "Olivier Minne a fait des apparitions dans la série « Un gars, une fille », incarnant alors un des copains de Jean."
+        },
+        {
+          "id": 20,
+          "question": "Quel animateur de télévision vous interdit de toucher à son poste ?",
+          "propositions": [
+            "Vincent Perrot",
+            "Pascal Sevran",
+            "Léon Zitrone",
+            "Cyril Hanouna"
+          ],
+          "réponse": "Cyril Hanouna",
+          "anecdote": "Le 7 juin 2013, Cyril Hanouna a remporté pour la première fois le tournoi des personnalités de Roland-Garros."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quel était le salaire mensuel de Julien Lepers pour « Questions pour un champion » ?",
+          "propositions": [
+            "47 000 euros",
+            "13 000 euros",
+            "39 000 euros",
+            "26 000 euros"
+          ],
+          "réponse": "39 000 euros",
+          "anecdote": "Julien Lepers est également chef d'entreprise via sa société Guilor, spécialisée en conseil pour les affaires et la gestion."
+        },
+        {
+          "id": 22,
+          "question": "Quel animateur de télévision a toujours affirmé avoir Patrick Sabatier comme idole absolue ?",
+          "propositions": [
+            "Thomas Hugues",
+            "Guy Lux",
+            "Marc-Olivier Fogiel",
+            "Bernard Montiel"
+          ],
+          "réponse": "Marc-Olivier Fogiel",
+          "anecdote": "Parfois surnommé le « pitbull du PAF », Marc-Olivier Fogiel se distingue en interviews par un style agressif et cassant."
+        },
+        {
+          "id": 23,
+          "question": "Quelle animatrice télé a affirmé que la quête de vérité était sa première motivation ?",
+          "propositions": [
+            "Audrey Pulvar",
+            "Marie Drucker",
+            "Christine Ockrent",
+            "Élise Lucet"
+          ],
+          "réponse": "Élise Lucet",
+          "anecdote": "Elle qualifie son émission comme un grain de sable qui empêche la machine de tourner et donc réveille les consciences."
+        },
+        {
+          "id": 24,
+          "question": "À quel animateur doit-on la célèbre phrase : « Vive le sport sur France 2 » ?",
+          "propositions": [
+            "Gérard Holtz",
+            "Jean-Luc Lemoine",
+            "Georges Lang",
+            "Laurent Mariotte"
+          ],
+          "réponse": "Gérard Holtz",
+          "anecdote": "Gérard Holtz a présenté le journal de 13 heures de France 2 entre septembre 2000 et juillet 2001."
+        },
+        {
+          "id": 25,
+          "question": "Quel chroniqueur du Canal Football Club est parfois accompagné d'Hervé Mathoux ?",
+          "propositions": [
+            "Laurent Bazin",
+            "Pierre Ménès",
+            "Christian Ollivier",
+            "Vincent Perrot"
+          ],
+          "réponse": "Pierre Ménès",
+          "anecdote": "Du fait de son rôle de polémiste, Pierre Ménès est entré à plusieurs reprises en conflit avec différents acteurs du football."
+        },
+        {
+          "id": 26,
+          "question": "Quel animateur de télévision est surnommé le Prince polonais par William Leymergie ?",
+          "propositions": [
+            "Laurent Romejko",
+            "Bruce Toussaint",
+            "Stéphane Plaza",
+            "Ariel Wizman"
+          ],
+          "réponse": "Laurent Romejko",
+          "anecdote": "En 2000, il participe au lancement de la chaîne Santé Vie et présente un journal destiné aux professionnels de la santé."
+        },
+        {
+          "id": 27,
+          "question": "Quel est le nom de la société de production de Julien Courbet ?",
+          "propositions": [
+            "Réservoir Prod",
+            "Coyote",
+            "La Concepteria",
+            "Atlantic"
+          ],
+          "réponse": "La Concepteria",
+          "anecdote": "Julien Courbet est un cavalier émérite qui concourt sous son véritable nom (Frédéric Courbet)."
+        },
+        {
+          "id": 28,
+          "question": "Qui fut le premier à animer en studio « La Chasse aux trésors » sur Antenne 2 en 1981 ?",
+          "propositions": [
+            "Didier Lecat",
+            "Bruce Toussaint",
+            "Jean Lanzi",
+            "Philippe Gildas"
+          ],
+          "réponse": "Philippe Gildas",
+          "anecdote": "Philippe Gildas a publié son autobiographie « Comment réussir à la télévision quand on est petit, breton, avec de grandes oreilles »."
+        },
+        {
+          "id": 29,
+          "question": "Quel animateur de télévision a chanté « Cuitas les bananas » ?",
+          "propositions": [
+            "Thierry Beccaro",
+            "Pascal Brunner",
+            "Sébastien Cauet",
+            "Philippe Risoli"
+          ],
+          "réponse": "Philippe Risoli",
+          "anecdote": "Philippe Risoli a fait son grand retour à la télévision sur la chaîne Gulli en 2009 en y présentant « L'École des fans »."
+        },
+        {
+          "id": 30,
+          "question": "Quel animateur produit des émissions de télé grâce à sa société Coyote ?",
+          "propositions": [
+            "V. Perrot",
+            "Th. Ardisson",
+            "Ch. Dechavanne",
+            "O. Minne"
+          ],
+          "réponse": "Ch. Dechavanne",
+          "anecdote": "Christophe Dechavanne figure parmi les premières personnalités à avoir proposé le préservatif à un franc."
+        }
+      ]
+    }
+  }
+}
