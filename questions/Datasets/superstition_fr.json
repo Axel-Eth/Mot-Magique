@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Catherine De Smeytere",
+  "difficulté": "2 / 5",
+  "version": 5,
+  "mise-à-jour": "2023-12-02",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Culture générale",
+      "nom": "Superstitions",
+      "slogan": "Croyances sur un fond de vérité"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Briser un miroir peut vous apporter combien d'années de malheur ?",
+          "propositions": [
+            "Dix",
+            "Vingt",
+            "Cinq",
+            "Sept"
+          ],
+          "réponse": "Sept",
+          "anecdote": "Dans l'Antiquité, certains peuples y voyaient le reflet de l'âme, briser un miroir revenait donc à détruire l'âme de son propriétaire."
+        },
+        {
+          "id": 2,
+          "question": "Quelle couleur est proscrite pour un vêtement lors d'un spectacle ?",
+          "propositions": [
+            "Rouge",
+            "Orange",
+            "Verte",
+            "Jaune"
+          ],
+          "réponse": "Verte",
+          "anecdote": "La légende raconte que Molière est mort peu après la représentation du « Malade Imaginaire », alors vêtu d'un costume vert."
+        },
+        {
+          "id": 3,
+          "question": "Quel nombre est à la base de nombreuses superstitions ?",
+          "propositions": [
+            "13",
+            "101",
+            "666",
+            "27"
+          ],
+          "réponse": "13",
+          "anecdote": "La superstition du vendredi 13 est parfois reliée au vendredi 13 octobre 1307, date où le roi Philippe le Bel fit tuer des citoyens."
+        },
+        {
+          "id": 4,
+          "question": "Où ne faut-il pas passer en croisant une échelle sur un trottoir ?",
+          "propositions": [
+            "Dessus",
+            "Dessous",
+            "À gauche",
+            "À droite"
+          ],
+          "réponse": "Dessous",
+          "anecdote": "Passer sous une échelle reviendrait à briser la Sainte Trinité et à commettre un sacrilège. Cela relève aussi de la simple prudence."
+        },
+        {
+          "id": 5,
+          "question": "Quelle est la couleur du chat qui peut vous amener mauvais présage ?",
+          "propositions": [
+            "Noire",
+            "Blanc",
+            "Roux",
+            "Gris"
+          ],
+          "réponse": "Noire",
+          "anecdote": "Cette croyance bien incrustée date du Moyen-Âge, où les chats noirs étaient représentés comme compagnons des sorcières."
+        },
+        {
+          "id": 6,
+          "question": "Sur quoi faut-il marcher du pied gauche pour favoriser la chance ?",
+          "propositions": [
+            "Chewing-gum",
+            "Caillou",
+            "Fourmi",
+            "Crotte"
+          ],
+          "réponse": "Crotte",
+          "anecdote": "Se promener en rue et marcher sur une crotte de chien n'est jamais agréable, mais du pied gauche, la chance sera au coin de la rue."
+        },
+        {
+          "id": 7,
+          "question": "Que faut-il accrocher au-dessus d'une porte d'entrée pour porter bonheur ?",
+          "propositions": [
+            "Fleurs séchées",
+            "Fer à cheval",
+            "Cadre photo",
+            "Horloge"
+          ],
+          "réponse": "Fer à cheval",
+          "anecdote": "Cette vertu légendaire viendrait du fait qu'un fer à cheval égaré et revendu au forgeron permettait d'en récolter quelques espèces."
+        },
+        {
+          "id": 8,
+          "question": "Quel objet, une fois jeté dans une fontaine, porterait bonheur ?",
+          "propositions": [
+            "Pièce de monnaie",
+            "Clé de maison",
+            "Caillou blanc",
+            "Chaussure"
+          ],
+          "réponse": "Pièce de monnaie",
+          "anecdote": "Une fontaine est d'abord le lieu d'une source, d'une eau vive qui sort de terre, selon le premier dictionnaire de l'Académie française."
+        },
+        {
+          "id": 9,
+          "question": "Quelle plante protégerait contre les esprits maléfiques et les vampires ?",
+          "propositions": [
+            "Ail",
+            "Céleri",
+            "Origan",
+            "Estragon"
+          ],
+          "réponse": "Ail",
+          "anecdote": "Une superstition persistante a investi l'ail de puissants pouvoirs, en particulier celui de chasser les mauvais esprits de la maison."
+        },
+        {
+          "id": 10,
+          "question": "Que ne faut-il pas ouvrir à l'intérieur de sa maison ?",
+          "propositions": [
+            "Parapluie",
+            "Tenture",
+            "Fenêtre",
+            "Coffre à bijoux"
+          ],
+          "réponse": "Parapluie",
+          "anecdote": "Le mécanisme d'ouverture des parapluies à armature métallique était dangereux et pouvait blesser quelqu'un ou abîmer un objet."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel aliment, posé à l'envers sur une table, porterait malheur ?",
+          "propositions": [
+            "Tomate",
+            "Aubergine",
+            "Poivron",
+            "Pain"
+          ],
+          "réponse": "Pain",
+          "anecdote": "Les boulangers avaient pour habitude de réserver une miche de pain pour le bourreau, celle-ci étant souvent posée à l'envers."
+        },
+        {
+          "id": 12,
+          "question": "Quel matériau faut-il toucher pour conjurer le mauvais sort ?",
+          "propositions": [
+            "Bois",
+            "Marbre",
+            "Cuivre",
+            "Plomb"
+          ],
+          "réponse": "Bois",
+          "anecdote": "Le bois représenterait la Croix du Christ, et donc toucher du bois reviendrait à formuler une prière, un appel pour éviter le malheur."
+        },
+        {
+          "id": 13,
+          "question": "La patte de quel animal retrouve-t-on par superstition sur certains porte-clés ?",
+          "propositions": [
+            "Chameau",
+            "Chien",
+            "Brebis",
+            "Lapin"
+          ],
+          "réponse": "Lapin",
+          "anecdote": "La patte de lapin, partie non consommée qui sèche et se conserve facilement, a été employée comme talisman par diverses cultures."
+        },
+        {
+          "id": 14,
+          "question": "Quel mot utilise-t-on parfois au lieu de l'expression « bonne chance » ?",
+          "propositions": [
+            "Merde",
+            "Étron",
+            "Crotte",
+            "Bouse"
+          ],
+          "réponse": "Merde",
+          "anecdote": "Son origine remonte au théâtre français, où les acteurs utilisaient l'expression avant une représentation pour conjurer le mauvais sort."
+        },
+        {
+          "id": 15,
+          "question": "Qu'est-il préférable de voir dans le ciel avant de faire un voeu ?",
+          "propositions": [
+            "Soleil",
+            "Lune",
+            "Étoile filante",
+            "Étoile polaire"
+          ],
+          "réponse": "Étoile filante",
+          "anecdote": "Une étoile filante est un petit corps circulant dans l'espace à une vitesse pouvant atteindre 42 km/s dans un référentiel lié au Soleil."
+        },
+        {
+          "id": 16,
+          "question": "De quelle couleur est le pompon du bonnet de marin français ?",
+          "propositions": [
+            "Jaune",
+            "Verte",
+            "Bleue",
+            "Rouge"
+          ],
+          "réponse": "Rouge",
+          "anecdote": "Traditionnellement associé au dieu de la mer dans de nombreuses cultures, toucher le pompon rouge protégerait des mauvais esprits."
+        },
+        {
+          "id": 17,
+          "question": "Quel objet de la cuisine, une fois renversé, porterait malheur ?",
+          "propositions": [
+            "Salière",
+            "Carafe",
+            "Verre",
+            "Casserole"
+          ],
+          "réponse": "Salière",
+          "anecdote": "Au Moyen Âge, renverser sur la table le sel très coûteux était un malheur. Aujourd'hui, on pose la salière à côté du voisin de table."
+        },
+        {
+          "id": 18,
+          "question": "Que ne faut-il pas faire avec les verres en trinquant avec des amis ?",
+          "propositions": [
+            "Les croiser",
+            "Les retourner",
+            "Les secouer",
+            "Les lancer"
+          ],
+          "réponse": "Les croiser",
+          "anecdote": "Il est de coutume de trinquer en regardant l'autre personne dans les yeux, mais également de ne pas boire avant d'avoir trinqué."
+        },
+        {
+          "id": 19,
+          "question": "Combien d'amandes faut-il dans sa poche droite pour éviter la foudre ?",
+          "propositions": [
+            "Douze",
+            "Neuf",
+            "Trois",
+            "Six"
+          ],
+          "réponse": "Trois",
+          "anecdote": "Si une femme trouve deux amandes dans un même noyau, il y aura très probablement la naissance de jumeaux dans la famille."
+        },
+        {
+          "id": 20,
+          "question": "Dans quel moyen de transport ne faut-il pas faire sa demande en mariage ?",
+          "propositions": [
+            "Métro",
+            "Avion",
+            "Taxi",
+            "Bus"
+          ],
+          "réponse": "Bus",
+          "anecdote": "On dit qu'il porte malchance à un homme de faire une proposition de mariage dans un bus, un train ou tout autre lieu public."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Au Brésil, quel objet ne faut-il surtout pas déposer sur le sol ?",
+          "propositions": [
+            "Montre",
+            "Paire de gants",
+            "Sac à main",
+            "Chapeau"
+          ],
+          "réponse": "Sac à main",
+          "anecdote": "Pour les Brésiliens, laisser un sac à main toucher le sol est une grave erreur et apporterait la pauvreté, d'où les accroches-sac."
+        },
+        {
+          "id": 22,
+          "question": "Que vaut-il mieux ne pas se couper avant de passer un examen ?",
+          "propositions": [
+            "Ongles",
+            "Doigt",
+            "Cheveux",
+            "Barbe"
+          ],
+          "réponse": "Cheveux",
+          "anecdote": "Cette superstition, originaire de Russie, aurait pour conséquence de supprimer le savoir (durement) acquis lors de vos sessions."
+        },
+        {
+          "id": 23,
+          "question": "Quel objet, reçu ou donné, aurait pour effet de briser une amitié ?",
+          "propositions": [
+            "Scie",
+            "Couteau",
+            "Marteau",
+            "Tournevis"
+          ],
+          "réponse": "Couteau",
+          "anecdote": "Cet objet (ainsi que tous les objets pointus ou coupants) briserait l'amitié, à moins de l'échanger contre une pièce de monnaie."
+        },
+        {
+          "id": 24,
+          "question": "En Turquie, qu'est-il préférable de ne pas mâcher la nuit ?",
+          "propositions": [
+            "Chocolat",
+            "Chewing-gum",
+            "Caramel",
+            "Raisin"
+          ],
+          "réponse": "Chewing-gum",
+          "anecdote": "En Turquie, il est déconseillé de mâcher un chewing-gum la nuit car il deviendrait ensuite la chair des morts à la tombée du jour."
+        },
+        {
+          "id": 25,
+          "question": "Quel objet, posé sur un lit, pourrait attirer le mauvais sort ?",
+          "propositions": [
+            "Clé de maison",
+            "Journal",
+            "Chapeau",
+            "Peignoir"
+          ],
+          "réponse": "Chapeau",
+          "anecdote": "À une époque plus ancienne, les hommes ôtaient leur chapeau lorsqu'ils entraient dans la chambre où reposait un mort."
+        },
+        {
+          "id": 26,
+          "question": "Que faut-il jeter par-dessus son épaule gauche contre le mauvais sort ?",
+          "propositions": [
+            "Du pain",
+            "Du blé",
+            "Du sel",
+            "Du riz"
+          ],
+          "réponse": "Du sel",
+          "anecdote": "Jeter une pincée de sel par-dessus son épaule gauche pour aveugler ou repousser les mauvais esprits qui se trouveraient derrière soi."
+        },
+        {
+          "id": 27,
+          "question": "Se promener avec quel objet vide en main porterait malheur ?",
+          "propositions": [
+            "Porte-monnaie",
+            "Sac à dos",
+            "Étui à lunettes",
+            "Seau"
+          ],
+          "réponse": "Seau",
+          "anecdote": "Les Russes croient en cette superstition du fait que le Tsar Alexander a été assassiné avec un seau vide dans les mains."
+        },
+        {
+          "id": 28,
+          "question": "Quel insecte, une fois attrapé, vous fournirait santé et bonheur ?",
+          "propositions": [
+            "Bourdon",
+            "Coccinelle",
+            "Libellule",
+            "Mouche"
+          ],
+          "réponse": "Coccinelle",
+          "anecdote": "Dans certaines cultures, on dit que le nombre de points présents sur le dos de la coccinelle indique le niveau de chance accordé."
+        },
+        {
+          "id": 29,
+          "question": "Que faut-il éviter de croiser à table sous peine de malheur ?",
+          "propositions": [
+            "Deux fourchettes",
+            "Deux cuillères",
+            "Deux serviettes",
+            "Deux couteaux"
+          ],
+          "réponse": "Deux couteaux",
+          "anecdote": "Durant l'époque médiévale, où les couteaux étaient souvent utilisés comme armes, les croiser pouvait représenter un danger potentiel."
+        },
+        {
+          "id": 30,
+          "question": "En Angleterre, avoir un aphte dans la bouche vous fait passer pour quoi ?",
+          "propositions": [
+            "Un vaurien",
+            "Un traître",
+            "Un menteur",
+            "Un tricheur"
+          ],
+          "réponse": "Un menteur",
+          "anecdote": "On peut parfois associer les aphtes à la malchance ou à une mauvaise hygiène buccale, mais il n'y a pas de corrélation directe."
+        }
+      ]
+    }
+  }
+}

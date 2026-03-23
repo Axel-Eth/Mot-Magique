@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "4 / 5",
+  "version": 1,
+  "mise-à-jour": "2024-03-31",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Littérature",
+      "nom": "Citations courtes",
+      "slogan": "Les plus courtes sont les meilleures"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Qui a dit : « Un seul être vous manque, et tout est dépeuplé » ?",
+          "propositions": [
+            "Montesquieu",
+            "Voltaire",
+            "Stendhal",
+            "Lamartine"
+          ],
+          "réponse": "Lamartine",
+          "anecdote": "Alphonse de Lamartine est un poète et romancier qui participa à la Révolution de février 1848 et proclama la Deuxième République."
+        },
+        {
+          "id": 2,
+          "question": "Qui a dit : « Quand les gens parlent de toi, c'est que tu existes » ?",
+          "propositions": [
+            "Serge Gainsbourg",
+            "Coluche",
+            "Éric Cantona",
+            "Grand corps malade"
+          ],
+          "réponse": "Éric Cantona",
+          "anecdote": "Ses frasques, ses colères et son caractère imprévisible font d'Éric Cantona un acteur incontournable des médias."
+        },
+        {
+          "id": 3,
+          "question": "Qui a dit : « Ne buvez pas au volant, vous pourriez en renverser » ?",
+          "propositions": [
+            "Michel Audiard",
+            "Coluche",
+            "Frédéric Dard",
+            "Woody Allen"
+          ],
+          "réponse": "Coluche",
+          "anecdote": "Fils d'un immigré italien et d'une Française, Michel Colucci grandit à Montrouge et adoptera le pseudonyme de Coluche à 26 ans."
+        },
+        {
+          "id": 4,
+          "question": "Qui a dit : « La vie ne vaut rien, mais rien ne vaut la vie » ?",
+          "propositions": [
+            "Jules Renard",
+            "Albert Camus",
+            "Oscar Wilde",
+            "André Malraux"
+          ],
+          "réponse": "André Malraux",
+          "anecdote": "Malraux a obtenu le prix Goncourt avec « La Condition humaine », roman qui s'inspire des soubresauts révolutionnaires de la Chine."
+        },
+        {
+          "id": 5,
+          "question": "Qui a dit : « Je n'ai jamais eu qu'une seule ride et je suis assise dessus » ?",
+          "propositions": [
+            "Jeanne Calment",
+            "Woody Allen",
+            "Albert Einstein",
+            "Mère Teresa"
+          ],
+          "réponse": "Jeanne Calment",
+          "anecdote": "Jeanne Calment est devenue l'être humain ayant vécu le plus longtemps parmi les personnes à la date de naissance certifiée."
+        },
+        {
+          "id": 6,
+          "question": "Qui a dit : « Quand j'étais jeune j'étais très con : je suis resté très jeune » ?",
+          "propositions": [
+            "J-C Van Damme",
+            "Sacha Guitry",
+            "Coluche",
+            "Woody Allen"
+          ],
+          "réponse": "J-C Van Damme",
+          "anecdote": "En 2007, il révèle au magazine Empire sa liaison avec la chanteuse Kylie Minogue durant le tournage de « Street Fighter »."
+        },
+        {
+          "id": 7,
+          "question": "Quelle célébrité a dit : « L'avenir appartient à ceux qui rêvent trop » ?",
+          "propositions": [
+            "Bob Marley",
+            "Grand corps malade",
+            "William Shakespeare",
+            "Eric Cantona"
+          ],
+          "réponse": "Grand corps malade",
+          "anecdote": "Lors d'une colonie de vacances qu'il animait en 1997, il a fait un plongeon dans une piscine dont le niveau d'eau était trop bas."
+        },
+        {
+          "id": 8,
+          "question": "Qui a dit : « Un intellectuel assis va moins loin qu'un con qui marche » ?",
+          "propositions": [
+            "Michel Audiard",
+            "Serge Gainsbourg",
+            "Tristan Bernard",
+            "Frédéric Dard"
+          ],
+          "réponse": "Michel Audiard",
+          "anecdote": "Les dialogues de Michel Audiard constituent l'un des meilleurs témoignages de l'irrévérence détachée propre aux années 1960."
+        },
+        {
+          "id": 9,
+          "question": "Qui a dit : « Je suis fier que l'on me compare à Michel Platini » ?",
+          "propositions": [
+            "Lionel Messi",
+            "Laurent Blanc",
+            "Zinédine Zidane",
+            "David Beckham"
+          ],
+          "réponse": "Zinédine Zidane",
+          "anecdote": "Célèbre numéro 10 des Bleus, Zinédine Zidane mettra un terme à sa carrière à la suite de la Coupe du monde de football 2006."
+        },
+        {
+          "id": 10,
+          "question": "Qui a dit : « Les enfants c'est comme les pets, on supporte surtout les siens » ?",
+          "propositions": [
+            "Coluche",
+            "Sacha Guitry",
+            "Frédéric Dard",
+            "Jean-Paul Guerlain"
+          ],
+          "réponse": "Frédéric Dard",
+          "anecdote": "Frédéric Dard est surtout connu pour les aventures du commissaire San Antonio, souvent aidé de son adjoint Bérurier."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Qui a dit : « Le parfum d'une femme est la forme la plus intense du souvenir » ?",
+          "propositions": [
+            "François Demachy",
+            "Pierre Bourdon",
+            "Jean-Paul Guerlain",
+            "Jean Patou"
+          ],
+          "réponse": "Jean-Paul Guerlain",
+          "anecdote": "Marié, il était le dernier héritier de la célèbre maison de parfumeurs homonyme, avant de la céder en 1994 au groupe LVMH."
+        },
+        {
+          "id": 12,
+          "question": "Qui a dit : « L'homme n'est pas fait pour travailler : la preuve, ça le fatigue » ?",
+          "propositions": [
+            "Oscar Wilde",
+            "Jules Renard",
+            "Tristan Bernard",
+            "Albert Camus"
+          ],
+          "réponse": "Tristan Bernard",
+          "anecdote": "Outre ses romans, Tristan Bernard est également connu pour ses grilles de mots croisés, pleines d'esprit et de malice."
+        },
+        {
+          "id": 13,
+          "question": "Qui a dit : « Être fidèle, c'est, bien souvent, enchaîner l'autre » ?",
+          "propositions": [
+            "Jules Renard",
+            "Mère Teresa",
+            "Sacha Guitry",
+            "Voltaire"
+          ],
+          "réponse": "Sacha Guitry",
+          "anecdote": "Auteur dramatique prolifique, Sacha Guitry a écrit 124 pièces de théâtre, dont beaucoup furent et restent de grands succès."
+        },
+        {
+          "id": 14,
+          "question": "Quel homme célèbre a dit : « La vie est courte, mais l'ennui l'allonge » ?",
+          "propositions": [
+            "Woody Allen",
+            "Jules Renard",
+            "Serge Gainsbourg",
+            "Bob Marley"
+          ],
+          "réponse": "Jules Renard",
+          "anecdote": "Soutient d'Émile Zola dans l'affaire Dreyfus, il se révèle aussi être un admirateur enthousiaste et presque délirant de Victor Hugo."
+        },
+        {
+          "id": 15,
+          "question": "Qui a dit : « La bouche obéit mal lorsque le coeur murmure » ?",
+          "propositions": [
+            "Confucius",
+            "Shakespeare",
+            "Malraux",
+            "Voltaire"
+          ],
+          "réponse": "Voltaire",
+          "anecdote": "Représentant le plus connu de la philosophie des Lumières, Voltaire domina son époque par la durée de sa vie (83 ans)."
+        },
+        {
+          "id": 16,
+          "question": "Qui a dit : « Si vous jugez les gens, vous n'avez pas le temps de les aimer » ?",
+          "propositions": [
+            "Mère Teresa",
+            "Grand corps malade",
+            "Oscar Wilde",
+            "Alfred de Musset"
+          ],
+          "réponse": "Mère Teresa",
+          "anecdote": "Mère Teresa est connue pour son action caritative avec les « Missionnaires de la Charité » qui suivent son exemple."
+        },
+        {
+          "id": 17,
+          "question": "Qui a dit : « L'imagination est plus importante que le savoir » ?",
+          "propositions": [
+            "Oscar Wilde",
+            "Albert Einstein",
+            "Confucius",
+            "Guy de Maupassant"
+          ],
+          "réponse": "Albert Einstein",
+          "anecdote": "Albert Einstein a publié sa théorie de la relativité restreinte en 1905 et sa théorie de la gravitation dite relativité générale en 1915."
+        },
+        {
+          "id": 18,
+          "question": "Qui a dit : « Parler de ses peines, c'est déjà se consoler » ?",
+          "propositions": [
+            "Jeanne Calment",
+            "Albert Camus",
+            "Mère Teresa",
+            "Alfred de Musset"
+          ],
+          "réponse": "Albert Camus",
+          "anecdote": "En marge des courants philosophiques, Camus sera d'abord témoin de son temps, intransigeant, refusant toute compromission."
+        },
+        {
+          "id": 19,
+          "question": "Quel génie a dit : « L'éternité c'est long, surtout vers la fin » ?",
+          "propositions": [
+            "Tristan Bernard",
+            "Albert Einstein",
+            "Woody Allen",
+            "Guy de Maupassant"
+          ],
+          "réponse": "Woody Allen",
+          "anecdote": "Réalisant pratiquement un film par an, Woody Allen est l'un des cinéastes américains les plus prolifiques de ces dernières années."
+        },
+        {
+          "id": 20,
+          "question": "Quel homme de lettres a dit : « La tristesse vient de la solitude du coeur » ?",
+          "propositions": [
+            "Stendhal",
+            "Voltaire",
+            "Montesquieu",
+            "Lamartine"
+          ],
+          "réponse": "Montesquieu",
+          "anecdote": "Montesquieu est l'un des penseurs de l'organisation politique et sociale sur lesquels les sociétés modernes s'appuient."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Quelle personnalité a dit : « C'est ce qui sort de ta bouche qui te maintient en vie » ?",
+          "propositions": [
+            "Woody Allen",
+            "Bob Marley",
+            "Confucius",
+            "Emile Deschanel"
+          ],
+          "réponse": "Bob Marley",
+          "anecdote": "Bob Marley est celui qui a permis à la musique jamaïcaine et au mouvement rastafari de connaître une audience planétaire."
+        },
+        {
+          "id": 22,
+          "question": "Qui a dit : « Le masque est si charmant que j'ai peur du visage » ?",
+          "propositions": [
+            "Montesquieu",
+            "Alfred de Musset",
+            "André Malraux",
+            "Stendhal"
+          ],
+          "réponse": "Alfred de Musset",
+          "anecdote": "Le théâtre et la poésie lyrique d'Alfred de Musset montrent une sensibilité extrême et une interrogation sur la pureté et la débauche."
+        },
+        {
+          "id": 23,
+          "question": "Qui a dit : « La beauté est dans les yeux de celui qui regarde » ?",
+          "propositions": [
+            "Stendhal",
+            "Confucius",
+            "Oscar Wilde",
+            "Guy de Maupassant"
+          ],
+          "réponse": "Oscar Wilde",
+          "anecdote": "Oscar Wilde incarne une nouvelle sensibilité qui apparaît en réaction contre le positivisme et le naturalisme."
+        },
+        {
+          "id": 24,
+          "question": "Qui a dit : « Un baiser légal ne vaut jamais un baiser volé » ?",
+          "propositions": [
+            "Sacha Guitry",
+            "Alfred de Musset",
+            "André Malraux",
+            "Guy de Maupassant"
+          ],
+          "réponse": "Guy de Maupassant",
+          "anecdote": "Reconnu de son vivant, il conserve un renom de premier plan, renouvelé par les nombreuses adaptations filmées de ses oeuvres."
+        },
+        {
+          "id": 25,
+          "question": "Qui a dit : « On n'emporte en mourant que ce qu'on a donné » ?",
+          "propositions": [
+            "Gaston Méry",
+            "Théodore Garnier",
+            "Hector Durville",
+            "Émile Deschanel"
+          ],
+          "réponse": "Émile Deschanel",
+          "anecdote": "Les papiers personnels de la famille Deschanel sont conservés aux Archives nationales sous la cote 151AP."
+        },
+        {
+          "id": 26,
+          "question": "Qui a dit : « Plus on plaît généralement, moins on plaît profondément » ?",
+          "propositions": [
+            "Montesquieu",
+            "Voltaire",
+            "Stendhal",
+            "Lamartine"
+          ],
+          "réponse": "Stendhal",
+          "anecdote": "Stendhal aurait voulu consacrer sa vie à la rêverie, à la chasse au bonheur et à l'amour : malgré lui, il eut une vie mouvementée."
+        },
+        {
+          "id": 27,
+          "question": "Qui a dit : « Mieux vaut mourir incompris que passer sa vie à s'expliquer » ?",
+          "propositions": [
+            "Eric Cantona",
+            "William Shakespeare",
+            "Serge Gainsbourg",
+            "Oscar Wilde"
+          ],
+          "réponse": "William Shakespeare",
+          "anecdote": "Il est réputé pour sa maîtrise des formes poétiques et littéraires, ainsi que sa capacité à représenter les aspects de la nature humaine."
+        },
+        {
+          "id": 28,
+          "question": "Qui a dit : « La perte d'un ennemi ne compense pas celle d'un ami » ?",
+          "propositions": [
+            "Abraham Lincoln",
+            "Lamartine",
+            "Stendhal",
+            "Oscar Wilde"
+          ],
+          "réponse": "Abraham Lincoln",
+          "anecdote": "Seizième président des États-Unis, il fut élu à deux reprises président du pays, en novembre 1860 et en novembre 1864."
+        },
+        {
+          "id": 29,
+          "question": "Qui a dit : « La chance est bien souvent un hasard qui se provoque » ?",
+          "propositions": [
+            "Oscar Wilde",
+            "Bob Marley",
+            "Confucius",
+            "Guy de Maupassant"
+          ],
+          "réponse": "Confucius",
+          "anecdote": "Personnage historique ayant le plus marqué la civilisation chinoise, Confucius est considéré comme le premier éducateur de la Chine."
+        },
+        {
+          "id": 30,
+          "question": "Qui a dit : « La beauté est la seule vengeance des femmes » ?",
+          "propositions": [
+            "Serge Gainsbourg",
+            "Sacha Guitry",
+            "Coluche",
+            "Woody Allen"
+          ],
+          "réponse": "Serge Gainsbourg",
+          "anecdote": "Serge Gainsbourg influencera considérablement des artistes français comme le groupe Taxi Girl, Renaud ou encore Étienne Daho."
+        }
+      ]
+    }
+  }
+}
