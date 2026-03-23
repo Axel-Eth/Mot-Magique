@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 1,
+  "mise-à-jour": "2021-04-23",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Cinéma",
+      "nom": "Robots du cinéma",
+      "slogan": "Nouveaux héros du grand écran"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quelle franchise du cinéma a commencé avec une ligne de jouets constituée de robots ?",
+          "propositions": [
+            "Prometheus",
+            "Alien",
+            "Transformers",
+            "Short Circuit"
+          ],
+          "réponse": "Transformers",
+          "anecdote": "La franchise commença avec une ligne de jouets appelée Diaclone, constituée de robots pouvant être transformés en véhicules."
+        },
+        {
+          "id": 2,
+          "question": "Dans quel film avec Arnold Schwarzenegger des robots voyagent-ils dans le temps ?",
+          "propositions": [
+            "Sucker Punch",
+            "Robots",
+            "Real Steel",
+            "Terminator"
+          ],
+          "réponse": "Terminator",
+          "anecdote": "« Terminator » traite du voyage dans le temps et de la menace que pourraient faire naître l'IA et les robots intelligents."
+        },
+        {
+          "id": 3,
+          "question": "Dans quel film culte des robots à l'apparence humaine sont-ils appelés « réplicants » ?",
+          "propositions": [
+            "Terminator",
+            "Le Choc des Titans",
+            "Transformers",
+            "Blade Runner"
+          ],
+          "réponse": "Blade Runner",
+          "anecdote": "Le film a été influencé par les mouvements artistiques comme le cyberpunk, et reste une référence en matière de réflexion sur l'IA."
+        },
+        {
+          "id": 4,
+          "question": "Quel robot est sans conteste le plus célèbre des robots-policiers du futur ?",
+          "propositions": [
+            "C-3PO",
+            "Ash",
+            "Robocop",
+            "Sonny"
+          ],
+          "réponse": "Robocop",
+          "anecdote": "Cette icône du cinéma d'action a également servi de réflexion sur la déshumanisation dans un monde dominé par la technologie."
+        },
+        {
+          "id": 5,
+          "question": "Dans quel film un milliardaire a-t-il conçu une armure de robot indestructible ?",
+          "propositions": [
+            "Alien",
+            "Pacific Rim",
+            "Total Recall",
+            "Iron Man"
+          ],
+          "réponse": "Iron Man",
+          "anecdote": "« Iron Man » marque la résurrection cinématographique de Robert Downey Jr., qui a connu grâce à ce rôle un regain de popularité."
+        },
+        {
+          "id": 6,
+          "question": "Qui a réalisé le film « A.I. Intelligence artificielle », avec Jude Law et William Hurt ?",
+          "propositions": [
+            "Ron Howard",
+            "Steven Spielberg",
+            "James Cameron",
+            "Ridley Scott"
+          ],
+          "réponse": "Steven Spielberg",
+          "anecdote": "En développement pendant plus de quinze ans, le film est adapté de la nouvelle de Brian Aldiss, « Les Supertoys durent tout l'été »."
+        },
+        {
+          "id": 7,
+          "question": "Dans quel film de science-fiction rencontre-t-on un androïde scientifique prénommé Ash ?",
+          "propositions": [
+            "Matrix",
+            "Alien",
+            "Robocop",
+            "Total Recall"
+          ],
+          "réponse": "Alien",
+          "anecdote": "L'acteur Ian Holm, qui joue Ash, est également connu pour son rôle de Bilbo Baggins dans la trilogie « Le Seigneur des Anneaux »."
+        },
+        {
+          "id": 8,
+          "question": "Dans quel film le jeune Rodney tente-t-il sa chance comme inventeur à Robot-Ville ?",
+          "propositions": [
+            "Short Circuit",
+            "Sucker Punch",
+            "Robots",
+            "Robocop"
+          ],
+          "réponse": "Robots",
+          "anecdote": "Lorsque Rodney arrive à Robot-Ville, on peut entrevoir un robot très ressemblant à Sid, le paresseux, conçu par les mêmes créateurs."
+        },
+        {
+          "id": 9,
+          "question": "Qui accompagne R2-D2, également appelé D2-R2, dans la saga « Star Wars » ?",
+          "propositions": [
+            "Daryl",
+            "T-1000",
+            "C-3PO",
+            "Data"
+          ],
+          "réponse": "C-3PO",
+          "anecdote": "Anthony Daniels, l'acteur qui incarne C-3PO, est le seul acteur à avoir joué dans tous les principaux films de la saga « Star Wars »."
+        },
+        {
+          "id": 10,
+          "question": "Dans quel film des Hurleurs sont-ils paramétrés pour attaquer toute forme de vie ?",
+          "propositions": [
+            "Elysium",
+            "Planète Hurlante",
+            "Real Steel",
+            "Robots"
+          ],
+          "réponse": "Planète Hurlante",
+          "anecdote": "Bien que modeste dans son budget et ses effets spéciaux, « Screamers » est apprécié pour son intrigue et son ambiance oppressante."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel film est inspiré de la nouvelle « Le Robot qui rêvait », écrite par Isaac Asimov ?",
+          "propositions": [
+            "Iron Man",
+            "I, Robot",
+            "Blade Runner",
+            "Pacific Rim"
+          ],
+          "réponse": "I, Robot",
+          "anecdote": "Les Trois Lois de la Robotique d'Asimov ont profondément influencé la science-fiction et les débats autour de l'intelligence artificielle."
+        },
+        {
+          "id": 12,
+          "question": "Combien de robots tiennent les rôles principaux du film « Le Trou noir » de Disney ?",
+          "propositions": [
+            "Quatre",
+            "Deux",
+            "Cinq",
+            "Trois"
+          ],
+          "réponse": "Trois",
+          "anecdote": "VINCENT un robot astucieux et courageux, BOB, un ancien modèle usé mais plein de sagesse, et Maximilian, imposant et menaçant."
+        },
+        {
+          "id": 13,
+          "question": "Quel court-métrage est distribué en bonus du DVD et du Blu-Ray de « Wall-E » ?",
+          "propositions": [
+            "Short Circuit",
+            "Burn-E",
+            "Hinokio",
+            "Robots"
+          ],
+          "réponse": "Burn-E",
+          "anecdote": "Le court-métrage « Burn-E » a été projeté dans certains cinémas avant le film « Wall-E » et a été distribué en bonus des éditions DVD et Blu-ray."
+        },
+        {
+          "id": 14,
+          "question": "Dans quel film muet en noir et blanc un monstre mécanique fait-il trembler la ville ?",
+          "propositions": [
+            "Pacific Rim",
+            "Planète Hurlante",
+            "Metropolis",
+            "Le Choc des Titans"
+          ],
+          "réponse": "Metropolis",
+          "anecdote": "De nombreuses séquences du film de 1927, coupées lors de sa première diffusion, n'ont été redécouvertes qu'en 2008 en Argentine."
+        },
+        {
+          "id": 15,
+          "question": "Dans quel film de science-fiction un robot doté d'IA a-t-il été baptisé Numéro 5 ?",
+          "propositions": [
+            "Short Circuit",
+            "Robocop",
+            "Cyborg",
+            "Blade Runner"
+          ],
+          "réponse": "Short Circuit",
+          "anecdote": "Numéro 5 a été conçu avec des mécanismes robotisés complexes qui ont nécessité des mois de travail par une équipe spécialisée."
+        },
+        {
+          "id": 16,
+          "question": "Quelle saga cinématographique, inspirée de jouets, met en avant les Decepticons ?",
+          "propositions": [
+            "Real Steel",
+            "Total Recall",
+            "Transformers",
+            "Blade Runner"
+          ],
+          "réponse": "Transformers",
+          "anecdote": "Optimus Prime est doublé dans les films par Peter Cullen, la même voix que dans la série animée, ce qui ravit les fans nostalgiques."
+        },
+        {
+          "id": 17,
+          "question": "Dans quel film peut-on rencontrer des robots insectoïdes, dont les Sentinelles ?",
+          "propositions": [
+            "Matrix Revolutions",
+            "Star Wars",
+            "Clones",
+            "H2G2"
+          ],
+          "réponse": "Matrix Revolutions",
+          "anecdote": "Les Sentinelles ont été conçues pour ressembler à des pieuvres mécaniques, avec une mobilité fluide et des tentacules meurtriers."
+        },
+        {
+          "id": 18,
+          "question": "Dans quelle comédie américaine le héros doit-il lutter contre des « femelles robots » ?",
+          "propositions": [
+            "Austin Powers",
+            "Critters",
+            "Men in Black",
+            "Cocoon"
+          ],
+          "réponse": "Austin Powers",
+          "anecdote": "Les Fembots sont une parodie directe des robots féminins présents dans les films et les séries d'espionnage des années 1960."
+        },
+        {
+          "id": 19,
+          "question": "Dans quel film des robots sont-ils utilisés sur la planète Mars pour conduire des taxis ?",
+          "propositions": [
+            "Sucker Punch",
+            "Planète interdite",
+            "Elysium",
+            "Total Recall"
+          ],
+          "réponse": "Total Recall",
+          "anecdote": "Le design des robots Johnnycab a été réalisé avec des animatroniques sophistiquées, prouesse technique pour l'époque."
+        },
+        {
+          "id": 20,
+          "question": "Dans quel péplum voit-on une chouette mécanique prénommée Bubo ?",
+          "propositions": [
+            "THX 1138",
+            "Saturn 3",
+            "Le Choc des Titans ",
+            "Woody"
+          ],
+          "réponse": "Le Choc des Titans ",
+          "anecdote": "La chouette mécanique porte le nom du genre Bubo, qui regroupe des rapaces nocturnes comme par exemple le hibou grand-duc."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Dans quel film Michael Fassbender incarne-t-il un androïde prénommé David ?",
+          "propositions": [
+            "Prometheus",
+            "Cyborg",
+            "Elysium",
+            "Shopping"
+          ],
+          "réponse": "Prometheus",
+          "anecdote": "Les lettres des androïdes dans la franchise Alien (Ash, Bishop, Call, David) suivent un ordre alphabétique, clin d'oeil subtil aux fans."
+        },
+        {
+          "id": 22,
+          "question": "Dans quel film de science-fiction les droïdes protègent-ils une élite privilégiée ?",
+          "propositions": [
+            "Elysium",
+            "Terminator",
+            "Hinokio",
+            "Metropolis"
+          ],
+          "réponse": "Elysium",
+          "anecdote": "« Elysium » est une réflexion sur les inégalités sociales et la privatisation des soins de santé, des thèmes particulièrement pertinents."
+        },
+        {
+          "id": 23,
+          "question": "Dans quel film la boxe a-t-elle évolué pour devenir un sport high-tech ?",
+          "propositions": [
+            "Total Recall",
+            "Real Steel",
+            "Transformers",
+            "Planète Hurlante"
+          ],
+          "réponse": "Real Steel",
+          "anecdote": "Produit par DreamWorks, « Real Steel » a rencontré un grand succès, notamment en raison de ses scènes de combat spectaculaires."
+        },
+        {
+          "id": 24,
+          "question": "Dans quel film une jeune femme est-elle assistée de son robot prénommé Robby ?",
+          "propositions": [
+            "Metropolis",
+            "Planète interdite",
+            "Transformers",
+            "Elysium"
+          ],
+          "réponse": "Planète interdite",
+          "anecdote": "Le design de Robby fut l'oeuvre de l'illustrateur Robert Kinoshita, qui a également travaillé sur d'autres classiques de la science-fiction."
+        },
+        {
+          "id": 25,
+          "question": "Quelle est la taille du Géant de fer dans le film du même nom, sorti en 1999 ?",
+          "propositions": [
+            "120 mètres",
+            "30 mètres",
+            "90 mètres",
+            "60 mètres"
+          ],
+          "réponse": "30 mètres",
+          "anecdote": "« Le Géant de fer » est un film d'animation de Brad Bird à la frontière entre animation traditionnelle et les premiers effets numériques."
+        },
+        {
+          "id": 26,
+          "question": "Dans quel film une femme mi-humaine mi-robot doit-elle chercher un vaccin à Atlanta ?",
+          "propositions": [
+            "Ex Machina",
+            "Robots",
+            "Cyborg",
+            "Sucker Punch"
+          ],
+          "réponse": "Cyborg",
+          "anecdote": "« Cyborg » est l'un des films emblématiques des années 1980 dans le genre cyberpunk, réalisé à un faible budget mais toutefois efficace."
+        },
+        {
+          "id": 27,
+          "question": "Dans quel film des robots de combat sont-ils déployés pour défendre un train ?",
+          "propositions": [
+            "Terminator",
+            "Short Circuit",
+            "Elysium",
+            "Sucker Punch"
+          ],
+          "réponse": "Sucker Punch",
+          "anecdote": "L'intrigue du film, salué pour son esthétique visuelle, se situe dans les années 1960, bien que possédant toutefois un côté intemporel."
+        },
+        {
+          "id": 28,
+          "question": "Dans quel film des robots géants sont-ils pilotés par connexion neuronale ?",
+          "propositions": [
+            "Matrix Revolutions",
+            "Pacific Rim",
+            "Burn-E",
+            "Iron Man"
+          ],
+          "réponse": "Pacific Rim",
+          "anecdote": "Dans ce projet de Guillermo del Toro, Tom Cruise devait tenir le rôle de Stacker Pentecost, rôle qui fut finalement attribué à Idris Elba."
+        },
+        {
+          "id": 29,
+          "question": "Dans quel film un enfant paralysé pilote-t-il à distance un robot qui vit sa vie ?",
+          "propositions": [
+            "Hinokio",
+            "Robot And Frank",
+            "Real Steel",
+            "Avengers"
+          ],
+          "réponse": "Hinokio",
+          "anecdote": "Pour l'aider à sortir de son triste quotidien lié à sa paralysie, son père décide de lui fabriquer Hinokio, un jeune robot piloté à distance."
+        },
+        {
+          "id": 30,
+          "question": "Dans quel film trois robots devenus incontrôlables agressent-ils des humains ?",
+          "propositions": [
+            "Elysium",
+            "Shopping",
+            "Real Steel",
+            "Robots"
+          ],
+          "réponse": "Shopping",
+          "anecdote": "Le film met en avant un jeune Ewan McGregor dans un rôle qui a marqué ses débuts dans des films plus sombres et critiques."
+        }
+      ]
+    }
+  }
+}

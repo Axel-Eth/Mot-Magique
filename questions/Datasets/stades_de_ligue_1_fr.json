@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "5 / 5",
+  "version": 1,
+  "mise-à-jour": "2024-03-31",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Sports",
+      "nom": "Stades de Ligue 1",
+      "slogan": "Ils rassemblent les passionnés de foot"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Depuis 2014, la capacité du stade Vélodrome de Marseille fut portée à combien de places ?",
+          "propositions": [
+            "58 832",
+            "67 394",
+            "77 548",
+            "49 634"
+          ],
+          "réponse": "67 394",
+          "anecdote": "Le stade Vélodrome, rebaptisé Orange Vélodrome en juillet 2016, répond aux critères des stades de catégorie 4 de l'UEFA."
+        },
+        {
+          "id": 2,
+          "question": "Quel club évolue au stade Pierre-Mauroy de Villeneuve-d'Ascq ?",
+          "propositions": [
+            "Amiens SC",
+            "Valenciennes FC",
+            "RC Lens",
+            "LOSC Lille"
+          ],
+          "réponse": "LOSC Lille",
+          "anecdote": "Le toit mobile de 7 600 tonnes peut être refermé en trente minutes et sa pelouse se soulève et se déplace sur sa moitié."
+        },
+        {
+          "id": 3,
+          "question": "Le stade Auguste-Delaune accueille les matchs de quel grand club ?",
+          "propositions": [
+            "Paris FC",
+            "Stade de Reims",
+            "Stade brestois",
+            "AJ Auxerroise"
+          ],
+          "réponse": "Stade de Reims",
+          "anecdote": "Le stade a été officiellement inauguré le 2 juin 1935 par le président de la République Albert Lebrun sous le nom de stade municipal."
+        },
+        {
+          "id": 4,
+          "question": "Quel club de Ligue 1 est propriétaire du stade de l'Abbé-Deschamps ?",
+          "propositions": [
+            "AJ Auxerre",
+            "FC Lorient",
+            "AC Ajaccio",
+            "AS Nancy-Lorraine"
+          ],
+          "réponse": "AJ Auxerre",
+          "anecdote": "L'AJ Auxerre en est le propriétaire, seul club français dans ce cas avec l'AC Ajaccio, le Gazélec Ajaccio et l'Olympique lyonnais."
+        },
+        {
+          "id": 5,
+          "question": "Le stade des Costières a connu la première Division avec quel club ?",
+          "propositions": [
+            "RC Lens",
+            "FC de Guengnon",
+            "Tours FC",
+            "Nîmes Olympique"
+          ],
+          "réponse": "Nîmes Olympique",
+          "anecdote": "Trentième stade français au nombre de places proposées, l'enceinte a été également utilisée pour des matchs de rugby à XV."
+        },
+        {
+          "id": 6,
+          "question": "Quel est le véritable nom du stade de Furiani, utilisé par le FC Bastia ?",
+          "propositions": [
+            "Jean-Bouin",
+            "Victor-Lorenzi",
+            "Claude-Papi",
+            "Armand-Cesari"
+          ],
+          "réponse": "Armand-Cesari",
+          "anecdote": "Furiani reste également dans les mémoires pour la catastrophe qui marqua la demi-finale de la coupe de France de 1992."
+        },
+        {
+          "id": 7,
+          "question": "Le stade du Moustoir accueille le Festival interceltique mais aussi quel club résident ?",
+          "propositions": [
+            "FC Lorient",
+            "Stade Brestois 29",
+            "Vannes Olympique",
+            "AJ Auxerre"
+          ],
+          "réponse": "FC Lorient",
+          "anecdote": "Le groupe Supertramp a également donné un concert exceptionnel dans le stade du Moustoir en 1983."
+        },
+        {
+          "id": 8,
+          "question": "Quelle grande enceinte sportive est également le stade du Toulouse FC ?",
+          "propositions": [
+            "Stade  Wallon",
+            "Palais des Sports",
+            "Matmut-Atlantique",
+            "Stadium municipal"
+          ],
+          "réponse": "Stadium municipal",
+          "anecdote": "Situé sur l'île du Ramier, on le surnomme le petit Wembley en référence à son architecture proche du mythique stade anglais."
+        },
+        {
+          "id": 9,
+          "question": "Quel est le surnom du stade Geoffroy-Guichard, situé à Saint-Étienne ?",
+          "propositions": [
+            "Le Puits",
+            "Le Chaudron",
+            "La Marmite",
+            "La Cuvette"
+          ],
+          "réponse": "Le Chaudron",
+          "anecdote": "À l'origine, il s'agit en fait d'un vaste terrain de 40 000 m2 acheté par Geoffroy Guichard, fondateur des magasins Casino."
+        },
+        {
+          "id": 10,
+          "question": "A quoi le stade de la Mosson du Montpellier Hérault SC doit-il son nom ?",
+          "propositions": [
+            "Une rivière",
+            "Un attaquant",
+            "Un chien",
+            "Une supportrice"
+          ],
+          "réponse": "Une rivière",
+          "anecdote": "Lors d'orages cévenols, la rivière Mosson qui coule à proximité peut provoquer avec ses crues d'importants dégâts au stade."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel club évolue au stade Bollaert-Delelis, initialement nommé stade Félix-Bollaert ?",
+          "propositions": [
+            "RC Lens",
+            "LOSC Lille",
+            "Amiens SC",
+            "Valenciennes FC"
+          ],
+          "réponse": "RC Lens",
+          "anecdote": "Depuis 2013, le club est présidé par Gervais Martel, qui avait déjà assuré la présidence du même club de 1988 à 2012."
+        },
+        {
+          "id": 12,
+          "question": "Le stade de la Meinau est le stade de quelle grande ville de l'est de la France ?",
+          "propositions": [
+            "Belfort",
+            "Colmar",
+            "Mulhouse",
+            "Starsbourg"
+          ],
+          "réponse": "Starsbourg",
+          "anecdote": "Principal équipement sportif de la ville, l'enceinte accueille ponctuellement d'autres évènements sportifs ou culturels."
+        },
+        {
+          "id": 13,
+          "question": "Sur quelle île a été construit le stade du FC Metz en 1923 ?",
+          "propositions": [
+            "Saint-Germain",
+            "Saint-Julien",
+            "Saint-Symphorien",
+            "Saint-Martin"
+          ],
+          "réponse": "Saint-Symphorien",
+          "anecdote": "Le 6 juin 2009, Johnny Hallyday y donne un concert pour sa dernière tournée « Tour 66 », devant plus de 35 000 personnes."
+        },
+        {
+          "id": 14,
+          "question": "Quel est le joli nom du centre d'entraînement du FC Nantes  ?",
+          "propositions": [
+            "Jonelière",
+            "Piverdière",
+            "Canebière",
+            "Lavandière"
+          ],
+          "réponse": "Jonelière",
+          "anecdote": "Les différentes infrastructures du club sont regroupées au sein du Centre sportif José-Arribas (Centre sportif de La Jonelière)."
+        },
+        {
+          "id": 15,
+          "question": "Le Havre AC a quitté le stade Jules-Deschaseaux pour rejoindre quelle enceinte ?",
+          "propositions": [
+            "Stade de la Manche",
+            "Stade Maritime",
+            "Stade du Ray",
+            "Stade Océane"
+          ],
+          "réponse": "Stade Océane",
+          "anecdote": "Le Stade Océane est un stade multifonction de 25 178 places assises pour le sport et 33 000 pour les spectacles."
+        },
+        {
+          "id": 16,
+          "question": "L'AS Nancy-Lorraine évolue dans un stade du nom de quel chapelier nancéen ?",
+          "propositions": [
+            "Marcel Picot",
+            "Robert Diochon",
+            "André Flamart",
+            "Gaston Petit"
+          ],
+          "réponse": "Marcel Picot",
+          "anecdote": "Le stade devait accueillir l'Euro 2016, avec un projet de modernisation portant sa capacité à 32 000 places assises."
+        },
+        {
+          "id": 17,
+          "question": "Le stade Auguste-Bonal est aussi vieux que le club qu'il accueille depuis 1931 et qui est ?",
+          "propositions": [
+            "AJ Auxerre",
+            "Tours FC",
+            "FC Sochaux",
+            "FC Lorient"
+          ],
+          "réponse": "FC Sochaux",
+          "anecdote": "Le stade porte depuis 1945 le nom d'Auguste Bonal, qui était un ancien dirigeant sochalien et qui fut tué par les Allemands."
+        },
+        {
+          "id": 18,
+          "question": "Quel nouveau nom a-t-on donné en 2015 au stade de la route de Lorient ?",
+          "propositions": [
+            "Roazhon Park",
+            "Stade du Ray",
+            "Breizh Stadium",
+            "Stade Gwenn-ha-Du"
+          ],
+          "réponse": "Roazhon Park",
+          "anecdote": "Bordé par le paisible cours de la Vilaine, le Roazhon Park se trouve au centre des installations du Stade rennais FC."
+        },
+        {
+          "id": 19,
+          "question": "En 1978, le stade de la Vallée du Cher accompagna quel club ?",
+          "propositions": [
+            "Cannes",
+            "FC Lorient",
+            "Tours FC",
+            "Angers SCO"
+          ],
+          "réponse": "Tours FC",
+          "anecdote": "La première année, seule la première tranche du stade fut ouverte, offrant ainsi une capacité d'environ 8 000 places."
+        },
+        {
+          "id": 20,
+          "question": "Quel stade de France est passé à 60 000 places avant la Coupe du monde de 1998 ?",
+          "propositions": [
+            "Stade Vélodrome",
+            "Parc des Princes",
+            "Allianz Riviera",
+            "Matmut-Atlantique"
+          ],
+          "réponse": "Stade Vélodrome",
+          "anecdote": "Juste avant la Coupe du monde de football de 1998, l'enceinte est passée à 60 000 places et n'a désormais plus de toit."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "L'Olympique lyonnais a quitté le stade Gerland pour quelle commune ?",
+          "propositions": [
+            "Vénissieux",
+            "Vaulx-en-Velin",
+            "Décines-Charpieu",
+            "Villeurbanne"
+          ],
+          "réponse": "Décines-Charpieu",
+          "anecdote": "Le stade de Gerland accueille désormais les matchs de l'équipe féminine depuis que le stade de Décines est opérationnel."
+        },
+        {
+          "id": 22,
+          "question": "Quel autre nom porte également le stade de la Beaujoire du FC Nantes ?",
+          "propositions": [
+            "Marcel Picot",
+            "Louis Fonteneau",
+            "Jean Snaudeau",
+            "Marcel Saupin"
+          ],
+          "réponse": "Louis Fonteneau",
+          "anecdote": "L'idée de construire un nouveau stade de football à Nantes sera lancée à la fin des années 1970 par Louis Fonteneau."
+        },
+        {
+          "id": 23,
+          "question": "Où jouait l'OGC Nice avant d'utiliser l'Allianz Riviera depuis 2013 ?",
+          "propositions": [
+            "Stade de La Bocca",
+            "Stade du Ray",
+            "Stade Océane",
+            "Stade de Lorient"
+          ],
+          "réponse": "Stade du Ray",
+          "anecdote": "Le terme Ray correspond au nom du quartier où se trouve le stade qui a accueilli les matchs de l'OGC Nice de 1927 à 2013."
+        },
+        {
+          "id": 24,
+          "question": "Quel stade Le Mans FC a-t-il longtemps utilisé avant le MMArena ?",
+          "propositions": [
+            "Stade Léon-Bollée",
+            "Stade de la Sarthe",
+            "Stade de Lorient",
+            "Stade Océane"
+          ],
+          "réponse": "Stade Léon-Bollée",
+          "anecdote": "L'enceinte portait le nom d'une personnalité mancelle (Léon Bollée), fameux pionnier de la construction automobile du XIXe siècle."
+        },
+        {
+          "id": 25,
+          "question": "Avec quel club le stade Louis-Dugaugez a-t-il découvert la Ligue 1 en 2000 ?",
+          "propositions": [
+            "ESTAC Troyes",
+            "CS Sedan Ardennes",
+            "Stade de Reims",
+            "RC Lens"
+          ],
+          "réponse": "CS Sedan Ardennes",
+          "anecdote": "La construction de la quatrième et dernière tribune a débuté le 26 avril 2001 et s'est terminée le 13 septembre 2001."
+        },
+        {
+          "id": 26,
+          "question": "Quel est le surnom du stade Pierre-de-Couertin situé à Cannes ?",
+          "propositions": [
+            "Rocca",
+            "Bossa",
+            "Polka",
+            "Bocca"
+          ],
+          "réponse": "Bocca",
+          "anecdote": "Ce stade était à l'origine consacré à l'athlétisme et au rugby alors que le football évoluait au stade des Hespérides."
+        },
+        {
+          "id": 27,
+          "question": "En 1980, le stade Yves-Jaguin a été remplacé par quel autre stade ?",
+          "propositions": [
+            "Roudoudou",
+            "Roudourou",
+            "Rougoudou",
+            "Rouloulou"
+          ],
+          "réponse": "Roudourou",
+          "anecdote": "Le stade Yves-Jaguin a néanmoins accueilli l'équipe première de l'En Avant de Guingamp de 1921 à 1990."
+        },
+        {
+          "id": 28,
+          "question": "Quels championnats le stade Gaston-Petit a-t-il accueilli en 2009, 2010 et 2011 ?",
+          "propositions": [
+            "Duathlon",
+            "Cricket",
+            "Volley-ball",
+            "Triathlon"
+          ],
+          "réponse": "Duathlon",
+          "anecdote": "Le stade Gaston-Petit de 17 072 places, inauguré en 1964, est un équipement sportif de la ville de Châteauroux."
+        },
+        {
+          "id": 29,
+          "question": "Dans laquelle de ces villes ne trouve-t-on pas de stade Jean-Bouin ?",
+          "propositions": [
+            "Marseille",
+            "Angers",
+            "Lyon",
+            "Nîmes"
+          ],
+          "réponse": "Lyon",
+          "anecdote": "Jean Bouin est un athlète français de course de fond détenteur de sept records du monde sur différentes distances et durées."
+        },
+        {
+          "id": 30,
+          "question": "Quel est le nom du stade du Gazélec Ajaccio, le plus petit de la Ligue 1 en 2015 ?",
+          "propositions": [
+            "François-Coty",
+            "Décines-Charpieu",
+            "Armand-Cesari",
+            "Ange-Casanova"
+          ],
+          "réponse": "Ange-Casanova",
+          "anecdote": "La capacité du stade fut portée à 5 000 places en 2015 à la suite de la montée du club en Ligue 1."
+        }
+      ]
+    }
+  }
+}

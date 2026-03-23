@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Damien Ponnelle",
+  "difficulté": "2 / 5",
+  "version": 6,
+  "mise-à-jour": "2022-07-07",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Histoire",
+      "nom": "Mythes et légendes",
+      "slogan": "De la mythologie aux contes"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quelle princesse donna à Thésée le fil qui lui permit de sortir du Labyrinthe ?",
+          "propositions": [
+            "Cassiopée",
+            "Marianne",
+            "Ariane",
+            "Stéphanie"
+          ],
+          "réponse": "Ariane",
+          "anecdote": "C'est en effet le secours qu'apporta Ariane à Thésée qui a permis à ce dernier d'obtenir la victoire sur le Minotaure."
+        },
+        {
+          "id": 2,
+          "question": "Qui a ouvert la boîte de Pandore, qui est en fait une jarre ?",
+          "propositions": [
+            "Héphaïstos",
+            "Pandore",
+            "Eve",
+            "Professeur Layton"
+          ],
+          "réponse": "Pandore",
+          "anecdote": "Pandore a fait le malheur de l'humanité en soulevant le couvercle de la jarre dans laquelle étaient enfermés les maux."
+        },
+        {
+          "id": 3,
+          "question": "Quelles balles faut-il utiliser pour tuer un loup-garou une fois métamorphosé ?",
+          "propositions": [
+            "En or",
+            "En argent",
+            "En plomb",
+            "En cuivre"
+          ],
+          "réponse": "En argent",
+          "anecdote": "Un lycanthrope est un humain qui a la capacité de se transformer en loup, ou en créature anthropomorphe proche du loup."
+        },
+        {
+          "id": 4,
+          "question": "De qui Tristan était-il amoureux dans une fameuse légende du Moyen Âge ?",
+          "propositions": [
+            "Iseult",
+            "Anaïs",
+            "Juliette",
+            "Bernard"
+          ],
+          "réponse": "Iseult",
+          "anecdote": "À l'origine, l'histoire est une tragédie centrée sur l'amour adultère entre le chevalier Tristan (ou Tristram) et la princesse Iseut."
+        },
+        {
+          "id": 5,
+          "question": "Par quel animal les fondateurs de Rome, Romulus et Rémus, furent-ils recueillis ?",
+          "propositions": [
+            "Louve",
+            "Kangourou",
+            "Vache",
+            "Chienne"
+          ],
+          "réponse": "Louve",
+          "anecdote": "L'épisode le plus connu de la légende constitue le moment où les jumeaux nouveau-nés sont recueillis par une louve qui les allaite."
+        },
+        {
+          "id": 6,
+          "question": "Quelle est généralement la couleur de la tenue de Merlin l'enchanteur ?",
+          "propositions": [
+            "Bleue",
+            "Rouge",
+            "Blanche",
+            "Ecossaise"
+          ],
+          "réponse": "Bleue",
+          "anecdote": "Robe bleue, chapeau pointu et baguette magique, la plupart des artistes dépeignent Merlin comme un vieil homme barbu."
+        },
+        {
+          "id": 7,
+          "question": "Quels géants fantastiques des légendes grecques n'avaient qu'un oeil ?",
+          "propositions": [
+            "Centaures",
+            "Cyclades",
+            "Elfes",
+            "Cyclopes"
+          ],
+          "réponse": "Cyclopes",
+          "anecdote": "Il ne faut pas confondre les Cyclopes avec les Géants, qui furent eux nés du sang de Tartare et tués lors de la gigantomachie."
+        },
+        {
+          "id": 8,
+          "question": "Lors d'un banquet, que plaça Denys au-dessus de la tête de Damoclès ?",
+          "propositions": [
+            "Une branche de houx",
+            "Une perruque",
+            "Une coupe en or",
+            "Une épée"
+          ],
+          "réponse": "Une épée",
+          "anecdote": "On parle d'une épée de Damoclès pour décrire une situation dangereuse ou pénible qui peut se produire d'un moment à l'autre."
+        },
+        {
+          "id": 9,
+          "question": "Quel personnage biblique de l'Ancien Testament a combattu le géant Goliath ?",
+          "propositions": [
+            "David",
+            "Moïse",
+            "Daniel",
+            "Saül"
+          ],
+          "réponse": "David",
+          "anecdote": "Dans la Bible, son combat est décrit au chapitre 17 du Premier livre de Samuel. Dans le Coran, Goliath porte le nom de Jalout."
+        },
+        {
+          "id": 10,
+          "question": "Quel vampire risque-t-on de rencontrer en tant que touriste en Transylvanie ?",
+          "propositions": [
+            "Van Helsing",
+            "Dakimis",
+            "Dracula",
+            "Strigoaïca"
+          ],
+          "réponse": "Dracula",
+          "anecdote": "Le comte Dracula est un personnage de fiction créé par Bram Stoker dans son roman épistolaire « Dracula », publié en 1897."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Comment a été baptisé le monstre du Loch Ness, créature lacustre d'Écosse ?",
+          "propositions": [
+            "Lucie",
+            "Fessie",
+            "Nessie",
+            "Messie"
+          ],
+          "réponse": "Nessie",
+          "anecdote": "Ce fruit de l'imaginaire humain est généralement décrit comme ressemblant à un serpent de mer ou à un plésiosaure."
+        },
+        {
+          "id": 12,
+          "question": "Aussi appelée la Troyenne, de qui la Vestale Rhéa Silvia est-elle la mère ?",
+          "propositions": [
+            "Remus et Apollon",
+            "Canus et Cunilingus",
+            "Romulus et Remus",
+            "Castor et Pollux"
+          ],
+          "réponse": "Romulus et Remus",
+          "anecdote": "Horace raconte que Rhéa Silvia vit en songe Romulus et Rémus, sous l'aspect de palmiers aux branches majestueuses."
+        },
+        {
+          "id": 13,
+          "question": "Quel oiseau mythique, doté d'une grande longévité, renaît de ses cendres ?",
+          "propositions": [
+            "Cygne",
+            "Phénix",
+            "Colombe",
+            "Autruche"
+          ],
+          "réponse": "Phénix",
+          "anecdote": "Il est appelé par une périphrase moderne l'oiseau de feu, à ne pas confondre cependant avec la créature de la légende slave."
+        },
+        {
+          "id": 14,
+          "question": "Qui a abattu la supposée bête du Gévaudan, mettant ainsi fin aux massacres ?",
+          "propositions": [
+            "Louis XV",
+            "Galaad le Preux",
+            "Jean Chastel",
+            "François Antoine"
+          ],
+          "réponse": "Jean Chastel",
+          "anecdote": "Présent avec ses fils lors d'une chasse, il remarqua que l'animal boitait sur trois pattes, ce qu'il niera lors d'un rapport officiel."
+        },
+        {
+          "id": 15,
+          "question": "Qui a conduit les troupes grecques dans Troie au moyen du célèbre cheval ?",
+          "propositions": [
+            "Hector",
+            "Ulysse",
+            "Dédale",
+            "Achille"
+          ],
+          "réponse": "Ulysse",
+          "anecdote": "Cette ruse de guerre, réalisée à l'initiative d'Ulysse, entraîna la chute de la ville, permettant le dénouement de la guerre."
+        },
+        {
+          "id": 16,
+          "question": "Quel héros de l'Antiquité a rencontré Circé, Calypso, Nausicaa et Pénélope ?",
+          "propositions": [
+            "Hector",
+            "Achille",
+            "Ulysse",
+            "Dédale"
+          ],
+          "réponse": "Ulysse",
+          "anecdote": "Roi d'Ithaque, fils de Laërte et d'Anticlée, Ulysse, à l'intelligence rusée, est marié à Pénélope dont il a un fils, Télémaque."
+        },
+        {
+          "id": 17,
+          "question": "Pégase, le cheval ailé, jaillit du sang de la tête coupée de quelle gorgone ?",
+          "propositions": [
+            "Ariane",
+            "Méduse",
+            "Psyché",
+            "Pasiphaé"
+          ],
+          "réponse": "Méduse",
+          "anecdote": "Une fois né, Pégase monta au ciel pour se mettre au service de Zeus, qui le chargea d'apporter éclairs et tonnerre sur l'Olympe."
+        },
+        {
+          "id": 18,
+          "question": "Dans la mythologie grecque, quel chien polycéphale est le gardien des Enfers ?",
+          "propositions": [
+            "Argos",
+            "Psoglav",
+            "Cerbère",
+            "Orthos"
+          ],
+          "réponse": "Cerbère",
+          "anecdote": "Cerbère a pour mission d'empêcher les morts de s'échapper de l'antre d'Hadès et les vivants de venir récupérer certains morts."
+        },
+        {
+          "id": 19,
+          "question": "Quel est l'équivalent grec du Dieu romain de la mer, Neptune ?",
+          "propositions": [
+            "Papaandréous",
+            "Poséïdon",
+            "Dionysos",
+            "Héphaïstos"
+          ],
+          "réponse": "Poséïdon",
+          "anecdote": "Dieu des eaux vives et des sources, Neptune est aussi le protecteur des pêcheurs, des bateliers et des chevaux d'après Virgile."
+        },
+        {
+          "id": 20,
+          "question": "Qui fut condamné par Zeus à porter sur ses épaules la voûte du ciel pour l'éternité ?",
+          "propositions": [
+            "Ulysse",
+            "Atlas",
+            "Condyle",
+            "Vulcain"
+          ],
+          "réponse": "Atlas",
+          "anecdote": "Il fut pétrifié par Persée avec la tête de Méduse et métamorphosé en chaîne de montagnes Atlas (massif) d'Afrique du Nord."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "À la fois beau et immortel, de qui Éros tomba-t-il éperdument amoureux ?",
+          "propositions": [
+            "Ramazotti",
+            "Daphné",
+            "Aphrodite",
+            "Psyché"
+          ],
+          "réponse": "Psyché",
+          "anecdote": "Éros, d'où vient le mot érotisme, est le dieu primordial de l'Amour et de la puissance créatrice dans la mythologie grecque."
+        },
+        {
+          "id": 22,
+          "question": "Dans la mythologie grecque, qui est le maître des enfers ?",
+          "propositions": [
+            "Zeus",
+            "Périclès",
+            "Hadès",
+            "Rhéa"
+          ],
+          "réponse": "Hadès",
+          "anecdote": "Comme Zeus gouverne le Ciel et Poséidon la Mer, Hadès règne sous la terre et est considéré comme le maître des Enfers."
+        },
+        {
+          "id": 23,
+          "question": "Quelle épouse de Minos et fille d'Hélios enfanta le Minotaure ?",
+          "propositions": [
+            "Pasiphaé",
+            "Europe",
+            "Epitaphe",
+            "Rhéa"
+          ],
+          "réponse": "Pasiphaé",
+          "anecdote": "Dans la Grèce continentale, Pasiphaé était honorée comme une déesse de la divination à Thalame en Laconie (près de Sparte)."
+        },
+        {
+          "id": 24,
+          "question": "Quels êtres légendaires sont censés vivre sur l'île de Man, île du Royaume-Uni ?",
+          "propositions": [
+            "Centaures",
+            "Lutins",
+            "Loup-garous",
+            "Ogres"
+          ],
+          "réponse": "Lutins",
+          "anecdote": "Les scandinaves y ont fondé un système politique basé sur le principe des citoyens libres, organisés autour du Tynwald."
+        },
+        {
+          "id": 25,
+          "question": "Quel objet est la cause de la Guerre de Troie, déclenchée par l'enlèvement d'Hélène ?",
+          "propositions": [
+            "Pierre de Brennus",
+            "Lance d'or",
+            "Pomme d'or",
+            "Puits d'Athènes"
+          ],
+          "réponse": "Pomme d'or",
+          "anecdote": "Hélène avait été promise à Pâris par Aphrodite, en remerciement pour le jugement du mont Ida, lui attribuant la pomme d'or."
+        },
+        {
+          "id": 26,
+          "question": "Quelle est la forme du corps d'Échidna, célèbre monstre mythologique ?",
+          "propositions": [
+            "Femme-serpent",
+            "Homme-lion",
+            "Chien-oiseau",
+            "Lion-Zèbre"
+          ],
+          "réponse": "Femme-serpent",
+          "anecdote": "Moitié femme et moitié serpent, Échidna est la mère de nombreux monstres, le plus souvent engendrés avec Typhon."
+        },
+        {
+          "id": 27,
+          "question": "Que personnifie la déesse Gaïa, divinité primordiale et Mère des titans ?",
+          "propositions": [
+            "La terre",
+            "La mer",
+            "Le ciel",
+            "Les enfers"
+          ],
+          "réponse": "La terre",
+          "anecdote": "Sa descendance compte des divinités primordiales, des Titans, des Géants, des divinités marines et des divinités mineures."
+        },
+        {
+          "id": 28,
+          "question": "Dans la mythologie grecque, quel dieu a pour père Cronos et Rhéa ?",
+          "propositions": [
+            "Thésée",
+            "Zeus",
+            "Dédale",
+            "Mégatron"
+          ],
+          "réponse": "Zeus",
+          "anecdote": "Zeus est généralement représenté soit debout, s'avançant avec un foudre dans sa main droite levée, ou assis en majesté."
+        },
+        {
+          "id": 29,
+          "question": "Par quel animal la toison d'or est-elle férocement gardée en Colchide ?",
+          "propositions": [
+            "Dragon",
+            "Serpent",
+            "Taureau",
+            "Vautour"
+          ],
+          "réponse": "Dragon",
+          "anecdote": "La quête de la toison d'or, offerte en cadeau au roi Éétès, forme l'enjeu principal du mythe des Argonautes menés par Jason."
+        },
+        {
+          "id": 30,
+          "question": "Quelle substance divine est la boisson préférée des dieux de l'Olympe ?",
+          "propositions": [
+            "Hydromel",
+            "Absinthe",
+            "Ambroisie",
+            "Cidre"
+          ],
+          "réponse": "Ambroisie",
+          "anecdote": "Les dieux ne se nourrissent en effet pas de nourriture humaine ni de vin, mais uniquement de nectar, qui remplace le vin."
+        }
+      ]
+    }
+  }
+}
