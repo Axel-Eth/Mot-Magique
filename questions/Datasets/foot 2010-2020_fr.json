@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "4 / 5",
+  "version": 1,
+  "mise-à-jour": "2021-08-29",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Sports",
+      "nom": "Foot 2010-2020",
+      "slogan": "De Pep Guardiola à Zlatan Ibrahimovic"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Quel joueur allemand a inscrit 16 buts en phase finale de Coupe du monde ?",
+          "propositions": [
+            "Marco Reus",
+            "Arjen Robben",
+            "Manuel Neuer",
+            "Miroslav Klose"
+          ],
+          "réponse": "Miroslav Klose",
+          "anecdote": "Le 8 juillet 2014, Miroslav Klose, élément clé en équipe nationale, inscrit son 16e but en phase finale de Coupe du monde."
+        },
+        {
+          "id": 2,
+          "question": "Quel fruit un supporter a-t-il lancé sur le terrain en direction de Daniel Alves ?",
+          "propositions": [
+            "Orange",
+            "Banane",
+            "Pastèque",
+            "Ananas"
+          ],
+          "réponse": "Banane",
+          "anecdote": "Lors d'un Villarreal-Barça, un supporter envoya une banane sur le terrain que le latéral a tout simplement mangé."
+        },
+        {
+          "id": 3,
+          "question": "Quel milieu de terrain a longtemps porté un écureuil mort sur la tête ?",
+          "propositions": [
+            "Alexandre Pato",
+            "Mario Balotelli",
+            "Paul Pogba",
+            "Renato Sanches"
+          ],
+          "réponse": "Paul Pogba",
+          "anecdote": "Il fut transféré de la Juventus vers son ancien club de Premier League pour la somme de 105 millions d'euros + 5 millions."
+        },
+        {
+          "id": 4,
+          "question": "Qui a été élu en 2013 meilleur joueur de la Coupe des Confédérations ?",
+          "propositions": [
+            "Ibrahimovic",
+            "Hazard",
+            "Neymar",
+            "Cavani"
+          ],
+          "réponse": "Neymar",
+          "anecdote": "Depuis 2017, il joue pour le Paris Saint-Germain, devenant le joueur le plus cher du foot avec un transfert à 222 millions d'euros."
+        },
+        {
+          "id": 5,
+          "question": "Quel meilleur gardien de l'année 2015 a boycotté les votes du Ballon d'or ?",
+          "propositions": [
+            "Manuel Neuer",
+            "Gianluigi Buffon",
+            "Iker Casillas",
+            "Oliver Kahn"
+          ],
+          "réponse": "Gianluigi Buffon",
+          "anecdote": "Ne faisant pas partie des 23 meilleurs joueurs, if fut nommé pour le Ballon d'or à huit reprises, terminant deuxième en 2006."
+        },
+        {
+          "id": 6,
+          "question": "Quels clubs ont dominé l'Europa League entre 2010 et 2015 ?",
+          "propositions": [
+            "Allemands",
+            "Belges",
+            "Italiens",
+            "Espagnols"
+          ],
+          "réponse": "Espagnols",
+          "anecdote": "L'Atlético Madrid est le tenant du titre tandis que le Séville FC est le club le plus titré dans l'histoire de la compétition avec cinq victoires."
+        },
+        {
+          "id": 7,
+          "question": "Quel joueur de football représente la plus grosse vente de l'histoire de la ville de Lille ?",
+          "propositions": [
+            "Karim Benzema",
+            "Edinson Cavani",
+            "Yoann Gourcuff",
+            "Eden Hazard"
+          ],
+          "réponse": "Eden Hazard",
+          "anecdote": "Arrivé de Belgique au Lille OSC en 2005 pour terminer sa formation, Hazard y explosera au plus haut niveau au poste d'ailier gauche."
+        },
+        {
+          "id": 8,
+          "question": "Quel sélectionneur a mangé ses crottes de nez en Coupe du Monde 2010 ?",
+          "propositions": [
+            "Stefan Reisch",
+            "Franz Beckenbauer",
+            "Sepp Herberger",
+            "Joachim Löw"
+          ],
+          "réponse": "Joachim Löw",
+          "anecdote": "Joachim Löw a remporté avec l'équipe nationale d'Allemagne la Coupe du monde en 2014 et la Coupe des confédérations en 2017."
+        },
+        {
+          "id": 9,
+          "question": "Quelle sélection a terminé la Coupe du monde 2014 avec la plus mauvaise défense ?",
+          "propositions": [
+            "Argentine",
+            "Allemagne",
+            "France",
+            "Brésil"
+          ],
+          "réponse": "Brésil",
+          "anecdote": "Avec 14 buts encaissés, la demi-finale du Brésil face à l'Allemagne fut marquée par le score historique de 7-1 pour la Mannschaft."
+        },
+        {
+          "id": 10,
+          "question": "Quels frères se sont fait face en finale de League Cup 2016 ?",
+          "propositions": [
+            "Koutris",
+            "Pardo",
+            "Cissé",
+            "Touré"
+          ],
+          "réponse": "Touré",
+          "anecdote": "Yaya Touré, évoluant au poste de milieu relayeur, est le petit frère de Kolo Touré, avec qui il a joué à Manchester City."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "Quel entraîneur est passé du Benfica Lisbonne au Sporting Lisbonne ?",
+          "propositions": [
+            "Jorge Jesus",
+            "Fernando Peres",
+            "Pedro Miguel",
+            "Paulo Alves"
+          ],
+          "réponse": "Jorge Jesus",
+          "anecdote": "Considéré comme un traître, il a toutefois redonné une seconde jeunesse au Benfica Lisbonne grâce à sa culture tactique."
+        },
+        {
+          "id": 12,
+          "question": "En combien de temps Robert Lewandowski a-t-il inscrit 5 buts le 22 septembre 2015 ?",
+          "propositions": [
+            "21 minutes",
+            "15 minutes",
+            "9 minutes",
+            "27 minutes"
+          ],
+          "réponse": "9 minutes",
+          "anecdote": "Robert Lewandowski est considéré comme l'un des meilleurs avant-centres du monde, notamment grâce à son jeu complet redoutable."
+        },
+        {
+          "id": 13,
+          "question": "Qu'a fait Francesco Totti après son deuxième but contre la Lazio en janvier 2015 ?",
+          "propositions": [
+            "Selfie",
+            "Doigt d'honneur",
+            "Salto arrière",
+            "Cumulé"
+          ],
+          "réponse": "Selfie",
+          "anecdote": "Champion du monde en 2006, il est reconnu pour son exceptionnelle longévité et sa fidélité absolue envers son équipe de coeur, la Roma."
+        },
+        {
+          "id": 14,
+          "question": "À quel âge Raphaël Varane a-t-il débuté en équipe de France en 2013 ?",
+          "propositions": [
+            "16 ans",
+            "22 ans",
+            "18 ans",
+            "20 ans"
+          ],
+          "réponse": "20 ans",
+          "anecdote": "En défense centrale pour disputer la Coupe du monde 2018, il fut le seul joueur a avoir disputé l'intégralité des sept matches."
+        },
+        {
+          "id": 15,
+          "question": "Quel gardien de but a joué libero contre l'Algérie en Coupe du Monde 2014 ?",
+          "propositions": [
+            "Tom Starke",
+            "Hans Jakob",
+            "Lukas Raeder",
+            "Manuel Neuer"
+          ],
+          "réponse": "Manuel Neuer",
+          "anecdote": "Manuel Neuer se distingue par ses arrêts réflexes, ses relances, ses sorties hors de la surface, ainsi que sa capacité à diriger sa défense."
+        },
+        {
+          "id": 16,
+          "question": "Qu'a appris Pep Guardiola avant d'arriver au Bayern Munich en 2013 ?",
+          "propositions": [
+            "L'allemand",
+            "À faire la fête",
+            "Une naissance",
+            "À manger riche"
+          ],
+          "réponse": "L'allemand",
+          "anecdote": "Très attaché à la communication, Pep Guardiola a notamment remporté le championnat d'Allemagne en 2014, 2015 et 2016."
+        },
+        {
+          "id": 17,
+          "question": "Quel joueur des Girondins est régulièrement capitaine du club depuis 2014 ?",
+          "propositions": [
+            "Théo Pellenard",
+            "Youssouf Sabaly",
+            "Jaroslav Plasil",
+            "Valentin Vada"
+          ],
+          "réponse": "Jaroslav Plasil",
+          "anecdote": "Le 31 mai 2013, il remporte la Coupe de France contre Évian Thonon Gaillard Football Club, son deuxième titre avec les Girondins."
+        },
+        {
+          "id": 18,
+          "question": "Combien de temps a-t-il fallu à Alexandre Pato pour marquer contre Barcelone en 2011 ?",
+          "propositions": [
+            "91 minutes",
+            "3 minutes",
+            "24 secondes",
+            "45 minutes"
+          ],
+          "réponse": "24 secondes",
+          "anecdote": "Marqué le 13 septembre, c'est le but le plus rapide au Camp Nou et le cinquième plus rapide de l'histoire de la Champion's League."
+        },
+        {
+          "id": 19,
+          "question": "Quel acteur incarne le personnage du maire dans le film « Les Seigneurs » ?",
+          "propositions": [
+            "Ramzy Bédia",
+            "Gad Elmaleh",
+            "Franck Dubosc",
+            "Jean-Pierre Marielle"
+          ],
+          "réponse": "Jean-Pierre Marielle",
+          "anecdote": "Marié en quatrièmes noces depuis 2003 à l'actrice Agathe Natanson, Jean-Pierre Marielle est un grand amateur de jazz et de New York."
+        },
+        {
+          "id": 20,
+          "question": "Combien de championnats d'Espagne Carles Puyol a-t-il remporté ?",
+          "propositions": [
+            "Six",
+            "Sept",
+            "Quatre",
+            "Cinq"
+          ],
+          "réponse": "Six",
+          "anecdote": "En septembre 2014, Carles Puyol est devenu pour cinq mois l'adjoint d'Andoni Zubizarreta à la direction sportive du FC Barcelone."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Dans quel club improbable le Brésilien Adriano a-t-il failli signer en décembre 2014 ?",
+          "propositions": [
+            "Le Havre",
+            "Grenoble",
+            "Angers",
+            "Reims"
+          ],
+          "réponse": "Le Havre",
+          "anecdote": "Adriano Vieira Louzada, né en 1979, joue au poste d'attaquant. Il a été sacré trois fois champion du Portugal avec le FC Porto."
+        },
+        {
+          "id": 22,
+          "question": "Quel attaquant italien a raté un penalty en finale de Copa America en 2015 ?",
+          "propositions": [
+            "Francesco Totti",
+            "Edinson Cavani",
+            "Antonio Di Natale",
+            "Gonzalo Higuarin"
+          ],
+          "réponse": "Gonzalo Higuarin",
+          "anecdote": "Lionel Messi ayant marqué le premier penalty, Gonzalo Higuarin Higuain se charge du second mais rate sa frappe."
+        },
+        {
+          "id": 23,
+          "question": "Quel est le prénom de Mbokani, passé à Monaco en 2010-2011 ?",
+          "propositions": [
+            "Ahmed",
+            "Janvier",
+            "Dieumerci",
+            "Tidiane"
+          ],
+          "réponse": "Dieumerci",
+          "anecdote": "Le 22 mars 2016, Mbokani était présent à l'aéroport de Zaventem lors des attentats de Bruxelles. Il s'en sort mais sous le choc."
+        },
+        {
+          "id": 24,
+          "question": "Dans lequel de ces clubs le défenseur Adil Rami n'a-t-il pas joué ?",
+          "propositions": [
+            "Séville",
+            "Valence",
+            "Cologne",
+            "Lille"
+          ],
+          "réponse": "Cologne",
+          "anecdote": "Avec les Bleus, Rami a participé à l'Euro 2012, à l'Euro 2016 et à la Coupe du monde 2018 qu'il remporte sans jouer une seule minute."
+        },
+        {
+          "id": 25,
+          "question": "Quel joueur est devenu à 26 ans deuxième meilleur buteur de l'histoire du Mexique ?",
+          "propositions": [
+            "Villa",
+            "Chicharito",
+            "Silvera",
+            "Alonso"
+          ],
+          "réponse": "Chicharito",
+          "anecdote": "Il doit son surnom de Chicharito (diminutif de petit pois) à son père qui était surnommé Chicharo avec ses yeux verts."
+        },
+        {
+          "id": 26,
+          "question": "Quel entraîneur lillois a plus convaincu par ses chemises que sur le banc ?",
+          "propositions": [
+            "Philippe Redon",
+            "Antoine Redin",
+            "Denis Renaud",
+            "Hervé Renard"
+          ],
+          "réponse": "Hervé Renard",
+          "anecdote": "Ancien joueur français, Hervé Renard a disputé en 2018 sa première Coupe du monde en tant qu'entraîneur avec la sélection du Maroc."
+        },
+        {
+          "id": 27,
+          "question": "Pour quel problème Loïc Rémy n'a-t-il pu rejoindre Liverpool en juillet 2014 ?",
+          "propositions": [
+            "Pulmonaire",
+            "Cervical",
+            "Cardiaque",
+            "Dentaire"
+          ],
+          "réponse": "Cardiaque",
+          "anecdote": "Annoncé au Liverpool FC fin juillet 2014, Loïc Rémy ne satisfait pas à la visite médicale et réintègre l'effectif des Queens Park Rangers."
+        },
+        {
+          "id": 28,
+          "question": "Quel club a recruté Fernandinho en 2013 et Fernando en 2014 ?",
+          "propositions": [
+            "Liverpool",
+            "Manchester City",
+            "Chelsea",
+            "Arsenal"
+          ],
+          "réponse": "Manchester City",
+          "anecdote": "Le Manchester City Football Club a connu sa période la plus faste de la fin des années 1960 jusqu'au début des années 1970."
+        },
+        {
+          "id": 29,
+          "question": "Quel joueur de l'Olympic Lyonnais a placé 36 coups francs de suite en 2013 et 2014 ?",
+          "propositions": [
+            "Clément Grenier",
+            "André Grillon",
+            "Fabio Grosso",
+            "Marco Grassi"
+          ],
+          "réponse": "Clément Grenier",
+          "anecdote": "Se prenant alors pour le nouveau Juninho, Clément Grenier se transformera vite en fantôme à cause de vilaines blessures."
+        },
+        {
+          "id": 30,
+          "question": "De quel autre sport l'attaquant Zlatan Ibrahimovic est-il ceinture noire ?",
+          "propositions": [
+            "Budo",
+            "Karaté",
+            "Taekwondo",
+            "Judo"
+          ],
+          "réponse": "Taekwondo",
+          "anecdote": "Il est considéré comme l'un des avants-centres le plus complet et comme l'un des meilleurs attaquants de l'histoire du football."
+        }
+      ]
+    }
+  }
+}

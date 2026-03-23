@@ -1,0 +1,385 @@
+{
+  "fournisseur": "OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)",
+  "licence": "CC BY-SA",
+  "rédacteur": "Philippe Bresoux",
+  "difficulté": "3 / 5",
+  "version": 7,
+  "mise-à-jour": "2022-08-07",
+  "catégorie-nom-slogan": {
+    "fr": {
+      "catégorie": "Cinéma",
+      "nom": "Tom Hanks",
+      "slogan": "Court Forrest, court !"
+    }
+  },
+  "quizz": {
+    "fr": {
+      "débutant": [
+        {
+          "id": 1,
+          "question": "Sur quelle série Tom Hanks a-t-il rencontré le réalisateur débutant Ron Howard ?",
+          "propositions": [
+            "Côte Ouest",
+            "Chips",
+            "Arnold et Willy",
+            "Happy Days"
+          ],
+          "réponse": "Happy Days",
+          "anecdote": "Cette série télévisée américaine de 255 épisodes de 24 minutes a été créée par Garry Marshall et diffusée sur le réseau ABC."
+        },
+        {
+          "id": 2,
+          "question": "Qui a décerné à Tom Hanks en 2016 la médaille présidentielle de la Liberté ?",
+          "propositions": [
+            "Bill Clinton",
+            "Donald Trump",
+            "Barack Obama",
+            "George W. Bush"
+          ],
+          "réponse": "Barack Obama",
+          "anecdote": "La médaille présidentielle de la Liberté est, avec la médaille d'or du Congrès, la plus haute décoration civile des États-Unis."
+        },
+        {
+          "id": 3,
+          "question": "Quel film réalisé par Ron Howard a fait de Tom Hanks une vedette ?",
+          "propositions": [
+            "Splash",
+            "Willow",
+            "Cocoon",
+            "Backdraft"
+          ],
+          "réponse": "Splash",
+          "anecdote": "Le producteur Brian Grazer a passé quatre ans pour trouver la meilleure méthode pour filmer les scènes sous-marines."
+        },
+        {
+          "id": 4,
+          "question": "Dans quel film Tom Hanks tient-il le rôle d'un enfant dans le corps d'un adulte ?",
+          "propositions": [
+            "Turner et Hooch",
+            "Philadelphia",
+            "La Ligne verte",
+            "Big"
+          ],
+          "réponse": "Big",
+          "anecdote": "Penny Marshall est devenue avec « Big » la première femme à réaliser un film ayant franchi la barre des 100 millions de recettes."
+        },
+        {
+          "id": 5,
+          "question": "Quel film marque sa première collaboration avec Robert Zemeckis ?",
+          "propositions": [
+            "Apollo 13",
+            "La Ligne verte",
+            "Forrest Gump",
+            "Seul au monde"
+          ],
+          "réponse": "Forrest Gump",
+          "anecdote": "Il réalise l'exploit d'obtenir deux Oscars consécutifs, que seul Spencer Tracy (en 1937 et 1938) avait réalisé avant lui."
+        },
+        {
+          "id": 6,
+          "question": "Dans quel film Tom Hanks est-il isolé sur une île pendant plusieurs années ?",
+          "propositions": [
+            "Seul au monde",
+            "Le Terminal",
+            "Invictus",
+            "Splash"
+          ],
+          "réponse": "Seul au monde",
+          "anecdote": "Réalisé par Robert Zemeckis, sorti en 2000, le tournage a eu lieu au nord-ouest des Fidji, sur l'île volcanique de Monuriki."
+        },
+        {
+          "id": 7,
+          "question": "À quel héros des studios Pixar Tom Hanks prête-t-il sa voix ?",
+          "propositions": [
+            "Woody",
+            "Wukong",
+            "Walter",
+            "Wolverine"
+          ],
+          "réponse": "Woody",
+          "anecdote": "C'est Jean-Philippe Puymartin qui incarne la voix française du plus célèbre des shériffs de fiction de films d'animation."
+        },
+        {
+          "id": 8,
+          "question": "Quel soldat Tom Hanks doit-il sauver dans un film de Steven Spielberg ?",
+          "propositions": [
+            "Donovan",
+            "Morgan",
+            "Ryan",
+            "Dylan"
+          ],
+          "réponse": "Ryan",
+          "anecdote": "La reconstitution très réaliste du débarquement de Normandie est l'un des points forts du film sorti sur les écrans en 1998."
+        },
+        {
+          "id": 9,
+          "question": "Dans quel film Tom Hanks interprète-t-il un avocat homosexuel atteint du sida ?",
+          "propositions": [
+            "Big",
+            "Le Terminal",
+            "Seul au monde",
+            "Philadelphia"
+          ],
+          "réponse": "Philadelphia",
+          "anecdote": "Tom Hanks connaîtra en 1993 la consécration avec ce film pour lequel il reçoit l'Oscar du meilleur acteur l'année suivante."
+        },
+        {
+          "id": 10,
+          "question": "Quelle actrice Tom Hanks a-t-il retrouvé dans « Nuits blanches à Seattle » ?",
+          "propositions": [
+            "Cameron Diaz",
+            "Meg Ryan",
+            "Susan Sarandon",
+            "Julia Roberts"
+          ],
+          "réponse": "Meg Ryan",
+          "anecdote": "Parker Posey a tourné dans le film, mais ses scènes furent coupées au montage. Elle tournera ensuite « Vous avez un message »."
+        }
+      ],
+      "confirmé": [
+        {
+          "id": 11,
+          "question": "À quel acteur emblématique américain Tom Hanks est-il souvent comparé ?",
+          "propositions": [
+            "Jack Lemmon",
+            "Peter Finch",
+            "Sidney Poitier",
+            "James Stewart"
+          ],
+          "réponse": "James Stewart",
+          "anecdote": "Légende de Hollywood, il reçut en 1985 un Oscar d'honneur des mains de son ami Cary Grant pour l'ensemble de sa longue carrière."
+        },
+        {
+          "id": 12,
+          "question": "Dans quel film Tom Hanks joue-t-il aux côtés de Catherine Zeta-Jones ?",
+          "propositions": [
+            "Le Terminal",
+            "Splash",
+            "Philadelphia",
+            "Da Vinci Code"
+          ],
+          "réponse": "Le Terminal",
+          "anecdote": "Le film réalisé par Steven Spielberg s'inspire très librement d'une histoire vraie, celle de l'Iranien Mehran Karimi Nasseri."
+        },
+        {
+          "id": 13,
+          "question": "Quelle personne rencontrée à Sacramento deviendra sa première épouse ?",
+          "propositions": [
+            "Jane Clark",
+            "Rita Wilson",
+            "Sheila Kelley",
+            "Samantha Lewes"
+          ],
+          "réponse": "Samantha Lewes",
+          "anecdote": "Son premier enfant naîtra en 1977, puis il épousera Samantha Lewes en janvier 1978 puis naîtra sa fille Elizabeth en 1982."
+        },
+        {
+          "id": 14,
+          "question": "Dans quel film sorti en 2006 Tom Hanks incarne-t-il Robert Langdon ?",
+          "propositions": [
+            "Le Symbole perdu",
+            "Origine",
+            "Da Vinci Code",
+            "Inferno"
+          ],
+          "réponse": "Da Vinci Code",
+          "anecdote": "Daniel Gerhard Brown est un romancier américain qui a vendu près de deux cents millions d'exemplaires de ses romans."
+        },
+        {
+          "id": 15,
+          "question": "Quel film est basé sur l'histoire de la prise d'otage du Maersk Alabama ?",
+          "propositions": [
+            "Gran Torino",
+            "Sully",
+            "Capitaine Phillips",
+            "Le Pôle express"
+          ],
+          "réponse": "Capitaine Phillips",
+          "anecdote": "La performance de Tom Hanks sera saluée tout comme le film de Paul Greengrass, connu pour avoir réalisé « La Mort dans la peau »."
+        },
+        {
+          "id": 16,
+          "question": "Quel film avec Tom Hanks est adapté d'un roman du même nom de Stephen King ?",
+          "propositions": [
+            "The Circle",
+            "La Ligne verte",
+            "Philadelphia",
+            "Le Terminal"
+          ],
+          "réponse": "La Ligne verte",
+          "anecdote": "À l'époque où se déroule l'action (les années 1930), la Louisiane exécutait encore ses condamnés à mort par pendaison."
+        },
+        {
+          "id": 17,
+          "question": "Dans quel film avec Emma Watson, sorti en 2017, Tom Hanks a-t-il joué ?",
+          "propositions": [
+            "Origine",
+            "Ladykillers",
+            "Seul au monde",
+            "The Circle"
+          ],
+          "réponse": "The Circle",
+          "anecdote": "Le film écrit et réalisé par James Ponsoldt est une adaptation du roman dystopique « The Circle » de Dave Eggers."
+        },
+        {
+          "id": 18,
+          "question": "Dans le clip de quelle artiste Tom Hanks apparaît-il dans « I Really Like You » ?",
+          "propositions": [
+            "Nelly Furtado",
+            "Céline Dion",
+            "Shania Twain",
+            "Carly Rae Jepsen"
+          ],
+          "réponse": "Carly Rae Jepsen",
+          "anecdote": "Tom Hanks et Justin Bieber participeront au clip vidéo de ce nouveau titre figurant sur son troisième album, « Emotion »."
+        },
+        {
+          "id": 19,
+          "question": "Quel film de Clint Eastwood revient sur l'amerrissage forcé du vol 1549 US Airways ?",
+          "propositions": [
+            "Gran Torino",
+            "Invictus",
+            "Sully",
+            "La Mule"
+          ],
+          "réponse": "Sully",
+          "anecdote": "Le 15 janvier 2009, le pilote de ligne Chesley « Sully » Sullenberger effectue un amerrissage d'urgence du vol 1549 sur l'Hudson."
+        },
+        {
+          "id": 20,
+          "question": "Qui est la doublure de Tom Hanks pour les scènes de course dans « Forrest Gump » ?",
+          "propositions": [
+            "Paolo Domingo",
+            "Georges Atlas",
+            "Teddy Bilis",
+            "Jim Hanks"
+          ],
+          "réponse": "Jim Hanks",
+          "anecdote": "L'homme que l'on voit courir n'est autre qu'un des frères de Tom Hanks, crédité à la fin du générique comme Running man."
+        }
+      ],
+      "expert": [
+        {
+          "id": 21,
+          "question": "Dans quel État des États-Unis le futur acteur Tom Hanks a-t-il vu le jour en 1956 ?",
+          "propositions": [
+            "Kansas",
+            "Californie",
+            "Arizona",
+            "Floride"
+          ],
+          "réponse": "Californie",
+          "anecdote": "Tom Hanks est devenu célèbre avec le film « Splash », avant de connaître la consécration avec « Philadelphia » et « Forrest Gump »."
+        },
+        {
+          "id": 22,
+          "question": "Quel métier Tom Hanks a-t-il exercé dans un hôtel Hilton après le lycée ?",
+          "propositions": [
+            "Groom",
+            "Barman",
+            "Réceptionniste",
+            "Cuisinier"
+          ],
+          "réponse": "Groom",
+          "anecdote": "Parallèlement à ce petit job, il développe son jeu d'acteur au travers de sa participation à des cours de comédie."
+        },
+        {
+          "id": 23,
+          "question": "Dans quel film Tom Hanks tient-il le rôle d'un cambrioleur excentrique ?",
+          "propositions": [
+            "Turner et Hooch",
+            "Inferno",
+            "Ithaca",
+            "Ladykillers"
+          ],
+          "réponse": "Ladykillers",
+          "anecdote": "Il s'agit du 11e film des frères Coen et d'un remake du film britannique d'Alexander Mackendrick « Tueurs de dames » sorti en 1955."
+        },
+        {
+          "id": 24,
+          "question": "Combien de personnages différents interprète-t-il dans « Cloud Atlas » ?",
+          "propositions": [
+            "Six",
+            "Quatre",
+            "Cinq",
+            "Trois"
+          ],
+          "réponse": "Six",
+          "anecdote": "Le film est la succession d'une multitude de séquences, de quelques secondes à plusieurs minutes, retraçant six histoires distinctes."
+        },
+        {
+          "id": 25,
+          "question": "De quelle équipe de baseball Tom Hanks est-il un fervent fan ?",
+          "propositions": [
+            "Minnesota Twins",
+            "Cleveland Indians",
+            "New York Yankees",
+            "Boston Red Sox"
+          ],
+          "réponse": "Cleveland Indians",
+          "anecdote": "Surnommée The Tribe, la franchise des Indians fut fondée en 1900 sous le nom de Cleveland Lake Shores."
+        },
+        {
+          "id": 26,
+          "question": "Dans quel film de Robert Zemeckis Tom Hanks interprète-t-il six rôles ?",
+          "propositions": [
+            "Le Pôle express",
+            "La Mule",
+            "Apollo 13",
+            "Sully"
+          ],
+          "réponse": "Le Pôle express",
+          "anecdote": "« Le Pôle express » a été adapté en jeu vidéo sur GameCube, PlayStation 2, Windows et Game Boy Advance en 2004."
+        },
+        {
+          "id": 27,
+          "question": "Quel film avec Tom Hanks est le premier réalisé par l'actrice Meg Ryan ?",
+          "propositions": [
+            "Indignation",
+            "Interview",
+            "In extremis",
+            "Ithaca"
+          ],
+          "réponse": "Ithaca",
+          "anecdote": "En 1940, suite au départ de son grand frère, du décès de son père, un enfant veille sur sa mère, sa soeur et son petit frère."
+        },
+        {
+          "id": 28,
+          "question": "Quel épisode de la mini-série « Frères d'armes » Tom Hanks a-t-il réalisé ?",
+          "propositions": [
+            "Épisode 7",
+            "Épisode 9",
+            "Épisode 3",
+            "Épisode 5"
+          ],
+          "réponse": "Épisode 5",
+          "anecdote": "L'appellation frères d'armes désigne un groupe d'individus ayant combattu ensemble lors d'un conflit armé ou d'une guerre."
+        },
+        {
+          "id": 29,
+          "question": "De quelle société de production est-il cofondateur avec Gary Goetzman ?",
+          "propositions": [
+            "Miramax",
+            "TriStar",
+            "Jersey Films",
+            "Playtone"
+          ],
+          "réponse": "Playtone",
+          "anecdote": "Cette société fut ainsi nommée d'après le nom d'une société fictive du film « That Thing You Do! » Réalisé par Tom Hanks."
+        },
+        {
+          "id": 30,
+          "question": "Quel comédien a doublé la voix française de Tom Hanks dans « Big » ?",
+          "propositions": [
+            "Georges Claisse",
+            "Jean Puymartin",
+            "Chris Bénard",
+            "Xavier Fagnon"
+          ],
+          "réponse": "Chris Bénard",
+          "anecdote": "Dans le domaine de l'audiovisuel, il a travaillé avec l'Européenne de doublage, Carrère Group, Europacorp, Canal + et la Sofi."
+        }
+      ]
+    }
+  }
+}
