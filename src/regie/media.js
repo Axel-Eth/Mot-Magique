@@ -33,6 +33,9 @@ const misfortuneWheel = {
   selectHighlightTimer: 0,
   suppressModalBackdropCloseUntil: 0
 };
+const generalCategoryDropdown = {
+  open: false
+};
 
 function normalizePlateauBackgroundTheme(value) {
   return "bubbles";
@@ -856,25 +859,104 @@ function applyWheelCategory(category) {
   const hasValue = [...select.options].some((opt) => opt.value === value);
   if (!hasValue) return false;
   select.value = value;
+  syncGeneralCategoryDropdown();
   resetGeneralQuestionPreview();
   return true;
 }
 
 function focusHighlightedGeneralCategorySelect() {
   const select = $("generalCategorySelect");
-  if (!select) return;
+  const trigger = document.querySelector("#generalCategoryDropdown .general-category-trigger");
+  if (!select && !trigger) return;
   if (misfortuneWheel.selectHighlightTimer) {
     clearTimeout(misfortuneWheel.selectHighlightTimer);
     misfortuneWheel.selectHighlightTimer = 0;
   }
-  select.classList.remove("misfortune-select-highlight");
-  void select.offsetWidth;
-  select.classList.add("misfortune-select-highlight");
+  const target = trigger || select;
+  target.classList.remove("misfortune-select-highlight");
+  void target.offsetWidth;
+  target.classList.add("misfortune-select-highlight");
   misfortuneWheel.selectHighlightTimer = window.setTimeout(() => {
-    select.classList.remove("misfortune-select-highlight");
+    target.classList.remove("misfortune-select-highlight");
     misfortuneWheel.selectHighlightTimer = 0;
   }, 2200);
-  select.focus({ preventScroll: false });
+  target.focus?.({ preventScroll: false });
+}
+
+function closeGeneralCategoryDropdown() {
+  generalCategoryDropdown.open = false;
+  $("generalCategoryDropdown")?.classList.remove("open");
+}
+
+function centerSelectedGeneralCategoryItem() {
+  const host = $("generalCategoryDropdown");
+  const menu = host?.querySelector(".general-category-menu");
+  const selected = host?.querySelector(".general-category-item.active");
+  if (!menu || !selected) return;
+  const menuHeight = menu.clientHeight;
+  const itemTop = selected.offsetTop;
+  const itemHeight = selected.offsetHeight;
+  const targetScroll = Math.max(0, itemTop - (menuHeight / 2) + (itemHeight / 2));
+  menu.scrollTop = targetScroll;
+}
+
+function openGeneralCategoryDropdown() {
+  const host = $("generalCategoryDropdown");
+  if (!host) return;
+  generalCategoryDropdown.open = true;
+  host.classList.add("open");
+  centerSelectedGeneralCategoryItem();
+}
+
+function syncGeneralCategoryDropdown() {
+  const select = $("generalCategorySelect");
+  const host = $("generalCategoryDropdown");
+  if (!select || !host) return;
+
+  let trigger = host.querySelector(".general-category-trigger");
+  let menu = host.querySelector(".general-category-menu");
+
+  if (!trigger) {
+    trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "btn ghost general-category-trigger";
+    trigger.addEventListener("click", () => {
+      if (generalCategoryDropdown.open) {
+        closeGeneralCategoryDropdown();
+      } else {
+        openGeneralCategoryDropdown();
+      }
+    });
+    host.appendChild(trigger);
+  }
+
+  if (!menu) {
+    menu = document.createElement("div");
+    menu.className = "general-category-menu";
+    host.appendChild(menu);
+  }
+
+  const selectedOption = select.selectedOptions?.[0] || select.options[0] || null;
+  trigger.textContent = selectedOption?.textContent || "Toutes categories";
+
+  menu.innerHTML = "";
+  [...select.options].forEach((opt) => {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "general-category-item";
+    if (opt.classList.contains("general-category-option")) item.classList.add("category");
+    if (opt.classList.contains("general-theme-option")) item.classList.add("theme");
+    if (opt.value === select.value) item.classList.add("active");
+    item.textContent = opt.textContent || "";
+    item.dataset.value = opt.value;
+    item.addEventListener("click", () => {
+      select.value = opt.value;
+      syncGeneralCategoryDropdown();
+      closeGeneralCategoryDropdown();
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    menu.appendChild(item);
+  });
 }
 
 function updateMisfortuneWheelItems({ keepAngle = true } = {}) {
@@ -1131,6 +1213,7 @@ function refreshGeneralCategorySelect() {
   } else {
     select.selectedIndex = 0;
   }
+  syncGeneralCategoryDropdown();
 }
 
 function updateGeneralQuestionButtons() {
@@ -1669,7 +1752,21 @@ export function registerMediaEvents() {
   });
 
   $("generalCategorySelect")?.addEventListener("change", () => {
+    syncGeneralCategoryDropdown();
     resetGeneralQuestionPreview();
+  });
+
+  document.addEventListener("pointerdown", (e) => {
+    if (!generalCategoryDropdown.open) return;
+    const target = e.target;
+    if (target?.closest?.("#generalCategoryDropdown")) return;
+    closeGeneralCategoryDropdown();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeGeneralCategoryDropdown();
+    }
   });
 
   $("generalLevelFilter")?.addEventListener("toggle", () => {
@@ -1740,6 +1837,7 @@ export function registerMediaEvents() {
 
   updateMisfortuneWheelItems({ keepAngle: true });
   updateReplayButtonsState();
+  syncGeneralCategoryDropdown();
   updateGeneralQuestionButtons();
 }
 
