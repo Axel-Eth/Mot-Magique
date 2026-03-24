@@ -49,6 +49,28 @@
         </div>
       </div>
     </div>
+    <div id="bonusModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="bonusModalTitle">
+      <div class="modal-card bonus-modal-card">
+        <div class="row space-between bonus-modal-top">
+          <h3 id="bonusModalTitle">Bonus</h3>
+          <button id="btnBonusClose" class="btn ghost" type="button">Fermer</button>
+        </div>
+        <div class="bonus-grid">
+          <section class="bonus-column">
+            <div class="bonus-column-title">Generiques</div>
+            <button id="btnDouble" class="btn ghost bonus-action-btn" type="button">Mot X 2</button>
+            <button id="btnTriple" class="btn ghost bonus-action-btn" type="button">Mot X 3</button>
+            <button id="btnBad" class="btn ghost bonus-action-btn" type="button">Bad Points</button>
+          </section>
+          <section class="bonus-column">
+            <div class="bonus-column-title">Bonus Simples</div>
+            <button id="btnDoubleAnimated" class="btn ghost bonus-action-btn" type="button">Mot X 2</button>
+            <button id="btnTripleAnimated" class="btn ghost bonus-action-btn" type="button">Mot X 3</button>
+            <button id="btnBadAnimated" class="btn ghost bonus-action-btn" type="button">Bad Points</button>
+          </section>
+        </div>
+      </div>
+    </div>
     <div id="wordSelectModal" class="modal hidden" role="dialog" aria-modal="false" aria-labelledby="regieWordHeader">
       <div class="modal-card word-select-card">
         <h3 id="regieWordHeader" class="word-select-title">Aucun mot selectionne</h3>
@@ -128,12 +150,7 @@
         <button id="btnReset" class="btn ghost" type="button">Reset etat</button>
         <button id="btnGeneric" class="btn success" type="button">Generique</button>
         <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
-        <button id="btnDouble" class="btn ghost" type="button">Mot X 2 (video)</button>
-        <button id="btnDoubleAnimated" class="btn ghost" type="button">Mot x 2</button>
-        <button id="btnTriple" class="btn ghost" type="button">Mot X 3 (video)</button>
-        <button id="btnTripleAnimated" class="btn ghost" type="button">Mot x 3</button>
-        <button id="btnBad" class="btn ghost" type="button">Bad Points (video)</button>
-        <button id="btnBadAnimated" class="btn ghost" type="button">Bad Points</button>
+        <button id="btnBonus" class="btn ghost" type="button">Bonus</button>
         <button id="btnScores" class="btn ghost" type="button">Scores</button>
         <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
         <span id="lastLetter" class="last-letter">Lettre : -</span>

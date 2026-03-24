@@ -789,6 +789,44 @@ h2{
   font-size: 18px;
 }
 
+.bonus-modal-card{
+  width: min(92vw, 820px);
+}
+
+.bonus-modal-top{
+  margin-top:0;
+  align-items:center;
+}
+
+.bonus-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:16px;
+  margin-top:14px;
+}
+
+.bonus-column{
+  padding:14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.04);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.bonus-column-title{
+  font-size:18px;
+  font-weight:900;
+  color:#ffffff;
+  margin-bottom:4px;
+}
+
+.bonus-action-btn{
+  width:100%;
+  justify-content:center;
+}
+
 .team-modal-list{
   display:flex;
   flex-direction:column;
@@ -964,6 +1002,7 @@ code{
 /* Responsive régie */
 @media (max-width: 980px){
   .layout{ grid-template-columns: 1fr; }
+  .bonus-grid{ grid-template-columns: 1fr; }
 }
 
 /* ============================================================

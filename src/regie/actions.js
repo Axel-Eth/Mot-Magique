@@ -35,6 +35,14 @@ function broadcastToPlateau(msg) {
   } catch {}
 }
 
+function openBonusModal() {
+  $("bonusModal")?.classList.remove("hidden");
+}
+
+function closeBonusModal() {
+  $("bonusModal")?.classList.add("hidden");
+}
+
 export function registerActionEvents() {
   $("openPlateau")?.addEventListener("click", () => {
     openPlateauWindow();
@@ -97,6 +105,15 @@ export function registerActionEvents() {
     const lastLetter = $("lastLetter");
     if (lastLetter) lastLetter.textContent = "Lettre : -";
     resetRegieTimer();
+    closeBonusModal();
+  });
+
+  $("btnBonus")?.addEventListener("click", () => {
+    openBonusModal();
+  });
+
+  $("btnBonusClose")?.addEventListener("click", () => {
+    closeBonusModal();
   });
 
   $("btnGeneric")?.addEventListener("click", () => {
@@ -114,6 +131,7 @@ export function registerActionEvents() {
     if (next) {
       postToPlateau({ type: "PLAY_BAD" });
     }
+    closeBonusModal();
   });
 
   $("btnBadAnimated")?.addEventListener("click", () => {
@@ -123,6 +141,7 @@ export function registerActionEvents() {
     if (next) {
       postToPlateau({ type: "PLAY_BAD_ANIMATION" });
     }
+    closeBonusModal();
   });
 
   $("btnScores")?.addEventListener("click", () => {
@@ -236,6 +255,7 @@ export function registerActionEvents() {
     if (next === 2) {
       postToPlateau({ type: "PLAY_DOUBLE" });
     }
+    closeBonusModal();
   });
 
   $("btnDoubleAnimated")?.addEventListener("click", () => {
@@ -246,6 +266,7 @@ export function registerActionEvents() {
     if (next === 2) {
       postToPlateau({ type: "PLAY_DOUBLE_ANIMATION" });
     }
+    closeBonusModal();
   });
 
   $("btnTriple")?.addEventListener("click", () => {
@@ -256,6 +277,7 @@ export function registerActionEvents() {
     if (next === 3) {
       postToPlateau({ type: "PLAY_TRIPLE" });
     }
+    closeBonusModal();
   });
 
   $("btnTripleAnimated")?.addEventListener("click", () => {
@@ -266,6 +288,7 @@ export function registerActionEvents() {
     if (next === 3) {
       postToPlateau({ type: "PLAY_TRIPLE_ANIMATION" });
     }
+    closeBonusModal();
   });
 
   $("addTeam")?.addEventListener("click", addTeam);
