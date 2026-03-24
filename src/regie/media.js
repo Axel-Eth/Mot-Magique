@@ -281,6 +281,12 @@ export async function loadMusicList() {
   if (!select) return;
   select.innerHTML = "";
   const base = "questions/musique/";
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Blind Test";
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  select.appendChild(placeholder);
   try {
     const res = await fetch(base, { cache: "no-store" });
     if (!res.ok) return;
@@ -323,7 +329,7 @@ export async function loadPlateauMusicList() {
       .map((m) => decodeURIComponent(m[1].split("/").pop() || m[1]));
     const placeholder = document.createElement("option");
     placeholder.value = "";
-    placeholder.textContent = "Choisir une musique";
+    placeholder.textContent = "Musique Plateau";
     placeholder.disabled = true;
     placeholder.selected = true;
     select.appendChild(placeholder);
@@ -341,6 +347,12 @@ export async function loadFilmsList() {
   if (!select) return;
   select.innerHTML = "";
   const base = "questions/films/";
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Films";
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  select.appendChild(placeholder);
   try {
     const res = await fetch(base, { cache: "no-store" });
     if (!res.ok) return;
