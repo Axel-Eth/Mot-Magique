@@ -35,7 +35,7 @@
         <p><strong>Fichier :</strong> <span id="capitalesFileName">-</span></p>
         <p><strong>Note :</strong> <span id="capitalesNote">-</span></p>
         <div class="row">
-          <button id="capitalesModalTone" class="btn ghost capitales-tone-modal" type="button" aria-pressed="false">Doux</button>
+          <button id="capitalesModalTone" class="btn ghost capitales-tone-modal" type="button" aria-pressed="false" aria-label="Mode doux">🙂</button>
           <button id="capitalesModalOk" class="btn success" type="button">OK</button>
         </div>
       </div>
@@ -58,6 +58,7 @@
         <div class="bonus-grid">
           <section class="bonus-column">
             <div class="bonus-column-title">Generiques</div>
+            <button id="btnGeneric" class="btn ghost bonus-action-btn" type="button">Generique</button>
             <button id="btnDouble" class="btn ghost bonus-action-btn" type="button">Mot X 2</button>
             <button id="btnTriple" class="btn ghost bonus-action-btn" type="button">Mot X 3</button>
             <button id="btnBad" class="btn ghost bonus-action-btn" type="button">Bad Points</button>
@@ -85,7 +86,6 @@
     </div>
     <section class="panel">
       <h2>Lettre</h2>
-      <p class="hint">Tape une lettre (A-Z) puis Entrée</p>
 
       <input
         id="letterInput"
@@ -98,10 +98,9 @@
         inputmode="text"
       />
       <div class="capitales-block">
-        <label class="label" for="capitalesSelect">Capitales</label>
         <div class="row">
           <select id="capitalesSelect" class="select" aria-label="Drapeaux"></select>
-          <button id="capitalesTone" class="btn ghost capitales-tone" type="button" aria-pressed="false">Doux</button>
+          <button id="capitalesTone" class="btn ghost capitales-tone" type="button" aria-pressed="false" aria-label="Mode doux">🙂</button>
         </div>
       </div>
 
@@ -132,7 +131,6 @@
 
       <div class="row small">
         <button id="btnReset" class="btn ghost" type="button">Reset etat</button>
-        <button id="btnGeneric" class="btn success" type="button">Generique</button>
         <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
         <button id="btnBonus" class="btn ghost" type="button">Bonus</button>
         <button id="btnScores" class="btn ghost" type="button">Scores</button>

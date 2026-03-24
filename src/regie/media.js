@@ -168,13 +168,17 @@ export function setCapitalesTone(mode) {
   const isPiquant = state.capitalesNotesMode === "piquant";
   const btn = $("capitalesTone");
   if (btn) {
-    btn.textContent = isPiquant ? "Piquant" : "Doux";
+    btn.textContent = isPiquant ? "🌶️" : "🙂";
     btn.setAttribute("aria-pressed", String(isPiquant));
+    btn.setAttribute("aria-label", isPiquant ? "Mode piquant" : "Mode doux");
+    btn.title = isPiquant ? "Mode piquant" : "Mode doux";
   }
   const modalBtn = $("capitalesModalTone");
   if (modalBtn) {
-    modalBtn.textContent = isPiquant ? "Piquant" : "Doux";
+    modalBtn.textContent = isPiquant ? "🌶️" : "🙂";
     modalBtn.setAttribute("aria-pressed", String(isPiquant));
+    modalBtn.setAttribute("aria-label", isPiquant ? "Mode piquant" : "Mode doux");
+    modalBtn.title = isPiquant ? "Mode piquant" : "Mode doux";
   }
   refreshCapitaleModal();
 }

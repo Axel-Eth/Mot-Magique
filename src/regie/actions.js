@@ -118,6 +118,7 @@ export function registerActionEvents() {
 
   $("btnGeneric")?.addEventListener("click", () => {
     postToPlateau({ type: "PLAY_GENERIC" });
+    closeBonusModal();
   });
 
   $("btnShuffleLetters")?.addEventListener("click", () => {
