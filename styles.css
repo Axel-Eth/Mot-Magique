@@ -33,6 +33,7 @@
   --cell:72px;
   --radius:14px;
   --shadow:0 10px 30px rgba(0,0,0,.25);
+  --regie-media-select-width: 380px;
 }
 
 /* ---------- Reset léger ---------- */
@@ -246,6 +247,7 @@ h2{
 }
 
 .input.big{
+  width: min(100%, var(--regie-media-select-width));
   font-size:28px;
   text-transform: uppercase;
   text-align:center;
@@ -367,7 +369,7 @@ h2{
 }
 
 .capitales-block .select{
-  width: 320px;
+  width: min(100%, var(--regie-media-select-width));
 }
 
 .capitales-tone{
@@ -383,7 +385,7 @@ h2{
 }
 
 .music-block .select{
-  width: 220px;
+  width: min(100%, var(--regie-media-select-width));
 }
 
 .media-row{
@@ -393,8 +395,9 @@ h2{
 }
 
 .media-row .select{
-  flex:1;
-  min-width:0;
+  flex:0 0 min(100%, var(--regie-media-select-width));
+  min-width: min(100%, var(--regie-media-select-width));
+  max-width: min(100%, var(--regie-media-select-width));
 }
 
 .media-file-name{
