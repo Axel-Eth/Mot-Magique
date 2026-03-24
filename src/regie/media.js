@@ -8,6 +8,7 @@ let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];
 const PLAYED_MEDIA_STORAGE_KEY = "avm_played_media_v1";
 const PLATEAU_BG_STORAGE_KEY = "avm_plateau_background_theme_v1";
 const TWO_PI = Math.PI * 2;
+const MISFORTUNE_WHEEL_INTENSITY = 8;
 const MISFORTUNE_WHEEL_COLORS = [
   "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
   "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
@@ -157,38 +158,6 @@ export function showCapitaleByFile(fileName) {
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "SHOW_FLAG", src: `${capitalesBasePath}${fileName}` });
   showCapitaleModal(fileName);
-}
-
-function getLeadingNumberFromFile(fileName) {
-  const m = String(fileName || "").match(/^(\d+)/);
-  if (!m) return null;
-  const num = parseInt(m[1], 10);
-  return Number.isNaN(num) ? null : num;
-}
-
-function findCapitaleFileByNumber(num) {
-  if (!Array.isArray(state.capitalesFiles) || !state.capitalesFiles.length) {
-    return `${num}.png`;
-  }
-  for (const file of state.capitalesFiles) {
-    const n = getLeadingNumberFromFile(file);
-    if (n === num) return file;
-  }
-  const direct = state.capitalesFiles.find((file) => file === `${num}.png`);
-  return direct || `${num}.png`;
-}
-
-export function sendCapitale() {
-  const input = document.getElementById("capitalesInput");
-  if (!input) return;
-  const num = parseInt(String(input.value || "").trim(), 10);
-  input.value = "";
-  if (!Number.isInteger(num) || num < 1 || num > 254) {
-    alert("Numero invalide. Entrez un nombre entre 1 et 254.");
-    return;
-  }
-  const fileName = findCapitaleFileByNumber(num);
-  showCapitaleByFile(fileName);
 }
 
 export function setCapitalesTone(mode) {
@@ -857,21 +826,6 @@ function clearMisfortuneSpinAnimation() {
   misfortuneWheel.rafId = 0;
 }
 
-function clampMisfortuneIntensity(rawValue) {
-  const parsed = Number.parseInt(String(rawValue ?? "").trim(), 10);
-  if (!Number.isFinite(parsed)) return 8;
-  if (parsed <= 0) return 0;
-  if (parsed >= 12) return 12;
-  return parsed;
-}
-
-function readMisfortuneIntensity() {
-  const input = $("misfortuneWheelIntensity");
-  const intensity = clampMisfortuneIntensity(input?.value);
-  if (input) input.value = String(intensity);
-  return intensity;
-}
-
 function resetGeneralQuestionPreview() {
   state.generalQuestionCurrent = null;
   state.generalQuestionVisible = false;
@@ -977,25 +931,18 @@ function confirmCurrentMisfortuneSelection({ closeLocalOnly = true } = {}) {
   return true;
 }
 
-function spinMisfortuneWheel(rawIntensity = null) {
+function spinMisfortuneWheel() {
   if (misfortuneWheel.spinning || misfortuneWheel.dragActive) return;
   updateMisfortuneWheelItems({ keepAngle: true });
   if (misfortuneWheel.items.length < 2) {
     updateMisfortuneWheelResultText("Ajoute au moins deux categories pour lancer la roue.");
     return;
   }
-  const intensity = rawIntensity == null ? readMisfortuneIntensity() : clampMisfortuneIntensity(rawIntensity);
-  const intensityInput = $("misfortuneWheelIntensity");
-  if (intensityInput) intensityInput.value = String(intensity);
-  if (intensity === 0) {
-    updateMisfortuneWheelResultText("Intensite 0: la roue ne se lance pas.");
-    return;
-  }
+  const intensity = MISFORTUNE_WHEEL_INTENSITY;
 
   misfortuneWheel.spinning = true;
   const spinBtn = $("btnSpinMisfortuneWheel");
   if (spinBtn) spinBtn.disabled = true;
-  if (intensityInput) intensityInput.disabled = true;
   updateMisfortuneWheelResultText("La roue tourne...");
 
   const startAngle = misfortuneWheel.angle;
@@ -1026,7 +973,6 @@ function spinMisfortuneWheel(rawIntensity = null) {
     misfortuneWheel.rafId = 0;
     misfortuneWheel.spinning = false;
     if (spinBtn) spinBtn.disabled = false;
-    if (intensityInput) intensityInput.disabled = false;
 
     const idx = getMisfortuneWinnerIndex(misfortuneWheel.angle, misfortuneWheel.items.length);
     const winner = idx >= 0 ? misfortuneWheel.items[idx] : "";
@@ -1503,7 +1449,6 @@ function showPeopleSource(src, label) {
   if (!src) return;
   state.lastPeopleSrc = src;
   state.lastPeopleLabel = label || "Personnalite";
-  updatePeopleFileName(src);
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "SHOW_PEOPLE", src, alt: state.lastPeopleLabel });
 }
@@ -1546,15 +1491,6 @@ function setPlateauBackgroundTheme(theme, { notify = true } = {}) {
   }
 }
 
-function updatePeopleFileName(src) {
-  const el = $("peoplesFileName");
-  if (!el) return;
-  const fileName = src
-    ? decodeURIComponent(String(src).split("/").pop() || String(src))
-    : "";
-  el.textContent = fileName ? `Fichier : ${fileName}` : "Fichier : -";
-}
-
 function updateReplayButtonsState() {
   const musicBtn = $("btnReplayMusic");
   if (musicBtn) musicBtn.disabled = !state.lastMusicSrc;
@@ -1573,11 +1509,6 @@ export function registerMediaEvents() {
   window.addEventListener("resize", () => {
     if (!misfortuneWheel.visible) return;
     clampMisfortuneWheelPanelInViewport();
-  });
-
-  $("btnCapitalesSend")?.addEventListener("click", sendCapitale);
-  $("capitalesInput")?.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") sendCapitale();
   });
 
   $("capitalesSelect")?.addEventListener("change", (e) => {
@@ -1633,14 +1564,6 @@ export function registerMediaEvents() {
   });
   $("btnCloseMisfortuneWheel")?.addEventListener("click", () => {
     hideMisfortuneWheel({ notifyPlateau: false });
-  });
-  $("misfortuneWheelIntensity")?.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter") return;
-    e.preventDefault();
-    spinMisfortuneWheel(e.target?.value);
-  });
-  $("misfortuneWheelIntensity")?.addEventListener("change", () => {
-    readMisfortuneIntensity();
   });
 
   const wheelCanvas = getMisfortuneWheelCanvas();
@@ -1730,7 +1653,6 @@ export function registerMediaEvents() {
       const label = e.target.selectedOptions?.[0]?.textContent || "Personnalite";
       showPeopleSource(value, label);
       updateReplayButtonsState();
-      e.target.selectedIndex = 0;
     }
   });
 
@@ -1806,7 +1728,6 @@ export function registerMediaEvents() {
 
   updateMisfortuneWheelItems({ keepAngle: true });
   updateReplayButtonsState();
-  updatePeopleFileName(state.lastPeopleSrc || "");
   updateGeneralQuestionButtons();
 }
 
@@ -1824,9 +1745,6 @@ export function resetMediaForNewShow() {
   refreshSelectPlayedStyles($("peoplesSelect"), "peoples");
   refreshGeneralCategorySelect();
 
-  const capitalesInput = $("capitalesInput");
-  if (capitalesInput) capitalesInput.value = "";
-
   const selectIds = ["capitalesSelect", "musicSelect", "plateauMusicSelect", "filmsSelect", "peoplesSelect", "generalCategorySelect"];
   selectIds.forEach((id) => {
     const sel = $(id);
@@ -1837,7 +1755,6 @@ export function resetMediaForNewShow() {
   state.lastFilmsSrc = "";
   state.lastPeopleSrc = "";
   state.lastPeopleLabel = "";
-  updatePeopleFileName("");
   state.capitalesLastFile = "";
   state.generalQuestionCurrent = null;
   state.generalQuestionVisible = false;

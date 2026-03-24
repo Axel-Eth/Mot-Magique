@@ -115,7 +115,6 @@
             <div class="misfortune-wheel-header">
               <div class="misfortune-wheel-title">Roue de l'infortune</div>
               <div class="misfortune-wheel-controls">
-                <input id="misfortuneWheelIntensity" class="input misfortune-wheel-intensity" type="number" min="0" max="12" step="1" inputmode="numeric" value="8" aria-label="Intensite de la roue (0 a 12)" />
                 <button id="btnSpinMisfortuneWheel" class="btn" type="button">Lancer la roue</button>
                 <button id="btnCloseMisfortuneWheel" class="btn ghost misfortune-wheel-close" type="button" aria-label="Fermer la roue de l'infortune">Fermer</button>
               </div>
@@ -160,19 +159,7 @@
         inputmode="text"
       />
       <div class="capitales-block">
-        <label class="label" for="capitalesInput">Capitales</label>
-        <div class="row">
-          <input
-            id="capitalesInput"
-            class="input"
-            type="text"
-            inputmode="numeric"
-            placeholder="Numero 1-254"
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <button id="btnCapitalesSend" class="btn ghost" type="button">Afficher</button>
-        </div>
+        <label class="label" for="capitalesSelect">Capitales</label>
         <div class="row">
           <select id="capitalesSelect" class="select" aria-label="Drapeaux"></select>
           <button id="capitalesTone" class="btn ghost capitales-tone" type="button" aria-pressed="false">Doux</button>
@@ -209,8 +196,6 @@
           <button id="btnReplayPeoples" class="btn ghost replay-btn" type="button" aria-label="Rejouer la personnalite selectionnee" title="Rejouer">↻</button>
         </div>
       </div>
-
-      <div id="peoplesFileName" class="media-file-name">Fichier : -</div>
 
       <div class="row small">
         <button id="btnReset" class="btn ghost" type="button">Reset etat</button>
