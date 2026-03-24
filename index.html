@@ -84,8 +84,8 @@
         </div>
       </div>
     </div>
-    <section class="panel">
-      <h2>Lettre</h2>
+    <section id="regieControlsPanel" class="panel regie-controls-panel floating-panel">
+      <h2 class="floating-panel-handle">Lettre</h2>
 
       <div class="letter-input-row">
         <input
@@ -127,27 +127,38 @@
 
       <div class="music-block">
         <div class="media-row">
+          <select id="filmsMusicSelect" class="select" aria-label="Musique films"></select>
+          <button id="btnReplayFilmsMusic" class="btn ghost replay-btn" type="button" aria-label="Rejouer la musique de film selectionnee" title="Rejouer">&#8635;</button>
+        </div>
+      </div>
+
+      <div class="music-block">
+        <div class="media-row">
           <select id="peoplesSelect" class="select" aria-label="Personnalites"></select>
           <button id="btnReplayPeoples" class="btn ghost replay-btn" type="button" aria-label="Rejouer la personnalite selectionnee" title="Rejouer">↻</button>
         </div>
       </div>
 
-      <div class="row small">
-        <button id="btnReset" class="btn ghost" type="button">Reset</button>
-        <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
-        <button id="btnBonus" class="btn ghost" type="button">Bonus</button>
-        <button id="btnScores" class="btn ghost" type="button">Scores</button>
-        <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
+      <div class="action-buttons-block">
+        <div class="row small action-buttons-row">
+          <button id="btnBonus" class="btn ghost" type="button">Bonus</button>
+          <button id="btnScores" class="btn ghost" type="button">Scores</button>
+          <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
+        </div>
+        <div class="row small action-buttons-row">
+          <button id="btnReset" class="btn ghost" type="button">Reset</button>
+          <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
+        </div>
       </div>
     </section>
 
-    <section class="panel">
-      <h2>Plateau intégré</h2>
+    <section id="regieGridPanel" class="panel regie-grid-panel floating-panel">
+      <h2 class="floating-panel-handle">Plateau intégré</h2>
       <p class="note">Clique sur la grille pour sélectionner un mot sans ouvrir le plateau public.</p>
       <div id="regieGrid" class="grid regie-grid" aria-label="Grille intégrée"></div>
     </section>
-    <section class="panel">
-      <div class="row space-between">
+    <section id="regieTeamsPanel" class="panel regie-teams-panel floating-panel">
+      <div class="row space-between floating-panel-handle">
         <h2>Équipes</h2>
         <button id="addTeam" class="btn small" type="button">+ 1 Équipe</button>
       </div>

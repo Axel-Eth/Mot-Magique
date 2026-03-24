@@ -8,6 +8,34 @@ import { updateMagicButtonState } from "./magic.js";
 import { keyPos } from "./grid-data.js";
 import { startRegieTimer } from "./timer.js";
 
+function computeRegieCellSize(gridEl, rows, cols) {
+  if (!gridEl || !rows || !cols) return 48;
+
+  const gap = Number.parseFloat(getComputedStyle(gridEl).getPropertyValue("--gap")) || 4;
+  const availableWidth = Math.max(0, gridEl.clientWidth - gap * Math.max(0, cols - 1));
+  const availableHeight = Math.max(0, gridEl.clientHeight - gap * Math.max(0, rows - 1));
+
+  const widthCell = availableWidth / cols;
+  const heightCell = availableHeight / rows;
+  const nextSize = Math.floor(Math.min(widthCell, heightCell));
+
+  return Math.max(22, nextSize || 48);
+}
+
+export function refreshRegieGridLayout() {
+  const gridEl = $("regieGrid");
+  if (!gridEl || !state.grid) return;
+
+  const { minRow, maxRow, minCol, maxCol } = state.grid.bounds;
+  const rows = maxRow - minRow + 1;
+  const cols = maxCol - minCol + 1;
+  const cellSize = computeRegieCellSize(gridEl, rows, cols);
+
+  gridEl.style.setProperty("--regie-cell-size", `${cellSize}px`);
+  gridEl.style.gridTemplateRows = `repeat(${rows}, ${cellSize}px)`;
+  gridEl.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+}
+
 export function clearVisibleNumbers() {
   state.visibleNumbers = new Set();
 }
@@ -101,8 +129,7 @@ export function renderRegieGrid() {
   const rows = maxRow - minRow + 1;
   const cols = maxCol - minCol + 1;
 
-  gridEl.style.gridTemplateRows = `repeat(${rows}, 48px)`;
-  gridEl.style.gridTemplateColumns = `repeat(${cols}, 48px)`;
+  refreshRegieGridLayout();
 
   const visibleNums = state.visibleNumbers || new Set();
 

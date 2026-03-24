@@ -6,7 +6,7 @@ import { syncScoresToPlateau, openPlateauWindow } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
 import { renderTeams, addTeam, hideTeamModal, showPenaltyRequiredModal, removeSelectedTeam } from "./teams.js";
 import { showRegieScores } from "./scores.js";
-import { renderRegieGrid, clearVisibleNumbers } from "./grid-view.js";
+import { renderRegieGrid, clearVisibleNumbers, refreshRegieGridLayout } from "./grid-view.js";
 import { loadSelectedGrid, resetReveal } from "./grid-actions.js";
 import { serializeGridForPlateau } from "./grid-data.js";
 import {
@@ -387,6 +387,10 @@ export function registerWindowEvents() {
     if (removeSelectedTeam()) {
       e.preventDefault();
     }
+  });
+
+  window.addEventListener("resize", () => {
+    refreshRegieGridLayout();
   });
 
   window.addEventListener(

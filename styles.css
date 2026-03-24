@@ -34,6 +34,7 @@
   --radius:14px;
   --shadow:0 10px 30px rgba(0,0,0,.25);
   --regie-media-select-width: 380px;
+  --regie-side-panel-width: calc(var(--regie-media-select-width) + 96px);
 }
 
 /* ---------- Reset léger ---------- */
@@ -76,10 +77,49 @@ body{
 }
 
 .layout{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:16px;
+  position:relative;
   padding: 0 20px 20px;
+  min-height: calc(100vh - 92px);
+}
+
+.floating-panel{
+  position:absolute;
+  margin:0;
+  resize:both;
+  overflow:auto;
+  min-width:320px;
+  min-height:180px;
+  z-index:10;
+}
+
+.floating-panel.active{
+  z-index:30;
+}
+
+.floating-panel-handle{
+  cursor:move;
+  user-select:none;
+}
+
+.regie-controls-panel{
+  width: var(--regie-side-panel-width);
+}
+
+.regie-grid-panel{
+  min-width:520px;
+  min-height:360px;
+  display:flex;
+  flex-direction:column;
+}
+
+.regie-grid{
+  flex:1 1 auto;
+  min-height:240px;
+}
+
+.regie-teams-panel{
+  width: var(--regie-side-panel-width);
+  min-height:220px;
 }
 
 .panel{
@@ -271,6 +311,24 @@ h2{
   margin-top:14px;
 }
 
+.action-buttons-block{
+  width:min(100%, var(--regie-media-select-width));
+  margin-top:14px;
+}
+
+.action-buttons-row{
+  margin-top:0;
+  justify-content:space-between;
+}
+
+.action-buttons-row + .action-buttons-row{
+  margin-top:10px;
+}
+
+.action-buttons-row .btn{
+  flex:1 1 0;
+}
+
 .btn{
   border:1px solid rgba(255,255,255,.15);
   background: rgba(255,255,255,.10);
@@ -417,12 +475,15 @@ h2{
   display:flex;
   align-items:center;
   gap:8px;
+  width:min(100%, calc(var(--regie-media-select-width) + 52px));
+  max-width:100%;
 }
 
 .media-row .select{
-  flex:0 0 min(100%, var(--regie-media-select-width));
-  min-width: min(100%, var(--regie-media-select-width));
-  max-width: min(100%, var(--regie-media-select-width));
+  flex:1 1 auto;
+  min-width:0;
+  max-width:none;
+  width:auto;
 }
 
 .media-file-name{
@@ -453,6 +514,7 @@ h2{
   align-items:flex-start;
   flex-wrap:wrap;
   gap:12px;
+  max-width:none;
 }
 
 .generalq-block #generalCategorySelect{
@@ -1125,7 +1187,13 @@ code{
 
 /* Responsive régie */
 @media (max-width: 980px){
-  .layout{ grid-template-columns: 1fr; }
+  .layout{ min-height:auto; }
+  .floating-panel{
+    position:static;
+    resize:none;
+    width:auto !important;
+    height:auto !important;
+  }
   .bonus-grid{ grid-template-columns: 1fr; }
 }
 
@@ -1382,6 +1450,7 @@ body.plateau #definitionBar{
   .editor-layout{ grid-template-columns: 1fr; }
 }
 .regie-grid{
+  --regie-cell-size: 48px;
   display:grid;
   gap: var(--gap);
   align-content:start;
@@ -1395,14 +1464,14 @@ body.plateau #definitionBar{
 }
 
 .regie-grid .cell{
-  width:48px;
-  height:48px;
-  font-size:20px;
+  width:var(--regie-cell-size);
+  height:var(--regie-cell-size);
+  font-size:calc(var(--regie-cell-size) * 0.42);
 }
 
 .regie-grid .cell.number{
   /* REGIE: police des numeros dans la grille integree */
-  font-size: 24px;
+  font-size: calc(var(--regie-cell-size) * 0.5);
   font-weight: 1000;
   letter-spacing: .01em;
 }

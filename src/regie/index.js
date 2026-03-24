@@ -7,6 +7,7 @@ import {
   loadCapitalesList,
   loadCapitalesNotes,
   loadFilmsList,
+  loadFilmsMusicList,
   loadGeneralQuestionsList,
   loadMusicList,
   loadPeoplesList,
@@ -15,6 +16,7 @@ import {
 } from "./media.js";
 import { registerActionEvents, registerWindowEvents } from "./actions.js";
 import { initRegieTimerDrag } from "./timer.js";
+import { initFloatingPanels } from "./floating-panels.js";
 
 registerActionEvents();
 registerWindowEvents();
@@ -22,6 +24,7 @@ registerMediaEvents();
 initLetterInput();
 initWordSelectModalDrag();
 initRegieTimerDrag();
+initFloatingPanels();
 
 (async function init() {
   const errors = [];
@@ -40,6 +43,7 @@ initRegieTimerDrag();
     ["loadMusicList", loadMusicList],
     ["loadPlateauMusicList", loadPlateauMusicList],
     ["loadFilmsList", loadFilmsList],
+    ["loadFilmsMusicList", loadFilmsMusicList],
     ["loadPeoplesList", loadPeoplesList],
     ["loadGeneralQuestionsList", loadGeneralQuestionsList],
     ["loadSelectedGrid", loadSelectedGrid],

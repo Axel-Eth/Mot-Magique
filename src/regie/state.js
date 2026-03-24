@@ -33,6 +33,7 @@ export const state = {
   capitalesLastFile: "",
   lastMusicSrc: "",
   lastFilmsSrc: "",
+  lastFilmsMusicSrc: "",
   lastPeopleSrc: "",
   lastPeopleLabel: "",
   plateauBackgroundTheme: "bubbles",

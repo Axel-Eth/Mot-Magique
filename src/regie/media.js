@@ -58,17 +58,18 @@ function savePlateauBackgroundTheme(theme) {
 function loadPlayedMedia() {
   try {
     const raw = localStorage.getItem(PLAYED_MEDIA_STORAGE_KEY);
-    if (!raw) return { capitales: {}, music: {}, films: {}, peoples: {}, generalQuestions: {} };
+    if (!raw) return { capitales: {}, music: {}, films: {}, filmsMusic: {}, peoples: {}, generalQuestions: {} };
     const parsed = JSON.parse(raw);
     return {
       capitales: parsed?.capitales && typeof parsed.capitales === "object" ? parsed.capitales : {},
       music: parsed?.music && typeof parsed.music === "object" ? parsed.music : {},
       films: parsed?.films && typeof parsed.films === "object" ? parsed.films : {},
+      filmsMusic: parsed?.filmsMusic && typeof parsed.filmsMusic === "object" ? parsed.filmsMusic : {},
       peoples: parsed?.peoples && typeof parsed.peoples === "object" ? parsed.peoples : {},
       generalQuestions: parsed?.generalQuestions && typeof parsed.generalQuestions === "object" ? parsed.generalQuestions : {}
     };
   } catch {
-    return { capitales: {}, music: {}, films: {}, peoples: {}, generalQuestions: {} };
+    return { capitales: {}, music: {}, films: {}, filmsMusic: {}, peoples: {}, generalQuestions: {} };
   }
 }
 
@@ -392,6 +393,56 @@ export async function loadFilmsList() {
         opt.value = `${base}${dir}${file}`;
         opt.textContent = file.replace(/\.(mp3|wav|ogg)$/i, "");
         setOptionPlayedVisual(opt, isPlayed("films", opt.value));
+        group.appendChild(opt);
+      });
+      select.appendChild(group);
+    }
+  } catch {}
+}
+
+export async function loadFilmsMusicList() {
+  const select = $("filmsMusicSelect");
+  if (!select) return;
+  select.innerHTML = "";
+  const base = "questions/films musique/";
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Musique Films";
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  select.appendChild(placeholder);
+  try {
+    const res = await fetch(base, { cache: "no-store" });
+    if (!res.ok) return;
+    const html = await res.text();
+    const links = [...html.matchAll(/href="([^"]+)"/gi)].map((m) => m[1]);
+    const filesAtRoot = links
+      .filter((href) => /\.(mp3|wav|ogg)$/i.test(href))
+      .map((href) => decodeURIComponent(href.split("/").pop() || href));
+    filesAtRoot.forEach((file) => {
+      const opt = document.createElement("option");
+      opt.value = `${base}${file}`;
+      opt.textContent = file.replace(/\.(mp3|wav|ogg)$/i, "");
+      setOptionPlayedVisual(opt, isPlayed("filmsMusic", opt.value));
+      select.appendChild(opt);
+    });
+    const dirs = links
+      .filter((href) => href.endsWith("/") && href !== "../")
+      .map((href) => decodeURIComponent(href.replace(/^\.\//, "")));
+    for (const dir of dirs) {
+      const resDir = await fetch(`${base}${dir}`, { cache: "no-store" });
+      if (!resDir.ok) continue;
+      const htmlDir = await resDir.text();
+      const files = [...htmlDir.matchAll(/href="([^"]+\.(mp3|wav|ogg))"/gi)]
+        .map((m) => decodeURIComponent(m[1].split("/").pop() || m[1]));
+      if (!files.length) continue;
+      const group = document.createElement("optgroup");
+      group.label = dir.replace(/\/$/, "");
+      files.forEach((file) => {
+        const opt = document.createElement("option");
+        opt.value = `${base}${dir}${file}`;
+        opt.textContent = file.replace(/\.(mp3|wav|ogg)$/i, "");
+        setOptionPlayedVisual(opt, isPlayed("filmsMusic", opt.value));
         group.appendChild(opt);
       });
       select.appendChild(group);
@@ -1544,6 +1595,13 @@ function playFilmsSource(src) {
   postToPlateau({ type: "PLAY_MUSIC", src, visualizer: false });
 }
 
+function playFilmsMusicSource(src) {
+  if (!src) return;
+  state.lastFilmsMusicSrc = src;
+  postToPlateau({ type: "STOP_FILMS_VIDEO" });
+  postToPlateau({ type: "PLAY_MUSIC", src, visualizer: true });
+}
+
 function showPeopleSource(src, label) {
   if (!src) return;
   state.lastPeopleSrc = src;
@@ -1596,6 +1654,9 @@ function updateReplayButtonsState() {
 
   const filmsBtn = $("btnReplayFilms");
   if (filmsBtn) filmsBtn.disabled = !state.lastFilmsSrc;
+
+  const filmsMusicBtn = $("btnReplayFilmsMusic");
+  if (filmsMusicBtn) filmsMusicBtn.disabled = !state.lastFilmsMusicSrc;
 
   const peoplesBtn = $("btnReplayPeoples");
   if (peoplesBtn) peoplesBtn.disabled = !state.lastPeopleSrc;
@@ -1744,6 +1805,16 @@ export function registerMediaEvents() {
     }
   });
 
+  $("filmsMusicSelect")?.addEventListener("change", (e) => {
+    const value = e.target.value;
+    if (value) {
+      markPlayed("filmsMusic", value);
+      refreshSelectPlayedStyles(e.target, "filmsMusic");
+      playFilmsMusicSource(value);
+      updateReplayButtonsState();
+    }
+  });
+
   $("peoplesSelect")?.addEventListener("change", (e) => {
     const value = e.target.value;
     if (value) {
@@ -1827,6 +1898,16 @@ export function registerMediaEvents() {
     updateReplayButtonsState();
   });
 
+  $("btnReplayFilmsMusic")?.addEventListener("click", () => {
+    const current = $("filmsMusicSelect")?.value || "";
+    const src = current || state.lastFilmsMusicSrc;
+    if (!src) return;
+    markPlayed("filmsMusic", src);
+    refreshSelectPlayedStyles($("filmsMusicSelect"), "filmsMusic");
+    playFilmsMusicSource(src);
+    updateReplayButtonsState();
+  });
+
   $("btnReplayPeoples")?.addEventListener("click", () => {
     const select = $("peoplesSelect");
     const current = select?.value || "";
@@ -1849,6 +1930,7 @@ export function resetMediaForNewShow() {
   playedMedia.capitales = {};
   playedMedia.music = {};
   playedMedia.films = {};
+  playedMedia.filmsMusic = {};
   playedMedia.peoples = {};
   playedMedia.generalQuestions = {};
   savePlayedMedia();
@@ -1856,10 +1938,11 @@ export function resetMediaForNewShow() {
   refreshSelectPlayedStyles($("capitalesSelect"), "capitales");
   refreshSelectPlayedStyles($("musicSelect"), "music");
   refreshSelectPlayedStyles($("filmsSelect"), "films");
+  refreshSelectPlayedStyles($("filmsMusicSelect"), "filmsMusic");
   refreshSelectPlayedStyles($("peoplesSelect"), "peoples");
   refreshGeneralCategorySelect();
 
-  const selectIds = ["capitalesSelect", "musicSelect", "plateauMusicSelect", "filmsSelect", "peoplesSelect", "generalCategorySelect"];
+  const selectIds = ["capitalesSelect", "musicSelect", "plateauMusicSelect", "filmsSelect", "filmsMusicSelect", "peoplesSelect", "generalCategorySelect"];
   selectIds.forEach((id) => {
     const sel = $(id);
     if (sel) sel.selectedIndex = 0;
@@ -1867,6 +1950,7 @@ export function resetMediaForNewShow() {
 
   state.lastMusicSrc = "";
   state.lastFilmsSrc = "";
+  state.lastFilmsMusicSrc = "";
   state.lastPeopleSrc = "";
   state.lastPeopleLabel = "";
   state.capitalesLastFile = "";
