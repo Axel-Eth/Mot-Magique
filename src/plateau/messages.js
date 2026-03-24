@@ -33,6 +33,8 @@ import {
   hideAllMedia,
   playBadVideo,
   playDoubleVideo,
+  playDoubleAnimation,
+  playTripleAnimation,
   playFilmsOverlayVideo,
   playGenericVideo,
   hideMisfortuneWheel,
@@ -42,6 +44,7 @@ import {
   showMisfortuneWheelResult,
   stopFilmsOverlayVideo,
   playTripleVideo,
+  playBadAnimation,
   showFlag,
   toggleScores,
   updateMisfortuneWheel,
@@ -275,12 +278,24 @@ export function registerMessageHandlers() {
         playTripleVideo();
         break;
 
+      case "PLAY_TRIPLE_ANIMATION":
+        playTripleAnimation();
+        break;
+
       case "PLAY_DOUBLE":
         playDoubleVideo();
         break;
 
+      case "PLAY_DOUBLE_ANIMATION":
+        playDoubleAnimation();
+        break;
+
       case "PLAY_BAD":
         playBadVideo();
+        break;
+
+      case "PLAY_BAD_ANIMATION":
+        playBadAnimation();
         break;
 
       case "PLAY_GENERIC":

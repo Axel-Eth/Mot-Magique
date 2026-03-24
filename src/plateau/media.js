@@ -37,6 +37,8 @@ let mediaLifecycleBound = false;
 let generalQuestionMusicActive = false;
 let misfortuneWheelItems = [];
 let misfortuneWheelAngle = 0;
+let actionAnimationOverlay = null;
+let actionAnimationTimer = 0;
 
 function bindMediaLifecycleEvents() {
   if (mediaLifecycleBound) return;
@@ -178,6 +180,95 @@ export function playTripleVideo() {
 
 export function playDoubleVideo() {
   playVideo("sounds/mot_double_new.mp4", { mode: "double" });
+}
+
+function ensureDoubleAnimationOverlay() {
+  if (actionAnimationOverlay) return actionAnimationOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "actionAnimationOverlay";
+  overlay.className = "word-animation-overlay";
+  overlay.innerHTML = `
+    <div class="word-animation-aura"></div>
+    <div class="word-animation-ring ring-one"></div>
+    <div class="word-animation-ring ring-two"></div>
+    <div class="word-animation-stripe left"></div>
+    <div class="word-animation-stripe right"></div>
+    <div class="word-animation-content">
+      <div class="word-animation-kicker" id="wordAnimationKicker">MOT</div>
+      <div class="word-animation-main" id="wordAnimationMain">X2</div>
+      <div class="word-animation-sub" id="wordAnimationSub">DOUBLE MOT</div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  actionAnimationOverlay = overlay;
+  return overlay;
+}
+
+function stopActionAnimation() {
+  if (actionAnimationTimer) {
+    window.clearTimeout(actionAnimationTimer);
+    actionAnimationTimer = 0;
+  }
+  if (!actionAnimationOverlay) return;
+  actionAnimationOverlay.classList.remove("active", "variant-double", "variant-triple", "variant-bad");
+  gridEl.style.visibility = "visible";
+  defBar?.classList.remove("hidden");
+  setVideoDucking(false);
+  currentVideoMode = null;
+}
+
+function playActionAnimation({ mode, variant, kicker, main, sub, soundDuration = 900, duration = 1900 }) {
+  hideAllMedia();
+  stopAllFx();
+  const overlay = ensureDoubleAnimationOverlay();
+  overlay.querySelector("#wordAnimationKicker").textContent = kicker;
+  overlay.querySelector("#wordAnimationMain").textContent = main;
+  overlay.querySelector("#wordAnimationSub").textContent = sub;
+  setVideoDucking(true);
+  currentVideoMode = mode;
+  gridEl.style.visibility = "hidden";
+  defBar?.classList.add("hidden");
+  overlay.classList.remove("active", "variant-double", "variant-triple", "variant-bad");
+  void overlay.offsetWidth;
+  overlay.classList.add(variant);
+  overlay.classList.add("active");
+  playFx(sounds.appear, soundDuration);
+  actionAnimationTimer = window.setTimeout(() => {
+    stopActionAnimation();
+  }, duration);
+}
+
+export function playDoubleAnimation() {
+  playActionAnimation({
+    mode: "double_animation",
+    variant: "variant-double",
+    kicker: "MOT",
+    main: "X2",
+    sub: "DOUBLE MOT"
+  });
+}
+
+export function playTripleAnimation() {
+  playActionAnimation({
+    mode: "triple_animation",
+    variant: "variant-triple",
+    kicker: "MOT",
+    main: "X3",
+    sub: "TRIPLE MOT",
+    duration: 2050
+  });
+}
+
+export function playBadAnimation() {
+  playActionAnimation({
+    mode: "bad_animation",
+    variant: "variant-bad",
+    kicker: "MODE",
+    main: "BAD",
+    sub: "POINTS CONTRE VOUS",
+    soundDuration: 1000,
+    duration: 2100
+  });
 }
 
 export function playBadVideo() {
@@ -770,6 +861,7 @@ export function hideAllMedia() {
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
   stopMusic();
+  stopActionAnimation();
   const vid = genericVideo;
   if (vid) {
     vid.pause();

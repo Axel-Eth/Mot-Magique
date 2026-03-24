@@ -27,9 +27,13 @@ export function setFullscreenEnabled(enabled) {
 export function setMultiplier(value, silent = false) {
   state.multiplier = value;
   const b2 = $("btnDouble");
+  const b2Animated = $("btnDoubleAnimated");
   const b3 = $("btnTriple");
-  if (b2) b2.classList.toggle("active", value === 2);
-  if (b3) b3.classList.toggle("active", value === 3);
+  const b3Animated = $("btnTripleAnimated");
+  if (b2) b2.classList.toggle("active", value === 2 && state.doubleMode === "video");
+  if (b2Animated) b2Animated.classList.toggle("active", value === 2 && state.doubleMode === "animation");
+  if (b3) b3.classList.toggle("active", value === 3 && state.tripleMode === "video");
+  if (b3Animated) b3Animated.classList.toggle("active", value === 3 && state.tripleMode === "animation");
   if (!silent) {
     postToPlateau({ type: "SET_MULTIPLIER", value });
   }
@@ -38,7 +42,9 @@ export function setMultiplier(value, silent = false) {
 export function setBadPointsActive(active) {
   state.badPointsActive = active;
   const btn = $("btnBad");
-  if (btn) btn.classList.toggle("bad-active", active);
+  const btnAnimated = $("btnBadAnimated");
+  if (btn) btn.classList.toggle("bad-active", active && state.badMode === "video");
+  if (btnAnimated) btnAnimated.classList.toggle("bad-active", active && state.badMode === "animation");
 }
 
 export function updateSelectedInfo() {

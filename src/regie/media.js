@@ -28,7 +28,9 @@ const misfortuneWheel = {
   windowOffsetY: 0,
   rafId: 0,
   lastSyncAt: 0,
-  visible: false
+  visible: false,
+  selectHighlightTimer: 0,
+  suppressModalBackdropCloseUntil: 0
 };
 
 function normalizePlateauBackgroundTheme(value) {
@@ -691,6 +693,18 @@ function getMisfortuneWheelPanel() {
   return $("misfortuneWheelPanel");
 }
 
+function isMisfortuneWheelGoHit(event) {
+  const canvas = getMisfortuneWheelCanvas();
+  if (!canvas) return false;
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const dx = x - rect.width / 2;
+  const dy = y - rect.height / 2;
+  const radius = Math.min(rect.width, rect.height) * 0.11;
+  return ((dx * dx) + (dy * dy)) <= (radius * radius);
+}
+
 function clampMisfortuneWheelPanelInViewport() {
   const panel = getMisfortuneWheelPanel();
   if (!panel || panel.classList.contains("hidden")) return;
@@ -880,6 +894,23 @@ function applyWheelCategory(category) {
   return true;
 }
 
+function focusHighlightedGeneralCategorySelect() {
+  const select = $("generalCategorySelect");
+  if (!select) return;
+  if (misfortuneWheel.selectHighlightTimer) {
+    clearTimeout(misfortuneWheel.selectHighlightTimer);
+    misfortuneWheel.selectHighlightTimer = 0;
+  }
+  select.classList.remove("misfortune-select-highlight");
+  void select.offsetWidth;
+  select.classList.add("misfortune-select-highlight");
+  misfortuneWheel.selectHighlightTimer = window.setTimeout(() => {
+    select.classList.remove("misfortune-select-highlight");
+    misfortuneWheel.selectHighlightTimer = 0;
+  }, 2200);
+  select.focus({ preventScroll: false });
+}
+
 function updateMisfortuneWheelItems({ keepAngle = true } = {}) {
   const previous = misfortuneWheel.items.join("|||");
   misfortuneWheel.items = getMisfortuneWheelItems();
@@ -922,6 +953,28 @@ function hideMisfortuneWheel({ notifyPlateau = true } = {}) {
   clearMisfortuneSpinAnimation();
   $("misfortuneWheelPanel")?.classList.add("hidden");
   if (notifyPlateau) postToPlateau({ type: "HIDE_MISFORTUNE_WHEEL" });
+}
+
+function confirmCurrentMisfortuneSelection({ closeLocalOnly = true } = {}) {
+  if (!misfortuneWheel.items.length) return false;
+  const idx = getMisfortuneWinnerIndex(misfortuneWheel.angle, misfortuneWheel.items.length);
+  if (idx < 0) return false;
+  const winner = misfortuneWheel.items[idx];
+  if (!winner || !applyWheelCategory(winner)) {
+    updateMisfortuneWheelResultText("Categorie choisie indisponible.");
+    return false;
+  }
+  updateMisfortuneWheelResultText(`Categorie choisie: ${winner}`);
+  if (!closeLocalOnly) {
+    postToPlateau({
+      type: "MISFORTUNE_WHEEL_RESULT",
+      category: winner,
+      angle: misfortuneWheel.angle
+    });
+  }
+  hideMisfortuneWheel({ notifyPlateau: false });
+  focusHighlightedGeneralCategorySelect();
+  return true;
 }
 
 function spinMisfortuneWheel(rawIntensity = null) {
@@ -1578,6 +1631,9 @@ export function registerMediaEvents() {
   $("btnSpinMisfortuneWheel")?.addEventListener("click", () => {
     spinMisfortuneWheel();
   });
+  $("btnCloseMisfortuneWheel")?.addEventListener("click", () => {
+    hideMisfortuneWheel({ notifyPlateau: false });
+  });
   $("misfortuneWheelIntensity")?.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
     e.preventDefault();
@@ -1589,14 +1645,43 @@ export function registerMediaEvents() {
 
   const wheelCanvas = getMisfortuneWheelCanvas();
   wheelCanvas?.addEventListener("mousedown", startMisfortuneWheelDrag);
+  wheelCanvas?.addEventListener("click", (e) => {
+    if (!misfortuneWheel.visible || misfortuneWheel.spinning) return;
+    if (!isMisfortuneWheelGoHit(e)) return;
+    e.preventDefault();
+    confirmCurrentMisfortuneSelection({ closeLocalOnly: true });
+  });
   window.addEventListener("mousemove", moveMisfortuneWheelDrag);
   window.addEventListener("mouseup", endMisfortuneWheelDrag);
 
   $("generalQuestionsModal")?.addEventListener("click", (e) => {
     if (e.target?.id === "generalQuestionsModal") {
+      if (Date.now() < (misfortuneWheel.suppressModalBackdropCloseUntil || 0)) {
+        return;
+      }
+      if (misfortuneWheel.visible) {
+        hideMisfortuneWheel({ notifyPlateau: false });
+        return;
+      }
       hideGeneralQuestionsModal();
     }
   });
+
+  document.addEventListener(
+    "pointerdown",
+    (e) => {
+      if (!misfortuneWheel.visible) return;
+      const panel = getMisfortuneWheelPanel();
+      const target = e.target;
+      if (!panel || !target?.closest) return;
+      if (target.closest("#misfortuneWheelPanel")) return;
+      if (target.closest("#btnMisfortuneWheel")) return;
+      if (target.closest("#btnCloseMisfortuneWheel")) return;
+      misfortuneWheel.suppressModalBackdropCloseUntil = Date.now() + 250;
+      hideMisfortuneWheel({ notifyPlateau: false });
+    },
+    true
+  );
 
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {

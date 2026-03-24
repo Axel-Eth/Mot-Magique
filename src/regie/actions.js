@@ -79,6 +79,9 @@ export function registerActionEvents() {
     clearVisibleNumbers();
 
     setMultiplier(1);
+    state.doubleMode = null;
+    state.tripleMode = null;
+    state.badMode = null;
     setBadPointsActive(false);
     updateSelectedInfo();
     updateMagicButtonState();
@@ -105,10 +108,20 @@ export function registerActionEvents() {
   });
 
   $("btnBad")?.addEventListener("click", () => {
-    const next = !state.badPointsActive;
+    const next = !(state.badPointsActive && state.badMode === "video");
+    state.badMode = next ? "video" : null;
     setBadPointsActive(next);
     if (next) {
       postToPlateau({ type: "PLAY_BAD" });
+    }
+  });
+
+  $("btnBadAnimated")?.addEventListener("click", () => {
+    const next = !(state.badPointsActive && state.badMode === "animation");
+    state.badMode = next ? "animation" : null;
+    setBadPointsActive(next);
+    if (next) {
+      postToPlateau({ type: "PLAY_BAD_ANIMATION" });
     }
   });
 
@@ -167,6 +180,9 @@ export function registerActionEvents() {
     });
     state.selectedWordId = null;
     state.currentTeamId = null;
+    state.doubleMode = null;
+    state.tripleMode = null;
+    state.badMode = null;
     setMultiplier(1);
     setBadPointsActive(false);
     renderTeams();
@@ -199,6 +215,9 @@ export function registerActionEvents() {
     state.currentTeamId = null;
     clearVisibleNumbers();
     renderRegieGrid();
+    state.doubleMode = null;
+    state.tripleMode = null;
+    state.badMode = null;
     setMultiplier(1);
     setBadPointsActive(false);
     state.pendingPenaltyPoints = 0;
@@ -210,18 +229,42 @@ export function registerActionEvents() {
   });
 
   $("btnDouble")?.addEventListener("click", () => {
-    const next = state.multiplier === 2 ? 1 : 2;
+    const next = state.multiplier === 2 && state.doubleMode === "video" ? 1 : 2;
+    state.doubleMode = next === 2 ? "video" : null;
+    if (next === 2) state.tripleMode = null;
     setMultiplier(next);
     if (next === 2) {
       postToPlateau({ type: "PLAY_DOUBLE" });
     }
   });
 
+  $("btnDoubleAnimated")?.addEventListener("click", () => {
+    const next = state.multiplier === 2 && state.doubleMode === "animation" ? 1 : 2;
+    state.doubleMode = next === 2 ? "animation" : null;
+    if (next === 2) state.tripleMode = null;
+    setMultiplier(next);
+    if (next === 2) {
+      postToPlateau({ type: "PLAY_DOUBLE_ANIMATION" });
+    }
+  });
+
   $("btnTriple")?.addEventListener("click", () => {
-    const next = state.multiplier === 3 ? 1 : 3;
+    const next = state.multiplier === 3 && state.tripleMode === "video" ? 1 : 3;
+    state.tripleMode = next === 3 ? "video" : null;
+    if (next === 3) state.doubleMode = null;
     setMultiplier(next);
     if (next === 3) {
       postToPlateau({ type: "PLAY_TRIPLE" });
+    }
+  });
+
+  $("btnTripleAnimated")?.addEventListener("click", () => {
+    const next = state.multiplier === 3 && state.tripleMode === "animation" ? 1 : 3;
+    state.tripleMode = next === 3 ? "animation" : null;
+    if (next === 3) state.doubleMode = null;
+    setMultiplier(next);
+    if (next === 3) {
+      postToPlateau({ type: "PLAY_TRIPLE_ANIMATION" });
     }
   });
 
