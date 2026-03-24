@@ -149,16 +149,19 @@
     <section class="panel">
       <h2>Lettre</h2>
 
-      <input
-        id="letterInput"
-        class="input big"
-        type="text"
-        maxlength="1"
-        autocomplete="off"
-        autocapitalize="characters"
-        spellcheck="false"
-        inputmode="text"
-      />
+      <div class="letter-input-row">
+        <input
+          id="letterInput"
+          class="input big"
+          type="text"
+          maxlength="1"
+          autocomplete="off"
+          autocapitalize="characters"
+          spellcheck="false"
+          inputmode="text"
+        />
+        <span id="lastLetter" class="last-letter">-</span>
+      </div>
       <div class="capitales-block">
         <div class="row">
           <select id="capitalesSelect" class="select" aria-label="Drapeaux"></select>
@@ -194,14 +197,13 @@
       </div>
 
       <div class="row small">
-        <button id="btnReset" class="btn ghost" type="button">Reset etat</button>
-        <button id="btnNewShow" class="btn danger" type="button">Nouvelle emission</button>
+        <button id="btnReset" class="btn ghost" type="button">Reset</button>
+        <button id="btnNewShow" class="btn danger" type="button">New</button>
         <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
         <button id="btnBonus" class="btn ghost" type="button">Bonus</button>
         <button id="btnScores" class="btn ghost" type="button">Scores</button>
         <button id="btnQuestions" class="btn ghost" type="button">Questions</button>
         <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
-        <span id="lastLetter" class="last-letter">Lettre : -</span>
       </div>
     </section>
 

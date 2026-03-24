@@ -176,3 +176,16 @@ export function addTeam() {
   });
   renderTeams();
 }
+
+export function removeSelectedTeam() {
+  if (!state.currentTeamId) return false;
+
+  const teamIndex = state.teams.findIndex((team) => team.id === state.currentTeamId);
+  if (teamIndex < 0) return false;
+
+  state.teams.splice(teamIndex, 1);
+  state.currentTeamId = null;
+  renderTeams();
+  hideTeamModal();
+  return true;
+}

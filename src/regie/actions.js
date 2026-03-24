@@ -4,7 +4,7 @@ import { stopSelectSound } from "./audio.js";
 import { isMagicWordCell, updateMagicButtonState } from "./magic.js";
 import { syncScoresToPlateau, openPlateauWindow } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
-import { renderTeams, addTeam, hideTeamModal, showPenaltyRequiredModal } from "./teams.js";
+import { renderTeams, addTeam, hideTeamModal, showPenaltyRequiredModal, removeSelectedTeam } from "./teams.js";
 import { showRegieScores } from "./scores.js";
 import { renderRegieGrid, clearVisibleNumbers } from "./grid-view.js";
 import { loadSelectedGrid, resetReveal } from "./grid-actions.js";
@@ -41,6 +41,12 @@ function openBonusModal() {
 
 function closeBonusModal() {
   $("bonusModal")?.classList.add("hidden");
+}
+
+function isTypingTarget(target) {
+  if (!target || !target.closest) return false;
+  if (target.isContentEditable) return true;
+  return !!target.closest("input, textarea, select, [contenteditable='true']");
 }
 
 export function registerActionEvents() {
@@ -103,7 +109,7 @@ export function registerActionEvents() {
     const letterInput = $("letterInput");
     if (letterInput) letterInput.value = "";
     const lastLetter = $("lastLetter");
-    if (lastLetter) lastLetter.textContent = "Lettre : -";
+    if (lastLetter) lastLetter.textContent = "-";
     resetRegieTimer();
     closeBonusModal();
   });
@@ -367,6 +373,19 @@ export function registerWindowEvents() {
       setActionButtonsEnabled(enabled);
       renderRegieGrid();
       return;
+    }
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.defaultPrevented) return;
+    if (state.pendingPenaltyPoints > 0) return;
+    if (isTypingTarget(e.target)) return;
+
+    const isDeleteKey = e.key === "Delete" || e.key === "Backspace";
+    if (!isDeleteKey) return;
+
+    if (removeSelectedTeam()) {
+      e.preventDefault();
     }
   });
 

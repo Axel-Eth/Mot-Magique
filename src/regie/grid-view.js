@@ -63,7 +63,7 @@ function revealLetterEverywhere(letter) {
   }
 
   const lastLetter = $("lastLetter");
-  if (lastLetter) lastLetter.textContent = `Lettre : ${ltr}`;
+  if (lastLetter) lastLetter.textContent = ltr;
 
   showNumbersForLetter(ltr);
   renderRegieGrid();
@@ -84,7 +84,7 @@ function revealMagicHintCell(pos) {
   const [r, c] = pos.split(",").map(Number);
   const letter = state.grid.letters.get(pos) || "";
   const lastLetter = $("lastLetter");
-  if (lastLetter && letter) lastLetter.textContent = `Lettre : ${letter}`;
+  if (lastLetter && letter) lastLetter.textContent = letter;
 
   renderRegieGrid();
   postToPlateau({ type: "HIDE_MEDIA" });

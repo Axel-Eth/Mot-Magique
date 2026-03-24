@@ -31,7 +31,7 @@ function showRevealWheel(letter) {
 
 function setLastRevealedLetter(letter) {
   const el = document.getElementById("lastLetter");
-  if (el) el.textContent = `Lettre : ${letter}`;
+  if (el) el.textContent = letter;
 }
 
 function overrideLetterInput() {
