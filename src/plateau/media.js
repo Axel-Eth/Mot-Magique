@@ -28,6 +28,7 @@ let podiumRestoreMusicSrc = null;
 let podiumSuspenseActive = false;
 let flagOverlay = null;
 let generalQuestionOverlay = null;
+let goldenFamilyOverlay = null;
 let misfortuneWheelOverlay = null;
 let flagLoadToken = 0;
 let genericVideo = null;
@@ -589,6 +590,33 @@ function ensureGeneralQuestionOverlay() {
   return overlay;
 }
 
+function ensureGoldenFamilyOverlay() {
+  if (goldenFamilyOverlay) return goldenFamilyOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "goldenFamilyOverlay";
+  overlay.className = "golden-family-overlay";
+  overlay.innerHTML = `
+    <div class="golden-family-stage">
+      <div class="golden-family-question" id="goldenFamilyQuestion"></div>
+      <div class="golden-family-board" id="goldenFamilyBoard"></div>
+      <div class="golden-family-footer">
+        <div class="golden-family-points">
+          <span class="label">BANQUE</span>
+          <span id="goldenFamilyRoundPoints">0</span>
+        </div>
+        <div class="golden-family-strikes" id="goldenFamilyStrikeBoard">
+          <span class="strike">X</span>
+          <span class="strike">X</span>
+          <span class="strike">X</span>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  goldenFamilyOverlay = overlay;
+  return overlay;
+}
+
 function normalizeWheelAngle(angle) {
   return ((angle % TWO_PI) + TWO_PI) % TWO_PI;
 }
@@ -820,6 +848,68 @@ export function showGeneralQuestion(payload = {}) {
   defBar?.classList.add("hidden");
 }
 
+export function showGoldenFamily(payload = {}) {
+  const overlay = ensureGoldenFamilyOverlay();
+  const questionEl = overlay.querySelector("#goldenFamilyQuestion");
+  const boardEl = overlay.querySelector("#goldenFamilyBoard");
+  const pointsEl = overlay.querySelector("#goldenFamilyRoundPoints");
+  const strikeEls = overlay.querySelectorAll("#goldenFamilyStrikeBoard .strike");
+  const visible = !!payload.visible;
+
+  if (!visible) {
+    overlay.classList.remove("active");
+    gridEl.style.display = "";
+    defBar?.classList.remove("hidden");
+    return;
+  }
+
+  if (questionEl) {
+    questionEl.textContent = String(payload.question || "").trim() || "Question";
+  }
+
+  if (boardEl) {
+    boardEl.innerHTML = "";
+    const answers = Array.isArray(payload.answers) ? payload.answers.slice(0, 8) : [];
+    answers.forEach((answer, index) => {
+      const cell = document.createElement("div");
+      cell.className = `golden-family-cell${answer?.revealed ? " revealed" : ""}`;
+      const rank = Number(answer?.rank) || index + 1;
+      const label = answer?.revealed ? String(answer?.answer || "") : "";
+      const score = answer?.revealed ? Number(answer?.score) || 0 : "";
+
+      const rankEl = document.createElement("div");
+      rankEl.className = "golden-family-cell-rank";
+      rankEl.textContent = `${rank}`;
+
+      const answerEl = document.createElement("div");
+      answerEl.className = "golden-family-cell-answer";
+      answerEl.textContent = label || " ";
+
+      const scoreEl = document.createElement("div");
+      scoreEl.className = "golden-family-cell-score";
+      scoreEl.textContent = score === "" ? " " : `${score}`;
+
+      cell.appendChild(rankEl);
+      cell.appendChild(answerEl);
+      cell.appendChild(scoreEl);
+      boardEl.appendChild(cell);
+    });
+  }
+
+  if (pointsEl) {
+    pointsEl.textContent = `${Number(payload.roundPoints) || 0}`;
+  }
+
+  const strikes = Math.max(0, Math.min(3, Number(payload.strikes) || 0));
+  strikeEls.forEach((el, index) => {
+    el.classList.toggle("active", index < strikes);
+  });
+
+  overlay.classList.add("active");
+  gridEl.style.display = "none";
+  defBar?.classList.add("hidden");
+}
+
 export function markGeneralAnswer(index, isCorrect) {
   const overlay = ensureGeneralQuestionOverlay();
   const idx = Number(index);
@@ -858,6 +948,7 @@ export function hideAllMedia() {
   stopPodiumSuspense({ restore: true });
   stopAllFx();
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
+  if (goldenFamilyOverlay) goldenFamilyOverlay.classList.remove("active");
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
   stopMusic();

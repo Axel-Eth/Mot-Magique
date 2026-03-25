@@ -32,6 +32,13 @@ function configureTeamModal({ title, message, showActions, showPenaltyList }) {
   $("teamModalPenaltyList")?.classList.toggle("hidden", !showPenaltyList);
 }
 
+function selectTeamFromModal(team) {
+  if (!team) return;
+  state.currentTeamId = team.id;
+  hideTeamModal();
+  renderTeams();
+}
+
 function refreshTeamDisplay(team) {
   const pointsValue = team.points ?? 0;
   if (team._labelEl) team._labelEl.textContent = `${pointsValue}`;
@@ -66,6 +73,25 @@ function renderPenaltyChoices() {
   });
 }
 
+function renderTeamChoices() {
+  const list = $("teamModalPenaltyList");
+  if (!list) return;
+  list.innerHTML = "";
+
+  state.teams.forEach((team) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "team-modal-choice";
+    button.innerHTML = `
+      <span class="team-modal-choice-color" style="background:${team.color}"></span>
+      <span class="team-modal-choice-name">${team.name || "Equipe"}</span>
+      <span class="team-modal-choice-score">${team.points ?? 0}</span>
+    `;
+    button.addEventListener("click", () => selectTeamFromModal(team));
+    list.appendChild(button);
+  });
+}
+
 export function showPenaltyRequiredModal() {
   configureTeamModal({
     title: "Penalite requise",
@@ -78,12 +104,16 @@ export function showPenaltyRequiredModal() {
 }
 
 export function showTeamRequiredModal() {
+  const hasTeams = state.teams.length > 0;
   configureTeamModal({
     title: "Equipe requise",
-    message: "Choisis d'abord une equipe.",
-    showActions: true,
-    showPenaltyList: false
+    message: hasTeams ? "Choisis d'abord une equipe." : "Ajoute d'abord une equipe.",
+    showActions: !hasTeams,
+    showPenaltyList: hasTeams
   });
+  if (hasTeams) {
+    renderTeamChoices();
+  }
   $("teamModal")?.classList.remove("hidden");
 }
 

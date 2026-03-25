@@ -43,5 +43,11 @@ export const state = {
   generalQuestionChoicesVisible: false,
   generalQuestionChoicesRevealCount: 0,
   generalQuestionDisplayActive: false,
-  generalQuestionAnswerMarks: {}
+  generalQuestionAnswerMarks: {},
+  goldenFamilyQuestions: [],
+  goldenFamilyCurrent: null,
+  goldenFamilyVisible: false,
+  goldenFamilyRevealed: {},
+  goldenFamilyStrikes: 0,
+  goldenFamilyRoundPoints: 0
 };

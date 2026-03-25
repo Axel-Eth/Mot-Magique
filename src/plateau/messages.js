@@ -40,6 +40,7 @@ import {
   hideMisfortuneWheel,
   markGeneralAnswer,
   showGeneralQuestion,
+  showGoldenFamily,
   showMisfortuneWheel,
   showMisfortuneWheelResult,
   stopFilmsOverlayVideo,
@@ -220,6 +221,10 @@ export function registerMessageHandlers() {
 
       case "SHOW_GENERAL_QUESTION":
         showGeneralQuestion(msg);
+        break;
+
+      case "SHOW_GOLDEN_FAMILY":
+        showGoldenFamily(msg);
         break;
 
       case "GENERAL_ANSWER_MARK":

@@ -12,11 +12,9 @@
   <header class="topbar">
     <div class="brand">
       <div class="logo">À vos mots !</div>
-      <div class="subtitle">Régie</div>
     </div>
 
     <div class="right">
-      <label class="label" for="gridSelect">Grille</label>
       <select id="gridSelect" class="select" aria-label="Sélection de grille"></select>
 
       <button id="openPlateau" class="btn" type="button">Ouvrir le plateau</button>
@@ -43,9 +41,23 @@
     <div id="teamModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle">
       <div class="modal-card">
         <h3 id="teamModalTitle">Equipe requise</h3>
-        <p>Choisis d'abord une equipe.</p>
-        <div class="row">
+        <p id="teamModalMessage">Choisis d'abord une equipe.</p>
+        <div id="teamModalPenaltyList" class="team-modal-list hidden"></div>
+        <div id="teamModalActions" class="row">
           <button id="teamModalOk" class="btn success" type="button">OK</button>
+        </div>
+      </div>
+    </div>
+    <div id="plateauMusicModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="plateauMusicModalTitle">
+      <div class="modal-card plateau-music-modal-card">
+        <div class="row space-between bonus-modal-top">
+          <h3 id="plateauMusicModalTitle">Musique Plateau</h3>
+          <button id="btnPlateauMusicClose" class="btn ghost" type="button">Fermer</button>
+        </div>
+        <div class="music-block">
+          <div class="media-row">
+            <select id="plateauMusicSelect" class="select" aria-label="Musique plateau"></select>
+          </div>
         </div>
       </div>
     </div>
@@ -115,10 +127,6 @@
       </div>
 
       <div class="music-block">
-        <select id="plateauMusicSelect" class="select" aria-label="Musique plateau"></select>
-      </div>
-
-      <div class="music-block">
         <div class="media-row">
           <select id="filmsSelect" class="select" aria-label="Films"></select>
           <button id="btnReplayFilms" class="btn ghost replay-btn" type="button" aria-label="Rejouer le film selectionne" title="Rejouer">↻</button>
@@ -147,14 +155,13 @@
         </div>
         <div class="row small action-buttons-row">
           <button id="btnReset" class="btn ghost" type="button">Reset</button>
+          <button id="btnPlateauMusic" class="btn ghost" type="button">M. Plateau</button>
           <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
         </div>
       </div>
     </section>
 
     <section id="regieGridPanel" class="panel regie-grid-panel floating-panel">
-      <h2 class="floating-panel-handle">Plateau intégré</h2>
-      <p class="note">Clique sur la grille pour sélectionner un mot sans ouvrir le plateau public.</p>
       <div id="regieGrid" class="grid regie-grid" aria-label="Grille intégrée"></div>
     </section>
     <section id="regieTeamsPanel" class="panel regie-teams-panel floating-panel">

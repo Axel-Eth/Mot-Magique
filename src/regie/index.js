@@ -4,6 +4,7 @@ import { loadSelectedGrid } from "./grid-actions.js";
 import { renderTeams } from "./teams.js";
 import { initLetterInput } from "./inputs.js";
 import {
+  loadGoldenFamilyList,
   loadCapitalesList,
   loadCapitalesNotes,
   loadFilmsList,
@@ -12,6 +13,7 @@ import {
   loadMusicList,
   loadPeoplesList,
   loadPlateauMusicList,
+  registerGoldenFamilyEvents,
   registerMediaEvents
 } from "./media.js";
 import { registerActionEvents, registerWindowEvents } from "./actions.js";
@@ -21,6 +23,7 @@ import { initFloatingPanels } from "./floating-panels.js";
 registerActionEvents();
 registerWindowEvents();
 registerMediaEvents();
+registerGoldenFamilyEvents();
 initLetterInput();
 initWordSelectModalDrag();
 initRegieTimerDrag();
@@ -46,6 +49,7 @@ initFloatingPanels();
     ["loadFilmsMusicList", loadFilmsMusicList],
     ["loadPeoplesList", loadPeoplesList],
     ["loadGeneralQuestionsList", loadGeneralQuestionsList],
+    ["loadGoldenFamilyList", loadGoldenFamilyList],
     ["loadSelectedGrid", loadSelectedGrid],
     ["renderTeams", () => renderTeams()],
     ["setPlateauLabel", () => setPlateauLabel()]

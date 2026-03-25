@@ -19,6 +19,7 @@ import {
 } from "./ui.js";
 import { resetMediaForNewShow, syncPlateauBackgroundTheme } from "./media.js";
 import { resetRegieTimer, startRegieTimer } from "./timer.js";
+import { resetGoldenFamilyForNewShow } from "./golden-family.js";
 
 const controlChannel = (() => {
   try {
@@ -105,6 +106,7 @@ export function registerActionEvents() {
     syncScoresToPlateau();
 
     resetMediaForNewShow();
+    resetGoldenFamilyForNewShow();
 
     const letterInput = $("letterInput");
     if (letterInput) letterInput.value = "";

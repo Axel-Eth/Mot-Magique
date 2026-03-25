@@ -2,6 +2,7 @@ import { $ } from "./dom.js";
 import { state } from "./state.js";
 import { syncScoresToPlateau } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
+export { loadGoldenFamilyList, registerGoldenFamilyEvents } from "./golden-family.js";
 
 const CAPITALES_BASE_CANDIDATES = ["questions/capitales/", "questions/pays/"];
 let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];
@@ -1662,6 +1663,14 @@ function updateReplayButtonsState() {
   if (peoplesBtn) peoplesBtn.disabled = !state.lastPeopleSrc;
 }
 
+function openPlateauMusicModal() {
+  $("plateauMusicModal")?.classList.remove("hidden");
+}
+
+function closePlateauMusicModal() {
+  $("plateauMusicModal")?.classList.add("hidden");
+}
+
 export function registerMediaEvents() {
   initGeneralQuestionsModalDrag();
   initMisfortuneWheelWindowDrag();
@@ -1699,6 +1708,20 @@ export function registerMediaEvents() {
 
   $("btnXMedia")?.addEventListener("click", () => {
     runXMediaFlow();
+  });
+
+  $("btnPlateauMusic")?.addEventListener("click", () => {
+    openPlateauMusicModal();
+  });
+
+  $("btnPlateauMusicClose")?.addEventListener("click", () => {
+    closePlateauMusicModal();
+  });
+
+  $("plateauMusicModal")?.addEventListener("click", (e) => {
+    if (e.target?.id === "plateauMusicModal") {
+      closePlateauMusicModal();
+    }
   });
 
   $("btnQuestions")?.addEventListener("click", () => {
@@ -1767,10 +1790,16 @@ export function registerMediaEvents() {
   );
 
   window.addEventListener("keydown", (e) => {
+    if (misfortuneWheel.visible && e.key === "Enter") {
+      e.preventDefault();
+      spinMisfortuneWheel();
+      return;
+    }
     if (e.key === "Escape") {
       hideGeneralQuestionsModal();
       hideGeneralQuestionsInfo();
       hideMisfortuneWheel();
+      closePlateauMusicModal();
     }
   });
 
@@ -1792,6 +1821,7 @@ export function registerMediaEvents() {
     const value = e.target.value;
     if (value) {
       playPlateauMusicSource(value);
+      closePlateauMusicModal();
     }
   });
 
@@ -1971,5 +2001,6 @@ export function resetMediaForNewShow() {
   hideCapitaleModal();
   hideGeneralQuestionsModal();
   hideGeneralQuestionsInfo();
+  closePlateauMusicModal();
   runXMediaFlow();
 }
