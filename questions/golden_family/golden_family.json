@@ -1,970 +1,651 @@
 [
   {
-    "id": 1,
-    "question": "Citez une partie de votre corps qui paraît plus grosse quand vous êtes nu(e) que quand vous êtes habillé(e).",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "MON VENTRE / MA TAILLE",
-        "score": 50
-      },
-      {
-        "rank": 2,
-        "answer": "MES FESSES FLASQUES",
-        "score": 19
-      },
-      {
-        "rank": 3,
-        "answer": "MES SEINS",
-        "score": 10
-      },
-      {
-        "rank": 4,
-        "answer": "MES JAMBES / MES CUISSES",
-        "score": 8
-      },
-      {
-        "rank": 5,
-        "answer": "MON PAQUET / MON ENTREJAMBE",
-        "score": 5
-      },
-      {
-        "rank": 6,
-        "answer": "MES PIEDS / MES ORTEILS",
-        "score": 4
-      },
-      {
-        "rank": 7,
-        "answer": "MA TÊTE",
-        "score": 2
-      },
-      {
-        "rank": 8,
-        "answer": "MES HANCHES",
-        "score": 2
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "question": "Citez un signe indiquant que votre petite amie est peut-être en train de se transformer en chat.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "ELLE MIAULE / RONRONNE",
-        "score": 37
-      },
-      {
-        "rank": 2,
-        "answer": "ELLE SORT LES GRIFFES / GRIFFE",
-        "score": 21
-      },
-      {
-        "rank": 3,
-        "answer": "ELLE SE MET À AVOIR DES MOUSTACHES",
-        "score": 18
-      },
-      {
-        "rank": 4,
-        "answer": "UNE QUEUE LUI POUSSE",
-        "score": 10
-      },
-      {
-        "rank": 5,
-        "answer": "ELLE MANGE DES CROQUETTES",
-        "score": 4
-      },
-      {
-        "rank": 6,
-        "answer": "ELLE DEVIENT POILUE",
-        "score": 4
-      },
-      {
-        "rank": 7,
-        "answer": "ELLE CRACHE / SIFFLE",
-        "score": 4
-      },
-      {
-        "rank": 8,
-        "answer": "ELLE UTILISE UNE LITIÈRE",
-        "score": 2
-      }
-    ]
+  "id": 1,
+  "question": "Citez une partie du corps qui paraît plus grosse quand on est nu que quand on est habillé.",
+  "answers": [
+    {
+      "rank": 1,
+      "answer": "Le ventre / La taille",
+      "score": 50
+    },
+    {
+      "rank": 2,
+      "answer": "Les fesses",
+      "score": 19
+    },
+    {
+      "rank": 3,
+      "answer": "Les seins",
+      "score": 10
+    },
+    {
+      "rank": 4,
+      "answer": "Les jambes / Les cuisses",
+      "score": 8
+    },
+    {
+      "rank": 5,
+      "answer": "L'entrejambe / Le paquet",
+      "score": 5
+    },
+    {
+      "rank": 6,
+      "answer": "Les pieds / Les orteils",
+      "score": 4
+    },
+    {
+      "rank": 7,
+      "answer": "La tête",
+      "score": 2
+    },
+    {
+      "rank": 8,
+      "answer": "Les hanches",
+      "score": 2
+    }
+]
   },
   {
     "id": 3,
-    "question": "On a interrogé 100 femmes... Si un homme est moche, il vaut mieux qu'il ait un beau / une belle quoi ?",
+    "question": "Si un homme est moche, il vaut mieux qu'il ait un beau / une belle ... quoi ?",
     "answers": [
       {
         "rank": 1,
-        "answer": "PERSONNALITÉ",
+        "answer": "Personnalité",
         "score": 31
       },
       {
         "rank": 2,
-        "answer": "CŒUR / ÂME",
+        "answer": "Cœeur / Âme",
         "score": 17
       },
       {
         "rank": 3,
-        "answer": "SOURIRE / BOUCHE",
+        "answer": "Sourire / Bouche",
         "score": 17
       },
       {
         "rank": 4,
-        "answer": "COMPTE EN BANQUE / EMPLOI",
+        "answer": "Compte en banque / Beaucoup d'argent",
         "score": 14
       },
       {
         "rank": 5,
-        "answer": "VOITURE / ROLLS-ROYCE",
+        "answer": "Voiture",
         "score": 9
       },
       {
         "rank": 6,
-        "answer": "MAISON",
+        "answer": "Maison",
         "score": 4
       },
       {
         "rank": 7,
-        "answer": "FEMME / PETITE AMIE",
+        "answer": "Femme / Copine",
         "score": 4
       },
       {
         "rank": 8,
-        "answer": "CORPS / TABLETTE DE CHOC",
+        "answer": "Corps",
         "score": 3
       }
     ]
   },
   {
     "id": 4,
-    "question": "Citez quelque chose qui peut tuer une mouche domestique et dont vous détesteriez mourir vous-même.",
+    "question": "De quoi une mouche peut elle mourir ?",
     "answers": [
       {
         "rank": 1,
-        "answer": "TAPETTE À MOUCHES",
+        "answer": "Tapette à mouches",
         "score": 74
       },
       {
         "rank": 2,
-        "answer": "INSECTICIDE",
+        "answer": "Insecticide",
         "score": 6
       },
       {
         "rank": 3,
-        "answer": "FAIM",
+        "answer": "Faim",
         "score": 5
       },
       {
         "rank": 4,
-        "answer": "CHALEUR",
+        "answer": "Feu / Grillée",
         "score": 3
       },
       {
         "rank": 5,
-        "answer": "MANQUE D'AIR",
+        "answer": "Étouffée / Manque d'air",
         "score": 3
       },
       {
         "rank": 6,
-        "answer": "MALADE / APRÈS AVOIR MANGÉ DES EXCRÉMENTS",
+        "answer": "Maladie",
         "score": 3
       },
       {
         "rank": 7,
-        "answer": "NOYADE / DANS LES CÉRÉALES",
+        "answer": "Noyade",
         "score": 2
       },
       {
         "rank": 8,
-        "answer": "PAPIER TUE-MOUCHES",
-        "score": 2
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "question": "On a interrogé 100 femmes mariées... Citez quelque chose que votre mari had better not be holding quand vous rentrez du travail.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "UNE FEMME / MA MEILLEURE AMIE",
-        "score": 65
-      },
-      {
-        "rank": 2,
-        "answer": "LA TÉLÉCOMMANDE",
-        "score": 10
-      },
-      {
-        "rank": 3,
-        "answer": "\"PRINCE POILU\"",
-        "score": 6
-      },
-      {
-        "rank": 4,
-        "answer": "SA VALISE",
-        "score": 5
-      },
-      {
-        "rank": 5,
-        "answer": "DU PORNO",
-        "score": 5
-      },
-      {
-        "rank": 6,
-        "answer": "UN AVIS DE LICENCIEMENT",
-        "score": 3
-      },
-      {
-        "rank": 7,
-        "answer": "UN MEC / MON FRÈRE",
-        "score": 2
-      },
-      {
-        "rank": 8,
-        "answer": "UN VIBROMASSEUR",
-        "score": 2
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "question": "Personne n'a envie de voir des photos de quoi chez vous ?",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "VOTRE CORPS / VOS FESSES POILUES",
-        "score": 65
-      },
-      {
-        "rank": 2,
-        "answer": "ENFANTS / PETITS-ENFANTS",
-        "score": 9
-      },
-      {
-        "rank": 3,
-        "answer": "VACANCES",
-        "score": 8
-      },
-      {
-        "rank": 4,
-        "answer": "ANIMAL / CHIEN",
-        "score": 6
-      },
-      {
-        "rank": 5,
-        "answer": "EX",
-        "score": 4
-      },
-      {
-        "rank": 6,
-        "answer": "COLOSCOPIE",
-        "score": 2
-      },
-      {
-        "rank": 7,
-        "answer": "NOURRITURE / DÎNER",
-        "score": 2
-      },
-      {
-        "rank": 8,
-        "answer": "MAISON / SALLE DE BAIN",
+        "answer": "Papier tue mouches",
         "score": 2
       }
     ]
   },
   {
     "id": 7,
-    "question": "Citez quelque chose qu'une poupée Barbie a et qu'un homme pourrait souhaiter chez sa femme.",
+    "question": "Citez quelque chose qu’une poupée Barbie a et qu’un homme pourrait rêver d’avoir chez sa femme.",
     "answers": [
       {
         "rank": 1,
-        "answer": "CORPS DE RÊVE",
+        "answer": "Corps de rêve",
         "score": 57
       },
       {
         "rank": 2,
-        "answer": "CHEVEUX LONGS / BLONDS",
+        "answer": "Cheveux longs",
         "score": 16
       },
       {
         "rank": 3,
-        "answer": "JOLI VISAGE / BEAU SOURIRE",
+        "answer": "Beau visage",
         "score": 9
       },
       {
         "rank": 4,
-        "answer": "LA MAISON DE RÊVE MALIBU",
+        "answer": "Maison de rêve",
         "score": 5
       },
       {
         "rank": 5,
-        "answer": "BELLE VOITURE / CORVETTE",
+        "answer": "Belle voiture",
         "score": 3
       },
       {
         "rank": 6,
-        "answer": "VÊTEMENTS / CHAUSSURES SEXY",
+        "answer": "Garde robe",
         "score": 3
       },
       {
         "rank": 7,
-        "answer": "PAS DE VOIX",
+        "answer": "Pas de voix / Silence",
         "score": 3
       },
       {
         "rank": 8,
-        "answer": "ARGENT / RÉUSSITE",
+        "answer": "Argent",
         "score": 2
       }
     ]
   },
   {
     "id": 8,
-    "question": "Citez quelque chose qu'un bébé fait et qui serait inacceptable chez un colocataire.",
+    "question": "Citez quelque chose qu'un bébé peut faire et que ne devrait pas faire un colocataire.",
     "answers": [
       {
         "rank": 1,
-        "answer": "PLEURER / À 3 H DU MATIN",
+        "answer": "Pleurer au milieu de la nuit",
         "score": 39
       },
       {
         "rank": 2,
-        "answer": "SE FAIRE CACA / PIPI DESSUS",
+        "answer": "Se faire dessus",
         "score": 28
       },
       {
         "rank": 3,
-        "answer": "VOMIR / SUR MOI",
+        "answer": "Vomir sur quelqu'un",
         "score": 9
       },
       {
         "rank": 4,
-        "answer": "ROTER",
+        "answer": "Roter",
         "score": 8
       },
       {
         "rank": 5,
-        "answer": "METTRE LE BAZAR / JETER LA NOURRITURE",
+        "answer": "Jeter la nourriture",
         "score": 5
       },
       {
         "rank": 6,
-        "answer": "PÉTER",
+        "answer": "Péter",
         "score": 4
       },
       {
         "rank": 7,
-        "answer": "ME FAIRE PIPI AU VISAGE",
+        "answer": "Uriner sur quelqu'un",
         "score": 3
       },
       {
         "rank": 8,
-        "answer": "TÉTER / MES TÉTONS",
+        "answer": "Téter les tétons",
         "score": 2
       }
     ]
   },
   {
     "id": 9,
-    "question": "On a interrogé 100 femmes célibataires... Citez quelque chose qu'on emmène au lit après s'être fait larguer.",
+    "question": "Citez quelque chose qu'on emmène au lit après s'être fait larguer.",
     "answers": [
       {
         "rank": 1,
-        "answer": "NOURRITURE / GLACE",
+        "answer": "Sextoy",
         "score": 38
       },
       {
         "rank": 2,
-        "answer": "MON CHIEN / MON ANIMAL",
+        "answer": "Son chien / Animal",
         "score": 15
       },
       {
         "rank": 3,
-        "answer": "OURS EN PELUCHE",
+        "answer": "Doudou",
         "score": 11
       },
       {
         "rank": 4,
-        "answer": "VIN / ALCOOL",
+        "answer": "Alchool",
         "score": 10
       },
       {
         "rank": 5,
-        "answer": "LIVRE",
+        "answer": "Livre",
         "score": 9
       },
       {
         "rank": 6,
-        "answer": "MOUCHOIRS",
+        "answer": "Mouchoirs",
         "score": 8
       },
       {
         "rank": 7,
-        "answer": "VINNY LE VIBROMASSEUR",
+        "answer": "Nouriture",
         "score": 5
       },
       {
         "rank": 8,
-        "answer": "UN PLAN CUL / UNE ÉQUIPE DE RUGBY",
+        "answer": "Un amant / Une maîtresse",
         "score": 2
       }
     ]
   },
   {
     "id": 10,
-    "question": "On a interrogé 100 femmes... Citez quelque chose que vous adorez faire quand vous êtes complètement seul(e).",
+    "question": "Citez quelque chose que vous adorez faire quand vous êtes seul(e).",
     "answers": [
       {
         "rank": 1,
-        "answer": "LIRE",
+        "answer": "Lire",
         "score": 27
       },
       {
         "rank": 2,
-        "answer": "REGARDER LA TÉLÉ / UN FILM",
+        "answer": "Regarder la télé / Un film",
         "score": 26
       },
       {
         "rank": 3,
-        "answer": "PRENDRE UN BAIN",
+        "answer": "Prendre un bain",
         "score": 18
       },
       {
         "rank": 4,
-        "answer": "DORMIR",
+        "answer": "Dormir",
         "score": 10
       },
       {
         "rank": 5,
-        "answer": "SE BALADER NU(E)",
+        "answer": "Se promener nu(e)",
         "score": 6
       },
       {
         "rank": 6,
-        "answer": "MANGER",
+        "answer": "Manger",
         "score": 4
       },
       {
         "rank": 7,
-        "answer": "CHANTER",
+        "answer": "Chanter",
         "score": 4
       },
       {
         "rank": 8,
-        "answer": "DANSER",
+        "answer": "Danser",
         "score": 3
       }
     ]
   },
   {
     "id": 11,
-    "question": "Citez quelque chose que vous ne seriez pas surpris de voir papi et mamie faire s'ils étaient d'anciens hippies.",
+    "question": "Citez une activité typique de hippie",
     "answers": [
       {
         "rank": 1,
-        "answer": "SE DÉFONCER / FUMER DE L'HERBE",
+        "answer": "Se droguer / Fûmer",
         "score": 74
       },
       {
         "rank": 2,
-        "answer": "DANSER",
+        "answer": "Danser",
         "score": 7
       },
       {
         "rank": 3,
-        "answer": "S'EMBRASSER",
+        "answer": "S'embrasser",
         "score": 4
       },
       {
         "rank": 4,
-        "answer": "COPULER / COMME DES LAPINS",
+        "answer": "Rapports sexuels",
         "score": 3
       },
       {
         "rank": 5,
-        "answer": "CHANTER / JOUER DU BOB DYLAN",
+        "answer": "Chanter",
         "score": 3
       },
       {
         "rank": 6,
-        "answer": "ÊTRE PIEDS NUS",
+        "answer": "Être pieds nus",
         "score": 2
       },
       {
         "rank": 7,
-        "answer": "SIGNE DE PAIX",
+        "answer": "Le signe Peace",
         "score": 2
       },
       {
         "rank": 8,
-        "answer": "PLANTER DES FLEURS",
+        "answer": "Planter des fleurs",
         "score": 2
       }
     ]
   },
   {
     "id": 12,
-    "question": "Citez une raison pour laquelle une femme ferait grossir son mari exprès.",
+    "question": "Citez une raison pour laquelle une femme ferait volontairement grossir son mari.",
     "answers": [
       {
         "rank": 1,
-        "answer": "ÉLOIGNER LES POUFIASSES",
+        "answer": "Le rendre moins séduisant",
         "score": 67
       },
       {
         "rank": 2,
-        "answer": "IL EST MAIGRE / A FROID / EST MALADE",
+        "answer": "Il est maigre / Malade",
         "score": 11
       },
       {
         "rank": 3,
-        "answer": "PLUS À AIMER / À CÂLINER",
+        "answer": "Plus à aimer / À câliner",
         "score": 6
       },
       {
         "rank": 4,
-        "answer": "ELLE PARAÎT MOINS GROSSE",
+        "answer": "Pour paraître moins grosse",
         "score": 4
       },
       {
         "rank": 5,
-        "answer": "POUR LE FLATTER / LE CHOUCHOUTER",
+        "answer": "Pour dédculpabiliser",
         "score": 3
       },
       {
         "rank": 6,
-        "answer": "C'EST LE PÈRE NOËL !",
+        "answer": "Pour jouer le père noël !",
         "score": 2
       },
       {
         "rank": 7,
-        "answer": "SPORT / SUMO",
+        "answer": "Pour la pratique d'un sport",
         "score": 2
       },
       {
         "rank": 8,
-        "answer": "POUR LE TUER / LE MANGER",
+        "answer": "Pour le tuer / Le manger",
         "score": 2
       }
     ]
   },
-  {
-    "id": 13,
-    "question": "Citez quelque chose chez sa fille strip-teaseuse dont une mère se vanterait quand même.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "GROS POURBOIRES / BEAUCOUP D'ARGENT",
-        "score": 38
-      },
-      {
-        "rank": 2,
-        "answer": "CORPS SEXY / BIEN FOUTU",
-        "score": 20
-      },
-      {
-        "rank": 3,
-        "answer": "JOLI VISAGE / BEAUX CHEVEUX",
-        "score": 19
-      },
-      {
-        "rank": 4,
-        "answer": "SES MOUVEMENTS / SA DANSE",
-        "score": 8
-      },
-      {
-        "rank": 5,
-        "answer": "TRAVAILLEUSE",
-        "score": 4
-      },
-      {
-        "rank": 6,
-        "answer": "INTELLIGENTE / FAIT DES ÉTUDES",
-        "score": 4
-      },
-      {
-        "rank": 7,
-        "answer": "SON STYLE / SES CACHE-TÉTONS",
-        "score": 2
-      },
-      {
-        "rank": 8,
-        "answer": "PERSONNALITÉ / GENTILLE",
-        "score": 2
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "question": "Qu'est-ce qu'un homme marié détesterait apprendre que sa femme a fait avec son slip porte-bonheur ?",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "LES A JETÉS / À LA POUBELLE",
-        "score": 36
-      },
-      {
-        "rank": 2,
-        "answer": "LES A BRÛLÉS",
-        "score": 13
-      },
-      {
-        "rank": 3,
-        "answer": "LES A LAVÉS",
-        "score": 11
-      },
-      {
-        "rank": 4,
-        "answer": "LES A FAIT RÉTRÉCIR",
-        "score": 10
-      },
-      {
-        "rank": 5,
-        "answer": "LES A UTILISÉS COMME CHIFFON",
-        "score": 9
-      },
-      {
-        "rank": 6,
-        "answer": "LES A PASSÉS À L'EAU DE JAVEL",
-        "score": 8
-      },
-      {
-        "rank": 7,
-        "answer": "LES A DÉCHIRÉS / DÉCOUPÉS",
-        "score": 6
-      },
-      {
-        "rank": 8,
-        "answer": "LES A DONNÉS / VENDUS",
-        "score": 4
-      }
-    ]
-  },
+
   {
     "id": 15,
-    "question": "On a interrogé 100 femmes célibataires... Citez une odeur que vous détesteriez sentir en montant dans la voiture d'un rendez-vous.",
+    "question": "Citez une odeur red flag lors d'un date / RDV Amoureux",
     "answers": [
       {
         "rank": 1,
-        "answer": "POUBELLE / VIEILLE NOURRITURE",
+        "answer": "Mauvaise odeur corporelle",
         "score": 29
       },
       {
         "rank": 2,
-        "answer": "CIGARETTE / CIGARE",
+        "answer": "Cigarette",
         "score": 19
       },
       {
         "rank": 3,
-        "answer": "DES PETS TOUT FRAIS",
+        "answer": "Pets",
         "score": 14
       },
       {
         "rank": 4,
-        "answer": "ALCOOL",
+        "answer": "Alchool",
         "score": 11
       },
       {
         "rank": 5,
-        "answer": "SON HALEINE / SON ODEUR CORPORELLE",
+        "answer": "Mauvaise haleine",
         "score": 11
       },
       {
         "rank": 6,
-        "answer": "HERBE / CANNABIS",
+        "answer": "Canabis",
         "score": 5
       },
       {
         "rank": 7,
-        "answer": "CADAVRE",
+        "answer": "Transpiration",
         "score": 4
       },
       {
         "rank": 8,
-        "answer": "PARFUM DE FEMME",
+        "answer": "Parfum de femme",
         "score": 4
       }
     ]
   },
   {
-    "id": 16,
-    "question": "On a interrogé 100 hommes... Selon vous, quelle est la meilleure tendance de mode féminine de tous les temps ?",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "BIKINI/SWIMSUIT",
-        "score": 24
-      },
-      {
-        "rank": 2,
-        "answer": "SHORT SHORTS",
-        "score": 23
-      },
-      {
-        "rank": 3,
-        "answer": "MINISKIRT",
-        "score": 15
-      },
-      {
-        "rank": 4,
-        "answer": "HIGH HEELS",
-        "score": 12
-      },
-      {
-        "rank": 5,
-        "answer": "THONG",
-        "score": 9
-      },
-      {
-        "rank": 6,
-        "answer": "YOGUN PANTS",
-        "score": 6
-      },
-      {
-        "rank": 7,
-        "answer": "SUNDRESS/DRESS",
-        "score": 5
-      },
-      {
-        "rank": 8,
-        "answer": "BRA",
-        "score": 3
-      }
-    ]
+  "id": 16,
+  "question": "Quelle est, selon vous, le vêtement féminin le plus séduisant ?",
+  "answers": [
+    {
+      "rank": 1,
+      "answer": "Bikini / Maillot de bain",
+      "score": 24
+    },
+    {
+      "rank": 2,
+      "answer": "Mini-shorts",
+      "score": 23
+    },
+    {
+      "rank": 3,
+      "answer": "Mini-jupe",
+      "score": 15
+    },
+    {
+      "rank": 4,
+      "answer": "Talons hauts",
+      "score": 12
+    },
+    {
+      "rank": 5,
+      "answer": "Bas / Collants",
+      "score": 9
+    },
+    {
+      "rank": 6,
+      "answer": "Le legging",
+      "score": 6
+    },
+    {
+      "rank": 7,
+      "answer": "Robe d'été",
+      "score": 5
+    },
+    {
+      "rank": 8,
+      "answer": "Décolleté",
+      "score": 3
+    }
+  ]
   },
   {
-    "id": 17,
-    "question": "Citez quelque chose que un homme porte pour rendre les femmes folles, mais qui au contraire les fait fuir.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "COLOGNE/AFTERSHAVE",
-        "score": 66
-      },
-      {
-        "rank": 2,
-        "answer": "SPEEDO",
-        "score": 9
-      },
-      {
-        "rank": 3,
-        "answer": "TOUPEE",
-        "score": 6
-      },
-      {
-        "rank": 4,
-        "answer": "LEATHER PANTS",
-        "score": 4
-      },
-      {
-        "rank": 5,
-        "answer": "HAIR DYE",
-        "score": 3
-      },
-      {
-        "rank": 6,
-        "answer": "HAWAIIAN SHIRT",
-        "score": 3
-      },
-      {
-        "rank": 7,
-        "answer": "JEANS/SKINNY JEANS",
-        "score": 3
-      },
-      {
-        "rank": 8,
-        "answer": "G-STRING",
-        "score": 2
-      }
-    ]
+  "id": 17,
+  "question": "Citez quelque chose que les hommes pensent être séduisant, mais qui est en fait beauf et repoussant",
+  "answers": [
+    {
+      "rank": 1,
+      "answer": "Eau de cologne / Trop de parfum",
+      "score": 66
+    },
+    {
+      "rank": 2,
+      "answer": "Un moule bite",
+      "score": 9
+    },
+    {
+      "rank": 3,
+      "answer": "Un postiche / Une péruque",
+      "score": 6
+    },
+    {
+      "rank": 4,
+      "answer": "Être mystérieux",
+      "score": 4
+    },
+    {
+      "rank": 5,
+      "answer": "Une couleur pour cheveux",
+      "score": 3
+    },
+    {
+      "rank": 6,
+      "answer": "Une chemise Hawaïenne",
+      "score": 3
+    },
+    {
+      "rank": 7,
+      "answer": "Un jean slim",
+      "score": 3
+    },
+    {
+      "rank": 8,
+      "answer": "Un selfie miroir",
+      "score": 2
+    }
+  ]
   },
   {
     "id": 18,
-    "question": "Citez quelqu'un que un ado cool ne voudrait pas voir débarquer à sa fête.",
+    "question": "Un ados (cool) qui organise une soirée ne voudrais pas que ... vienne à sa fête.",
     "answers": [
       {
         "rank": 1,
-        "answer": "THEIR PARENTS",
+        "answer": "Ses parents",
         "score": 58
       },
       {
         "rank": 2,
-        "answer": "LAME CELEB/SNOOKI",
+        "answer": "Son petit frère / sœur",
         "score": 11
       },
       {
         "rank": 3,
-        "answer": "UN NERD/GEEK",
+        "answer": "Des geeks",
         "score": 9
       },
       {
         "rank": 4,
-        "answer": "ELMO/CHARACTER",
+        "answer": "Un(e) ex",
         "score": 5
       },
       {
         "rank": 5,
-        "answer": "POLICE",
+        "answer": "Police",
         "score": 5
       },
       {
         "rank": 6,
-        "answer": "GRANDPARENTS",
+        "answer": "Grands Parents",
         "score": 4
       },
       {
         "rank": 7,
-        "answer": "UN CLOWN",
+        "answer": "Un beauf",
         "score": 2
       },
       {
         "rank": 8,
-        "answer": "PRINCIPAL/TEACHER",
-        "score": 2
-      }
-    ]
-  },
-  {
-    "id": 19,
-    "question": "Si c'était les hommes qui décidaient, les seins des femmes auraient la taille de quel type de balle / ballon ?",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "BASKETBALL",
-        "score": 42
-      },
-      {
-        "rank": 2,
-        "answer": "SOFTBALL/BASEBALL",
-        "score": 26
-      },
-      {
-        "rank": 3,
-        "answer": "BEACH BALL",
-        "score": 7
-      },
-      {
-        "rank": 4,
-        "answer": "BOWLING BALL",
-        "score": 6
-      },
-      {
-        "rank": 5,
-        "answer": "VOLLEYBALL",
-        "score": 5
-      },
-      {
-        "rank": 6,
-        "answer": "FOOTBALL",
-        "score": 4
-      },
-      {
-        "rank": 7,
-        "answer": "SOCCER BALL",
-        "score": 4
-      },
-      {
-        "rank": 8,
-        "answer": "MELON BALL",
+        "answer": "Prof",
         "score": 2
       }
     ]
   },
   {
-    "id": 20,
-    "question": "On a interrogé 100 hommes mariés... Citez quelque chose que about votre femme you'd get in trouble for telling other people.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "WEIGHT/MEAS'MENTS",
-        "score": 40
-      },
-      {
-        "rank": 2,
-        "answer": "SHE SNORES",
-        "score": 18
-      },
-      {
-        "rank": 3,
-        "answer": "HER AGE",
-        "score": 14
-      },
-      {
-        "rank": 4,
-        "answer": "FREAK/SEX LIFE",
-        "score": 9
-      },
-      {
-        "rank": 5,
-        "answer": "HYGEINE HABITS",
-        "score": 5
-      },
-      {
-        "rank": 6,
-        "answer": "BAD TEMPER",
-        "score": 4
-      },
-      {
-        "rank": 7,
-        "answer": "EYE-WATERING FARTS",
-        "score": 3
-      },
-      {
-        "rank": 8,
-        "answer": "FAKE BOOBS",
-        "score": 3
-      }
-    ]
+  "id": 21,
+  "question": "Citez une chose que vous n’avez pas envie d’entendre, mais que vous attendez quand même d’un(e) ami(e).",
+  "answers": [
+    {
+      "rank": 1,
+      "answer": "Elle ou il me trompe",
+      "score": 38
+    },
+    {
+      "rank": 2,
+      "answer": "T'as grossi",
+      "score": 33
+    },
+    {
+      "rank": 3,
+      "answer": "T'as un truc coincé entre les dents'",
+      "score": 8
+    },
+    {
+      "rank": 4,
+      "answer": "Ta tenue est moche / Vulgaire'",
+      "score": 5
+    },
+    {
+      "rank": 5,
+      "answer": "Tu sens mauvais",
+      "score": 3
+    },
+    {
+      "rank": 6,
+      "answer": "Les rumeurs à mon sujet",
+      "score": 3
+    },
+    {
+      "rank": 7,
+      "answer": "Tu te comportes mal",
+      "score": 3
+    },
+    {
+      "rank": 8,
+      "answer": "Annoncer un décès",
+      "score": 3
+    }
+  ]
   },
-  {
-    "id": 21,
-    "question": "On a interrogé 100 femmes... Name une information que vous n'avez pas envie d'entendre mais que vous attendez d'un(e) ami(e).",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "MATE CHEATED",
-        "score": 38
-      },
-      {
-        "rank": 2,
-        "answer": "\"YOU'RE PORKY\"",
-        "score": 33
-      },
-      {
-        "rank": 3,
-        "answer": "FOOD IN MON TEETH",
-        "score": 8
-      },
-      {
-        "rank": 4,
-        "answer": "OUTFIT'S UN \"DON'T\"",
-        "score": 5
-      },
-      {
-        "rank": 5,
-        "answer": "\"LOOKIN' OLD, GRANNY\"",
-        "score": 3
-      },
-      {
-        "rank": 6,
-        "answer": "LATEST GOSSIP",
-        "score": 3
-      },
-      {
-        "rank": 7,
-        "answer": "SHE BOINKED/MON DAD",
-        "score": 3
-      },
-      {
-        "rank": 8,
-        "answer": "SOMEONE DIED",
-        "score": 3
-      }
-    ]
-  },
+
+
   {
     "id": 22,
     "question": "Citez un métier où in which plus vous êtes sexy, plus vous gagnez d'argent.",

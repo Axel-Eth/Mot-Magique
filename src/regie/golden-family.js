@@ -162,28 +162,19 @@ function renderGoldenFamilyAnswerButtons() {
 
 function renderGoldenFamilyCard() {
   const card = $("goldenFamilyCard");
-  const meta = $("goldenFamilyMeta");
   const text = $("goldenFamilyText");
-  const score = $("goldenFamilyRoundScore");
 
   syncRoundPoints();
 
   if (!state.goldenFamilyCurrent) {
     card?.classList.add("hidden");
-    if (meta) meta.textContent = "-";
     if (text) text.textContent = "Choisis une manche.";
-    if (score) score.textContent = "0 pts";
     updateGoldenFamilyButtons();
     return;
   }
 
   card?.classList.remove("hidden");
-  if (meta) {
-    const total = state.goldenFamilyCurrent.answers?.length || 0;
-    meta.textContent = `${state.goldenFamilyCurrent.sourceName} | ${total} reponses`;
-  }
   if (text) text.textContent = state.goldenFamilyCurrent.question;
-  if (score) score.textContent = `${state.goldenFamilyRoundPoints} pts`;
   renderGoldenFamilyAnswerButtons();
   updateGoldenFamilyButtons();
 }
@@ -235,14 +226,6 @@ function setCurrentQuestion(question) {
   if (state.goldenFamilyVisible) {
     sendGoldenFamilyToPlateau();
   }
-}
-
-function pickGoldenFamilyQuestion({ random = false } = {}) {
-  if (!state.goldenFamilyQuestions.length) return;
-  const question = random
-    ? state.goldenFamilyQuestions[Math.floor(Math.random() * state.goldenFamilyQuestions.length)]
-    : state.goldenFamilyQuestions[0];
-  setCurrentQuestion(question);
 }
 
 export function toggleGoldenFamilyAnswer(index) {
@@ -349,12 +332,10 @@ export function registerGoldenFamilyEvents() {
     setCurrentQuestion(state.goldenFamilyQuestions[index]);
   });
 
-  $("btnGoldenFamilyNext")?.addEventListener("click", () => {
-    pickGoldenFamilyQuestion({ random: false });
-  });
-
   $("btnGoldenFamilyRandom")?.addEventListener("click", () => {
-    pickGoldenFamilyQuestion({ random: true });
+    if (!state.goldenFamilyQuestions.length) return;
+    const question = state.goldenFamilyQuestions[Math.floor(Math.random() * state.goldenFamilyQuestions.length)];
+    setCurrentQuestion(question);
   });
 
   $("btnGoldenFamilyShow")?.addEventListener("click", () => {
