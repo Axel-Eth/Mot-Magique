@@ -2,7 +2,7 @@ import { $ } from "./dom.js";
 import { state } from "./state.js";
 import { postToPlateau } from "./bridge.js";
 import { syncScoresToPlateau } from "./plateau.js";
-import { renderTeams, ensureTeamChosen } from "./teams.js";
+import { renderTeams, showTeamAwardModal } from "./teams.js";
 
 const GOLDEN_FAMILY_BASE = "questions/golden_family/";
 
@@ -90,7 +90,6 @@ function buildPayload() {
     visible: !!state.goldenFamilyVisible && !!q,
     source: q?.sourceName || "",
     question: q?.question || "",
-    strikes: Math.max(0, Math.min(3, Number(state.goldenFamilyStrikes) || 0)),
     roundPoints: computeRoundPoints(q, revealed),
     answers: Array.isArray(q?.answers)
       ? q.answers.map((answer, index) => ({
@@ -115,19 +114,11 @@ function sendGoldenFamilyToPlateau() {
 function updateGoldenFamilyButtons() {
   const hasCurrent = !!state.goldenFamilyCurrent;
   const showBtn = $("btnGoldenFamilyShow");
-  const pointsBtn = $("btnGoldenFamilyAward");
-  const strikesBtn = $("btnGoldenFamilyResetStrikes");
   const clearBtn = $("btnGoldenFamilyHide");
 
   if (showBtn) {
     showBtn.disabled = !hasCurrent;
     showBtn.textContent = state.goldenFamilyVisible ? "Cacher le board" : "Afficher le board";
-  }
-  if (pointsBtn) {
-    pointsBtn.disabled = !hasCurrent || state.goldenFamilyRoundPoints <= 0;
-  }
-  if (strikesBtn) {
-    strikesBtn.disabled = !hasCurrent || state.goldenFamilyStrikes <= 0;
   }
   if (clearBtn) {
     clearBtn.disabled = !hasCurrent && !state.goldenFamilyVisible;
@@ -174,7 +165,6 @@ function renderGoldenFamilyCard() {
   const meta = $("goldenFamilyMeta");
   const text = $("goldenFamilyText");
   const score = $("goldenFamilyRoundScore");
-  const strikes = $("goldenFamilyStrikes");
 
   syncRoundPoints();
 
@@ -183,7 +173,6 @@ function renderGoldenFamilyCard() {
     if (meta) meta.textContent = "-";
     if (text) text.textContent = "Choisis une manche.";
     if (score) score.textContent = "0 pts";
-    if (strikes) strikes.textContent = "X0";
     updateGoldenFamilyButtons();
     return;
   }
@@ -195,7 +184,6 @@ function renderGoldenFamilyCard() {
   }
   if (text) text.textContent = state.goldenFamilyCurrent.question;
   if (score) score.textContent = `${state.goldenFamilyRoundPoints} pts`;
-  if (strikes) strikes.textContent = `X${state.goldenFamilyStrikes}`;
   renderGoldenFamilyAnswerButtons();
   updateGoldenFamilyButtons();
 }
@@ -232,7 +220,6 @@ function refreshGoldenFamilySelect() {
 
 function resetRoundState() {
   state.goldenFamilyRevealed = {};
-  state.goldenFamilyStrikes = 0;
   state.goldenFamilyRoundPoints = 0;
 }
 
@@ -258,30 +245,29 @@ function pickGoldenFamilyQuestion({ random = false } = {}) {
   setCurrentQuestion(question);
 }
 
-function awardGoldenFamilyPoints() {
-  if (!state.goldenFamilyCurrent || state.goldenFamilyRoundPoints <= 0) return;
-  if (!ensureTeamChosen()) return;
-  const team = state.teams.find((entry) => entry.id === state.currentTeamId);
-  if (!team) return;
-  team.points = (team.points ?? 0) + state.goldenFamilyRoundPoints;
-  renderTeams();
-  syncScoresToPlateau();
-}
-
 export function toggleGoldenFamilyAnswer(index) {
   const q = state.goldenFamilyCurrent;
   if (!q?.answers?.[index]) return;
+  const answer = q.answers[index];
   const revealed = { ...getRevealedMap() };
-  revealed[index] = !revealed[index];
+  const nextRevealed = !revealed[index];
+  revealed[index] = nextRevealed;
   state.goldenFamilyRevealed = revealed;
-  renderGoldenFamilyCard();
-  if (state.goldenFamilyVisible) {
-    sendGoldenFamilyToPlateau();
-  }
-}
 
-export function setGoldenFamilyStrikes(value) {
-  state.goldenFamilyStrikes = Math.max(0, Math.min(3, Number(value) || 0));
+  if (nextRevealed && (Number(answer?.score) || 0) > 0) {
+    showTeamAwardModal({
+      points: Number(answer.score) || 0,
+      answer: answer.answer || "",
+      onSelect: (team) => {
+        if (!team) return;
+        state.currentTeamId = team.id;
+        team.points = (team.points ?? 0) + (Number(answer.score) || 0);
+        renderTeams();
+        syncScoresToPlateau();
+      }
+    });
+  }
+
   renderGoldenFamilyCard();
   if (state.goldenFamilyVisible) {
     sendGoldenFamilyToPlateau();
@@ -386,15 +372,6 @@ export function registerGoldenFamilyEvents() {
 
   $("btnGoldenFamilyHide")?.addEventListener("click", () => {
     hideGoldenFamilyDisplay();
-  });
-
-  $("btnGoldenFamilyStrike1")?.addEventListener("click", () => setGoldenFamilyStrikes(1));
-  $("btnGoldenFamilyStrike2")?.addEventListener("click", () => setGoldenFamilyStrikes(2));
-  $("btnGoldenFamilyStrike3")?.addEventListener("click", () => setGoldenFamilyStrikes(3));
-  $("btnGoldenFamilyResetStrikes")?.addEventListener("click", () => setGoldenFamilyStrikes(0));
-
-  $("btnGoldenFamilyAward")?.addEventListener("click", () => {
-    awardGoldenFamilyPoints();
   });
 
   $("btnGoldenFamilyResetRound")?.addEventListener("click", () => {

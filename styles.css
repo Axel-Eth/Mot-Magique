@@ -818,13 +818,12 @@ h2{
 .golden-family-board-toolbar{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:flex-start;
   gap:12px;
   margin-top:16px;
 }
 
-.golden-family-round-score,
-.golden-family-strikes{
+.golden-family-round-score{
   min-width:120px;
   padding:12px 16px;
   border-radius:14px;
@@ -833,10 +832,6 @@ h2{
   font-size:26px;
   font-weight:900;
   text-align:center;
-}
-
-.golden-family-strikes{
-  color:#ff8a8a;
 }
 
 .golden-family-answers-regie{
@@ -1063,6 +1058,10 @@ h2{
   background: rgba(10,20,30,.55);
   backdrop-filter: blur(3px);
   z-index: 100;
+}
+
+#teamModal{
+  z-index: 140;
 }
 
 .modal.hidden{
@@ -2160,7 +2159,7 @@ body.plateau .golden-family-cell.revealed .golden-family-cell-answer{
 body.plateau .golden-family-footer{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:flex-start;
   gap:18px;
 }
 
@@ -2187,32 +2186,6 @@ body.plateau #goldenFamilyRoundPoints{
   font-weight:1000;
   line-height:1;
   color:#ffe36f;
-}
-
-body.plateau .golden-family-strikes{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-body.plateau .golden-family-strikes .strike{
-  display:grid;
-  place-items:center;
-  width:86px;
-  height:86px;
-  border-radius:18px;
-  border:2px solid rgba(255,255,255,.18);
-  background: rgba(255,255,255,.06);
-  color: rgba(255,140,140,.28);
-  font-size:54px;
-  font-weight:1000;
-  box-shadow: 0 14px 26px rgba(0,0,0,.24);
-}
-
-body.plateau .golden-family-strikes .strike.active{
-  border-color: rgba(255,96,96,.66);
-  background: rgba(117,16,16,.55);
-  color:#ff9494;
 }
 
 body.plateau .general-question-stage{

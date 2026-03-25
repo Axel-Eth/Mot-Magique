@@ -604,11 +604,6 @@ function ensureGoldenFamilyOverlay() {
           <span class="label">BANQUE</span>
           <span id="goldenFamilyRoundPoints">0</span>
         </div>
-        <div class="golden-family-strikes" id="goldenFamilyStrikeBoard">
-          <span class="strike">X</span>
-          <span class="strike">X</span>
-          <span class="strike">X</span>
-        </div>
       </div>
     </div>
   `;
@@ -853,7 +848,6 @@ export function showGoldenFamily(payload = {}) {
   const questionEl = overlay.querySelector("#goldenFamilyQuestion");
   const boardEl = overlay.querySelector("#goldenFamilyBoard");
   const pointsEl = overlay.querySelector("#goldenFamilyRoundPoints");
-  const strikeEls = overlay.querySelectorAll("#goldenFamilyStrikeBoard .strike");
   const visible = !!payload.visible;
 
   if (!visible) {
@@ -899,11 +893,6 @@ export function showGoldenFamily(payload = {}) {
   if (pointsEl) {
     pointsEl.textContent = `${Number(payload.roundPoints) || 0}`;
   }
-
-  const strikes = Math.max(0, Math.min(3, Number(payload.strikes) || 0));
-  strikeEls.forEach((el, index) => {
-    el.classList.toggle("active", index < strikes);
-  });
 
   overlay.classList.add("active");
   gridEl.style.display = "none";

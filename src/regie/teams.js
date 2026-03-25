@@ -2,6 +2,8 @@ import { $ } from "./dom.js";
 import { state } from "./state.js";
 import { syncScoresToPlateau } from "./plateau.js";
 
+let teamSelectionHandler = null;
+
 const TEAM_COLORS = [
   "#ff7f50",
   "#ff5f6d",
@@ -92,6 +94,27 @@ function renderTeamChoices() {
   });
 }
 
+function renderCustomTeamChoices(onSelect) {
+  const list = $("teamModalPenaltyList");
+  if (!list) return;
+  list.innerHTML = "";
+
+  state.teams.forEach((team) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "team-modal-choice";
+    button.innerHTML = `
+      <span class="team-modal-choice-color" style="background:${team.color}"></span>
+      <span class="team-modal-choice-name">${team.name || "Equipe"}</span>
+      <span class="team-modal-choice-score">${team.points ?? 0}</span>
+    `;
+    button.addEventListener("click", () => {
+      onSelect?.(team);
+    });
+    list.appendChild(button);
+  });
+}
+
 export function showPenaltyRequiredModal() {
   configureTeamModal({
     title: "Penalite requise",
@@ -105,6 +128,7 @@ export function showPenaltyRequiredModal() {
 
 export function showTeamRequiredModal() {
   const hasTeams = state.teams.length > 0;
+  teamSelectionHandler = null;
   configureTeamModal({
     title: "Equipe requise",
     message: hasTeams ? "Choisis d'abord une equipe." : "Ajoute d'abord une equipe.",
@@ -117,7 +141,32 @@ export function showTeamRequiredModal() {
   $("teamModal")?.classList.remove("hidden");
 }
 
+export function showTeamAwardModal({ points = 0, answer = "", onSelect } = {}) {
+  const hasTeams = state.teams.length > 0;
+  teamSelectionHandler = typeof onSelect === "function" ? onSelect : null;
+  configureTeamModal({
+    title: "Attribuer les points",
+    message: hasTeams
+      ? `Choisis une equipe pour ${Number(points) || 0} points${answer ? ` : ${answer}` : ""}.`
+      : "Ajoute d'abord une equipe.",
+    showActions: !hasTeams,
+    showPenaltyList: hasTeams
+  });
+  if (hasTeams) {
+    renderCustomTeamChoices((team) => {
+      teamSelectionHandler?.(team);
+      teamSelectionHandler = null;
+      hideTeamModal();
+      renderTeams();
+    });
+  }
+  $("teamModal")?.classList.remove("hidden");
+}
+
 export function hideTeamModal() {
+  if (state.pendingPenaltyPoints <= 0) {
+    teamSelectionHandler = null;
+  }
   $("teamModal")?.classList.add("hidden");
 }
 

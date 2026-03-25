@@ -48,6 +48,5 @@ export const state = {
   goldenFamilyCurrent: null,
   goldenFamilyVisible: false,
   goldenFamilyRevealed: {},
-  goldenFamilyStrikes: 0,
   goldenFamilyRoundPoints: 0
 };
