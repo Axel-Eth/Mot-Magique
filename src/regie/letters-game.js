@@ -71,6 +71,44 @@ function normalizeWord(value) {
     .replace(/[^A-Z]/g, "");
 }
 
+function countMojibakeMarkers(text) {
+  const sample = String(text || "");
+  const markers = ["\u00C3", "\u00C2", "\uFFFD"];
+  return markers.reduce((sum, marker) => sum + Math.max(0, sample.split(marker).length - 1), 0);
+}
+
+function scoreDecodedLexicon(text) {
+  const sample = String(text || "").slice(0, 250000);
+  let score = 0;
+
+  if (sample.includes("CREATE TABLE `lexique`")) score += 50;
+  if (sample.includes("INSERT INTO `lexique` VALUES")) score += 50;
+  score -= countMojibakeMarkers(sample) * 4;
+
+  const accentHits = (sample.match(/[\u00E9\u00E8\u00EA\u00E0\u00E2\u00EE\u00EF\u00F4\u00F9\u00FB\u00E7\u0153\u00E6]/gi) || []).length;
+  score += Math.min(60, accentHits);
+
+  return score;
+}
+
+function decodeLexiconBuffer(buffer) {
+  const decoders = [
+    new TextDecoder("utf-8", { fatal: false }),
+    new TextDecoder("windows-1252", { fatal: false })
+  ];
+
+  const candidates = decoders.map((decoder) => {
+    const text = decoder.decode(buffer);
+    return {
+      text,
+      score: scoreDecodedLexicon(text)
+    };
+  });
+
+  candidates.sort((a, b) => b.score - a.score);
+  return candidates[0]?.text || "";
+}
+
 function setLettersStatus(message, isError = false) {
   const el = $("lettersGameStatus");
   if (!el) return;
@@ -321,7 +359,8 @@ async function ensureLexiconLoaded() {
     if (!res.ok) {
       throw new Error("lexique.sql introuvable");
     }
-    const sqlText = await res.text();
+    const buffer = await res.arrayBuffer();
+    const sqlText = decodeLexiconBuffer(buffer);
     lexiconSet = parseLexiconSql(sqlText);
     lexiconWords = [...lexiconSet];
     lexiconReady = true;
