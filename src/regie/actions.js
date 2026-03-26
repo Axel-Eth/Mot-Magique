@@ -20,6 +20,7 @@ import {
 import { resetMediaForNewShow, syncPlateauBackgroundTheme } from "./media.js";
 import { resetRegieTimer, startRegieTimer } from "./timer.js";
 import { resetGoldenFamilyForNewShow } from "./golden-family.js";
+import { resetLettersGameForNewShow } from "./letters-game.js";
 
 const controlChannel = (() => {
   try {
@@ -107,6 +108,7 @@ export function registerActionEvents() {
 
     resetMediaForNewShow();
     resetGoldenFamilyForNewShow();
+    resetLettersGameForNewShow();
 
     const letterInput = $("letterInput");
     if (letterInput) letterInput.value = "";

@@ -102,6 +102,28 @@
         </div>
       </div>
     </div>
+    <div id="lettersGameModal" class="modal hidden" role="dialog" aria-modal="false" aria-labelledby="lettersGameTitle">
+      <div class="modal-card letters-game-modal-card">
+        <div class="row space-between bonus-modal-top">
+          <h3 id="lettersGameTitle">Chiffres et lettres - Lettres</h3>
+        </div>
+        <div id="lettersGameCard" class="letters-game-card-regie" aria-live="polite">
+          <div id="lettersGameStatus" class="letters-game-status"></div>
+          <div id="lettersGameLetters" class="letters-game-letters"></div>
+          <div class="row letters-game-actions">
+            <button id="btnLettersGameGenerate" class="btn" type="button">Generer 10 lettres</button>
+            <button id="btnLettersGameShow" class="btn ghost" type="button" disabled>Afficher le plateau</button>
+            <button id="btnLettersGameReset" class="btn ghost" type="button">Reset</button>
+          </div>
+          <div class="row letters-game-validate-row">
+            <input id="lettersGameWordInput" class="input letters-game-word-input" type="text" autocomplete="off" spellcheck="false" placeholder="Mot propose" />
+            <button id="btnLettersGameValidate" class="btn success" type="button">Valider</button>
+          </div>
+          <div id="lettersGameResult" class="letters-game-result"></div>
+          <div id="lettersGameUsedWords" class="letters-game-used-words"></div>
+        </div>
+      </div>
+    </div>
     <div id="bonusModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="bonusModalTitle">
       <div class="modal-card bonus-modal-card">
         <div class="row space-between bonus-modal-top">
@@ -246,6 +268,7 @@
           <button id="btnScores" class="btn ghost" type="button">Scores</button>
           <button id="btnQuestions" class="btn ghost" type="button">Questions</button>
           <button id="btnGoldenFamily" class="btn ghost" type="button">Famille</button>
+          <button id="btnLettersGame" class="btn ghost" type="button">Lettres</button>
           <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
         </div>
         <div class="row small action-buttons-row">

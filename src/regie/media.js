@@ -3,6 +3,7 @@ import { state } from "./state.js";
 import { syncScoresToPlateau } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
 export { loadGoldenFamilyList, registerGoldenFamilyEvents } from "./golden-family.js";
+export { registerLettersGameEvents, resetLettersGameForNewShow } from "./letters-game.js";
 
 const CAPITALES_BASE_CANDIDATES = ["questions/capitales/", "questions/pays/"];
 let capitalesBasePath = CAPITALES_BASE_CANDIDATES[0];

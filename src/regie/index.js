@@ -14,6 +14,7 @@ import {
   loadPeoplesList,
   loadPlateauMusicList,
   registerGoldenFamilyEvents,
+  registerLettersGameEvents,
   registerMediaEvents
 } from "./media.js";
 import { registerActionEvents, registerWindowEvents } from "./actions.js";
@@ -24,6 +25,7 @@ registerActionEvents();
 registerWindowEvents();
 registerMediaEvents();
 registerGoldenFamilyEvents();
+registerLettersGameEvents();
 initLetterInput();
 initWordSelectModalDrag();
 initRegieTimerDrag();

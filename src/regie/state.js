@@ -49,5 +49,8 @@ export const state = {
   goldenFamilyVisible: false,
   goldenFamilyRevealed: {},
   goldenFamilyRoundPoints: 0,
-  goldenFamilyBeaufFilter: "all"
+  goldenFamilyBeaufFilter: "all",
+  lettersGameLetters: [],
+  lettersGameVisible: false,
+  lettersGameUsedWords: []
 };

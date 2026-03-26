@@ -29,6 +29,7 @@ let podiumSuspenseActive = false;
 let flagOverlay = null;
 let generalQuestionOverlay = null;
 let goldenFamilyOverlay = null;
+let lettersGameOverlay = null;
 let misfortuneWheelOverlay = null;
 let flagLoadToken = 0;
 let genericVideo = null;
@@ -612,6 +613,23 @@ function ensureGoldenFamilyOverlay() {
   return overlay;
 }
 
+function ensureLettersGameOverlay() {
+  if (lettersGameOverlay) return lettersGameOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "lettersGameOverlay";
+  overlay.className = "letters-game-overlay";
+  overlay.innerHTML = `
+    <div class="letters-game-stage">
+      <div class="letters-game-title">CHIFFRES ET LETTRES</div>
+      <div class="letters-game-subtitle">TROUVE UN MOT AVEC CES 10 LETTRES</div>
+      <div class="letters-game-board" id="lettersGameBoard"></div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  lettersGameOverlay = overlay;
+  return overlay;
+}
+
 function normalizeWheelAngle(angle) {
   return ((angle % TWO_PI) + TWO_PI) % TWO_PI;
 }
@@ -899,6 +917,34 @@ export function showGoldenFamily(payload = {}) {
   defBar?.classList.add("hidden");
 }
 
+export function showLettersGame(payload = {}) {
+  const overlay = ensureLettersGameOverlay();
+  const boardEl = overlay.querySelector("#lettersGameBoard");
+  const visible = !!payload.visible;
+
+  if (!visible) {
+    overlay.classList.remove("active");
+    gridEl.style.display = "";
+    defBar?.classList.remove("hidden");
+    return;
+  }
+
+  if (boardEl) {
+    boardEl.innerHTML = "";
+    const letters = Array.isArray(payload.letters) ? payload.letters.slice(0, 10) : [];
+    letters.forEach((letter) => {
+      const chip = document.createElement("div");
+      chip.className = "letters-game-board-chip";
+      chip.textContent = String(letter || "");
+      boardEl.appendChild(chip);
+    });
+  }
+
+  overlay.classList.add("active");
+  gridEl.style.display = "none";
+  defBar?.classList.add("hidden");
+}
+
 export function markGeneralAnswer(index, isCorrect) {
   const overlay = ensureGeneralQuestionOverlay();
   const idx = Number(index);
@@ -938,6 +984,7 @@ export function hideAllMedia() {
   stopAllFx();
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
   if (goldenFamilyOverlay) goldenFamilyOverlay.classList.remove("active");
+  if (lettersGameOverlay) lettersGameOverlay.classList.remove("active");
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
   stopMusic();
