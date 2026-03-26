@@ -5,6 +5,7 @@ import { syncScoresToPlateau } from "./plateau.js";
 import { renderTeams, showTeamAwardModal } from "./teams.js";
 
 const GOLDEN_FAMILY_BASE = "questions/golden_family/";
+const GOLDEN_FAMILY_DATA_FILE = "golden_family.json";
 
 function getAnyKey(obj, keys) {
   if (!obj || typeof obj !== "object") return undefined;
@@ -279,27 +280,14 @@ export async function loadGoldenFamilyList() {
   resetRoundState();
 
   try {
-    const res = await fetch(GOLDEN_FAMILY_BASE, { cache: "no-store" });
-    if (!res.ok) {
+    const fileRes = await fetch(`${GOLDEN_FAMILY_BASE}${encodeURIComponent(GOLDEN_FAMILY_DATA_FILE)}`, { cache: "no-store" });
+    if (!fileRes.ok) {
       refreshGoldenFamilySelect();
       renderGoldenFamilyCard();
       return;
     }
-    const html = await res.text();
-    const files = [...html.matchAll(/href="([^"]+\.json)"/gi)]
-      .map((match) => decodeURIComponent(match[1].split("/").pop() || match[1]))
-      .filter((name) => !name.startsWith("."))
-      .sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base", numeric: true }));
-
-    const questions = [];
-    for (const file of files) {
-      try {
-        const fileRes = await fetch(`${GOLDEN_FAMILY_BASE}${encodeURIComponent(file)}`, { cache: "no-store" });
-        if (!fileRes.ok) continue;
-        const data = await fileRes.json();
-        questions.push(...parseGoldenFamilyDataset(file, data));
-      } catch {}
-    }
+    const data = await fileRes.json();
+    const questions = parseGoldenFamilyDataset(GOLDEN_FAMILY_DATA_FILE, data);
 
     state.goldenFamilyQuestions = questions.sort((a, b) => {
       const sourceDiff = String(a.sourceName || "").localeCompare(String(b.sourceName || ""), "fr", { sensitivity: "base" });
