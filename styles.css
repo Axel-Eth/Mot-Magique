@@ -876,6 +876,90 @@ h2{
   color:#b8d2ef;
 }
 
+.numbers-game-modal-card{
+  width:min(92vw, 1020px);
+  max-height:92vh;
+  overflow:auto;
+}
+
+.numbers-game-card-regie{
+  margin-top:12px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:18px;
+  padding:18px;
+  background: rgba(0,0,0,.18);
+}
+
+.numbers-game-status{
+  margin-top:12px;
+  font-size:18px;
+  color:#d9e9ff;
+}
+
+.numbers-game-status.error{
+  color:#ff9ba8;
+}
+
+.numbers-game-layout{
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap:18px;
+  margin-top:16px;
+}
+
+.numbers-game-target-block,
+.numbers-game-pool-block{
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:18px;
+  padding:16px;
+  background: rgba(255,255,255,.04);
+}
+
+.numbers-game-label{
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#b8d2ef;
+}
+
+.numbers-game-target{
+  display:grid;
+  place-items:center;
+  min-height:148px;
+  margin-top:12px;
+  border-radius:18px;
+  background: linear-gradient(180deg,#ffe873,#f4b400);
+  color:#142844;
+  font-size:64px;
+  font-weight:1000;
+  box-shadow: 0 10px 22px rgba(0,0,0,.24);
+}
+
+.numbers-game-numbers{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:12px;
+}
+
+.numbers-game-chip{
+  display:grid;
+  place-items:center;
+  width:96px;
+  height:76px;
+  border-radius:16px;
+  background: linear-gradient(180deg,#f9fbff,#8dbff7);
+  color:#122744;
+  font-size:34px;
+  font-weight:1000;
+  box-shadow: 0 10px 22px rgba(0,0,0,.22);
+}
+
+.numbers-game-actions .btn{
+  flex:1;
+}
+
 .golden-family-card-regie{
   margin-top:16px;
   border:1px solid rgba(255,255,255,.16);
@@ -2202,6 +2286,102 @@ body.plateau .letters-game-board-chip{
   box-shadow: 0 18px 32px rgba(0,0,0,.28);
 }
 
+body.plateau .numbers-game-overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .2s ease;
+  z-index:6;
+  background:
+    radial-gradient(circle at top, rgba(125,211,252,.1), rgba(6,18,34,.82) 32%, rgba(4,12,22,.96) 100%);
+  backdrop-filter: blur(10px);
+}
+
+body.plateau .numbers-game-overlay.active{
+  opacity:1;
+}
+
+body.plateau .numbers-game-stage{
+  width:min(1380px, 94vw);
+  display:grid;
+  gap:22px;
+}
+
+body.plateau .numbers-game-title{
+  font-size:54px;
+  font-weight:1000;
+  color:#fff8d7;
+  letter-spacing:.04em;
+  text-align:center;
+}
+
+body.plateau .numbers-game-subtitle{
+  font-size:24px;
+  font-weight:800;
+  color:#b9d9ff;
+  text-align:center;
+}
+
+body.plateau .numbers-game-board{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap:22px;
+  align-items:start;
+}
+
+body.plateau .numbers-game-board-target-wrap,
+body.plateau .numbers-game-board-pool-wrap{
+  border-radius:24px;
+  border:2px solid rgba(255,255,255,.22);
+  background: rgba(9,27,46,.82);
+  box-shadow: 0 18px 30px rgba(0,0,0,.26);
+  padding:20px;
+}
+
+body.plateau .numbers-game-board-label{
+  text-align:center;
+  font-size:24px;
+  font-weight:900;
+  color:#9dc2ea;
+  letter-spacing:.12em;
+}
+
+body.plateau .numbers-game-board-target{
+  display:grid;
+  place-items:center;
+  min-height:220px;
+  margin-top:16px;
+  border-radius:24px;
+  background: linear-gradient(180deg,#ffe873,#f4b400);
+  color:#122744;
+  font-size:104px;
+  font-weight:1000;
+  box-shadow: 0 14px 28px rgba(0,0,0,.28);
+}
+
+body.plateau .numbers-game-board-pool{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:18px;
+  margin-top:16px;
+}
+
+body.plateau .numbers-game-board-chip{
+  display:grid;
+  place-items:center;
+  min-height:130px;
+  border-radius:24px;
+  background: linear-gradient(180deg,#f9fbff,#8dbff7);
+  color:#122744;
+  font-size:56px;
+  font-weight:1000;
+  box-shadow: 0 14px 28px rgba(0,0,0,.28);
+}
+
 body.plateau .golden-family-stage{
   width:min(1500px, 95vw);
   display:grid;
@@ -2474,6 +2654,32 @@ body.plateau .plateau-wheel-result{
   body.plateau .letters-game-board-chip{
     width:78px;
     height:78px;
+    font-size:42px;
+  }
+
+  .numbers-game-layout{
+    grid-template-columns: 1fr;
+  }
+
+  body.plateau .numbers-game-title{
+    font-size:38px;
+  }
+
+  body.plateau .numbers-game-board{
+    grid-template-columns: 1fr;
+  }
+
+  body.plateau .numbers-game-board-target{
+    font-size:72px;
+    min-height:160px;
+  }
+
+  body.plateau .numbers-game-board-pool{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.plateau .numbers-game-board-chip{
+    min-height:100px;
     font-size:42px;
   }
 }

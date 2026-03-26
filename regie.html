@@ -131,6 +131,32 @@
         </div>
       </div>
     </div>
+    <div id="numbersGameModal" class="modal hidden" role="dialog" aria-modal="false" aria-labelledby="numbersGameTitle">
+      <div class="modal-card numbers-game-modal-card">
+        <div class="row space-between bonus-modal-top">
+          <h3 id="numbersGameTitle">Chiffres et lettres - Chiffres</h3>
+        </div>
+        <div id="numbersGameCard" class="numbers-game-card-regie" aria-live="polite">
+          <div id="numbersGameStatus" class="numbers-game-status"></div>
+          <div class="numbers-game-layout">
+            <div class="numbers-game-target-block">
+              <div class="numbers-game-label">Cible</div>
+              <div id="numbersGameTarget" class="numbers-game-target">-</div>
+            </div>
+            <div class="numbers-game-pool-block">
+              <div class="numbers-game-label">Plaques</div>
+              <div id="numbersGameNumbers" class="numbers-game-numbers"></div>
+            </div>
+          </div>
+          <div class="row numbers-game-actions">
+            <button id="btnNumbersGameGenerate" class="btn" type="button">Generer une manche</button>
+            <button id="btnNumbersGameShow" class="btn ghost" type="button" disabled>Afficher le plateau</button>
+            <button id="btnNumbersGameAward" class="btn success" type="button" disabled>Attribuer 15 points</button>
+            <button id="btnNumbersGameReset" class="btn ghost" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="bonusModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="bonusModalTitle">
       <div class="modal-card bonus-modal-card">
         <div class="row space-between bonus-modal-top">
@@ -276,6 +302,7 @@
           <button id="btnQuestions" class="btn ghost" type="button">Questions</button>
           <button id="btnGoldenFamily" class="btn ghost" type="button">Famille</button>
           <button id="btnLettersGame" class="btn ghost" type="button">Lettres</button>
+          <button id="btnNumbersGame" class="btn ghost" type="button">Chiffres</button>
           <button id="btnXMedia" class="btn ghost" type="button">X Media</button>
         </div>
         <div class="row small action-buttons-row">

@@ -42,6 +42,7 @@ import {
   showGeneralQuestion,
   showGoldenFamily,
   showLettersGame,
+  showNumbersGame,
   showMisfortuneWheel,
   showMisfortuneWheelResult,
   stopFilmsOverlayVideo,
@@ -230,6 +231,10 @@ export function registerMessageHandlers() {
 
       case "SHOW_LETTERS_GAME":
         showLettersGame(msg);
+        break;
+
+      case "SHOW_NUMBERS_GAME":
+        showNumbersGame(msg);
         break;
 
       case "GENERAL_ANSWER_MARK":

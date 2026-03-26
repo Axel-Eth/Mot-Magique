@@ -52,5 +52,8 @@ export const state = {
   goldenFamilyBeaufFilter: "all",
   lettersGameLetters: [],
   lettersGameVisible: false,
-  lettersGameUsedWords: []
+  lettersGameUsedWords: [],
+  numbersGameTarget: null,
+  numbersGameNumbers: [],
+  numbersGameVisible: false
 };

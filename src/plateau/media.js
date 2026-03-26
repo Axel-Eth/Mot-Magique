@@ -30,6 +30,7 @@ let flagOverlay = null;
 let generalQuestionOverlay = null;
 let goldenFamilyOverlay = null;
 let lettersGameOverlay = null;
+let numbersGameOverlay = null;
 let misfortuneWheelOverlay = null;
 let flagLoadToken = 0;
 let genericVideo = null;
@@ -630,6 +631,32 @@ function ensureLettersGameOverlay() {
   return overlay;
 }
 
+function ensureNumbersGameOverlay() {
+  if (numbersGameOverlay) return numbersGameOverlay;
+  const overlay = document.createElement("div");
+  overlay.id = "numbersGameOverlay";
+  overlay.className = "numbers-game-overlay";
+  overlay.innerHTML = `
+    <div class="numbers-game-stage">
+      <div class="numbers-game-title">CHIFFRES ET LETTRES</div>
+      <div class="numbers-game-subtitle">RAPPROCHE-TOI AU MIEUX DE LA CIBLE</div>
+      <div class="numbers-game-board">
+        <div class="numbers-game-board-target-wrap">
+          <div class="numbers-game-board-label">CIBLE</div>
+          <div class="numbers-game-board-target" id="numbersGameBoardTarget"></div>
+        </div>
+        <div class="numbers-game-board-pool-wrap">
+          <div class="numbers-game-board-label">NOMBRES</div>
+          <div class="numbers-game-board-pool" id="numbersGameBoardPool"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  numbersGameOverlay = overlay;
+  return overlay;
+}
+
 function normalizeWheelAngle(angle) {
   return ((angle % TWO_PI) + TWO_PI) % TWO_PI;
 }
@@ -945,6 +972,39 @@ export function showLettersGame(payload = {}) {
   defBar?.classList.add("hidden");
 }
 
+export function showNumbersGame(payload = {}) {
+  const overlay = ensureNumbersGameOverlay();
+  const targetEl = overlay.querySelector("#numbersGameBoardTarget");
+  const poolEl = overlay.querySelector("#numbersGameBoardPool");
+  const visible = !!payload.visible;
+
+  if (!visible) {
+    overlay.classList.remove("active");
+    gridEl.style.display = "";
+    defBar?.classList.remove("hidden");
+    return;
+  }
+
+  if (targetEl) {
+    targetEl.textContent = Number.isInteger(Number(payload.target)) ? String(payload.target) : "-";
+  }
+
+  if (poolEl) {
+    poolEl.innerHTML = "";
+    const numbers = Array.isArray(payload.numbers) ? payload.numbers.slice(0, 6) : [];
+    numbers.forEach((number) => {
+      const chip = document.createElement("div");
+      chip.className = "numbers-game-board-chip";
+      chip.textContent = String(number ?? "");
+      poolEl.appendChild(chip);
+    });
+  }
+
+  overlay.classList.add("active");
+  gridEl.style.display = "none";
+  defBar?.classList.add("hidden");
+}
+
 export function markGeneralAnswer(index, isCorrect) {
   const overlay = ensureGeneralQuestionOverlay();
   const idx = Number(index);
@@ -985,6 +1045,7 @@ export function hideAllMedia() {
   if (generalQuestionOverlay) generalQuestionOverlay.classList.remove("active");
   if (goldenFamilyOverlay) goldenFamilyOverlay.classList.remove("active");
   if (lettersGameOverlay) lettersGameOverlay.classList.remove("active");
+  if (numbersGameOverlay) numbersGameOverlay.classList.remove("active");
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
   stopMusic();
