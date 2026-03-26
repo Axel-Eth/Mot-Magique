@@ -50,6 +50,7 @@ function normalizeGoldenQuestion(entry, sourceName, index) {
   return {
     id: String(getAnyKey(entry, ["id", "uuid"]) || `${sourceName}::${index + 1}`),
     sourceName,
+    beaufScore: Math.max(0, Math.floor(Number(getAnyKey(entry, ["indice beauf", "idice beauf", "beauf", "beaufScore", "score beauf"])) || 0)),
     question,
     answers
   };
@@ -74,6 +75,29 @@ function getRevealedMap() {
   return state.goldenFamilyRevealed && typeof state.goldenFamilyRevealed === "object"
     ? state.goldenFamilyRevealed
     : {};
+}
+
+function getGoldenFamilyFilteredQuestions() {
+  const mode = String(state.goldenFamilyBeaufFilter || "all");
+  return state.goldenFamilyQuestions.filter((question) => {
+    const score = Number(question?.beaufScore) || 0;
+    if (mode === "all") return true;
+    if (mode.startsWith("max:")) {
+      const max = Number(mode.slice(4));
+      return !Number.isNaN(max) && score <= max;
+    }
+    if (mode.startsWith("min:")) {
+      const min = Number(mode.slice(4));
+      return !Number.isNaN(min) && score >= min;
+    }
+    if (mode.startsWith("range:")) {
+      const [, minRaw, maxRaw] = mode.split(":");
+      const min = Number(minRaw);
+      const max = Number(maxRaw);
+      return !Number.isNaN(min) && !Number.isNaN(max) && score >= min && score <= max;
+    }
+    return true;
+  });
 }
 
 function computeRoundPoints(question = state.goldenFamilyCurrent, revealed = getRevealedMap()) {
@@ -195,7 +219,8 @@ function refreshGoldenFamilySelect() {
   let currentSource = "";
   let currentGroup = null;
 
-  state.goldenFamilyQuestions.forEach((question, index) => {
+  const filteredQuestions = getGoldenFamilyFilteredQuestions();
+  filteredQuestions.forEach((question) => {
     if (question.sourceName !== currentSource) {
       currentSource = question.sourceName;
       currentGroup = document.createElement("optgroup");
@@ -204,7 +229,6 @@ function refreshGoldenFamilySelect() {
     }
     const option = document.createElement("option");
     option.value = question.id;
-    option.dataset.index = String(index);
     option.textContent = question.question;
     currentGroup.appendChild(option);
   });
@@ -226,6 +250,31 @@ function setCurrentQuestion(question) {
   renderGoldenFamilyCard();
   if (state.goldenFamilyVisible) {
     sendGoldenFamilyToPlateau();
+  }
+}
+
+function applyGoldenFamilyFilter(filterValue) {
+  state.goldenFamilyBeaufFilter = String(filterValue || "all");
+  const filterSelect = $("goldenFamilyBeaufFilter");
+  if (filterSelect) {
+    filterSelect.value = state.goldenFamilyBeaufFilter;
+  }
+
+  const filteredQuestions = getGoldenFamilyFilteredQuestions();
+  if (!filteredQuestions.some((question) => question.id === state.goldenFamilyCurrent?.id)) {
+    state.goldenFamilyCurrent = null;
+    resetRoundState();
+  }
+
+  refreshGoldenFamilySelect();
+  renderGoldenFamilyCard();
+
+  if (state.goldenFamilyVisible) {
+    if (state.goldenFamilyCurrent) {
+      sendGoldenFamilyToPlateau();
+    } else {
+      hideGoldenFamilyDisplay();
+    }
   }
 }
 
@@ -267,9 +316,12 @@ export function hideGoldenFamilyDisplay() {
 export function resetGoldenFamilyForNewShow() {
   state.goldenFamilyCurrent = null;
   state.goldenFamilyVisible = false;
+  state.goldenFamilyBeaufFilter = "all";
   resetRoundState();
   const select = $("goldenFamilySelect");
   if (select) select.selectedIndex = 0;
+  const filterSelect = $("goldenFamilyBeaufFilter");
+  if (filterSelect) filterSelect.value = "all";
   renderGoldenFamilyCard();
   hideGoldenFamilyDisplay();
 }
@@ -297,6 +349,7 @@ export async function loadGoldenFamilyList() {
   } catch {}
 
   refreshGoldenFamilySelect();
+  applyGoldenFamilyFilter(state.goldenFamilyBeaufFilter || "all");
   renderGoldenFamilyCard();
 }
 
@@ -314,16 +367,22 @@ export function registerGoldenFamilyEvents() {
   });
 
   $("goldenFamilySelect")?.addEventListener("change", (e) => {
-    const option = e.target.selectedOptions?.[0];
-    const index = Number(option?.dataset?.index);
-    if (!Number.isInteger(index) || !state.goldenFamilyQuestions[index]) return;
-    setCurrentQuestion(state.goldenFamilyQuestions[index]);
+    const selectedId = String(e.target.value || "");
+    if (!selectedId) return;
+    const question = getGoldenFamilyFilteredQuestions().find((entry) => entry.id === selectedId);
+    if (!question) return;
+    setCurrentQuestion(question);
   });
 
   $("btnGoldenFamilyRandom")?.addEventListener("click", () => {
-    if (!state.goldenFamilyQuestions.length) return;
-    const question = state.goldenFamilyQuestions[Math.floor(Math.random() * state.goldenFamilyQuestions.length)];
+    const filteredQuestions = getGoldenFamilyFilteredQuestions();
+    if (!filteredQuestions.length) return;
+    const question = filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)];
     setCurrentQuestion(question);
+  });
+
+  $("goldenFamilyBeaufFilter")?.addEventListener("change", (e) => {
+    applyGoldenFamilyFilter(e.target.value);
   });
 
   $("btnGoldenFamilyShow")?.addEventListener("click", () => {

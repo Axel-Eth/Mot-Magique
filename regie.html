@@ -74,7 +74,17 @@
       <div class="modal-card golden-family-modal-card">
         <div class="row space-between bonus-modal-top">
           <h3 id="goldenFamilyTitle">Famille en or</h3>
-          <button id="btnGoldenFamilyHide" class="btn ghost" type="button">Masquer le board</button>
+          <div class="row golden-family-top-actions">
+            <select id="goldenFamilyBeaufFilter" class="select golden-family-filter-select" aria-label="Filtre indice beauf">
+              <option value="all">Beauf: Tous</option>
+              <option value="max:3">Beauf: 1 a 3</option>
+              <option value="max:5">Beauf: 1 a 5</option>
+              <option value="range:4:6">Beauf: 4 a 6</option>
+              <option value="min:6">Beauf: 6 et +</option>
+              <option value="min:8">Beauf: 8 et +</option>
+            </select>
+            <button id="btnGoldenFamilyHide" class="btn ghost" type="button">Masquer le board</button>
+          </div>
         </div>
         <div class="music-block generalq-block">
           <div class="media-row">

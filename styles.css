@@ -790,6 +790,15 @@ h2{
   overflow: auto;
 }
 
+.golden-family-top-actions{
+  margin-top:0;
+  align-items:center;
+}
+
+.golden-family-filter-select{
+  min-width: 170px;
+}
+
 .golden-family-card-regie{
   margin-top:16px;
   border:1px solid rgba(255,255,255,.16);
