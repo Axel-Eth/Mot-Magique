@@ -46,7 +46,7 @@
 ]
   },
   {
-    "id": 3,
+    "id": 2,
     "question": "Si un homme est moche, il vaut mieux qu'il ait un beau / une belle ... quoi ?",
     "answers": [
       {
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "question": "De quoi une mouche peut elle mourir ?",
     "answers": [
       {
@@ -138,7 +138,7 @@
     ]
   },
   {
-    "id": 7,
+    "id": 4,
     "question": "Citez quelque chose qu’une poupée Barbie a et qu’un homme pourrait rêver d’avoir chez sa femme.",
     "answers": [
       {
@@ -184,7 +184,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": 5,
     "question": "Citez quelque chose qu'un bébé peut faire et que ne devrait pas faire un colocataire.",
     "answers": [
       {
@@ -230,7 +230,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": 6,
     "question": "Citez quelque chose qu'on emmène au lit après s'être fait larguer.",
     "answers": [
       {
@@ -276,7 +276,7 @@
     ]
   },
   {
-    "id": 10,
+    "id": 7,
     "question": "Citez quelque chose que vous adorez faire quand vous êtes seul(e).",
     "answers": [
       {
@@ -322,7 +322,7 @@
     ]
   },
   {
-    "id": 11,
+    "id": 8,
     "question": "Citez une activité typique de hippie",
     "answers": [
       {
@@ -368,7 +368,7 @@
     ]
   },
   {
-    "id": 12,
+    "id": 9,
     "question": "Citez une raison pour laquelle une femme ferait volontairement grossir son mari.",
     "answers": [
       {
@@ -415,7 +415,7 @@
   },
 
   {
-    "id": 15,
+    "id": 10,
     "question": "Citez une odeur red flag lors d'un date / RDV Amoureux",
     "answers": [
       {
@@ -461,7 +461,7 @@
     ]
   },
   {
-  "id": 16,
+  "id": 11,
   "question": "Quelle est, selon vous, le vêtement féminin le plus séduisant ?",
   "answers": [
     {
@@ -507,7 +507,7 @@
   ]
   },
   {
-  "id": 17,
+  "id": 12,
   "question": "Citez quelque chose que les hommes pensent être séduisant, mais qui est en fait beauf et repoussant",
   "answers": [
     {
@@ -553,7 +553,7 @@
   ]
   },
   {
-    "id": 18,
+    "id": 13,
     "question": "Un ados (cool) qui organise une soirée ne voudrais pas que ... vienne à sa fête.",
     "answers": [
       {
@@ -599,7 +599,7 @@
     ]
   },
   {
-  "id": 21,
+  "id": 14,
   "question": "Citez une chose que vous n’avez pas envie d’entendre, mais que vous attendez quand même d’un(e) ami(e).",
   "answers": [
     {
@@ -644,25 +644,23 @@
     }
   ]
   },
-
-
   {
-    "id": 22,
-    "question": "Citez un métier où in which plus vous êtes sexy, plus vous gagnez d'argent.",
+    "id": 15,
+    "question": "Citez un métier où plus vous êtes séduisant, plus vous gagnez d'argent.",
     "answers": [
       {
         "rank": 1,
-        "answer": "STRIPPER/DANCER",
+        "answer": "Influenceur",
         "score": 38
       },
       {
         "rank": 2,
-        "answer": "MODEL",
+        "answer": "Manequin",
         "score": 25
       },
       {
         "rank": 3,
-        "answer": "ACTOR/MOVIE STAR",
+        "answer": "Acteur",
         "score": 11
       },
       {
@@ -672,485 +670,351 @@
       },
       {
         "rank": 5,
-        "answer": "WAITRESS/WAITER",
+        "answer": "Serveur",
         "score": 5
       },
       {
         "rank": 6,
-        "answer": "BARTENDER",
+        "answer": "Barman",
         "score": 3
       },
       {
         "rank": 7,
-        "answer": "SALESPERSON",
+        "answer": "Vendeur",
         "score": 3
       },
       {
         "rank": 8,
-        "answer": "SECRETARY/ASST.",
+        "answer": "Secrétaire",
         "score": 2
       }
     ]
   },
+
   {
-    "id": 23,
-    "question": "Citez quelque chose que qui pourrait arriver lors d'une balade en calèche et ruiner le romantisme.",
+    "id": 16,
+    "question": "Citez quelque chose qui pourrait arriver au cinéma et casser un moment romantique.",
     "answers": [
       {
         "rank": 1,
-        "answer": "HORSE DUMPS/WHIZZES",
+        "answer": "Quelqu'un parle trop fort",
         "score": 37
       },
       {
         "rank": 2,
-        "answer": "HORSE HAS LE FARTS",
+        "answer": "Des coups de pieds dans le siège",
         "score": 25
       },
       {
         "rank": 3,
-        "answer": "HORSE SPOOKED/RUNS",
+        "answer": "Un baiser refusé",
         "score": 10
       },
       {
         "rank": 4,
-        "answer": "RAIN/STORM",
+        "answer": "Téléphone qui sonne",
         "score": 10
       },
       {
         "rank": 5,
-        "answer": "CART BREAKS/FLIPS",
+        "answer": "Popcorn / nourriture renversé",
         "score": 4
       },
       {
         "rank": 6,
-        "answer": "HORSE HURT/DIES",
+        "answer": "Quelqu'un mange bruyament",
         "score": 4
       },
       {
         "rank": 7,
-        "answer": "BIRD DROPS TURD",
+        "answer": "Problème technique / Plus de film",
         "score": 3
       },
       {
         "rank": 8,
-        "answer": "BUMPY RIDE",
+        "answer": "La personne s'endort",
         "score": 3
       }
     ]
   },
   {
-    "id": 24,
-    "question": "We asked 100 single men... Fill in the blank: Je saurai que j'ai rencontré mon âme sœur quand je rencontrerai une fille qui aime ________.",
+    "id": 17,
+    "question": "Je saurai que j'ai rencontré mon âme sœur quand je rencontrerai une fille qui aime ________.",
     "answers": [
       {
         "rank": 1,
-        "answer": "SPORTS/LE BROWNS",
+        "answer": "Le sport",
         "score": 36
       },
       {
         "rank": 2,
-        "answer": "ME/MON HUMOR",
+        "answer": "Mon humour",
         "score": 16
       },
       {
         "rank": 3,
-        "answer": "MOVIES/STAR WARS",
+        "answer": "le cinéma",
         "score": 12
       },
       {
         "rank": 4,
-        "answer": "OUTDOOR/FISHING",
+        "answer": "Randonnée",
         "score": 11
       },
       {
         "rank": 5,
-        "answer": "TO EAT/WINGS",
+        "answer": "Manger",
         "score": 10
       },
       {
         "rank": 6,
-        "answer": "VIDEO GAMES",
+        "answer": "Les jeux vidéos",
         "score": 7
       },
       {
         "rank": 7,
-        "answer": "BOOZE/KEYSTONE LIGHT",
+        "answer": "l'aclchool",
         "score": 2
       },
       {
         "rank": 8,
-        "answer": "HOT CHICKS/IN BED",
+        "answer": "Les animaux",
         "score": 2
       }
     ]
   },
   {
-    "id": 25,
-    "question": "Citez quelque chose que qu'il faut presser très fort avant que quelque chose sorte.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "KETCHUP/MUSTARD",
-        "score": 25
-      },
-      {
-        "rank": 2,
-        "answer": "LEMON/CITRUS",
-        "score": 25
-      },
-      {
-        "rank": 3,
-        "answer": "TOOTHPASTE",
-        "score": 19
-      },
-      {
-        "rank": 4,
-        "answer": "ZIT/BLACKTÊTE",
-        "score": 14
-      },
-      {
-        "rank": 5,
-        "answer": "GLUE",
-        "score": 6
-      },
-      {
-        "rank": 6,
-        "answer": "MON POOPER",
-        "score": 3
-      },
-      {
-        "rank": 7,
-        "answer": "LIQUID SOAP/SHAMPOO",
-        "score": 2
-      },
-      {
-        "rank": 8,
-        "answer": "LOTION BOTTLE",
-        "score": 2
-      }
-    ]
-  },
-  {
-    "id": 26,
+    "id": 18,
     "question": "Citez quelque chose que la plupart des femmes feraient si elles héritaient de beaucoup d'argent.",
     "answers": [
       {
         "rank": 1,
-        "answer": "SHOP/NEW HOUSE",
+        "answer": "Faire du shopping",
         "score": 56
       },
       {
         "rank": 2,
-        "answer": "DUMP HUBBY",
+        "answer": "Divorcer / Rompre",
         "score": 14
       },
       {
         "rank": 3,
-        "answer": "VACAY/TO PARIS",
+        "answer": "Partir en vacances",
         "score": 7
       },
       {
         "rank": 4,
-        "answer": "INVEST/SAVE",
+        "answer": "Investir / Épargner",
         "score": 5
       },
       {
         "rank": 5,
-        "answer": "PLASTIC SURGERY",
+        "answer": "Chirurgie Esthétique",
         "score": 4
       },
       {
         "rank": 6,
-        "answer": "GET/HIRE BOY TOY",
+        "answer": "Aider sa famille / amis",
         "score": 3
       },
       {
         "rank": 7,
-        "answer": "HIRE UN MAID",
+        "answer": "Embeaucher une femme de ménage",
         "score": 3
       },
       {
         "rank": 8,
-        "answer": "PAY BILLS",
+        "answer": "Payer les factures / Dettes",
         "score": 3
       }
     ]
   },
+
   {
-    "id": 27,
+    "id": 19,
     "question": "Citez quelque chose que un chauve pourrait se frotter sur la tête.",
     "answers": [
       {
         "rank": 1,
-        "answer": "LOTION/SUNSCREEN",
+        "answer": "Crème solaire",
         "score": 51
       },
       {
         "rank": 2,
-        "answer": "OIL/BABY OIL",
+        "answer": "Huile pour bébé",
         "score": 18
       },
       {
         "rank": 3,
-        "answer": "WAX/POLISH",
+        "answer": "Vaseline",
         "score": 6
       },
       {
         "rank": 4,
-        "answer": "HIS HAND",
+        "answer": "De la mousse à raser",
         "score": 5
       },
       {
         "rank": 5,
-        "answer": "ANIMAL. JELLY/OINTMENT",
+        "answer": "Crème anti-âge",
         "score": 5
       },
       {
         "rank": 6,
-        "answer": "ROGAINE/HAIR MED",
+        "answer": "Produis - Repousse capilaire",
         "score": 5
       },
       {
         "rank": 7,
-        "answer": "SHAMPOO/SOAP",
+        "answer": "Savon / Shampoing",
         "score": 3
       },
       {
         "rank": 8,
-        "answer": "CHICK'S BOOBS",
+        "answer": "Biafine / Aloe vera / Crème Hydratante",
         "score": 2
       }
     ]
   },
   {
-    "id": 28,
-    "question": "On a interrogé 100 femmes... Citez quelque chose que votre mari mistakenly thinks he's hiding from you in his dresser drawer.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "MONEY/WALLET",
-        "score": 46
-      },
-      {
-        "rank": 2,
-        "answer": "PORN/PLAYBOYS",
-        "score": 29
-      },
-      {
-        "rank": 3,
-        "answer": "GIFT FOR ME",
-        "score": 6
-      },
-      {
-        "rank": 4,
-        "answer": "RECEIPTS",
-        "score": 5
-      },
-      {
-        "rank": 5,
-        "answer": "CONDOM/PIECE FLEECE",
-        "score": 3
-      },
-      {
-        "rank": 6,
-        "answer": "BANKLIVRE",
-        "score": 2
-      },
-      {
-        "rank": 7,
-        "answer": "HANDCUFFS",
-        "score": 2
-      },
-      {
-        "rank": 8,
-        "answer": "SECRET 2ND PHONE",
-        "score": 2
-      }
-    ]
+  "id": 20,
+  "question": "Citez quelque chose qu'un mari pourrait cacher à sa femme.",
+  "answers": [
+    {
+      "rank": 1,
+      "answer": "De l’argent",
+      "score": 46
+    },
+    {
+      "rank": 2,
+      "answer": "Du porno",
+      "score": 29
+    },
+    {
+      "rank": 3,
+      "answer": "Une maîtresse",
+      "score": 6
+    },
+    {
+      "rank": 4,
+      "answer": "De la drogue",
+      "score": 5
+    },
+    {
+      "rank": 5,
+      "answer": "Des dettes",
+      "score": 3
+    },
+    {
+      "rank": 6,
+      "answer": "Ses dépenses",
+      "score": 2
+    },
+    {
+      "rank": 7,
+      "answer": "Sa consommation d’alcool",
+      "score": 2
+    },
+    {
+      "rank": 8,
+      "answer": "Un cadeau (surprise)",
+      "score": 2
+    }
+  ]
   },
   {
-    "id": 29,
-    "question": "On a interrogé 100 maris... Citez quelque chose que of votre femme's you like to wear because it's so soft.",
+    "id": 21,
+    "question": "Citez un vêtement doux et agréable à porter.",
     "answers": [
-      {
-        "rank": 1,
-        "answer": "HER ROBE",
-        "score": 33
-      },
-      {
-        "rank": 2,
-        "answer": "HER PAJAMAS",
-        "score": 16
-      },
-      {
-        "rank": 3,
-        "answer": "HER SWEATER",
-        "score": 15
-      },
-      {
-        "rank": 4,
-        "answer": "HER SLIPPERS",
-        "score": 11
-      },
-      {
-        "rank": 5,
-        "answer": "HER T-SHIRT",
-        "score": 9
-      },
-      {
-        "rank": 6,
-        "answer": "HER COAT",
-        "score": 5
-      },
-      {
-        "rank": 7,
-        "answer": "HER NIGHTIE",
-        "score": 3
-      },
-      {
-        "rank": 8,
-        "answer": "HER SCARF",
-        "score": 3
-      }
-    ]
+  {
+    "rank": 1,
+    "answer": "Un pijama",
+    "score": 33
   },
   {
-    "id": 30,
-    "question": "On a interrogé 100 femmes mariées... In one word, describe the underwear votre homme is wearing right now.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "BOXERS",
-        "score": 31
-      },
-      {
-        "rank": 2,
-        "answer": "TIGHTY-WHITIES",
-        "score": 23
-      },
-      {
-        "rank": 3,
-        "answer": "BRIEFS",
-        "score": 19
-      },
-      {
-        "rank": 4,
-        "answer": "NONE",
-        "score": 6
-      },
-      {
-        "rank": 5,
-        "answer": "TORN",
-        "score": 5
-      },
-      {
-        "rank": 6,
-        "answer": "UGLY",
-        "score": 5
-      },
-      {
-        "rank": 7,
-        "answer": "BORING",
-        "score": 3
-      },
-      {
-        "rank": 8,
-        "answer": "SEXY",
-        "score": 3
-      }
-    ]
+    "rank": 2,
+    "answer": "Un pull / Sweat",
+    "score": 16
   },
   {
-    "id": 31,
-    "question": "Citez quelque chose que un écureuil pourrait se battre s'il essayait de lui voler ses noisettes.",
-    "answers": [
-      {
-        "rank": 1,
-        "answer": "BIRD/CROW",
-        "score": 30
-      },
-      {
-        "rank": 2,
-        "answer": "ANOTHER SQUIRREL",
-        "score": 23
-      },
-      {
-        "rank": 3,
-        "answer": "CHIPMUNK",
-        "score": 12
-      },
-      {
-        "rank": 4,
-        "answer": "CAT",
-        "score": 10
-      },
-      {
-        "rank": 5,
-        "answer": "RACCOON",
-        "score": 8
-      },
-      {
-        "rank": 6,
-        "answer": "CHIEN",
-        "score": 5
-      },
-      {
-        "rank": 7,
-        "answer": "RABBIT",
-        "score": 4
-      },
-      {
-        "rank": 8,
-        "answer": "HUMAN",
-        "score": 3
-      }
-    ]
+    "rank": 3,
+    "answer": "Des chaussons",
+    "score": 15
   },
+  {
+    "rank": 4,
+    "answer": "Un peignoir",
+    "score": 11
+  },
+  {
+    "rank": 5,
+    "answer": "Un survêtement",
+    "score": 9
+  },
+  {
+    "rank": 6,
+    "answer": "Un legging",
+    "score": 5
+  },
+  {
+    "rank": 7,
+    "answer": "Une chemise de nuit",
+    "score": 3
+  },
+  {
+    "rank": 8,
+    "answer": "Un plaid / Couverture",
+    "score": 3
+  }
+  ]
+  },
+
   {
     "id": 32,
-    "question": "Citez quelque chose que un marié espère ne pas voir quand il soulève le voile de la mariée pour l'embrasser.",
+    "question": "Citez quelque chose qu’un marié espère ne pas découvrir en soulevant le voile de la mariée pour l’embrasser.",
+
     "answers": [
-      {
-        "rank": 1,
-        "answer": "SOMEONE ELSE/MOM",
-        "score": 28
-      },
-      {
-        "rank": 2,
-        "answer": "STACHE/FULL BEARD",
-        "score": 16
-      },
-      {
-        "rank": 3,
-        "answer": "COLD SORE",
-        "score": 15
-      },
-      {
-        "rank": 4,
-        "answer": "BOOGER",
-        "score": 9
-      },
-      {
-        "rank": 5,
-        "answer": "GIANT ZIT",
-        "score": 8
-      },
-      {
-        "rank": 6,
-        "answer": "CROP OF WARTS",
-        "score": 7
-      },
-      {
-        "rank": 7,
-        "answer": "UN FROWN",
-        "score": 6
-      },
-      {
-        "rank": 8,
-        "answer": "SNAGGLETEETH",
-        "score": 6
-      }
-    ]
+  {
+    "rank": 1,
+    "answer": "Quelqu’un d’autre",
+    "score": 28
+  },
+  {
+    "rank": 2,
+    "answer": "Une moustache / Barbe",
+    "score": 16
+  },
+  {
+    "rank": 3,
+    "answer": "Une mauvaise haleine",
+    "score": 15
+  },
+  {
+    "rank": 4,
+    "answer": "Une crotte de nez",
+    "score": 9
+  },
+  {
+    "rank": 5,
+    "answer": "Un bouton / Une verrue",
+    "score": 8
+  },
+  {
+    "rank": 6,
+    "answer": "Elle mache un chewing-gum",
+    "score": 7
+  },
+  {
+    "rank": 7,
+    "answer": "Une grimace / Un air fermé",
+    "score": 6
+  },
+  {
+    "rank": 8,
+    "answer": "Un éternument",
+    "score": 6
+  }
+]
   },
   {
     "id": 33,
@@ -1614,6 +1478,9 @@
   },
   {
     "id": 43,
+
+
+
     "question": "We asked 100 single men... Name something of hers votre petite amie refuses to let you use.",
     "answers": [
       {
