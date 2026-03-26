@@ -861,6 +861,21 @@ h2{
   text-transform:uppercase;
 }
 
+.letters-game-dictionary-row{
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.letters-game-dictionary-row .btn{
+  flex:1 1 220px;
+}
+
+.letters-game-personal-dict-info{
+  margin-top:12px;
+  font-size:16px;
+  color:#b8d2ef;
+}
+
 .golden-family-card-regie{
   margin-top:16px;
   border:1px solid rgba(255,255,255,.16);

@@ -5,6 +5,8 @@ import { renderTeams, showTeamAwardModal } from "./teams.js";
 import { syncScoresToPlateau } from "./plateau.js";
 
 const LEXICON_SQL_PATH = "chiffres_lettres/lexique.sql";
+const PERSONAL_DICTIONARY_FILE_PATH = "chiffres_lettres/dictionnaire_perso.json";
+const PERSONAL_DICTIONARY_STORAGE_KEY = "avm_letters_personal_dictionary_v1";
 const LETTERS_COUNT = 10;
 const GENERATION_ATTEMPTS = 24;
 const RARE_LETTERS = new Set(["J", "K", "Q", "W", "X", "Y", "Z"]);
@@ -62,6 +64,8 @@ let lexiconReady = false;
 let lexiconLoadingPromise = null;
 let lexiconSet = new Set();
 let lexiconWords = [];
+let personalDictionary = new Set();
+let pendingPersonalWord = "";
 
 function normalizeWord(value) {
   return String(value || "")
@@ -121,6 +125,120 @@ function setLettersResult(message, isError = false) {
   if (!el) return;
   el.textContent = message || "";
   el.classList.toggle("error", !!isError);
+}
+
+function setPendingPersonalWord(word) {
+  pendingPersonalWord = normalizeWord(word);
+  const addBtn = $("btnLettersGameAddPersonalWord");
+  if (!addBtn) return;
+  addBtn.disabled = !pendingPersonalWord;
+  addBtn.textContent = pendingPersonalWord
+    ? `Ajouter "${pendingPersonalWord}" au dictionnaire perso`
+    : "Ajouter au dictionnaire perso";
+}
+
+function getCombinedLexiconCount() {
+  return lexiconSet.size + personalDictionary.size;
+}
+
+function updatePersonalDictionaryInfo() {
+  const el = $("lettersGamePersonalDictInfo");
+  if (!el) return;
+
+  const parts = [`Dictionnaire perso: ${personalDictionary.size} mot${personalDictionary.size > 1 ? "s" : ""}`];
+  if (lexiconReady) {
+    parts.push(`Lexique total: ${getCombinedLexiconCount()} entrees`);
+  }
+  el.textContent = parts.join(" | ");
+}
+
+function savePersonalDictionary() {
+  try {
+    localStorage.setItem(PERSONAL_DICTIONARY_STORAGE_KEY, JSON.stringify([...personalDictionary].sort()));
+  } catch {}
+  updatePersonalDictionaryInfo();
+}
+
+function normalizeWordList(words) {
+  const normalized = new Set();
+  if (!Array.isArray(words)) return normalized;
+
+  words.forEach((word) => {
+    const clean = normalizeWord(word);
+    if (clean.length >= 2 && clean.length <= LETTERS_COUNT) {
+      normalized.add(clean);
+    }
+  });
+  return normalized;
+}
+
+function loadPersonalDictionaryFromStorage() {
+  try {
+    const raw = localStorage.getItem(PERSONAL_DICTIONARY_STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    personalDictionary = normalizeWordList(parsed);
+  } catch {
+    personalDictionary = new Set();
+  }
+}
+
+async function loadBundledPersonalDictionary() {
+  try {
+    const res = await fetch(PERSONAL_DICTIONARY_FILE_PATH, { cache: "no-store" });
+    if (!res.ok) return;
+    const parsed = await res.json();
+    const words = Array.isArray(parsed)
+      ? parsed
+      : Array.isArray(parsed?.words)
+        ? parsed.words
+        : [];
+    if (!words.length) return;
+
+    const merged = new Set([...personalDictionary, ...normalizeWordList(words)]);
+    personalDictionary = merged;
+    savePersonalDictionary();
+  } catch {}
+}
+
+function exportPersonalDictionary() {
+  const payload = {
+    words: [...personalDictionary].sort()
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "dictionnaire_perso_lettres.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  setLettersResult("Dictionnaire perso exporte.");
+}
+
+async function importPersonalDictionaryFile(file) {
+  if (!file) return;
+  const text = await file.text();
+  const parsed = JSON.parse(text);
+  const words = Array.isArray(parsed)
+    ? parsed
+    : Array.isArray(parsed?.words)
+      ? parsed.words
+      : [];
+  const imported = normalizeWordList(words);
+  if (!imported.size) {
+    throw new Error("Aucun mot valide trouve dans le fichier.");
+  }
+
+  personalDictionary = new Set([...personalDictionary, ...imported]);
+  savePersonalDictionary();
+  updatePersonalDictionaryInfo();
+  setLettersResult(`${imported.size} mot${imported.size > 1 ? "s" : ""} importe${imported.size > 1 ? "s" : ""} dans le dictionnaire perso.`);
+}
+
+function isWordInLexicon(word) {
+  return lexiconSet.has(word) || personalDictionary.has(word);
 }
 
 function buildLettersPayload() {
@@ -280,6 +398,7 @@ function generateLetters() {
   state.lettersGameUsedWords = [];
   const input = $("lettersGameWordInput");
   if (input) input.value = "";
+  setPendingPersonalWord("");
   setLettersResult("");
   setLettersStatus(bestQuality ? formatDrawQuality(bestQuality) : "Tirage genere.");
   renderLettersGameCard();
@@ -317,6 +436,7 @@ function renderLettersGameCard() {
     showBtn.textContent = state.lettersGameVisible ? "Cacher le plateau" : "Afficher le plateau";
   }
   renderUsedWords();
+  updatePersonalDictionaryInfo();
 }
 
 function canBuildWordFromLetters(word) {
@@ -362,9 +482,10 @@ async function ensureLexiconLoaded() {
     const buffer = await res.arrayBuffer();
     const sqlText = decodeLexiconBuffer(buffer);
     lexiconSet = parseLexiconSql(sqlText);
-    lexiconWords = [...lexiconSet];
+    lexiconWords = [...new Set([...lexiconSet, ...personalDictionary])];
     lexiconReady = true;
-    setLettersStatus(`${lexiconSet.size} mots charges.`);
+    setLettersStatus(`${lexiconSet.size} mots du lexique charges.`);
+    updatePersonalDictionaryInfo();
   })()
     .catch((err) => {
       lexiconReady = false;
@@ -380,41 +501,10 @@ async function ensureLexiconLoaded() {
   return lexiconLoadingPromise;
 }
 
-async function validateLettersWord() {
-  const input = $("lettersGameWordInput");
-  const rawWord = String(input?.value || "").trim();
-  const word = normalizeWord(rawWord);
-
-  if (state.lettersGameLetters.length !== LETTERS_COUNT) {
-    setLettersResult("Genere d'abord 10 lettres.", true);
-    return;
-  }
-  if (word.length < 2) {
-    setLettersResult("Entre un mot d'au moins 2 lettres.", true);
-    return;
-  }
-  if ((state.lettersGameUsedWords || []).includes(word)) {
-    setLettersResult("Ce mot a deja ete valide pour cette manche.", true);
-    return;
-  }
-  if (!canBuildWordFromLetters(word)) {
-    setLettersResult("Le mot n'est pas forgeable avec les 10 lettres.", true);
-    return;
-  }
-
-  try {
-    await ensureLexiconLoaded();
-  } catch {
-    return;
-  }
-
-  if (!lexiconSet.has(word)) {
-    setLettersResult("Mot absent du lexique.", true);
-    return;
-  }
-
+function awardValidatedWord(word) {
   state.lettersGameUsedWords = [...(state.lettersGameUsedWords || []), word];
   renderUsedWords();
+  setPendingPersonalWord("");
   setLettersResult(`Mot valide: ${word} (${word.length} points)`);
 
   showTeamAwardModal({
@@ -430,6 +520,66 @@ async function validateLettersWord() {
   });
 }
 
+async function validateLettersWord() {
+  const input = $("lettersGameWordInput");
+  const rawWord = String(input?.value || "").trim();
+  const word = normalizeWord(rawWord);
+
+  if (state.lettersGameLetters.length !== LETTERS_COUNT) {
+    setPendingPersonalWord("");
+    setLettersResult("Genere d'abord 10 lettres.", true);
+    return;
+  }
+  if (word.length < 2) {
+    setPendingPersonalWord("");
+    setLettersResult("Entre un mot d'au moins 2 lettres.", true);
+    return;
+  }
+  if ((state.lettersGameUsedWords || []).includes(word)) {
+    setPendingPersonalWord("");
+    setLettersResult("Ce mot a deja ete valide pour cette manche.", true);
+    return;
+  }
+  if (!canBuildWordFromLetters(word)) {
+    setPendingPersonalWord("");
+    setLettersResult("Le mot n'est pas forgeable avec les 10 lettres.", true);
+    return;
+  }
+
+  try {
+    await ensureLexiconLoaded();
+  } catch {
+    return;
+  }
+
+  if (!isWordInLexicon(word)) {
+    setPendingPersonalWord(word);
+    setLettersResult(`Mot absent du lexique. Tu peux l'ajouter au dictionnaire perso si tu le valides manuellement.`, true);
+    return;
+  }
+
+  awardValidatedWord(word);
+}
+
+function addPendingWordToPersonalDictionary() {
+  if (!pendingPersonalWord) {
+    setLettersResult("Aucun mot en attente a ajouter.", true);
+    return;
+  }
+  if (personalDictionary.has(pendingPersonalWord) || lexiconSet.has(pendingPersonalWord)) {
+    setPendingPersonalWord("");
+    setLettersResult("Ce mot est deja connu du dictionnaire.");
+    return;
+  }
+
+  personalDictionary.add(pendingPersonalWord);
+  lexiconWords = [...new Set([...lexiconWords, pendingPersonalWord])];
+  savePersonalDictionary();
+  const word = pendingPersonalWord;
+  setPendingPersonalWord("");
+  setLettersResult(`Mot ajoute au dictionnaire perso: ${word}`);
+}
+
 export function hideLettersGameDisplay() {
   state.lettersGameVisible = false;
   const showBtn = $("btnLettersGameShow");
@@ -443,13 +593,18 @@ export function resetLettersGameForNewShow() {
   state.lettersGameUsedWords = [];
   const input = $("lettersGameWordInput");
   if (input) input.value = "";
+  setPendingPersonalWord("");
   setLettersResult("");
-  setLettersStatus(lexiconReady ? `${lexiconSet.size} mots charges.` : "");
+  setLettersStatus(lexiconReady ? `${lexiconSet.size} mots du lexique charges.` : "");
   renderLettersGameCard();
   hideLettersGameDisplay();
 }
 
 export function registerLettersGameEvents() {
+  loadPersonalDictionaryFromStorage();
+  loadBundledPersonalDictionary();
+  updatePersonalDictionaryInfo();
+
   $("btnLettersGame")?.addEventListener("click", async () => {
     $("lettersGameModal")?.classList.toggle("hidden");
     if (!lexiconReady && !lexiconLoadingPromise) {
@@ -487,6 +642,34 @@ export function registerLettersGameEvents() {
 
   $("btnLettersGameValidate")?.addEventListener("click", async () => {
     await validateLettersWord();
+  });
+
+  $("btnLettersGameAddPersonalWord")?.addEventListener("click", () => {
+    addPendingWordToPersonalDictionary();
+  });
+
+  $("btnLettersGameImportPersonalDict")?.addEventListener("click", () => {
+    $("lettersGamePersonalDictFile")?.click();
+  });
+
+  $("btnLettersGameExportPersonalDict")?.addEventListener("click", () => {
+    exportPersonalDictionary();
+  });
+
+  $("lettersGamePersonalDictFile")?.addEventListener("change", async (e) => {
+    const file = e.target?.files?.[0];
+    try {
+      await importPersonalDictionaryFile(file);
+    } catch (err) {
+      setLettersResult(`Import impossible: ${String(err?.message || err)}`, true);
+    } finally {
+      e.target.value = "";
+    }
+  });
+
+  $("lettersGameWordInput")?.addEventListener("input", () => {
+    if (!pendingPersonalWord) return;
+    setPendingPersonalWord("");
   });
 
   $("lettersGameWordInput")?.addEventListener("keydown", async (e) => {
