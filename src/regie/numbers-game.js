@@ -27,6 +27,7 @@ function buildNumbersPayload() {
     type: "SHOW_NUMBERS_GAME",
     visible: !!state.numbersGameVisible && Number.isInteger(state.numbersGameTarget),
     target: state.numbersGameTarget,
+    revealCount: state.numbersGameRevealCount || 0,
     numbers: [...(state.numbersGameNumbers || [])]
   };
 }
@@ -66,7 +67,13 @@ function renderNumbersGameCard() {
   }
   if (showBtn) {
     showBtn.disabled = !hasRound;
-    showBtn.textContent = state.numbersGameVisible ? "Cacher le plateau" : "Afficher le plateau";
+    if (!hasRound) {
+      showBtn.textContent = "Afficher nombre";
+    } else if ((state.numbersGameRevealCount || 0) < (NUMBERS_COUNT + 1)) {
+      showBtn.textContent = "Afficher nombre";
+    } else {
+      showBtn.textContent = "Tout affiche";
+    }
   }
   if (awardBtn) {
     awardBtn.disabled = !hasRound;
@@ -76,6 +83,7 @@ function renderNumbersGameCard() {
 function generateNumbersRound() {
   state.numbersGameTarget = randomInt(TARGET_MIN, TARGET_MAX);
   state.numbersGameNumbers = generateNumbersPool();
+  state.numbersGameRevealCount = 0;
   setNumbersStatus(`Manche generee: cible ${state.numbersGameTarget}, ${NUMBERS_COUNT} plaques.`);
   renderNumbersGameCard();
 
@@ -109,14 +117,15 @@ function awardNumbersWinner() {
 export function hideNumbersGameDisplay() {
   state.numbersGameVisible = false;
   const showBtn = $("btnNumbersGameShow");
-  if (showBtn) showBtn.textContent = "Afficher le plateau";
-  postToPlateau({ type: "SHOW_NUMBERS_GAME", visible: false, target: null, numbers: [] });
+  if (showBtn) showBtn.textContent = "Afficher nombre";
+  postToPlateau({ type: "SHOW_NUMBERS_GAME", visible: false, target: null, numbers: [], revealCount: 0 });
 }
 
 export function resetNumbersGameForNewShow() {
   state.numbersGameTarget = null;
   state.numbersGameNumbers = [];
   state.numbersGameVisible = false;
+  state.numbersGameRevealCount = 0;
   setNumbersStatus("");
   renderNumbersGameCard();
   hideNumbersGameDisplay();
@@ -140,14 +149,15 @@ export function registerNumbersGameEvents() {
   $("btnNumbersGameShow")?.addEventListener("click", () => {
     const hasRound = Number.isInteger(state.numbersGameTarget) && (state.numbersGameNumbers || []).length === NUMBERS_COUNT;
     if (!hasRound) return;
-    state.numbersGameVisible = !state.numbersGameVisible;
+    if ((state.numbersGameRevealCount || 0) >= (NUMBERS_COUNT + 1)) return;
+    const wasVisible = !!state.numbersGameVisible;
+    state.numbersGameVisible = true;
+    state.numbersGameRevealCount = Math.min(NUMBERS_COUNT + 1, (state.numbersGameRevealCount || 0) + 1);
     renderNumbersGameCard();
-    if (state.numbersGameVisible) {
+    if (!wasVisible) {
       postToPlateau({ type: "HIDE_MEDIA" });
-      sendNumbersToPlateau();
-    } else {
-      hideNumbersGameDisplay();
     }
+    sendNumbersToPlateau();
   });
 
   $("btnNumbersGameAward")?.addEventListener("click", () => {

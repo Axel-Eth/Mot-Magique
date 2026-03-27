@@ -2286,6 +2286,19 @@ body.plateau .letters-game-board-chip{
   box-shadow: 0 18px 32px rgba(0,0,0,.28);
 }
 
+body.plateau .letters-game-board-chip.hidden,
+body.plateau .numbers-game-board-chip.hidden,
+body.plateau .numbers-game-board-target.hidden{
+  visibility:hidden;
+  opacity:0;
+}
+
+body.plateau .letters-game-board-chip.chip-reveal-anim,
+body.plateau .numbers-game-board-chip.chip-reveal-anim,
+body.plateau .numbers-game-board-target.chip-reveal-anim{
+  animation: generalChoiceReveal .26s ease-out;
+}
+
 body.plateau .numbers-game-overlay{
   position:fixed;
   inset:0;

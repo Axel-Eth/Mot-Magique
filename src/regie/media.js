@@ -1798,6 +1798,8 @@ export function registerMediaEvents() {
       return;
     }
     if (e.key === "Escape") {
+      e.preventDefault();
+      runXMediaFlow();
       hideGeneralQuestionsModal();
       hideGeneralQuestionsInfo();
       hideMisfortuneWheel();

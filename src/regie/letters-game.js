@@ -246,6 +246,7 @@ function buildLettersPayload() {
     type: "SHOW_LETTERS_GAME",
     visible: !!state.lettersGameVisible && state.lettersGameLetters.length === LETTERS_COUNT,
     letters: [...state.lettersGameLetters],
+    revealCount: state.lettersGameRevealCount || 0,
     usedWords: [...(state.lettersGameUsedWords || [])]
   };
 }
@@ -395,6 +396,7 @@ function generateLetters() {
   }
 
   state.lettersGameLetters = bestLetters;
+  state.lettersGameRevealCount = 0;
   state.lettersGameUsedWords = [];
   const input = $("lettersGameWordInput");
   if (input) input.value = "";
@@ -433,7 +435,13 @@ function renderLettersGameCard() {
   }
   if (showBtn) {
     showBtn.disabled = !hasLetters;
-    showBtn.textContent = state.lettersGameVisible ? "Cacher le plateau" : "Afficher le plateau";
+    if (!hasLetters) {
+      showBtn.textContent = "Afficher lettre";
+    } else if ((state.lettersGameRevealCount || 0) < LETTERS_COUNT) {
+      showBtn.textContent = "Afficher lettre";
+    } else {
+      showBtn.textContent = "Tout affiche";
+    }
   }
   renderUsedWords();
   updatePersonalDictionaryInfo();
@@ -583,13 +591,14 @@ function addPendingWordToPersonalDictionary() {
 export function hideLettersGameDisplay() {
   state.lettersGameVisible = false;
   const showBtn = $("btnLettersGameShow");
-  if (showBtn) showBtn.textContent = "Afficher le plateau";
-  postToPlateau({ type: "SHOW_LETTERS_GAME", visible: false, letters: [] });
+  if (showBtn) showBtn.textContent = "Afficher lettre";
+  postToPlateau({ type: "SHOW_LETTERS_GAME", visible: false, letters: [], revealCount: 0 });
 }
 
 export function resetLettersGameForNewShow() {
   state.lettersGameLetters = [];
   state.lettersGameVisible = false;
+  state.lettersGameRevealCount = 0;
   state.lettersGameUsedWords = [];
   const input = $("lettersGameWordInput");
   if (input) input.value = "";
@@ -626,14 +635,15 @@ export function registerLettersGameEvents() {
 
   $("btnLettersGameShow")?.addEventListener("click", () => {
     if (state.lettersGameLetters.length !== LETTERS_COUNT) return;
-    state.lettersGameVisible = !state.lettersGameVisible;
+    if ((state.lettersGameRevealCount || 0) >= LETTERS_COUNT) return;
+    const wasVisible = !!state.lettersGameVisible;
+    state.lettersGameVisible = true;
+    state.lettersGameRevealCount = Math.min(LETTERS_COUNT, (state.lettersGameRevealCount || 0) + 1);
     renderLettersGameCard();
-    if (state.lettersGameVisible) {
+    if (!wasVisible) {
       postToPlateau({ type: "HIDE_MEDIA" });
-      sendLettersToPlateau();
-    } else {
-      hideLettersGameDisplay();
     }
+    sendLettersToPlateau();
   });
 
   $("btnLettersGameReset")?.addEventListener("click", () => {

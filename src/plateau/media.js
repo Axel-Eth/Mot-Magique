@@ -6,6 +6,8 @@ const FLAG_ANTHEM_SRC = "sounds/hymnes_nationaux.mp3";
 const PEOPLE_THEME_SRC = "sounds/guess_persona.mp3";
 const FILMS_EXTRACTS_AUDIO_SRC = "sounds/extraits_films.mp3";
 const GENERAL_QUESTION_MUSIC_SRC = "sounds/question_song.mp3";
+const LETTERS_GAME_THEME_SRC = "sounds/lettres.mp3";
+const NUMBERS_GAME_THEME_SRC = "sounds/chiffres.mp3";
 const MISFORTUNE_WHEEL_COLORS = [
   "#ef4444", "#f59e0b", "#10b981", "#3b82f6",
   "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
@@ -948,26 +950,48 @@ export function showLettersGame(payload = {}) {
   const overlay = ensureLettersGameOverlay();
   const boardEl = overlay.querySelector("#lettersGameBoard");
   const visible = !!payload.visible;
+  const wasActive = overlay.classList.contains("active");
 
   if (!visible) {
     overlay.classList.remove("active");
+    if (wasActive) stopMusic();
     gridEl.style.display = "";
     defBar?.classList.remove("hidden");
     return;
   }
 
   if (boardEl) {
-    boardEl.innerHTML = "";
     const letters = Array.isArray(payload.letters) ? payload.letters.slice(0, 10) : [];
-    letters.forEach((letter) => {
-      const chip = document.createElement("div");
-      chip.className = "letters-game-board-chip";
-      chip.textContent = String(letter || "");
-      boardEl.appendChild(chip);
+    const revealCount = Math.max(0, Math.min(letters.length, Number(payload.revealCount) || 0));
+
+    if (boardEl.children.length !== letters.length) {
+      boardEl.innerHTML = "";
+      letters.forEach((letter) => {
+        const chip = document.createElement("div");
+        chip.className = "letters-game-board-chip hidden";
+        chip.textContent = String(letter || "");
+        boardEl.appendChild(chip);
+      });
+    }
+
+    [...boardEl.children].forEach((chip, index) => {
+      chip.textContent = String(letters[index] || "");
+      const shouldShow = index < revealCount;
+      const wasHidden = chip.classList.contains("hidden");
+      chip.classList.toggle("hidden", !shouldShow);
+      if (shouldShow && wasHidden) {
+        chip.classList.remove("chip-reveal-anim");
+        void chip.offsetWidth;
+        chip.classList.add("chip-reveal-anim");
+        playFx(sounds.appear);
+      }
     });
   }
 
   overlay.classList.add("active");
+  if (!wasActive) {
+    playMusic(LETTERS_GAME_THEME_SRC, { visualizer: false });
+  }
   gridEl.style.display = "none";
   defBar?.classList.add("hidden");
 }
@@ -977,30 +1001,61 @@ export function showNumbersGame(payload = {}) {
   const targetEl = overlay.querySelector("#numbersGameBoardTarget");
   const poolEl = overlay.querySelector("#numbersGameBoardPool");
   const visible = !!payload.visible;
+  const wasActive = overlay.classList.contains("active");
 
   if (!visible) {
     overlay.classList.remove("active");
+    if (wasActive) stopMusic();
     gridEl.style.display = "";
     defBar?.classList.remove("hidden");
     return;
   }
 
+  const numbers = Array.isArray(payload.numbers) ? payload.numbers.slice(0, 6) : [];
+  const revealCount = Math.max(0, Math.min(numbers.length + 1, Number(payload.revealCount) || 0));
+
   if (targetEl) {
+    const shouldShowTarget = revealCount >= 1;
+    const wasHidden = targetEl.classList.contains("hidden");
     targetEl.textContent = Number.isInteger(Number(payload.target)) ? String(payload.target) : "-";
+    targetEl.classList.toggle("hidden", !shouldShowTarget);
+    if (shouldShowTarget && wasHidden) {
+      targetEl.classList.remove("chip-reveal-anim");
+      void targetEl.offsetWidth;
+      targetEl.classList.add("chip-reveal-anim");
+      playFx(sounds.appear);
+    }
   }
 
   if (poolEl) {
-    poolEl.innerHTML = "";
-    const numbers = Array.isArray(payload.numbers) ? payload.numbers.slice(0, 6) : [];
-    numbers.forEach((number) => {
-      const chip = document.createElement("div");
-      chip.className = "numbers-game-board-chip";
-      chip.textContent = String(number ?? "");
-      poolEl.appendChild(chip);
+    if (poolEl.children.length !== numbers.length) {
+      poolEl.innerHTML = "";
+      numbers.forEach((number) => {
+        const chip = document.createElement("div");
+        chip.className = "numbers-game-board-chip hidden";
+        chip.textContent = String(number ?? "");
+        poolEl.appendChild(chip);
+      });
+    }
+
+    [...poolEl.children].forEach((chip, index) => {
+      chip.textContent = String(numbers[index] ?? "");
+      const shouldShow = index < Math.max(0, revealCount - 1);
+      const wasHidden = chip.classList.contains("hidden");
+      chip.classList.toggle("hidden", !shouldShow);
+      if (shouldShow && wasHidden) {
+        chip.classList.remove("chip-reveal-anim");
+        void chip.offsetWidth;
+        chip.classList.add("chip-reveal-anim");
+        playFx(sounds.appear);
+      }
     });
   }
 
   overlay.classList.add("active");
+  if (!wasActive) {
+    playMusic(NUMBERS_GAME_THEME_SRC, { visualizer: false });
+  }
   gridEl.style.display = "none";
   defBar?.classList.add("hidden");
 }

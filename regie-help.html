@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mot Magique - Aide Regie</title>
+  <style>
+    :root{
+      --bg:#0b1b2b;
+      --panel:#122a40;
+      --text:#e8f1ff;
+      --muted:#a9b7cc;
+      --accent:#ffe873;
+      --accent-2:#8bd3ff;
+      --border:rgba(255,255,255,.14);
+      --shadow:0 14px 28px rgba(0,0,0,.28);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:radial-gradient(1200px 700px at 20% 10%, #153754 0%, var(--bg) 60%);
+    }
+    main{
+      width:min(1100px, 94vw);
+      margin:0 auto;
+      padding:28px 0 48px;
+    }
+    .hero{
+      margin-bottom:20px;
+      padding:24px 26px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);
+    }
+    h1,h2,p{margin:0}
+    h1{
+      font-size:42px;
+      line-height:1;
+      color:#fff;
+    }
+    .hero p{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.5;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+    }
+    .card{
+      padding:22px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:rgba(10,24,38,.78);
+      box-shadow:var(--shadow);
+    }
+    .card h2{
+      font-size:24px;
+      color:#fff8d7;
+      margin-bottom:14px;
+    }
+    .shortcut-list,
+    .info-list{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+    .shortcut{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:14px;
+      align-items:start;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    kbd{
+      display:inline-block;
+      min-width:44px;
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:16px;
+      font-weight:800;
+      text-align:center;
+      box-shadow:inset 0 -2px 0 rgba(0,0,0,.2);
+    }
+    .key-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .desc{
+      color:#d7e8ff;
+      font-size:16px;
+      line-height:1.4;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(139,211,255,.12);
+      color:var(--accent-2);
+      border:1px solid rgba(139,211,255,.22);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+    .info-list div{
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#d7e8ff;
+      line-height:1.5;
+    }
+    strong{color:#fff}
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+      .shortcut{grid-template-columns:1fr}
+      h1{font-size:32px}
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="pill">Aide Regie</div>
+      <h1>Manipulation rapide de la regie</h1>
+      <p>Cette page sert d'aide-memoire pendant l'emission. Elle resume les raccourcis clavier et les commandes principales deja presentes dans la regie.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Raccourcis Bonus</h2>
+        <div class="shortcut-list">
+          <div class="shortcut"><div class="key-row"><kbd>Ctrl</kbd><kbd>1</kbd></div><div class="desc">Declenche <strong>Mot X 2</strong> version generique.</div></div>
+          <div class="shortcut"><div class="key-row"><kbd>Ctrl</kbd><kbd>3</kbd></div><div class="desc">Declenche <strong>Mot X 3</strong> version generique.</div></div>
+          <div class="shortcut"><div class="key-row"><kbd>Ctrl</kbd><kbd>4</kbd></div><div class="desc">Declenche <strong>Bad Points</strong> version generique.</div></div>
+          <div class="shortcut"><div class="key-row"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>1</kbd></div><div class="desc">Declenche <strong>Mot X 2</strong> version mini animation.</div></div>
+          <div class="shortcut"><div class="key-row"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>3</kbd></div><div class="desc">Declenche <strong>Mot X 3</strong> version mini animation.</div></div>
+          <div class="shortcut"><div class="key-row"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>4</kbd></div><div class="desc">Declenche <strong>Bad Points</strong> version mini animation.</div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Raccourcis Regie</h2>
+        <div class="shortcut-list">
+          <div class="shortcut"><div class="key-row"><kbd>Esc</kbd></div><div class="desc">Equivalent du flux <strong>X Media</strong> : coupe le media en cours sur le plateau.</div></div>
+          <div class="shortcut"><div class="key-row"><kbd>Suppr</kbd></div><div class="desc">Supprime l'equipe actuellement selectionnee dans la regie.</div></div>
+          <div class="shortcut"><div class="key-row"><kbd>Retour arriere</kbd></div><div class="desc">Supprime aussi l'equipe selectionnee quand aucun champ texte n'est actif.</div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Ce Qu'il Faut Savoir</h2>
+        <div class="info-list">
+          <div><strong>Lettres</strong> : genere 10 lettres, affiche le plateau, valide un mot et attribue les points a une equipe.</div>
+          <div><strong>Chiffres</strong> : genere une cible et des plaques, affiche le plateau, puis attribue pour l'instant 15 points a l'equipe gagnante.</div>
+          <div><strong>Famille</strong> : selectionne une manche, revele les reponses, et attribue les points au fil des revelations.</div>
+          <div><strong>Questions</strong> : charge la culture generale et la roue de l'infortune.</div>
+          <div><strong>Bonus</strong> : centralise les generiques, les doubles, les triples et les bad points.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Rappel Utilisation</h2>
+        <div class="info-list">
+          <div><strong>Ouvrir le plateau</strong> lance la fenetre publique.</div>
+          <div><strong>Scores</strong> affiche le tableau des scores sur le plateau.</div>
+          <div><strong>New</strong> remet la regie a zero pour une nouvelle emission.</div>
+          <div><strong>M. Plateau</strong> ouvre la selection de musique du plateau.</div>
+          <div><strong>Melanger</strong> relance l'animation des lettres flottantes du plateau principal.</div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

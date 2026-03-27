@@ -52,6 +52,37 @@ function isTypingTarget(target) {
   return !!target.closest("input, textarea, select, [contenteditable='true']");
 }
 
+function triggerButtonClick(id) {
+  const button = $(id);
+  if (!button || button.disabled) return false;
+  button.click();
+  return true;
+}
+
+function handleRegieShortcut(e) {
+  if (!e.ctrlKey) return false;
+  if (e.altKey || e.metaKey) return false;
+  if (isTypingTarget(e.target)) return false;
+
+  const isAnimated = !!e.shiftKey;
+  const keyCode = e.code;
+
+  if (keyCode === "Digit1") {
+    e.preventDefault();
+    return triggerButtonClick(isAnimated ? "btnDoubleAnimated" : "btnDouble");
+  }
+  if (keyCode === "Digit3") {
+    e.preventDefault();
+    return triggerButtonClick(isAnimated ? "btnTripleAnimated" : "btnTriple");
+  }
+  if (keyCode === "Digit4") {
+    e.preventDefault();
+    return triggerButtonClick(isAnimated ? "btnBadAnimated" : "btnBad");
+  }
+
+  return false;
+}
+
 export function registerActionEvents() {
   $("openPlateau")?.addEventListener("click", () => {
     openPlateauWindow();
@@ -384,6 +415,7 @@ export function registerWindowEvents() {
 
   window.addEventListener("keydown", (e) => {
     if (e.defaultPrevented) return;
+    if (handleRegieShortcut(e)) return;
     if (state.pendingPenaltyPoints > 0) return;
     if (isTypingTarget(e.target)) return;
 
