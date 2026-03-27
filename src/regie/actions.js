@@ -69,6 +69,10 @@ function handleRegieShortcut(e) {
 
   if (keyCode === "Digit1") {
     e.preventDefault();
+    return triggerButtonClick("btnGeneric");
+  }
+  if (keyCode === "Digit2") {
+    e.preventDefault();
     return triggerButtonClick(isAnimated ? "btnDoubleAnimated" : "btnDouble");
   }
   if (keyCode === "Digit3") {
