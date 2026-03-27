@@ -44,6 +44,32 @@ let misfortuneWheelItems = [];
 let misfortuneWheelAngle = 0;
 let actionAnimationOverlay = null;
 let actionAnimationTimer = 0;
+let lettersGameDuckingActive = false;
+let numbersGameDuckingActive = false;
+
+function setLettersGameDucking(active) {
+  if (active && !lettersGameDuckingActive) {
+    beginExternalDucking();
+    lettersGameDuckingActive = true;
+    return;
+  }
+  if (!active && lettersGameDuckingActive) {
+    endExternalDucking();
+    lettersGameDuckingActive = false;
+  }
+}
+
+function setNumbersGameDucking(active) {
+  if (active && !numbersGameDuckingActive) {
+    beginExternalDucking();
+    numbersGameDuckingActive = true;
+    return;
+  }
+  if (!active && numbersGameDuckingActive) {
+    endExternalDucking();
+    numbersGameDuckingActive = false;
+  }
+}
 
 function bindMediaLifecycleEvents() {
   if (mediaLifecycleBound) return;
@@ -623,14 +649,21 @@ function ensureLettersGameOverlay() {
   overlay.className = "letters-game-overlay";
   overlay.innerHTML = `
     <div class="letters-game-stage">
-      <div class="letters-game-title">CHIFFRES ET LETTRES</div>
-      <div class="letters-game-subtitle">TROUVE UN MOT AVEC CES 10 LETTRES</div>
       <div class="letters-game-board" id="lettersGameBoard"></div>
+      <div class="letters-game-current-word" id="lettersGameCurrentWord"></div>
     </div>
   `;
   document.body.appendChild(overlay);
   lettersGameOverlay = overlay;
   return overlay;
+}
+
+function countWordLetters(word) {
+  const counts = new Map();
+  for (const letter of String(word || "")) {
+    counts.set(letter, (counts.get(letter) || 0) + 1);
+  }
+  return counts;
 }
 
 function ensureNumbersGameOverlay() {
@@ -640,15 +673,11 @@ function ensureNumbersGameOverlay() {
   overlay.className = "numbers-game-overlay";
   overlay.innerHTML = `
     <div class="numbers-game-stage">
-      <div class="numbers-game-title">CHIFFRES ET LETTRES</div>
-      <div class="numbers-game-subtitle">RAPPROCHE-TOI AU MIEUX DE LA CIBLE</div>
       <div class="numbers-game-board">
         <div class="numbers-game-board-target-wrap">
-          <div class="numbers-game-board-label">CIBLE</div>
           <div class="numbers-game-board-target" id="numbersGameBoardTarget"></div>
         </div>
         <div class="numbers-game-board-pool-wrap">
-          <div class="numbers-game-board-label">NOMBRES</div>
           <div class="numbers-game-board-pool" id="numbersGameBoardPool"></div>
         </div>
       </div>
@@ -949,11 +978,13 @@ export function showGoldenFamily(payload = {}) {
 export function showLettersGame(payload = {}) {
   const overlay = ensureLettersGameOverlay();
   const boardEl = overlay.querySelector("#lettersGameBoard");
+  const wordEl = overlay.querySelector("#lettersGameCurrentWord");
   const visible = !!payload.visible;
   const wasActive = overlay.classList.contains("active");
 
   if (!visible) {
     overlay.classList.remove("active");
+    setLettersGameDucking(false);
     if (wasActive) stopMusic();
     gridEl.style.display = "";
     defBar?.classList.remove("hidden");
@@ -963,6 +994,7 @@ export function showLettersGame(payload = {}) {
   if (boardEl) {
     const letters = Array.isArray(payload.letters) ? payload.letters.slice(0, 10) : [];
     const revealCount = Math.max(0, Math.min(letters.length, Number(payload.revealCount) || 0));
+    const usedCounts = countWordLetters(payload.currentWord || "");
 
     if (boardEl.children.length !== letters.length) {
       boardEl.innerHTML = "";
@@ -978,6 +1010,15 @@ export function showLettersGame(payload = {}) {
       chip.textContent = String(letters[index] || "");
       const shouldShow = index < revealCount;
       const wasHidden = chip.classList.contains("hidden");
+      chip.classList.remove("used");
+      if (shouldShow) {
+        const letter = String(letters[index] || "");
+        const remaining = usedCounts.get(letter) || 0;
+        if (remaining > 0) {
+          chip.classList.add("used");
+          usedCounts.set(letter, remaining - 1);
+        }
+      }
       chip.classList.toggle("hidden", !shouldShow);
       if (shouldShow && wasHidden) {
         chip.classList.remove("chip-reveal-anim");
@@ -988,7 +1029,20 @@ export function showLettersGame(payload = {}) {
     });
   }
 
+  if (wordEl) {
+    const currentWord = String(payload.currentWord || "").trim();
+    wordEl.innerHTML = "";
+    wordEl.classList.toggle("hidden", !currentWord);
+    [...currentWord].forEach((letter) => {
+      const chip = document.createElement("div");
+      chip.className = "letters-game-current-word-chip";
+      chip.textContent = letter;
+      wordEl.appendChild(chip);
+    });
+  }
+
   overlay.classList.add("active");
+  setLettersGameDucking(true);
   if (!wasActive) {
     playMusic(LETTERS_GAME_THEME_SRC, { visualizer: false });
   }
@@ -1005,6 +1059,7 @@ export function showNumbersGame(payload = {}) {
 
   if (!visible) {
     overlay.classList.remove("active");
+    setNumbersGameDucking(false);
     if (wasActive) stopMusic();
     gridEl.style.display = "";
     defBar?.classList.remove("hidden");
@@ -1053,6 +1108,7 @@ export function showNumbersGame(payload = {}) {
   }
 
   overlay.classList.add("active");
+  setNumbersGameDucking(true);
   if (!wasActive) {
     playMusic(NUMBERS_GAME_THEME_SRC, { visualizer: false });
   }
@@ -1101,6 +1157,8 @@ export function hideAllMedia() {
   if (goldenFamilyOverlay) goldenFamilyOverlay.classList.remove("active");
   if (lettersGameOverlay) lettersGameOverlay.classList.remove("active");
   if (numbersGameOverlay) numbersGameOverlay.classList.remove("active");
+  setLettersGameDucking(false);
+  setNumbersGameDucking(false);
   if (misfortuneWheelOverlay) misfortuneWheelOverlay.classList.remove("active");
   generalQuestionMusicActive = false;
   stopMusic();

@@ -53,6 +53,8 @@ export const state = {
   lettersGameLetters: [],
   lettersGameVisible: false,
   lettersGameRevealCount: 0,
+  lettersGameCurrentWord: "",
+  lettersGameSolutionsVisible: false,
   lettersGameUsedWords: [],
   numbersGameTarget: null,
   numbersGameNumbers: [],

@@ -127,6 +127,30 @@ function setLettersResult(message, isError = false) {
   el.classList.toggle("error", !!isError);
 }
 
+function renderSolutionsList(items = []) {
+  const el = $("lettersGameSolutionsList");
+  if (!el) return;
+  if (!state.lettersGameSolutionsVisible || !items.length) {
+    el.innerHTML = "";
+    return;
+  }
+
+  const rows = items.map((word) => `<span class="letters-game-solution-chip">${word.length} - ${word}</span>`);
+  el.innerHTML = `<div class="letters-game-solutions-title">Top 50 solutions</div><div class="letters-game-solutions-grid">${rows.join("")}</div>`;
+}
+
+function updateLettersWordButton() {
+  const btn = $("btnLettersGameShowWord");
+  if (!btn) return;
+  btn.textContent = state.lettersGameCurrentWord ? "Masquer mot" : "Afficher mot";
+}
+
+function updateLettersSolutionsButton() {
+  const btn = $("btnLettersGameSolutions");
+  if (!btn) return;
+  btn.textContent = state.lettersGameSolutionsVisible ? "Masquer solutions" : "Afficher solutions";
+}
+
 function setPendingPersonalWord(word) {
   pendingPersonalWord = normalizeWord(word);
   const addBtn = $("btnLettersGameAddPersonalWord");
@@ -217,26 +241,6 @@ function exportPersonalDictionary() {
   setLettersResult("Dictionnaire perso exporte.");
 }
 
-async function importPersonalDictionaryFile(file) {
-  if (!file) return;
-  const text = await file.text();
-  const parsed = JSON.parse(text);
-  const words = Array.isArray(parsed)
-    ? parsed
-    : Array.isArray(parsed?.words)
-      ? parsed.words
-      : [];
-  const imported = normalizeWordList(words);
-  if (!imported.size) {
-    throw new Error("Aucun mot valide trouve dans le fichier.");
-  }
-
-  personalDictionary = new Set([...personalDictionary, ...imported]);
-  savePersonalDictionary();
-  updatePersonalDictionaryInfo();
-  setLettersResult(`${imported.size} mot${imported.size > 1 ? "s" : ""} importe${imported.size > 1 ? "s" : ""} dans le dictionnaire perso.`);
-}
-
 function isWordInLexicon(word) {
   return lexiconSet.has(word) || personalDictionary.has(word);
 }
@@ -247,6 +251,7 @@ function buildLettersPayload() {
     visible: !!state.lettersGameVisible && state.lettersGameLetters.length === LETTERS_COUNT,
     letters: [...state.lettersGameLetters],
     revealCount: state.lettersGameRevealCount || 0,
+    currentWord: state.lettersGameCurrentWord || "",
     usedWords: [...(state.lettersGameUsedWords || [])]
   };
 }
@@ -397,11 +402,16 @@ function generateLetters() {
 
   state.lettersGameLetters = bestLetters;
   state.lettersGameRevealCount = 0;
+  state.lettersGameCurrentWord = "";
+  state.lettersGameSolutionsVisible = false;
   state.lettersGameUsedWords = [];
   const input = $("lettersGameWordInput");
   if (input) input.value = "";
   setPendingPersonalWord("");
   setLettersResult("");
+  renderSolutionsList([]);
+  updateLettersWordButton();
+  updateLettersSolutionsButton();
   setLettersStatus(bestQuality ? formatDrawQuality(bestQuality) : "Tirage genere.");
   renderLettersGameCard();
   if (state.lettersGameVisible) {
@@ -445,6 +455,16 @@ function renderLettersGameCard() {
   }
   renderUsedWords();
   updatePersonalDictionaryInfo();
+  updateLettersWordButton();
+  updateLettersSolutionsButton();
+}
+
+function setCurrentLettersWord(word) {
+  state.lettersGameCurrentWord = normalizeWord(word);
+  updateLettersWordButton();
+  if (state.lettersGameVisible) {
+    sendLettersToPlateau();
+  }
 }
 
 function canBuildWordFromLetters(word) {
@@ -459,6 +479,27 @@ function canBuildWordFromLetters(word) {
     available.set(letter, count - 1);
   }
   return true;
+}
+
+function getTopSolutions(limit = 50) {
+  const availableWords = [];
+  const seen = new Set();
+
+  for (const word of lexiconWords) {
+    if (seen.has(word)) continue;
+    if (!word || word.length < 2 || word.length > LETTERS_COUNT) continue;
+    if (!canBuildWordFromLetters(word)) continue;
+    seen.add(word);
+    availableWords.push(word);
+  }
+
+  availableWords.sort((a, b) => {
+    const lengthDiff = b.length - a.length;
+    if (lengthDiff !== 0) return lengthDiff;
+    return a.localeCompare(b, "fr", { sensitivity: "base" });
+  });
+
+  return availableWords.slice(0, limit);
 }
 
 function parseLexiconSql(sqlText) {
@@ -509,8 +550,42 @@ async function ensureLexiconLoaded() {
   return lexiconLoadingPromise;
 }
 
+async function showLettersSolutions() {
+  if (state.lettersGameSolutionsVisible) {
+    state.lettersGameSolutionsVisible = false;
+    renderSolutionsList([]);
+    updateLettersSolutionsButton();
+    setLettersResult("Solutions masquees.");
+    return;
+  }
+
+  if (state.lettersGameLetters.length !== LETTERS_COUNT) {
+    setLettersResult("Genere d'abord 10 lettres.", true);
+    renderSolutionsList([]);
+    return;
+  }
+
+  try {
+    await ensureLexiconLoaded();
+  } catch {
+    renderSolutionsList([]);
+    return;
+  }
+
+  const solutions = getTopSolutions(50);
+  state.lettersGameSolutionsVisible = true;
+  renderSolutionsList(solutions);
+  updateLettersSolutionsButton();
+  if (solutions.length) {
+    setLettersResult(`${solutions.length} solution${solutions.length > 1 ? "s" : ""} affichee${solutions.length > 1 ? "s" : ""}.`);
+  } else {
+    setLettersResult("Aucune solution trouvee avec le lexique courant.", true);
+  }
+}
+
 function awardValidatedWord(word) {
   state.lettersGameUsedWords = [...(state.lettersGameUsedWords || []), word];
+  setCurrentLettersWord(word);
   renderUsedWords();
   setPendingPersonalWord("");
   setLettersResult(`Mot valide: ${word} (${word.length} points)`);
@@ -526,6 +601,34 @@ function awardValidatedWord(word) {
       syncScoresToPlateau();
     }
   });
+}
+
+function showLettersWordOnPlateau() {
+  if (state.lettersGameCurrentWord) {
+    setCurrentLettersWord("");
+    setLettersResult("Mot masque au plateau.");
+    return;
+  }
+
+  const input = $("lettersGameWordInput");
+  const rawWord = String(input?.value || "").trim();
+  const word = normalizeWord(rawWord);
+
+  if (state.lettersGameLetters.length !== LETTERS_COUNT) {
+    setLettersResult("Genere d'abord 10 lettres.", true);
+    return;
+  }
+  if (word.length < 2) {
+    setLettersResult("Entre un mot d'au moins 2 lettres.", true);
+    return;
+  }
+  if (!canBuildWordFromLetters(word)) {
+    setLettersResult("Le mot n'est pas forgeable avec les 10 lettres.", true);
+    return;
+  }
+
+  setCurrentLettersWord(word);
+  setLettersResult(`Mot affiche au plateau: ${word}`);
 }
 
 async function validateLettersWord() {
@@ -592,18 +695,23 @@ export function hideLettersGameDisplay() {
   state.lettersGameVisible = false;
   const showBtn = $("btnLettersGameShow");
   if (showBtn) showBtn.textContent = "Afficher lettre";
-  postToPlateau({ type: "SHOW_LETTERS_GAME", visible: false, letters: [], revealCount: 0 });
+  postToPlateau({ type: "SHOW_LETTERS_GAME", visible: false, letters: [], revealCount: 0, currentWord: "" });
 }
 
 export function resetLettersGameForNewShow() {
   state.lettersGameLetters = [];
   state.lettersGameVisible = false;
   state.lettersGameRevealCount = 0;
+  state.lettersGameCurrentWord = "";
+  state.lettersGameSolutionsVisible = false;
   state.lettersGameUsedWords = [];
   const input = $("lettersGameWordInput");
   if (input) input.value = "";
   setPendingPersonalWord("");
   setLettersResult("");
+  renderSolutionsList([]);
+  updateLettersWordButton();
+  updateLettersSolutionsButton();
   setLettersStatus(lexiconReady ? `${lexiconSet.size} mots du lexique charges.` : "");
   renderLettersGameCard();
   hideLettersGameDisplay();
@@ -654,27 +762,20 @@ export function registerLettersGameEvents() {
     await validateLettersWord();
   });
 
-  $("btnLettersGameAddPersonalWord")?.addEventListener("click", () => {
-    addPendingWordToPersonalDictionary();
+  $("btnLettersGameShowWord")?.addEventListener("click", () => {
+    showLettersWordOnPlateau();
   });
 
-  $("btnLettersGameImportPersonalDict")?.addEventListener("click", () => {
-    $("lettersGamePersonalDictFile")?.click();
+  $("btnLettersGameAddPersonalWord")?.addEventListener("click", () => {
+    addPendingWordToPersonalDictionary();
   });
 
   $("btnLettersGameExportPersonalDict")?.addEventListener("click", () => {
     exportPersonalDictionary();
   });
 
-  $("lettersGamePersonalDictFile")?.addEventListener("change", async (e) => {
-    const file = e.target?.files?.[0];
-    try {
-      await importPersonalDictionaryFile(file);
-    } catch (err) {
-      setLettersResult(`Import impossible: ${String(err?.message || err)}`, true);
-    } finally {
-      e.target.value = "";
-    }
+  $("btnLettersGameSolutions")?.addEventListener("click", async () => {
+    await showLettersSolutions();
   });
 
   $("lettersGameWordInput")?.addEventListener("input", () => {

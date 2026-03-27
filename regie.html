@@ -118,16 +118,17 @@
           </div>
           <div class="row letters-game-validate-row">
             <input id="lettersGameWordInput" class="input letters-game-word-input" type="text" autocomplete="off" spellcheck="false" placeholder="Mot propose" />
+            <button id="btnLettersGameShowWord" class="btn ghost" type="button">Afficher mot</button>
             <button id="btnLettersGameValidate" class="btn success" type="button">Valider</button>
           </div>
           <div class="row letters-game-dictionary-row">
             <button id="btnLettersGameAddPersonalWord" class="btn ghost" type="button" disabled>Ajouter au dictionnaire perso</button>
-            <button id="btnLettersGameImportPersonalDict" class="btn ghost" type="button">Importer dictionnaire</button>
+            <button id="btnLettersGameSolutions" class="btn ghost" type="button">Solutions</button>
             <button id="btnLettersGameExportPersonalDict" class="btn ghost" type="button">Exporter dictionnaire</button>
-            <input id="lettersGamePersonalDictFile" type="file" accept=".json,application/json" class="hidden" />
           </div>
           <div id="lettersGamePersonalDictInfo" class="letters-game-personal-dict-info"></div>
           <div id="lettersGameResult" class="letters-game-result"></div>
+          <div id="lettersGameSolutionsList" class="letters-game-solutions"></div>
           <div id="lettersGameUsedWords" class="letters-game-used-words"></div>
         </div>
       </div>
