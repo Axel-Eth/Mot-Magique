@@ -2390,7 +2390,6 @@ body.plateau .numbers-game-stage{
   width:min(1380px, 94vw);
   display:grid;
   gap:22px;
-  justify-items:start;
 }
 
 body.plateau .numbers-game-title{
@@ -2409,16 +2408,14 @@ body.plateau .numbers-game-subtitle{
 }
 
 body.plateau .numbers-game-board{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
+  display:grid;
+  grid-template-columns: 260px auto;
   gap:18px;
+  align-items:start;
 }
 
 body.plateau .numbers-game-board-target-wrap,
 body.plateau .numbers-game-board-pool-wrap{
-  width:100%;
   padding:0;
   border:none;
   background: transparent;
@@ -2437,20 +2434,19 @@ body.plateau .numbers-game-board-target{
   display:grid;
   place-items:center;
   width:260px;
-  min-height:112px;
+  min-height:242px;
   margin-top:0;
   border-radius:24px;
   background: linear-gradient(180deg,#ffe873,#f4b400);
   color:#122744;
-  font-size:58px;
+  font-size:96px;
   font-weight:1000;
   box-shadow: 0 14px 28px rgba(0,0,0,.28);
 }
 
 body.plateau .numbers-game-board-pool{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:flex-start;
+  display:grid;
+  grid-template-columns: repeat(3, 112px);
   gap:18px;
   margin-top:0;
 }
@@ -2752,17 +2748,17 @@ body.plateau .plateau-wheel-result{
   }
 
   body.plateau .numbers-game-board{
-    width:100%;
+    grid-template-columns: 1fr;
   }
 
   body.plateau .numbers-game-board-target{
     font-size:72px;
     width:180px;
-    min-height:78px;
+    min-height:174px;
   }
 
   body.plateau .numbers-game-board-pool{
-    justify-content:flex-start;
+    grid-template-columns: repeat(2, 78px);
   }
 
   body.plateau .numbers-game-board-chip{
