@@ -4,12 +4,26 @@ import { postToPlateau } from "./bridge.js";
 import { renderTeams, showTeamAwardModal } from "./teams.js";
 import { syncScoresToPlateau } from "./plateau.js";
 
-const TARGET_MIN = 250;
+const TARGET_MIN = 101;
 const TARGET_MAX = 999;
 const NUMBERS_COUNT = 6;
-const NUMBERS_MIN = 1;
-const NUMBERS_MAX = 100;
 const WINNER_POINTS = 15;
+const NUMBERS_POOL = [
+  1, 1,
+  2, 2,
+  3, 3,
+  4, 4,
+  5, 5,
+  6, 6,
+  7, 7,
+  8, 8,
+  9, 9,
+  10, 10,
+  25,
+  50,
+  75,
+  100
+];
 
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -36,11 +50,16 @@ function sendNumbersToPlateau() {
   postToPlateau(buildNumbersPayload());
 }
 
-function generateNumbersPool() {
+function drawNumbersFromPool(count = NUMBERS_COUNT) {
+  const pool = [...NUMBERS_POOL];
   const numbers = [];
-  for (let index = 0; index < NUMBERS_COUNT; index += 1) {
-    numbers.push(randomInt(NUMBERS_MIN, NUMBERS_MAX));
+
+  for (let index = 0; index < count && pool.length; index += 1) {
+    const pickedIndex = randomInt(0, pool.length - 1);
+    numbers.push(pool[pickedIndex]);
+    pool.splice(pickedIndex, 1);
   }
+
   return numbers;
 }
 
@@ -82,7 +101,7 @@ function renderNumbersGameCard() {
 
 function generateNumbersRound() {
   state.numbersGameTarget = randomInt(TARGET_MIN, TARGET_MAX);
-  state.numbersGameNumbers = generateNumbersPool();
+  state.numbersGameNumbers = drawNumbersFromPool();
   state.numbersGameRevealCount = 0;
   setNumbersStatus(`Manche generee: cible ${state.numbersGameTarget}, ${NUMBERS_COUNT} plaques.`);
   renderNumbersGameCard();

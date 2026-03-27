@@ -1066,8 +1066,8 @@ export function showNumbersGame(payload = {}) {
     return;
   }
 
-  const numbers = Array.isArray(payload.numbers) ? payload.numbers.slice(0, 6) : [];
-  const revealCount = Math.max(0, Math.min(numbers.length + 1, Number(payload.revealCount) || 0));
+    const numbers = Array.isArray(payload.numbers) ? payload.numbers.slice(0, 6) : [];
+    const revealCount = Math.max(0, Math.min(numbers.length + 1, Number(payload.revealCount) || 0));
 
   if (targetEl) {
     const shouldShowTarget = revealCount >= 1;
