@@ -348,6 +348,34 @@ function clearCurrentCalculation({ keepStatus = false } = {}) {
   syncNumbersView();
 }
 
+function undoLastNumbersStep() {
+  if (state.numbersGameSteps.length) {
+    const lastStep = state.numbersGameSteps[state.numbersGameSteps.length - 1];
+    const leftEntry = getNumberEntryById(lastStep.leftId);
+    const rightEntry = getNumberEntryById(lastStep.rightId);
+
+    if (leftEntry) leftEntry.used = false;
+    if (rightEntry) rightEntry.used = false;
+
+    state.numbersGameNumbers = getNumbersEntries().filter((entry) => entry?.id !== lastStep.resultId);
+    state.numbersGameSteps = state.numbersGameSteps.slice(0, -1);
+    state.numbersGameSelectedBaseId = leftEntry?.id || null;
+    state.numbersGameCurrentOperation = "";
+    state.numbersGameKeyboardBuffer = "";
+    setNumbersStatus("Derniere operation annulee.");
+    syncNumbersView();
+    return;
+  }
+
+  if (state.numbersGameSelectedBaseId || state.numbersGameCurrentOperation || state.numbersGameKeyboardBuffer) {
+    state.numbersGameSelectedBaseId = null;
+    state.numbersGameCurrentOperation = "";
+    state.numbersGameKeyboardBuffer = "";
+    setNumbersStatus("Selection en cours annulee.");
+    syncNumbersView();
+  }
+}
+
 function generateNumbersRound() {
   state.numbersGameTarget = randomInt(TARGET_MIN, TARGET_MAX);
   state.numbersGameNumbers = createRoundNumbers(drawNumbersFromPool());
@@ -423,16 +451,20 @@ function applyStep({ left, operation, right, rightId }) {
   state.numbersGameSteps = [
     ...state.numbersGameSteps,
     {
+      leftId: baseEntry.id,
       left,
       operation,
+      rightId: rightEntry.id,
       right,
+      resultId: `numbers-result-${Date.now()}-${Math.random().toString(16).slice(2)}`,
       result
     }
   ];
+  const lastStep = state.numbersGameSteps[state.numbersGameSteps.length - 1];
   state.numbersGameNumbers = [
     ...getNumbersEntries(),
     {
-      id: `numbers-result-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      id: lastStep.resultId,
       value: result,
       used: false,
       derived: true
@@ -615,6 +647,12 @@ function bindNumbersGameKeyboard() {
 
     const code = String(event.code || "");
     const key = String(event.key || "");
+
+    if (event.ctrlKey && !event.shiftKey && !event.altKey && key.toLowerCase() === "z") {
+      event.preventDefault();
+      undoLastNumbersStep();
+      return;
+    }
 
     if (/^Numpad[0-9]$/.test(code)) {
       event.preventDefault();

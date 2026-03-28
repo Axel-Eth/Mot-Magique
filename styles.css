@@ -949,14 +949,6 @@ h2{
   background: rgba(255,255,255,.04);
 }
 
-.numbers-game-label{
-  font-size:14px;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:#b8d2ef;
-}
-
 .numbers-game-target{
   display:grid;
   place-items:center;
