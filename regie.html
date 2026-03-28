@@ -153,8 +153,18 @@
           <div class="row numbers-game-actions">
             <button id="btnNumbersGameGenerate" class="btn" type="button">Generer une manche</button>
             <button id="btnNumbersGameShow" class="btn ghost" type="button" disabled>Afficher le plateau</button>
-            <button id="btnNumbersGameAward" class="btn success" type="button" disabled>Attribuer 15 points</button>
+            <button id="btnNumbersGameAssign" class="btn success" type="button" disabled>Attribuer</button>
+            <button id="btnNumbersGameAward" class="btn ghost" type="button" disabled>Attribuer 15 points</button>
             <button id="btnNumbersGameReset" class="btn ghost" type="button">Reset</button>
+          </div>
+          <div class="numbers-game-calculator">
+            <div class="row space-between numbers-game-calculator-top">
+              <div id="numbersGameCurrentState" class="numbers-game-current-state">Choisis une premiere plaque.</div>
+              <button id="btnNumbersGameClearCalc" class="btn ghost" type="button" disabled>Effacer calcul</button>
+            </div>
+            <div class="numbers-game-shortcuts">Pave numerique : nombres, <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, puis <code>Entree</code> pour valider l'etape.</div>
+            <div id="numbersGameSteps" class="numbers-game-steps-regie"></div>
+            <div id="numbersGameSubmissions" class="numbers-game-submissions-regie"></div>
           </div>
         </div>
       </div>

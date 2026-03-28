@@ -144,10 +144,12 @@ export function showTeamRequiredModal() {
 export function showTeamAwardModal({ points = 0, answer = "", onSelect } = {}) {
   const hasTeams = state.teams.length > 0;
   teamSelectionHandler = typeof onSelect === "function" ? onSelect : null;
+  const numericPoints = Number(points) || 0;
+  const pointsText = numericPoints > 0 ? ` pour ${numericPoints} points` : "";
   configureTeamModal({
     title: "Attribuer les points",
     message: hasTeams
-      ? `Choisis une equipe pour ${Number(points) || 0} points${answer ? ` : ${answer}` : ""}.`
+      ? `Choisis une equipe${pointsText}${answer ? ` : ${answer}` : ""}.`
       : "Ajoute d'abord une equipe.",
     showActions: !hasTeams,
     showPenaltyList: hasTeams

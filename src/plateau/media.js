@@ -681,6 +681,8 @@ function ensureNumbersGameOverlay() {
           <div class="numbers-game-board-pool" id="numbersGameBoardPool"></div>
         </div>
       </div>
+      <div class="numbers-game-calculation" id="numbersGameCalculation"></div>
+      <div class="numbers-game-current-line hidden" id="numbersGameCurrentLine"></div>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -1054,6 +1056,8 @@ export function showNumbersGame(payload = {}) {
   const overlay = ensureNumbersGameOverlay();
   const targetEl = overlay.querySelector("#numbersGameBoardTarget");
   const poolEl = overlay.querySelector("#numbersGameBoardPool");
+  const calculationEl = overlay.querySelector("#numbersGameCalculation");
+  const currentLineEl = overlay.querySelector("#numbersGameCurrentLine");
   const visible = !!payload.visible;
   const wasActive = overlay.classList.contains("active");
 
@@ -1094,7 +1098,11 @@ export function showNumbersGame(payload = {}) {
     }
 
     [...poolEl.children].forEach((chip, index) => {
-      chip.textContent = String(numbers[index] ?? "");
+      const entry = numbers[index];
+      const value = typeof entry === "object" && entry !== null ? entry.value : entry;
+      const used = !!(typeof entry === "object" && entry !== null && entry.used);
+      chip.textContent = String(value ?? "");
+      chip.classList.toggle("used", used);
       const shouldShow = index < Math.max(0, revealCount - 1);
       const wasHidden = chip.classList.contains("hidden");
       chip.classList.toggle("hidden", !shouldShow);
@@ -1105,6 +1113,25 @@ export function showNumbersGame(payload = {}) {
         playFx(sounds.appear);
       }
     });
+  }
+
+  if (calculationEl) {
+    const steps = Array.isArray(payload.steps) ? payload.steps : [];
+    calculationEl.innerHTML = "";
+    calculationEl.classList.toggle("hidden", !steps.length);
+    steps.forEach((step) => {
+      const block = document.createElement("div");
+      block.className = "numbers-game-calculation-step";
+      const operation = step?.operation === "*" ? "×" : step?.operation === "/" ? "÷" : step?.operation || "";
+      block.textContent = `${step?.left ?? ""}${operation}${step?.right ?? ""} = ${step?.result ?? ""}`;
+      calculationEl.appendChild(block);
+    });
+  }
+
+  if (currentLineEl) {
+    const currentLine = String(payload.currentLine || "").trim();
+    currentLineEl.textContent = currentLine;
+    currentLineEl.classList.toggle("hidden", !currentLine);
   }
 
   overlay.classList.add("active");

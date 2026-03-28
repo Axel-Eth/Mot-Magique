@@ -59,5 +59,11 @@ export const state = {
   numbersGameTarget: null,
   numbersGameNumbers: [],
   numbersGameVisible: false,
-  numbersGameRevealCount: 0
+  numbersGameRevealCount: 0,
+  numbersGameSelectedBaseId: null,
+  numbersGameCurrentOperation: "",
+  numbersGameKeyboardBuffer: "",
+  numbersGameSteps: [],
+  numbersGameSubmissions: [],
+  numbersGameAwardedSubmissionId: null
 };
