@@ -754,10 +754,6 @@ export function registerLettersGameEvents() {
     sendLettersToPlateau();
   });
 
-  $("btnLettersGameReset")?.addEventListener("click", () => {
-    resetLettersGameForNewShow();
-  });
-
   $("btnLettersGameValidate")?.addEventListener("click", async () => {
     await validateLettersWord();
   });

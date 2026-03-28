@@ -1031,17 +1031,6 @@ h2{
   color:#dbe9ff;
 }
 
-.numbers-game-shortcuts{
-  font-size:14px;
-  color:#b8d2ef;
-}
-
-.numbers-game-operations{
-  display:grid;
-  grid-template-columns:repeat(4, minmax(0, 1fr));
-  gap:10px;
-}
-
 .numbers-game-steps-regie,
 .numbers-game-submissions-regie{
   display:grid;

@@ -230,7 +230,6 @@ function renderNumbersSubmissions() {
   submissionsEl.innerHTML = "";
 
   if (!state.numbersGameSubmissions.length) {
-    submissionsEl.innerHTML = '<div class="numbers-game-empty-hint">Aucun resultat valide.</div>';
     return;
   }
 
@@ -697,10 +696,6 @@ export function registerNumbersGameEvents() {
 
   $("btnNumbersGameAward")?.addEventListener("click", () => {
     awardNumbersWinner();
-  });
-
-  $("btnNumbersGameReset")?.addEventListener("click", () => {
-    resetNumbersGameForNewShow();
   });
 
   bindNumbersGameKeyboard();
