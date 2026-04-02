@@ -72,6 +72,18 @@
         </div>
       </div>
     </div>
+    <div id="pokerStakeModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pokerStakeTitle">
+      <div class="modal-card poker-stake-modal-card">
+        <h3 id="pokerStakeTitle">Poker</h3>
+        <p>Choisis un nombre entre 1 et 6.</p>
+        <input id="pokerStakeInput" class="input" type="number" min="1" max="6" step="1" inputmode="numeric" value="3" />
+        <p id="pokerStakeError" class="numbers-game-status"></p>
+        <div class="row">
+          <button id="btnPokerStakeCancel" class="btn ghost" type="button">Annuler</button>
+          <button id="btnPokerStakeConfirm" class="btn success" type="button">Valider</button>
+        </div>
+      </div>
+    </div>
     <div id="goldenFamilyModal" class="modal hidden" role="dialog" aria-modal="false" aria-labelledby="goldenFamilyTitle">
       <div class="modal-card golden-family-modal-card">
         <div class="row space-between bonus-modal-top">

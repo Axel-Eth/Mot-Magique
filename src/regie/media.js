@@ -67,6 +67,7 @@ const misfortuneWheelBonuses = {
   lettersTimer: 0,
   numbersTimer: 0,
   pokerPot: 0,
+  pokerStakeHandler: null,
   remoteBindingDone: false
 };
 const generalCategoryDropdown = {
@@ -1050,29 +1051,22 @@ function launchPokerFromWheel() {
     return false;
   }
 
-  const raw = window.prompt("Poker : choisis un nombre entre 1 et 6.", "3");
-  if (raw == null) return false;
-
-  const amount = Number.parseInt(String(raw).trim(), 10);
-  if (!Number.isInteger(amount) || amount < 1 || amount > 6) {
-    showGeneralQuestionsInfo("Poker annule : entre un nombre entier entre 1 et 6.");
-    return false;
-  }
-
-  misfortuneWheelBonuses.pokerPot = state.teams.reduce((sum, team) => {
-    team.points = (team.points ?? 0) - amount;
-    return sum + amount;
-  }, 0);
-  renderTeams();
-  syncScoresToPlateau();
-  updatePokerPotButton();
-  showGeneralQuestionsInfo(`La cagnotte est de ${misfortuneWheelBonuses.pokerPot} points.`);
-  playWheelJingle({
-    kicker: "BONUS",
-    main: "POKER",
-    sub: `${amount} POINT${amount > 1 ? "S" : ""} PAR EQUIPE`,
-    variant: "variant-poker",
-    duration: 2100
+  openPokerStakeModal((amount) => {
+    misfortuneWheelBonuses.pokerPot = state.teams.reduce((sum, team) => {
+      team.points = (team.points ?? 0) - amount;
+      return sum + amount;
+    }, 0);
+    renderTeams();
+    syncScoresToPlateau();
+    updatePokerPotButton();
+    showGeneralQuestionsInfo(`La cagnotte est de ${misfortuneWheelBonuses.pokerPot} points.`);
+    playWheelJingle({
+      kicker: "BONUS",
+      main: "POKER",
+      sub: `${amount} POINT${amount > 1 ? "S" : ""} PAR EQUIPE`,
+      variant: "variant-poker",
+      duration: 2100
+    });
   });
   return true;
 }
@@ -1093,6 +1087,42 @@ function awardPokerPot() {
       syncScoresToPlateau();
     }
   });
+}
+
+function hidePokerStakeModal() {
+  misfortuneWheelBonuses.pokerStakeHandler = null;
+  $("pokerStakeError").textContent = "";
+  $("pokerStakeModal")?.classList.add("hidden");
+}
+
+function openPokerStakeModal(onConfirm) {
+  misfortuneWheelBonuses.pokerStakeHandler = typeof onConfirm === "function" ? onConfirm : null;
+  const input = $("pokerStakeInput");
+  const error = $("pokerStakeError");
+  if (error) error.textContent = "";
+  if (input) {
+    input.value = "3";
+  }
+  $("pokerStakeModal")?.classList.remove("hidden");
+  window.setTimeout(() => {
+    input?.focus();
+    input?.select?.();
+  }, 0);
+}
+
+function confirmPokerStakeModal() {
+  const raw = $("pokerStakeInput")?.value ?? "";
+  const amount = Number.parseInt(String(raw).trim(), 10);
+  const error = $("pokerStakeError");
+  if (!Number.isInteger(amount) || amount < 1 || amount > 6) {
+    if (error) error.textContent = "Entre un nombre entier entre 1 et 6.";
+    $("pokerStakeInput")?.focus();
+    return;
+  }
+
+  const handler = misfortuneWheelBonuses.pokerStakeHandler;
+  hidePokerStakeModal();
+  handler?.(amount);
 }
 
 function executeMisfortuneWheelAction(label) {
@@ -2034,6 +2064,20 @@ export function registerMediaEvents() {
   $("btnPokerPot")?.addEventListener("click", () => {
     awardPokerPot();
   });
+  $("btnPokerStakeCancel")?.addEventListener("click", () => {
+    hidePokerStakeModal();
+  });
+  $("btnPokerStakeConfirm")?.addEventListener("click", () => {
+    confirmPokerStakeModal();
+  });
+  $("pokerStakeModal")?.addEventListener("click", (e) => {
+    if (e.target?.id === "pokerStakeModal") return;
+  });
+  $("pokerStakeInput")?.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    confirmPokerStakeModal();
+  });
 
   const wheelCanvas = getMisfortuneWheelCanvas();
   wheelCanvas?.addEventListener("mousedown", startMisfortuneWheelDrag);
@@ -2091,6 +2135,7 @@ export function registerMediaEvents() {
       runXMediaFlow();
       hideGeneralQuestionsModal();
       hideGeneralQuestionsInfo();
+      hidePokerStakeModal();
       hideMisfortuneWheel();
       closePlateauMusicModal();
     }
@@ -2301,6 +2346,7 @@ export function resetMediaForNewShow() {
   hideCapitaleModal();
   hideGeneralQuestionsModal();
   hideGeneralQuestionsInfo();
+  hidePokerStakeModal();
   closePlateauMusicModal();
   runXMediaFlow();
 }

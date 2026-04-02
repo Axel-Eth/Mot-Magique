@@ -1386,6 +1386,12 @@ h2{
   width:min(92vw, 520px);
 }
 
+.poker-stake-modal-card{
+  width:min(92vw, 420px);
+  display:grid;
+  gap:14px;
+}
+
 .bonus-modal-top{
   margin-top:0;
   align-items:center;
