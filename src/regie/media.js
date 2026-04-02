@@ -1053,8 +1053,10 @@ function launchPokerFromWheel() {
 
   openPokerStakeModal((amount) => {
     misfortuneWheelBonuses.pokerPot = state.teams.reduce((sum, team) => {
-      team.points = (team.points ?? 0) - amount;
-      return sum + amount;
+      const currentPoints = Number(team.points) || 0;
+      const stake = Math.max(0, Math.min(amount, currentPoints));
+      team.points = currentPoints - stake;
+      return sum + stake;
     }, 0);
     renderTeams();
     syncScoresToPlateau();
