@@ -9,6 +9,7 @@
 </head>
 
 <body class="regie">
+  <button id="btnPokerPot" class="btn success poker-pot-button hidden" type="button">Attribuer la cagnotte</button>
   <header class="topbar">
     <div class="brand">
       <div class="logo">À vos mots !</div>
@@ -207,24 +208,9 @@
               <summary id="generalLevelFilterSummary" class="btn ghost">Niveaux: Tous</summary>
               <div id="generalLevelFilterOptions" class="general-level-filter-options"></div>
             </details>
-            <button id="btnMisfortuneWheel" class="btn ghost" type="button">Roue de l'infortune</button>
           </div>
         </div>
         <div class="music-block generalq-block">
-          <div id="misfortuneWheelPanel" class="misfortune-wheel-panel hidden">
-            <div class="misfortune-wheel-header">
-              <div class="misfortune-wheel-title">Roue de l'infortune</div>
-              <div class="misfortune-wheel-controls">
-                <button id="btnSpinMisfortuneWheel" class="btn" type="button">Lancer la roue</button>
-                <button id="btnCloseMisfortuneWheel" class="btn ghost misfortune-wheel-close" type="button" aria-label="Fermer la roue de l'infortune">Fermer</button>
-              </div>
-            </div>
-            <div class="misfortune-wheel-stage">
-              <div class="misfortune-wheel-pointer" aria-hidden="true"></div>
-              <canvas id="misfortuneWheelCanvas" width="600" height="600" aria-label="Roue des catégories"></canvas>
-            </div>
-            <div id="misfortuneWheelResult" class="misfortune-wheel-result">Fais tourner la roue pour choisir une categorie.</div>
-          </div>
           <div class="media-row">
             <select id="generalCategorySelect" class="select general-category-native" aria-label="Categories culture generale"></select>
             <div id="generalCategoryDropdown" class="general-category-dropdown"></div>
@@ -244,6 +230,20 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="misfortuneWheelPanel" class="misfortune-wheel-panel hidden">
+      <div class="misfortune-wheel-header">
+        <div class="misfortune-wheel-title">Roue de l'infortune</div>
+        <div class="misfortune-wheel-controls">
+          <button id="btnSpinMisfortuneWheel" class="btn" type="button">Lancer la roue</button>
+          <button id="btnCloseMisfortuneWheel" class="btn ghost misfortune-wheel-close" type="button" aria-label="Fermer la roue de l'infortune">Fermer</button>
+        </div>
+      </div>
+      <div class="misfortune-wheel-stage">
+        <div class="misfortune-wheel-pointer" aria-hidden="true"></div>
+        <canvas id="misfortuneWheelCanvas" width="600" height="600" aria-label="Roue des actions"></canvas>
+      </div>
+      <div id="misfortuneWheelResult" class="misfortune-wheel-result">Espace lance la roue, Entree valide l'action.</div>
     </div>
     <section id="regieControlsPanel" class="panel regie-controls-panel floating-panel">
       <h2 class="floating-panel-handle">Lettre</h2>
@@ -301,6 +301,7 @@
           <button id="btnBonus" class="btn ghost" type="button">Bonus</button>
           <button id="btnScores" class="btn ghost" type="button">Scores</button>
           <button id="btnQuestions" class="btn ghost" type="button">Questions</button>
+          <button id="btnMisfortuneWheel" class="btn ghost" type="button">Roue</button>
           <button id="btnGoldenFamily" class="btn ghost" type="button">Famille</button>
           <button id="btnLettersGame" class="btn ghost" type="button">Lettres</button>
           <button id="btnNumbersGame" class="btn ghost" type="button">Chiffres</button>

@@ -34,6 +34,7 @@ import {
   playBadVideo,
   playDoubleVideo,
   playDoubleAnimation,
+  playShowAction,
   playTripleAnimation,
   playFilmsOverlayVideo,
   playGenericVideo,
@@ -311,6 +312,10 @@ export function registerMessageHandlers() {
 
       case "PLAY_BAD_ANIMATION":
         playBadAnimation();
+        break;
+
+      case "PLAY_SHOW_ACTION":
+        playShowAction(msg);
         break;
 
       case "PLAY_GENERIC":

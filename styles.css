@@ -1255,6 +1255,26 @@ h2{
   color:#d8edff;
 }
 
+.poker-pot-button{
+  position:fixed;
+  top:18px;
+  left:18px;
+  z-index:180;
+  min-width:220px;
+  box-shadow:0 16px 34px rgba(0,0,0,.34);
+  animation:pokerPotFloat 2.4s ease-in-out infinite;
+}
+
+.poker-pot-button.hidden{
+  display:none;
+}
+
+@keyframes pokerPotFloat{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-6px); }
+  100%{ transform:translateY(0); }
+}
+
 .misfortune-select-highlight{
   border-color: rgba(255,216,90,.92) !important;
   box-shadow: 0 0 0 2px rgba(255,216,90,.32), 0 0 20px rgba(255,216,90,.18);
@@ -3297,6 +3317,16 @@ body.plateau .word-animation-overlay.variant-bad{
     radial-gradient(circle at center, rgba(255,88,120,.24), rgba(54,8,18,.95) 38%, rgba(18,0,0,.99) 100%);
 }
 
+body.plateau .word-animation-overlay.variant-game{
+  background:
+    radial-gradient(circle at center, rgba(124,255,223,.22), rgba(6,36,42,.95) 40%, rgba(1,12,18,.99) 100%);
+}
+
+body.plateau .word-animation-overlay.variant-poker{
+  background:
+    radial-gradient(circle at center, rgba(255,214,96,.24), rgba(46,24,4,.95) 38%, rgba(14,7,0,.99) 100%);
+}
+
 body.plateau .word-animation-overlay.active{
   opacity:1;
 }
@@ -3319,6 +3349,14 @@ body.plateau .word-animation-overlay.variant-bad .word-animation-aura{
   background:radial-gradient(circle, rgba(255,255,255,.7) 0%, rgba(255,88,120,.68) 18%, rgba(255,27,70,.2) 50%, rgba(255,27,70,0) 72%);
 }
 
+body.plateau .word-animation-overlay.variant-game .word-animation-aura{
+  background:radial-gradient(circle, rgba(255,255,255,.84) 0%, rgba(107,255,208,.72) 20%, rgba(29,190,178,.18) 54%, rgba(29,190,178,0) 72%);
+}
+
+body.plateau .word-animation-overlay.variant-poker .word-animation-aura{
+  background:radial-gradient(circle, rgba(255,255,255,.82) 0%, rgba(255,214,96,.72) 20%, rgba(255,130,38,.2) 54%, rgba(255,130,38,0) 72%);
+}
+
 body.plateau .word-animation-ring{
   position:absolute;
   width:38vmin;
@@ -3337,6 +3375,16 @@ body.plateau .word-animation-overlay.variant-triple .word-animation-ring{
 body.plateau .word-animation-overlay.variant-bad .word-animation-ring{
   border-color: rgba(255,120,148,.92);
   box-shadow:0 0 28px rgba(255,52,92,.4);
+}
+
+body.plateau .word-animation-overlay.variant-game .word-animation-ring{
+  border-color: rgba(111,255,212,.92);
+  box-shadow:0 0 28px rgba(38,217,187,.4);
+}
+
+body.plateau .word-animation-overlay.variant-poker .word-animation-ring{
+  border-color: rgba(255,216,96,.92);
+  box-shadow:0 0 28px rgba(255,157,65,.42);
 }
 
 body.plateau .word-animation-ring.ring-one{
@@ -3365,6 +3413,14 @@ body.plateau .word-animation-overlay.variant-triple .word-animation-stripe{
 
 body.plateau .word-animation-overlay.variant-bad .word-animation-stripe{
   background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,118,150,.98), rgba(255,255,255,0));
+}
+
+body.plateau .word-animation-overlay.variant-game .word-animation-stripe{
+  background:linear-gradient(90deg, rgba(255,255,255,0), rgba(111,255,212,.98), rgba(255,255,255,0));
+}
+
+body.plateau .word-animation-overlay.variant-poker .word-animation-stripe{
+  background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,214,96,.98), rgba(255,255,255,0));
 }
 
 body.plateau .word-animation-stripe.left{
@@ -3423,6 +3479,20 @@ body.plateau .word-animation-overlay.variant-bad .word-animation-main{
     0 16px 30px rgba(0,0,0,.42);
 }
 
+body.plateau .word-animation-overlay.variant-game .word-animation-main{
+  color:#8fffe2;
+  text-shadow:
+    0 0 18px rgba(111,255,212,.62),
+    0 16px 30px rgba(0,0,0,.36);
+}
+
+body.plateau .word-animation-overlay.variant-poker .word-animation-main{
+  color:#ffe078;
+  text-shadow:
+    0 0 18px rgba(255,214,96,.62),
+    0 16px 30px rgba(0,0,0,.36);
+}
+
 body.plateau .word-animation-sub{
   font-size:clamp(20px, 2.6vw, 34px);
   font-weight:900;
@@ -3438,6 +3508,14 @@ body.plateau .word-animation-overlay.variant-triple .word-animation-sub{
 
 body.plateau .word-animation-overlay.variant-bad .word-animation-sub{
   color:#ffc6d2;
+}
+
+body.plateau .word-animation-overlay.variant-game .word-animation-sub{
+  color:#cdfcf1;
+}
+
+body.plateau .word-animation-overlay.variant-poker .word-animation-sub{
+  color:#ffe7b0;
 }
 
 @keyframes plateauPodiumPop{

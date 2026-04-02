@@ -18,6 +18,29 @@ const MISFORTUNE_WHEEL_COLORS = [
   "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
   "#84cc16", "#06b6d4", "#eab308", "#6366f1"
 ];
+const MISFORTUNE_WHEEL_ACTIONS = [
+  "5 Points",
+  "X2",
+  "Dessiner c'est pas gagne, gagne...",
+  "X3",
+  "10 Points",
+  "Lettres",
+  "Chiffres",
+  "A prendre ou a refiler !",
+  "N'oubliez pas la parole",
+  "15 Points",
+  "Bad Word",
+  "Poker"
+];
+const MISFORTUNE_REMOTE_CHANNEL = (() => {
+  try {
+    return new BroadcastChannel("avm_control");
+  } catch {
+    return null;
+  }
+})();
+const MISFORTUNE_LETTERS_REVEAL_MS = 750;
+const MISFORTUNE_NUMBERS_REVEAL_MS = 850;
 
 const playedMedia = loadPlayedMedia();
 const misfortuneWheel = {
@@ -36,6 +59,15 @@ const misfortuneWheel = {
   visible: false,
   selectHighlightTimer: 0,
   suppressModalBackdropCloseUntil: 0
+};
+const misfortuneWheelBonuses = {
+  doubleSeen: false,
+  tripleSeen: false,
+  badSeen: false,
+  lettersTimer: 0,
+  numbersTimer: 0,
+  pokerPot: 0,
+  remoteBindingDone: false
 };
 const generalCategoryDropdown = {
   open: false
@@ -719,13 +751,7 @@ function normalizeWheelAngle(angle) {
 }
 
 function getMisfortuneWheelItems() {
-  const categories = new Set();
-  state.generalQuestions.forEach((q) => {
-    if (!matchesGeneralLevelFilter(q)) return;
-    const category = String(q?.category || "").trim();
-    if (category) categories.add(category);
-  });
-  return [...categories].sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
+  return MISFORTUNE_WHEEL_ACTIONS.slice();
 }
 
 function getMisfortuneWheelCanvas() {
@@ -829,7 +855,7 @@ function drawMisfortuneWheel() {
   const radius = size / 2;
   const cx = radius;
   const cy = radius;
-  const items = misfortuneWheel.items.length ? misfortuneWheel.items : ["Aucune categorie"];
+  const items = misfortuneWheel.items.length ? misfortuneWheel.items : ["Aucune action"];
 
   ctx.clearRect(0, 0, size, size);
   const slice = TWO_PI / items.length;
@@ -898,6 +924,232 @@ function clearMisfortuneSpinAnimation() {
   if (!misfortuneWheel.rafId) return;
   cancelAnimationFrame(misfortuneWheel.rafId);
   misfortuneWheel.rafId = 0;
+}
+
+function clearMisfortuneBonusTimers() {
+  if (misfortuneWheelBonuses.lettersTimer) {
+    clearTimeout(misfortuneWheelBonuses.lettersTimer);
+    misfortuneWheelBonuses.lettersTimer = 0;
+  }
+  if (misfortuneWheelBonuses.numbersTimer) {
+    clearTimeout(misfortuneWheelBonuses.numbersTimer);
+    misfortuneWheelBonuses.numbersTimer = 0;
+  }
+}
+
+function updatePokerPotButton() {
+  const btn = $("btnPokerPot");
+  if (!btn) return;
+  const amount = Number(misfortuneWheelBonuses.pokerPot) || 0;
+  btn.textContent = amount > 0
+    ? `Attribuer la cagnotte (${amount} points)`
+    : "Attribuer la cagnotte";
+  btn.classList.toggle("hidden", amount <= 0);
+}
+
+function triggerButton(id) {
+  const button = $(id);
+  if (!button || button.disabled) return false;
+  button.click();
+  return true;
+}
+
+function launchTimedBonus(type) {
+  if (type === "double") {
+    const firstTime = !misfortuneWheelBonuses.doubleSeen;
+    misfortuneWheelBonuses.doubleSeen = true;
+    return triggerButton(firstTime ? "btnDouble" : "btnDoubleAnimated");
+  }
+  if (type === "triple") {
+    const firstTime = !misfortuneWheelBonuses.tripleSeen;
+    misfortuneWheelBonuses.tripleSeen = true;
+    return triggerButton(firstTime ? "btnTriple" : "btnTripleAnimated");
+  }
+  if (type === "bad") {
+    const firstTime = !misfortuneWheelBonuses.badSeen;
+    misfortuneWheelBonuses.badSeen = true;
+    return triggerButton(firstTime ? "btnBad" : "btnBadAnimated");
+  }
+  return false;
+}
+
+function awardWheelPoints(points) {
+  showTeamAwardModal({
+    points,
+    answer: `${points} points`,
+    onSelect: (team) => {
+      if (!team) return;
+      state.currentTeamId = team.id;
+      team.points = (team.points ?? 0) + points;
+      renderTeams();
+      syncScoresToPlateau();
+    }
+  });
+}
+
+function playWheelJingle({ kicker, main, sub, variant = "variant-game", duration = 2200 }) {
+  runXMediaFlow();
+  postToPlateau({
+    type: "PLAY_SHOW_ACTION",
+    mode: "wheel_show_action",
+    variant,
+    kicker,
+    main,
+    sub,
+    duration
+  });
+}
+
+function scheduleLettersRevealStep() {
+  const showBtn = $("btnLettersGameShow");
+  if (!showBtn) return;
+  if ((state.lettersGameRevealCount || 0) >= state.lettersGameLetters.length) {
+    misfortuneWheelBonuses.lettersTimer = 0;
+    return;
+  }
+  showBtn.click();
+  if ((state.lettersGameRevealCount || 0) < state.lettersGameLetters.length) {
+    misfortuneWheelBonuses.lettersTimer = window.setTimeout(scheduleLettersRevealStep, MISFORTUNE_LETTERS_REVEAL_MS);
+  } else {
+    misfortuneWheelBonuses.lettersTimer = 0;
+  }
+}
+
+function launchLettersFromWheel() {
+  clearMisfortuneBonusTimers();
+  $("lettersGameModal")?.classList.remove("hidden");
+  triggerButton("btnLettersGameGenerate");
+  misfortuneWheelBonuses.lettersTimer = window.setTimeout(scheduleLettersRevealStep, 220);
+}
+
+function scheduleNumbersRevealStep() {
+  const showBtn = $("btnNumbersGameShow");
+  if (!showBtn) return;
+  if ((state.numbersGameRevealCount || 0) >= 7) {
+    misfortuneWheelBonuses.numbersTimer = 0;
+    return;
+  }
+  showBtn.click();
+  if ((state.numbersGameRevealCount || 0) < 7) {
+    misfortuneWheelBonuses.numbersTimer = window.setTimeout(scheduleNumbersRevealStep, MISFORTUNE_NUMBERS_REVEAL_MS);
+  } else {
+    misfortuneWheelBonuses.numbersTimer = 0;
+  }
+}
+
+function launchNumbersFromWheel() {
+  clearMisfortuneBonusTimers();
+  $("numbersGameModal")?.classList.remove("hidden");
+  triggerButton("btnNumbersGameGenerate");
+  misfortuneWheelBonuses.numbersTimer = window.setTimeout(scheduleNumbersRevealStep, 220);
+}
+
+function launchPokerFromWheel() {
+  if (!state.teams.length) {
+    showGeneralQuestionsInfo("Ajoute d'abord des equipes pour lancer Poker.");
+    return false;
+  }
+
+  const raw = window.prompt("Poker : choisis un nombre entre 1 et 6.", "3");
+  if (raw == null) return false;
+
+  const amount = Number.parseInt(String(raw).trim(), 10);
+  if (!Number.isInteger(amount) || amount < 1 || amount > 6) {
+    showGeneralQuestionsInfo("Poker annule : entre un nombre entier entre 1 et 6.");
+    return false;
+  }
+
+  misfortuneWheelBonuses.pokerPot = state.teams.reduce((sum, team) => {
+    team.points = (team.points ?? 0) - amount;
+    return sum + amount;
+  }, 0);
+  renderTeams();
+  syncScoresToPlateau();
+  updatePokerPotButton();
+  showGeneralQuestionsInfo(`La cagnotte est de ${misfortuneWheelBonuses.pokerPot} points.`);
+  playWheelJingle({
+    kicker: "BONUS",
+    main: "POKER",
+    sub: `${amount} POINT${amount > 1 ? "S" : ""} PAR EQUIPE`,
+    variant: "variant-poker",
+    duration: 2100
+  });
+  return true;
+}
+
+function awardPokerPot() {
+  const pot = Number(misfortuneWheelBonuses.pokerPot) || 0;
+  if (pot <= 0) return;
+  showTeamAwardModal({
+    points: pot,
+    answer: `Cagnotte Poker (${pot} points)`,
+    onSelect: (team) => {
+      if (!team) return;
+      state.currentTeamId = team.id;
+      team.points = (team.points ?? 0) + pot;
+      misfortuneWheelBonuses.pokerPot = 0;
+      updatePokerPotButton();
+      renderTeams();
+      syncScoresToPlateau();
+    }
+  });
+}
+
+function executeMisfortuneWheelAction(label) {
+  switch (label) {
+    case "5 Points":
+      awardWheelPoints(5);
+      return true;
+    case "10 Points":
+      awardWheelPoints(10);
+      return true;
+    case "15 Points":
+      awardWheelPoints(15);
+      return true;
+    case "X2":
+      return launchTimedBonus("double");
+    case "X3":
+      return launchTimedBonus("triple");
+    case "Bad Word":
+      return launchTimedBonus("bad");
+    case "Dessiner c'est pas gagne, gagne...":
+      playWheelJingle({
+        kicker: "JEU",
+        main: "DESSINER",
+        sub: "C'EST PAS GAGNE, GAGNE...",
+        variant: "variant-game",
+        duration: 2350
+      });
+      return true;
+    case "A prendre ou a refiler !":
+      playWheelJingle({
+        kicker: "JEU",
+        main: "A PRENDRE",
+        sub: "OU A REFILER !",
+        variant: "variant-game",
+        duration: 2250
+      });
+      return true;
+    case "N'oubliez pas la parole":
+      playWheelJingle({
+        kicker: "JEU",
+        main: "PAROLE",
+        sub: "N'OUBLIEZ PAS LA PAROLE",
+        variant: "variant-game",
+        duration: 2250
+      });
+      return true;
+    case "Lettres":
+      launchLettersFromWheel();
+      return true;
+    case "Chiffres":
+      launchNumbersFromWheel();
+      return true;
+    case "Poker":
+      return launchPokerFromWheel();
+    default:
+      return false;
+  }
 }
 
 function resetGeneralQuestionPreview() {
@@ -1032,16 +1284,11 @@ function updateMisfortuneWheelItems({ keepAngle = true } = {}) {
 
 function showMisfortuneWheel() {
   updateMisfortuneWheelItems({ keepAngle: true });
-  if (!misfortuneWheel.items.length) {
-    showGeneralQuestionsInfo("Aucune categorie disponible pour les niveaux choisis.");
-    return;
-  }
-
   misfortuneWheel.visible = true;
   const panel = getMisfortuneWheelPanel();
   panel?.classList.remove("hidden");
   ensureMisfortuneWheelPanelWindow();
-  updateMisfortuneWheelResultText("Fais tourner la roue pour choisir une categorie.");
+  updateMisfortuneWheelResultText("Espace lance la roue, Entree valide l'action.");
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
   postToPlateau({ type: "HIDE_MEDIA" });
   postToPlateau({
@@ -1067,28 +1314,27 @@ function confirmCurrentMisfortuneSelection({ closeLocalOnly = true } = {}) {
   const idx = getMisfortuneWinnerIndex(misfortuneWheel.angle, misfortuneWheel.items.length);
   if (idx < 0) return false;
   const winner = misfortuneWheel.items[idx];
-  if (!winner || !applyWheelCategory(winner)) {
-    updateMisfortuneWheelResultText("Categorie choisie indisponible.");
+  if (!winner) {
+    updateMisfortuneWheelResultText("Selection indisponible.");
     return false;
   }
-  updateMisfortuneWheelResultText(`Categorie choisie: ${winner}`);
+  updateMisfortuneWheelResultText(`Action lancee: ${winner}`);
   if (!closeLocalOnly) {
     postToPlateau({
       type: "MISFORTUNE_WHEEL_RESULT",
-      category: winner,
+      label: winner,
       angle: misfortuneWheel.angle
     });
   }
   hideMisfortuneWheel({ notifyPlateau: false });
-  focusHighlightedGeneralCategorySelect();
-  return true;
+  return executeMisfortuneWheelAction(winner);
 }
 
 function spinMisfortuneWheel() {
   if (misfortuneWheel.spinning || misfortuneWheel.dragActive) return;
   updateMisfortuneWheelItems({ keepAngle: true });
   if (misfortuneWheel.items.length < 2) {
-    updateMisfortuneWheelResultText("Ajoute au moins deux categories pour lancer la roue.");
+    updateMisfortuneWheelResultText("La roue n'est pas disponible.");
     return;
   }
   const intensity = MISFORTUNE_WHEEL_INTENSITY;
@@ -1129,15 +1375,15 @@ function spinMisfortuneWheel() {
 
     const idx = getMisfortuneWinnerIndex(misfortuneWheel.angle, misfortuneWheel.items.length);
     const winner = idx >= 0 ? misfortuneWheel.items[idx] : "";
-    if (winner && applyWheelCategory(winner)) {
-      updateMisfortuneWheelResultText(`Categorie choisie: ${winner}`);
+    if (winner) {
+      updateMisfortuneWheelResultText(`Selection actuelle: ${winner}`);
       postToPlateau({
         type: "MISFORTUNE_WHEEL_RESULT",
-        category: winner,
+        label: winner,
         angle: misfortuneWheel.angle
       });
     } else {
-      updateMisfortuneWheelResultText("Categorie choisie indisponible.");
+      updateMisfortuneWheelResultText("Selection indisponible.");
     }
   };
 
@@ -1587,7 +1833,24 @@ export async function loadGeneralQuestionsList() {
   updateMisfortuneWheelItems({ keepAngle: false });
 }
 
+function bindMisfortuneRemoteControls() {
+  if (misfortuneWheelBonuses.remoteBindingDone || !MISFORTUNE_REMOTE_CHANNEL) return;
+  misfortuneWheelBonuses.remoteBindingDone = true;
+  MISFORTUNE_REMOTE_CHANNEL.onmessage = (event) => {
+    const msg = event.data;
+    if (!msg || !msg.type || !misfortuneWheel.visible) return;
+    if (msg.type === "MISFORTUNE_WHEEL_SPIN_REQUEST") {
+      spinMisfortuneWheel();
+      return;
+    }
+    if (msg.type === "MISFORTUNE_WHEEL_CONFIRM_REQUEST") {
+      confirmCurrentMisfortuneSelection({ closeLocalOnly: false });
+    }
+  };
+}
+
 function runXMediaFlow() {
+  clearMisfortuneBonusTimers();
   state.showScores = false;
   syncScoresToPlateau();
   postToPlateau({ type: "STOP_FILMS_VIDEO" });
@@ -1691,6 +1954,7 @@ function closePlateauMusicModal() {
 }
 
 export function registerMediaEvents() {
+  bindMisfortuneRemoteControls();
   initGeneralQuestionsModalDrag();
   initMisfortuneWheelWindowDrag();
   setPlateauBackgroundTheme(loadPlateauBackgroundTheme(), { notify: false });
@@ -1767,6 +2031,9 @@ export function registerMediaEvents() {
   $("btnCloseMisfortuneWheel")?.addEventListener("click", () => {
     hideMisfortuneWheel({ notifyPlateau: false });
   });
+  $("btnPokerPot")?.addEventListener("click", () => {
+    awardPokerPot();
+  });
 
   const wheelCanvas = getMisfortuneWheelCanvas();
   wheelCanvas?.addEventListener("mousedown", startMisfortuneWheelDrag);
@@ -1809,9 +2076,14 @@ export function registerMediaEvents() {
   );
 
   window.addEventListener("keydown", (e) => {
-    if (misfortuneWheel.visible && e.key === "Enter") {
+    if (misfortuneWheel.visible && (e.code === "Space" || e.key === " ")) {
       e.preventDefault();
       spinMisfortuneWheel();
+      return;
+    }
+    if (misfortuneWheel.visible && e.key === "Enter") {
+      e.preventDefault();
+      confirmCurrentMisfortuneSelection({ closeLocalOnly: false });
       return;
     }
     if (e.key === "Escape") {
@@ -1972,6 +2244,7 @@ export function registerMediaEvents() {
   });
 
   updateMisfortuneWheelItems({ keepAngle: true });
+  updatePokerPotButton();
   updateReplayButtonsState();
   syncGeneralCategoryDropdown();
   updateGeneralQuestionButtons();
@@ -2011,6 +2284,12 @@ export function resetMediaForNewShow() {
   state.generalQuestionChoicesRevealCount = 0;
   state.generalQuestionDisplayActive = false;
   state.generalQuestionAnswerMarks = {};
+  clearMisfortuneBonusTimers();
+  misfortuneWheelBonuses.doubleSeen = false;
+  misfortuneWheelBonuses.tripleSeen = false;
+  misfortuneWheelBonuses.badSeen = false;
+  misfortuneWheelBonuses.pokerPot = 0;
+  updatePokerPotButton();
   misfortuneWheel.angle = 0;
   misfortuneWheel.items = getMisfortuneWheelItems();
   hideMisfortuneWheel();

@@ -46,6 +46,14 @@ let actionAnimationOverlay = null;
 let actionAnimationTimer = 0;
 let lettersGameDuckingActive = false;
 let numbersGameDuckingActive = false;
+const controlChannel = (() => {
+  try {
+    return new BroadcastChannel("avm_control");
+  } catch {
+    return null;
+  }
+})();
+let misfortuneWheelKeyboardBound = false;
 
 function setLettersGameDucking(active) {
   if (active && !lettersGameDuckingActive) {
@@ -299,6 +307,18 @@ export function playBadAnimation() {
     sub: "POINTS CONTRE VOUS",
     soundDuration: 1000,
     duration: 2100
+  });
+}
+
+export function playShowAction(payload = {}) {
+  playActionAnimation({
+    mode: String(payload.mode || "show_action"),
+    variant: String(payload.variant || "variant-game"),
+    kicker: String(payload.kicker || "JEU"),
+    main: String(payload.main || "BONUS"),
+    sub: String(payload.sub || ""),
+    soundDuration: Number(payload.soundDuration) || 900,
+    duration: Number(payload.duration) || 2200
   });
 }
 
@@ -694,6 +714,30 @@ function normalizeWheelAngle(angle) {
   return ((angle % TWO_PI) + TWO_PI) % TWO_PI;
 }
 
+function bindMisfortuneWheelKeyboard() {
+  if (misfortuneWheelKeyboardBound) return;
+  misfortuneWheelKeyboardBound = true;
+  window.addEventListener("keydown", (event) => {
+    if (!misfortuneWheelOverlay?.classList.contains("active")) return;
+    const target = event.target;
+    const tagName = target?.tagName?.toUpperCase?.() || "";
+    if (tagName === "INPUT" || tagName === "TEXTAREA" || tagName === "SELECT" || target?.isContentEditable) {
+      return;
+    }
+
+    if (event.code === "Space" || event.key === " ") {
+      event.preventDefault();
+      controlChannel?.postMessage({ type: "MISFORTUNE_WHEEL_SPIN_REQUEST" });
+      return;
+    }
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      controlChannel?.postMessage({ type: "MISFORTUNE_WHEEL_CONFIRM_REQUEST" });
+    }
+  });
+}
+
 function ensureMisfortuneWheelOverlay() {
   if (misfortuneWheelOverlay) return misfortuneWheelOverlay;
   const overlay = document.createElement("div");
@@ -702,12 +746,13 @@ function ensureMisfortuneWheelOverlay() {
   overlay.innerHTML = `
     <div class="misfortune-wheel-stage plateau-wheel-stage">
       <div class="misfortune-wheel-pointer" aria-hidden="true"></div>
-      <canvas id="plateauMisfortuneWheelCanvas" width="600" height="600" aria-label="Roue des categories"></canvas>
+      <canvas id="plateauMisfortuneWheelCanvas" width="600" height="600" aria-label="Roue des actions"></canvas>
     </div>
     <div id="plateauMisfortuneWheelResult" class="misfortune-wheel-result plateau-wheel-result">Roue de l'infortune</div>
   `;
   document.body.appendChild(overlay);
   misfortuneWheelOverlay = overlay;
+  bindMisfortuneWheelKeyboard();
   return overlay;
 }
 
@@ -722,7 +767,7 @@ function drawMisfortuneWheel() {
   const radius = size / 2;
   const cx = radius;
   const cy = radius;
-  const items = misfortuneWheelItems.length ? misfortuneWheelItems : ["Aucune categorie"];
+  const items = misfortuneWheelItems.length ? misfortuneWheelItems : ["Aucune action"];
 
   ctx.clearRect(0, 0, size, size);
   const slice = TWO_PI / items.length;
@@ -791,7 +836,9 @@ export function updateMisfortuneWheel(payload = {}) {
 export function showMisfortuneWheelResult(payload = {}) {
   const overlay = ensureMisfortuneWheelOverlay();
   const resultEl = overlay.querySelector("#plateauMisfortuneWheelResult");
-  if (resultEl) resultEl.textContent = "Roue de l'infortune";
+  if (resultEl) {
+    resultEl.textContent = String(payload.label || payload.result || "").trim() || "Roue de l'infortune";
+  }
 }
 
 export function hideMisfortuneWheel() {

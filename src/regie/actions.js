@@ -423,6 +423,15 @@ export function registerWindowEvents() {
     if (state.pendingPenaltyPoints > 0) return;
     if (isTypingTarget(e.target)) return;
 
+    if (!e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey && String(e.key || "").toLowerCase() === "r") {
+      const wheelButton = $("btnMisfortuneWheel");
+      if (wheelButton && !wheelButton.disabled) {
+        e.preventDefault();
+        wheelButton.click();
+        return;
+      }
+    }
+
     const isDeleteKey = e.key === "Delete" || e.key === "Backspace";
     if (!isDeleteKey) return;
 
