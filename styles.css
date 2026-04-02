@@ -2616,19 +2616,19 @@ body.plateau .numbers-game-current-line{
 }
 
 body.plateau .golden-family-stage{
-  width:min(1500px, 95vw);
+  width:min(1460px, 95vw);
   display:grid;
-  gap:22px;
+  gap:16px;
 }
 
 body.plateau .golden-family-question{
-  padding:24px 28px;
+  padding:18px 22px;
   border-radius:24px;
   border:2px solid rgba(255,255,255,.22);
   background: linear-gradient(180deg, rgba(19,41,66,.95), rgba(8,22,40,.95));
   box-shadow: 0 22px 48px rgba(0,0,0,.34);
-  font-size:48px;
-  line-height:1.16;
+  font-size:clamp(28px, 3.1vw, 42px);
+  line-height:1.12;
   font-weight:900;
   text-align:center;
   color:#fff7d6;
@@ -2637,16 +2637,16 @@ body.plateau .golden-family-question{
 body.plateau .golden-family-board{
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap:18px;
+  gap:14px;
 }
 
 body.plateau .golden-family-cell{
   display:grid;
   grid-template-columns: 88px 1fr 110px;
   align-items:center;
-  gap:16px;
-  min-height:118px;
-  padding:16px 18px;
+  gap:14px;
+  min-height:102px;
+  padding:14px 16px;
   border-radius:20px;
   border:2px solid rgba(255,255,255,.18);
   background: linear-gradient(180deg, rgba(7,24,43,.88), rgba(7,24,43,.72));
@@ -2664,10 +2664,10 @@ body.plateau .golden-family-cell-score{
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height:76px;
+  min-height:68px;
   border-radius:16px;
   background: rgba(255,255,255,.08);
-  font-size:38px;
+  font-size:32px;
   font-weight:1000;
   color:#fff;
 }
@@ -2679,7 +2679,7 @@ body.plateau .golden-family-cell.revealed .golden-family-cell-score{
 }
 
 body.plateau .golden-family-cell-answer{
-  font-size:34px;
+  font-size:29px;
   line-height:1.12;
   font-weight:900;
   text-align:center;
@@ -2689,38 +2689,6 @@ body.plateau .golden-family-cell-answer{
 
 body.plateau .golden-family-cell.revealed .golden-family-cell-answer{
   color:#fff8d7;
-}
-
-body.plateau .golden-family-footer{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  gap:18px;
-}
-
-body.plateau .golden-family-points{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  padding:16px 22px;
-  border-radius:20px;
-  border:2px solid rgba(255,255,255,.22);
-  background: rgba(10,28,48,.9);
-  box-shadow: 0 18px 30px rgba(0,0,0,.26);
-}
-
-body.plateau .golden-family-points .label{
-  color:#9dc2ea;
-  font-size:22px;
-  font-weight:800;
-  text-transform:uppercase;
-}
-
-body.plateau #goldenFamilyRoundPoints{
-  font-size:56px;
-  font-weight:1000;
-  line-height:1;
-  color:#ffe36f;
 }
 
 body.plateau .general-question-stage{

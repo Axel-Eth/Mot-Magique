@@ -27,6 +27,10 @@
   <div style='display:none'>
     <span id='plateauState'></span>
     <span id='selectedInfo'></span>
+    <button id="btnMisfortuneWheel" type="button"></button>
+    <button id="btnGoldenFamily" type="button"></button>
+    <button id="btnLettersGame" type="button"></button>
+    <button id="btnNumbersGame" type="button"></button>
   </div>
   <main class="layout">
     <div id="capitalesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="capitalesModalTitle">
@@ -174,10 +178,19 @@
     <div id="bonusModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="bonusModalTitle">
       <div class="modal-card bonus-modal-card">
         <div class="row space-between bonus-modal-top">
-          <h3 id="bonusModalTitle">Bonus</h3>
+          <h3 id="bonusModalTitle">Bonus &amp; Jeux</h3>
           <button id="btnBonusClose" class="btn ghost" type="button">Fermer</button>
         </div>
         <div class="bonus-grid">
+          <section class="bonus-column">
+            <div class="bonus-column-title">Jeux & Ecrans</div>
+            <button id="btnBonusQuestions" class="btn ghost bonus-action-btn" type="button">Questions</button>
+            <button id="btnBonusWheel" class="btn ghost bonus-action-btn" type="button">Roue de l'infortune</button>
+            <button id="btnBonusGoldenFamily" class="btn ghost bonus-action-btn" type="button">Famille en or</button>
+            <button id="btnBonusLettersGame" class="btn ghost bonus-action-btn" type="button">Lettres</button>
+            <button id="btnBonusNumbersGame" class="btn ghost bonus-action-btn" type="button">Chiffres</button>
+            <button id="btnBonusScores" class="btn ghost bonus-action-btn" type="button">Scores</button>
+          </section>
           <section class="bonus-column">
             <div class="bonus-column-title">Generiques</div>
             <button id="btnGeneric" class="btn ghost bonus-action-btn" type="button">Generique</button>
@@ -310,17 +323,12 @@
 
       <div class="action-buttons-block">
         <div class="row small action-buttons-row">
-          <button id="btnBonus" class="btn ghost" type="button">Bonus</button>
+          <button id="btnBonus" class="btn ghost" type="button">Bonus &amp; Jeux</button>
           <button id="btnScores" class="btn ghost" type="button">Scores</button>
           <button id="btnQuestions" class="btn ghost" type="button">Questions</button>
-          <button id="btnMisfortuneWheel" class="btn ghost" type="button">Roue</button>
-          <button id="btnGoldenFamily" class="btn ghost" type="button">Famille</button>
-          <button id="btnLettersGame" class="btn ghost" type="button">Lettres</button>
-          <button id="btnNumbersGame" class="btn ghost" type="button">Chiffres</button>
         </div>
         <div class="row small action-buttons-row">
-          <button id="btnReset" class="btn ghost" type="button">Reset</button>
-          <button id="btnNewShow" class="btn danger" type="button">New</button>
+          <button id="btnNewShow" class="btn danger" type="button">Reset</button>
           <button id="btnPlateauMusic" class="btn ghost" type="button">M. Plateau</button>
           <button id="btnShuffleLetters" class="btn ghost" type="button">Melanger</button>
         </div>

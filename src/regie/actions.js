@@ -46,6 +46,11 @@ function closeBonusModal() {
   $("bonusModal")?.classList.add("hidden");
 }
 
+function triggerFromBonus(targetId) {
+  closeBonusModal();
+  return triggerButtonClick(targetId);
+}
+
 function isTypingTarget(target) {
   if (!target || !target.closest) return false;
   if (target.isContentEditable) return true;
@@ -161,6 +166,30 @@ export function registerActionEvents() {
 
   $("btnBonusClose")?.addEventListener("click", () => {
     closeBonusModal();
+  });
+
+  $("btnBonusQuestions")?.addEventListener("click", () => {
+    triggerFromBonus("btnQuestions");
+  });
+
+  $("btnBonusWheel")?.addEventListener("click", () => {
+    triggerFromBonus("btnMisfortuneWheel");
+  });
+
+  $("btnBonusGoldenFamily")?.addEventListener("click", () => {
+    triggerFromBonus("btnGoldenFamily");
+  });
+
+  $("btnBonusLettersGame")?.addEventListener("click", () => {
+    triggerFromBonus("btnLettersGame");
+  });
+
+  $("btnBonusNumbersGame")?.addEventListener("click", () => {
+    triggerFromBonus("btnNumbersGame");
+  });
+
+  $("btnBonusScores")?.addEventListener("click", () => {
+    triggerFromBonus("btnScores");
   });
 
   $("btnGeneric")?.addEventListener("click", () => {

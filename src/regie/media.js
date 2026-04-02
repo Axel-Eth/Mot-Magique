@@ -28,6 +28,7 @@ const MISFORTUNE_WHEEL_ACTIONS = [
   "Chiffres",
   "A prendre ou a refiler !",
   "N'oubliez pas la parole",
+  "Une famille en or plaque",
   "15 Points",
   "Bad Word",
   "Poker"
@@ -1170,6 +1171,16 @@ function executeMisfortuneWheelAction(label) {
         variant: "variant-game",
         duration: 2250
       });
+      return true;
+    case "Une famille en or plaque":
+      playWheelJingle({
+        kicker: "JEU",
+        main: "FAMILLE",
+        sub: "UNE FAMILLE EN OR PLAQUE",
+        variant: "variant-game",
+        duration: 2300
+      });
+      $("goldenFamilyModal")?.classList.remove("hidden");
       return true;
     case "Lettres":
       launchLettersFromWheel();

@@ -240,6 +240,9 @@ function resetRoundState() {
 }
 
 function setCurrentQuestion(question) {
+  if (state.goldenFamilyVisible) {
+    hideGoldenFamilyDisplay();
+  }
   state.goldenFamilyCurrent = question || null;
   resetRoundState();
   const select = $("goldenFamilySelect");
@@ -248,9 +251,6 @@ function setCurrentQuestion(question) {
     if (option) select.value = option.value;
   }
   renderGoldenFamilyCard();
-  if (state.goldenFamilyVisible) {
-    sendGoldenFamilyToPlateau();
-  }
 }
 
 function applyGoldenFamilyFilter(filterValue) {

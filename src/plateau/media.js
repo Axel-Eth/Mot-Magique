@@ -649,12 +649,6 @@ function ensureGoldenFamilyOverlay() {
     <div class="golden-family-stage">
       <div class="golden-family-question" id="goldenFamilyQuestion"></div>
       <div class="golden-family-board" id="goldenFamilyBoard"></div>
-      <div class="golden-family-footer">
-        <div class="golden-family-points">
-          <span class="label">BANQUE</span>
-          <span id="goldenFamilyRoundPoints">0</span>
-        </div>
-      </div>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -972,7 +966,6 @@ export function showGoldenFamily(payload = {}) {
   const overlay = ensureGoldenFamilyOverlay();
   const questionEl = overlay.querySelector("#goldenFamilyQuestion");
   const boardEl = overlay.querySelector("#goldenFamilyBoard");
-  const pointsEl = overlay.querySelector("#goldenFamilyRoundPoints");
   const visible = !!payload.visible;
 
   if (!visible) {
@@ -1013,10 +1006,6 @@ export function showGoldenFamily(payload = {}) {
       cell.appendChild(scoreEl);
       boardEl.appendChild(cell);
     });
-  }
-
-  if (pointsEl) {
-    pointsEl.textContent = `${Number(payload.roundPoints) || 0}`;
   }
 
   overlay.classList.add("active");
