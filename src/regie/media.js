@@ -2,6 +2,7 @@ import { $ } from "./dom.js";
 import { state } from "./state.js";
 import { syncScoresToPlateau } from "./plateau.js";
 import { postToPlateau } from "./bridge.js";
+import { renderTeams, showTeamAwardModal } from "./teams.js";
 export { loadGoldenFamilyList, registerGoldenFamilyEvents } from "./golden-family.js";
 export { registerLettersGameEvents, resetLettersGameForNewShow } from "./letters-game.js";
 export { registerNumbersGameEvents, resetNumbersGameForNewShow } from "./numbers-game.js";
@@ -1312,6 +1313,19 @@ function markGeneralAnswerOnPlateau(index, isCorrect) {
   });
 }
 
+function penalizeWrongGeneralAnswer() {
+  showTeamAwardModal({
+    answer: "Mauvaise reponse (-2)",
+    onSelect: (team) => {
+      if (!team) return;
+      state.currentTeamId = team.id;
+      team.points = (team.points ?? 0) - 2;
+      renderTeams();
+      syncScoresToPlateau();
+    }
+  });
+}
+
 function applyGeneralChoicesRevealUI() {
   const listEl = $("generalChoicesList");
   const q = state.generalQuestionCurrent;
@@ -1377,6 +1391,9 @@ function renderGeneralQuestionCard() {
         choice.classList.remove("attempted-correct", "attempted-wrong");
         choice.classList.add(isCorrect ? "attempted-correct" : "attempted-wrong");
         markGeneralAnswerOnPlateau(idx, isCorrect);
+        if (!isCorrect) {
+          penalizeWrongGeneralAnswer();
+        }
       });
       if (isCorrectGeneralOption(q, opt)) {
         choice.classList.add("correct-answer");
